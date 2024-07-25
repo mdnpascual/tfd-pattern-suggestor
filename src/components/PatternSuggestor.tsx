@@ -30,7 +30,7 @@ const patternData: Record<string, Pattern> = data;
 
 Object.entries(patternData).forEach(([key, data]) => {
 	data.drops.forEach((drop) => {
-		if (!items.find(item => item.label.includes(drop.name))){
+		if (!items.find(item => item.label === drop.name)){
 			items.push({id: key + drop.name, label: drop.name})
 		}
 	})
@@ -72,7 +72,7 @@ const PatternSuggestorComponent: React.FC = () => {
 				data.drops.forEach((drop) => {
 
 					if (drop.name === selectedItem){
-						const found = newFarmList.find(item => item.name.includes(key));
+						const found = newFarmList.find(item => item.name === key);
 						if (found){
 							found.score += 1
 						} else {
