@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { AppBar, Tabs, Tab, Box, CssBaseline  } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import darkTheme from './theme';
@@ -11,7 +11,7 @@ const App = () => {
 	return (
 		<ThemeProvider theme={darkTheme}>
 			<CssBaseline />
-			<Router>
+			<Router basename="/tfd-pattern-suggestor">
 			<div>
 				<NavTabs />
 				<Routes>
@@ -21,7 +21,7 @@ const App = () => {
 				/>
 				<Route path="/inventory" element={<InventoryComponent />} />
 				<Route path="/settings" element={<SettingsComponent />} />
-				<Route path="/" element={<DefaultComponent />} />
+				<Route path="/" element={<Navigate replace to="/patternSuggestor" />} />
 				</Routes>
 			</div>
 			</Router>
@@ -63,7 +63,5 @@ const NavTabs = () => {
 		</AppBar>
 	);
 };
-
-const DefaultComponent = () => <Box p={3}>Default Content</Box>;
 
 export default App;
