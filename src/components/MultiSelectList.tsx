@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { List, ListItem, ListItemText, Checkbox, ListSubheader, TextField, Button } from '@mui/material';
+import React, { useEffect, useMemo, useState } from 'react';
+import { List, ListItem, ListItemText, Checkbox, ListSubheader, TextField, Button, Grid } from '@mui/material';
 
 export interface Item {
 	id: string;
@@ -15,18 +15,28 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ items, onChange }) =>
   const [selected, setSelected] = useState<string[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>('');
 
-  // Load selections from session storage when the component mounts
+	const sortedItems = useMemo(() => {
+		const itemsCopy = [...items];
+		// Sort items so that selected items come first
+		itemsCopy.sort((a, b) => {
+			const aSelected = selected.includes(a.id) ? 0 : 1;
+			const bSelected = selected.includes(b.id) ? 0 : 1;
+			return aSelected - bSelected;
+		});
+		return itemsCopy;
+	}, [items, selected]);
+
+  // Load selections from local storage when the component mounts
 	useEffect(() => {
-		const savedSelections = sessionStorage.getItem('selectedItems');
+		const savedSelections = localStorage.getItem('selectedItems');
 		if (savedSelections) {
 			setSelected(JSON.parse(savedSelections));
 		}
 	}, []);
 
-	// Save selections to session storage whenever 'selected' changes
+	// Save selections to local storage whenever 'selected' changes
 	useEffect(() => {
-		sessionStorage.setItem('selectedItems', JSON.stringify(selected));
-		// Trigger the callback with the new selected labels
+		localStorage.setItem('selectedItems', JSON.stringify(selected));
 		const selectedLabels = selected.map(id => items.find(item => item.id === id)?.label || '');
 		onChange(selectedLabels);
 	}, [selected]);
@@ -52,14 +62,19 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ items, onChange }) =>
 	};
 
 	const handleClearAll = () => {
-		setSelected([]);
-		onChange([]); // Notify parent of empty selection
+		const confirmed = window.confirm("Are you sure you want to clear all selections?");
+		if (confirmed) {
+			setSelected([]);
+			onChange([]);
+		}
+
 	};
 
-	const filteredItems = items.filter((item) =>
-		item.label.toLowerCase().includes(searchTerm.toLowerCase()) ||
-		selected.includes(item.id) // Keep selected items in the list
-	);
+	const filteredAndSortedItems = useMemo(() => {
+		return sortedItems.filter((item) =>
+			item.label.toLowerCase().includes(searchTerm.toLowerCase())
+		);
+	}, [sortedItems, searchTerm]);
 
 	return (
 		<div>
@@ -75,7 +90,7 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ items, onChange }) =>
 				Clear All
 			</Button>
 			<List subheader={<ListSubheader>Material List</ListSubheader>} dense>
-				{filteredItems.map((item) => (
+				{filteredAndSortedItems.map((item) => (
 					<ListItem
 					key={item.id}
 					button

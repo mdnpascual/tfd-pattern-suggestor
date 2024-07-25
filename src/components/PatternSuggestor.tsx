@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Grid, Paper, Tooltip, Typography } from '@mui/material';
+import { Grid, List, ListSubheader, Paper, Tooltip, Typography } from '@mui/material';
 import MultiSelectList, { Item } from './MultiSelectList';
 import data from '../data/patterns.json';
 import CheckboxFilter from './CheckboxFilter';
@@ -19,11 +19,16 @@ const filterOptions = [
 	'Normal',
 	'Hard',
 	'Collosus',
-	'Infiltration',
 	'Special Ops',
 	'Void Outpost',
 	'Sharen Exclusive'
 ];
+
+const specOpsKeywords = [
+	'defend albion resource',
+	'neutralize void experiment',
+	'block kuiper mining'
+]
 
 let items: Item[] = []
 const patternData: Record<string, Pattern> = data;
@@ -115,6 +120,13 @@ const PatternSuggestorComponent: React.FC = () => {
 					}
 					filteredFarmList = filteredFarmList.filter((list) => list.dropsFrom.toLowerCase().includes("vulgus strategic outpost"))
 				}
+				if (key === 'Special Ops' && data){
+					if(filteredFarmList.length === 0){
+
+						filteredFarmList = filteredFarmList.concat(newFarmList.filter((list) => specOpsKeywords.some(keyword => list.dropsFrom.toLowerCase().includes(keyword))))
+					}
+					filteredFarmList = newFarmList.filter((list) => specOpsKeywords.some(keyword => list.dropsFrom.toLowerCase().includes(keyword)))
+				}
 			});
 
 			// SORT
@@ -168,21 +180,24 @@ const PatternSuggestorComponent: React.FC = () => {
 						<MultiSelectList items={items} onChange={handleChange} />
 					</Paper>
 				</Grid>
-				<Grid item xs={6} style={{ padding: '10px' }}>
+				<Grid item xs={6} style={{ padding: '10px', paddingTop: '20px' }}>
 					<CheckboxFilter labels={filterOptions} defaultTrue={['Normal', 'Hard', 'Collosus']} onChange={handleFilterChange} />
-					<Typography variant="h6">Patterns Found:</Typography>
-					{farmList.map((item, index) => (
-						<Tooltip
-							key={index}
-							title={formatTooltipContent(item.drops)}
-							placement="right"
-							arrow
-						>
-							<Typography key={index} variant="body1">
-								{item.name} : {item.score}
-							</Typography>
-						</Tooltip>
-					))}
+					<Paper style={{ height: 'calc(100vh - 20px)', overflowY: 'auto' }}>
+						<List subheader={<ListSubheader>Pattern List</ListSubheader>} dense>
+							{farmList.map((item, index) => (
+								<Tooltip
+									key={index}
+									title={formatTooltipContent(item.drops)}
+									placement="right"
+									arrow
+								>
+									<Typography key={index} variant="body1">
+										{item.name} : {item.score}
+									</Typography>
+								</Tooltip>
+							))}
+						</List>
+					</Paper>
 				</Grid>
 			</Grid>
 		</div>

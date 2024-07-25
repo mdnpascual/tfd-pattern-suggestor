@@ -12,9 +12,9 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = ({ labels, defaultTrue, on
 	labels.reduce((acc, label) => ({ ...acc, [label]: defaultTrue.includes(label) ? true : false }), {})
 	);
 
-	// Load selections from session storage when the component mounts
+	// Load selections from local storage when the component mounts
 	useEffect(() => {
-		const savedSelections = sessionStorage.getItem('selectedFilters');
+		const savedSelections = localStorage.getItem('selectedFilters');
 		if (savedSelections) {
 			setSelectedFilters(JSON.parse(savedSelections));
 			onChange(JSON.parse(savedSelections));
@@ -23,9 +23,9 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = ({ labels, defaultTrue, on
 		onChange(selectedFilters);
 	}, []);
 
-	// Save selections to session storage whenever 'selected' changes
+	// Save selections to local storage whenever 'selected' changes
 	useEffect(() => {
-		sessionStorage.setItem('selectedFilters', JSON.stringify(selectedFilters));
+		localStorage.setItem('selectedFilters', JSON.stringify(selectedFilters));
 	}, [selectedFilters]);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
