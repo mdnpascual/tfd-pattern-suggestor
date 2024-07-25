@@ -159,15 +159,16 @@ const PatternSuggestorComponent: React.FC = () => {
 		})
 	}, [selectedItems, filters]);
 
-	const formatTooltipContent = (drops: DropList[]) => {
+	const formatTooltipContent = (drops: DropList[], name: string) => {
 		const filteredDrops = drops.filter((drop) => selectedItems.includes(drop.name))
 		return (
 			<div>
-			{filteredDrops.map((drop, index) => (
-				<div key={index}>
-				{drop.name} - Chance: {drop.chance * 100}%
-				</div>
-			))}
+				{name} Matched Droplist:
+				{filteredDrops.map((drop, index) => (
+					<div key={index}>
+						{drop.name} - Chance: {drop.chance * 100}%
+					</div>
+				))}
 			</div>
 		);
 	};
@@ -187,7 +188,7 @@ const PatternSuggestorComponent: React.FC = () => {
 							{farmList.map((item, index) => (
 								<Tooltip
 									key={index}
-									title={formatTooltipContent(item.drops)}
+									title={formatTooltipContent(item.drops, item.name)}
 									placement="right"
 									arrow
 								>
