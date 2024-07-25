@@ -50,6 +50,7 @@ items = items.sort((a: Item, b: Item) => {
 
 interface PatternCount {
 	name: string,
+	matchCount: number,
 	score: number,
 	drops: DropList[],
 	dropsFrom: string,
@@ -79,11 +80,13 @@ const PatternSuggestorComponent: React.FC = () => {
 					if (drop.name === selectedItem){
 						const found = newFarmList.find(item => item.name === key);
 						if (found){
-							found.score += 1
+							found.matchCount += 1
+							found.score += patternData[key].drops.find((drop) => drop.name === selectedItem)?.chance ?? 0
 						} else {
 							newFarmList.push({
 								name: key,
-								score: 1,
+								matchCount: 1,
+								score: patternData[key].drops.find((drop) => drop.name === selectedItem)?.chance ?? 0,
 								drops: patternData[key].drops,
 								dropsFrom: patternData[key].dropsFrom,
 								useIn: patternData[key].useIn
@@ -131,7 +134,7 @@ const PatternSuggestorComponent: React.FC = () => {
 
 			// SORT
 			filteredFarmList = filteredFarmList.sort((a: PatternCount, b: PatternCount) => {
-				if (a.score === b.score){
+				if (a.matchCount === b.matchCount){
 					let aTotalScore = 0
 					let bTotalScore = 0
 					a.drops.forEach((drop) => {
@@ -152,7 +155,7 @@ const PatternSuggestorComponent: React.FC = () => {
 					}
 					return (aTotalScore - bTotalScore) * -1;
 				}
-				return (a.score - b.score) * -1;
+				return (a.matchCount - b.matchCount) * -1;
 			})
 
 			setFarmList(Array.from(new Set(filteredFarmList)))
@@ -173,6 +176,8 @@ const PatternSuggestorComponent: React.FC = () => {
 		);
 	};
 
+	const headerText = '<Pattern> (<Matched Count>): <Total Percentage>'
+
 	return (
 		<div style={{ width: '100%', height: '100vh', display: 'flex' }}>
 			<Grid container spacing={2}>
@@ -184,7 +189,7 @@ const PatternSuggestorComponent: React.FC = () => {
 				<Grid item xs={6} style={{ padding: '10px', paddingTop: '20px' }}>
 					<CheckboxFilter labels={filterOptions} defaultTrue={['Normal', 'Hard', 'Collosus']} onChange={handleFilterChange} />
 					<Paper style={{ height: 'calc(100vh - 20px)', overflowY: 'auto' }}>
-						<List subheader={<ListSubheader>Pattern List</ListSubheader>} dense>
+						<List subheader={<ListSubheader>{headerText}</ListSubheader>} dense>
 							{farmList.map((item, index) => (
 								<Tooltip
 									key={index}
@@ -192,8 +197,8 @@ const PatternSuggestorComponent: React.FC = () => {
 									placement="right"
 									arrow
 								>
-									<Typography key={index} variant="body1">
-										{item.name} : {item.score}
+									<Typography key={index} variant="body1" style={{paddingLeft: '10px'}}>
+										{item.name} ({item.matchCount}): {(item.score * 100).toFixed(0)}%
 									</Typography>
 								</Tooltip>
 							))}
