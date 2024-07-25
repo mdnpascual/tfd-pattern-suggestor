@@ -1,26 +1,69 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { AppBar, Tabs, Tab, Box, CssBaseline  } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+import darkTheme from './theme';
+import PatternSuggestorComponent from './components/PatternSuggestor';
+import InventoryComponent from './components/Inventory';
+import SettingsComponent from './components/Settings'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	return (
+		<ThemeProvider theme={darkTheme}>
+			<CssBaseline />
+			<Router>
+			<div>
+				<NavTabs />
+				<Routes>
+				<Route
+					path="/patternSuggestor"
+					element={<PatternSuggestorComponent />}
+				/>
+				<Route path="/inventory" element={<InventoryComponent />} />
+				<Route path="/settings" element={<SettingsComponent />} />
+				<Route path="/" element={<DefaultComponent />} />
+				</Routes>
+			</div>
+			</Router>
+		</ThemeProvider>
+	);
+};
+
+const NavTabs = () => {
+	const navigate = useNavigate();
+	const location = useLocation();
+	const tabNameToIndex = {
+		0: "/patternSuggestor",
+		1: "/inventory",
+		2: "/settings",
+	};
+	const indexToTabName = {
+		"/patternSuggestor": 0,
+		"/inventory": 1,
+		"/settings": 2,
+	};
+
+	const handleTabChange = (event: React.SyntheticEvent, newValue: keyof typeof tabNameToIndex) => {
+		navigate(tabNameToIndex[newValue]);
+	};
+
+	const pathname = location.pathname as keyof typeof indexToTabName
+
+	return (
+		<AppBar position="static">
+			<Tabs
+			value={indexToTabName[pathname] || 0}
+			onChange={handleTabChange}
+			centered
+			>
+			<Tab label="Pattern Suggestor" />
+			<Tab label="Component Inventory" />
+			<Tab label="Settings" />
+			</Tabs>
+		</AppBar>
+	);
+};
+
+const DefaultComponent = () => <Box p={3}>Default Content</Box>;
 
 export default App;
