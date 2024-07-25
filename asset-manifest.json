@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.ba58d84b.css",
-    "main.js": "/react-gh-pages/static/js/main.e2dd4d74.js",
-    "static/js/453.8467bda7.chunk.js": "/react-gh-pages/static/js/453.8467bda7.chunk.js",
-    "index.html": "/react-gh-pages/index.html",
-    "main.ba58d84b.css.map": "/react-gh-pages/static/css/main.ba58d84b.css.map",
-    "main.e2dd4d74.js.map": "/react-gh-pages/static/js/main.e2dd4d74.js.map",
-    "453.8467bda7.chunk.js.map": "/react-gh-pages/static/js/453.8467bda7.chunk.js.map"
+    "main.css": "/tfd-pattern-suggestor/static/css/main.ba58d84b.css",
+    "main.js": "/tfd-pattern-suggestor/static/js/main.3a0934a7.js",
+    "static/js/453.8467bda7.chunk.js": "/tfd-pattern-suggestor/static/js/453.8467bda7.chunk.js",
+    "index.html": "/tfd-pattern-suggestor/index.html",
+    "main.ba58d84b.css.map": "/tfd-pattern-suggestor/static/css/main.ba58d84b.css.map",
+    "main.3a0934a7.js.map": "/tfd-pattern-suggestor/static/js/main.3a0934a7.js.map",
+    "453.8467bda7.chunk.js.map": "/tfd-pattern-suggestor/static/js/453.8467bda7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ba58d84b.css",
-    "static/js/main.e2dd4d74.js"
+    "static/js/main.3a0934a7.js"
   ]
 }
