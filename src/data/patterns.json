@@ -112,7 +112,7 @@
         "chance": 0.06,
         "name": "King\u0027s Guard Lance Synthetic Fiber Blueprint"
       },
-      { "chance": 0.15, "name": "Crystallization Catalyst Bonus" },
+      { "chance": 0.15, "name": "Crystallization Catalyst Blueprint" },
       { "chance": 0.38, "name": "Valby Spiral Catalyst Blueprint" },
       { "chance": 0.38, "name": "Python Synthetic Fiber Blueprint" }
     ],
@@ -162,7 +162,7 @@
       { "chance": 0.15, "name": "Crystallization Catalyst Blueprint" },
       {
         "chance": 0.38,
-        "name": "King\u0027s Guard LAnce Synthetic Fiber Blueprint"
+        "name": "King\u0027s Guard Lance Synthetic Fiber Blueprint"
       },
       {
         "chance": 0.38,
@@ -297,7 +297,7 @@
       { "chance": 0.38, "name": "Restored Relic Nano Tube Blueprint" },
       {
         "chance": 0.38,
-        "name": "Greg\u0027s Reversed Synthetic Fiber Blueprint"
+        "name": "Greg\u0027s Reversed Fate Synthetic Fiber Blueprint"
       }
     ],
     "dropsFrom": "Echo Swamp (Normal) - The Chapel",
@@ -322,7 +322,7 @@
       { "chance": 0.38, "name": "Enzo Code" },
       {
         "chance": 0.38,
-        "name": "Nazeistra\u0027s Devotion Sythetic Fiber Blueprint"
+        "name": "Nazeistra\u0027s Devotion Synthetic Fiber Blueprint"
       }
     ],
     "dropsFrom": "Echo Swamp (Normal) - Defend Albion resource",
@@ -516,7 +516,7 @@
   },
   "041": {
     "drops": [
-      { "chance": 0.03, "name": "Kyle Enhanced Cell Blueprint" },
+      { "chance": 0.03, "name": "Kyle Enhanced Cells Blueprint" },
       { "chance": 0.06, "name": "Clairvoyance Nano Tube Blueprint" },
       { "chance": 0.15, "name": "Crystallization Catalyst Blueprint" },
       {
@@ -558,12 +558,12 @@
   },
   "044": {
     "drops": [
-      { "chance": 0.03, "name": "Emergency Activator Blueprint" },
+      { "chance": 0.03, "name": "Energy Activator Blueprint" },
       { "chance": 0.06, "name": "Jayber Stabilizer Blueprint" },
-      { "chance": 0.15, "name": "Python Polymer Synctium Blueprint" },
+      { "chance": 0.15, "name": "Python Polymer Syncytium Blueprint" },
       {
         "chance": 0.38,
-        "name": "The Final Masterpiece Polymer Synctium Blueprint"
+        "name": "The Final Masterpiece Polymer Syncytium Blueprint"
       },
       { "chance": 0.38, "name": "Greg\u0027s Reversed Fate Blueprint" }
     ],
@@ -578,7 +578,7 @@
       { "chance": 0.38, "name": "King\u0027s Guard Lance Nano Tube Blueprint" },
       {
         "chance": 0.38,
-        "name": "Greg\u0027s Reversed Fate Polymer Synctium Blueprint"
+        "name": "Greg\u0027s Reversed Fate Polymer Syncytium Blueprint"
       }
     ],
     "dropsFrom": "Hagios (Normal)  - Neutralize Void Experiment",
@@ -1537,8 +1537,8 @@
   },
   "127": {
     "drops": [
-      { "chance": 0.06, "name": "Energy Activator" },
-      { "chance": 0.1, "name": "Esiemo Spiral Catalyst" },
+      { "chance": 0.06, "name": "Energy Activator Blueprint" },
+      { "chance": 0.1, "name": "Esiemo Spiral Catalyst Blueprint" },
       { "chance": 0.2, "name": "Afterglow Sword Nano Tube Blueprint" },
       { "chance": 0.32, "name": "Kyle Stabilizer Blueprint" },
       { "chance": 0.32, "name": "Blue Beetle Blueprint" }
