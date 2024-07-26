@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { List, ListItem, ListItemText, Checkbox, ListSubheader, TextField, Button, Grid } from '@mui/material';
+import { List, ListItem, ListItemText, Checkbox, ListSubheader, TextField, Button } from '@mui/material';
 
 export interface Item {
 	id: string;
@@ -12,8 +12,8 @@ interface MultiSelectListProps {
 }
 
 const MultiSelectList: React.FC<MultiSelectListProps> = ({ items, onChange }) => {
-  const [selected, setSelected] = useState<string[]>([]);
-  const [searchTerm, setSearchTerm] = useState<string>('');
+	const [selected, setSelected] = useState<string[]>([]);
+	const [searchTerm, setSearchTerm] = useState<string>('');
 
 	const sortedItems = useMemo(() => {
 		const itemsCopy = [...items];
@@ -26,7 +26,7 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ items, onChange }) =>
 		return itemsCopy;
 	}, [items, selected]);
 
-  // Load selections from local storage when the component mounts
+  	// Load selections from local storage when the component mounts
 	useEffect(() => {
 		const savedSelections = localStorage.getItem('selectedItems');
 		if (savedSelections) {
@@ -43,18 +43,18 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ items, onChange }) =>
 
 	const handleToggle = (value: string) => () => {
 		const currentIndex = selected.indexOf(value);
-		const newChecked = [...selected];
+		const newSelected = [...selected];
 
 		if (currentIndex === -1) {
-			newChecked.push(value);
+			newSelected.push(value);
 		} else {
-			newChecked.splice(currentIndex, 1);
+			newSelected.splice(currentIndex, 1);
 		}
 
-		setSelected(newChecked);
+		setSelected(newSelected);
 		// Convert selected item IDs to their corresponding labels
-		const selectedLabels = newChecked.map(id => items.find(item => item.id === id)?.label || '');
-		onChange(selectedLabels); // Trigger the callback with the new selected labels
+		const selectedLabels = newSelected.map(id => items.find(item => item.id === id)?.label || '');
+		onChange(selectedLabels);
 	};
 
 	const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,7 +67,6 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ items, onChange }) =>
 			setSelected([]);
 			onChange([]);
 		}
-
 	};
 
 	const filteredAndSortedItems = useMemo(() => {

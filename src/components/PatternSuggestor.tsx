@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, List, ListSubheader, Paper, Tooltip, Typography } from '@mui/material';
+import { Button, Paper } from '@mui/material';
 import MultiSelectList, { Item } from './MultiSelectList';
 import data from '../data/patterns.json';
 import CheckboxFilter from './CheckboxFilter';
+import SortableTable from './SortableTable';
 
 interface DropList {
 	chance: number,
@@ -23,6 +24,20 @@ const filterOptions = [
 	'Void Outpost',
 	'Sharen Exclusive'
 ];
+
+const collosusOptions = [
+	'Grave Walker',
+	'Stunning Beauty',
+	'Executioner',
+	'Dead Bride',
+	'Devourer',
+	'Pyromaniac',
+	'Swamp Walker',
+	'Hanged Man',
+	'Obstructer',
+	'Frost Walker',
+	'Molten Fortress'
+]
 
 const specOpsKeywords = [
 	'defend albion resource',
@@ -61,6 +76,8 @@ const PatternSuggestorComponent: React.FC = () => {
 	const [selectedItems, setSelectedItems] = useState<string[]>([]);
 	const [farmList, setFarmList] = useState<PatternCount[]>([]);
 	const [filters, setFilters] = useState({});
+	const [collosusFilters, setCollosusFilters] = useState({});
+	const [view, setView] = useState('both');
 
 	const handleChange = (items: string[]) => {
 		setSelectedItems(items)
@@ -69,6 +86,26 @@ const PatternSuggestorComponent: React.FC = () => {
 
 	const handleFilterChange = (selectedFilters: Record<string, boolean>) => {
 		setFilters(selectedFilters);
+	};
+
+	const handleCollosusChange = (selectedFilters: Record<string, boolean>) => {
+		setCollosusFilters(selectedFilters);
+	};
+
+	const toggleLeft = () => {
+		if (view === 'both') {
+			setView('right');
+		} else if (view === 'left') {
+			setView('both');
+		}
+		};
+
+		const toggleRight = () => {
+		if (view === 'both') {
+			setView('left');
+		} else if (view === 'right') {
+			setView('both');
+		}
 	};
 
 	useEffect(() => {
@@ -132,6 +169,44 @@ const PatternSuggestorComponent: React.FC = () => {
 				}
 			});
 
+			// FILTER COLLOSUS
+			Object.entries(collosusFilters).forEach(([key, data]) => {
+
+				if (key === 'Grave Walker' && !data){
+					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("grave walker"))
+				}
+				if (key === 'Stunning Beauty' && !data){
+					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("stunning beauty"))
+				}
+				if (key === 'Executioner' && !data){
+					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("executioner"))
+				}
+				if (key === 'Dead Bride' && !data){
+					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("dead bride"))
+				}
+				if (key === 'Devourer' && !data){
+					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("devourer"))
+				}
+				if (key === 'Pyromaniac' && !data){
+					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("pyromaniac"))
+				}
+				if (key === 'Swamp Walker' && !data){
+					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("swamp walker"))
+				}
+				if (key === 'Hanged Man' && !data){
+					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("hanged man"))
+				}
+				if (key === 'Obstructer' && !data){
+					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("obstructer"))
+				}
+				if (key === 'Frost Walker' && !data){
+					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("frost walker"))
+				}
+				if (key === 'Molten Fortress' && !data){
+					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("molten fortress"))
+				}
+			});
+
 			// SORT
 			filteredFarmList = filteredFarmList.sort((a: PatternCount, b: PatternCount) => {
 				if (a.matchCount === b.matchCount){
@@ -160,7 +235,7 @@ const PatternSuggestorComponent: React.FC = () => {
 
 			setFarmList(Array.from(new Set(filteredFarmList)))
 		})
-	}, [selectedItems, filters]);
+	}, [selectedItems, collosusFilters, filters]);
 
 	const formatTooltipContent = (drops: DropList[], name: string) => {
 		const filteredDrops = drops.filter((drop) => selectedItems.includes(drop.name))
@@ -176,36 +251,39 @@ const PatternSuggestorComponent: React.FC = () => {
 		);
 	};
 
-	const headerText = '<Pattern> (<Matched Count>): <Total Percentage>'
-
 	return (
-		<div style={{ width: '100%', height: '100vh', display: 'flex' }}>
-			<Grid container spacing={2}>
-				<Grid item xs={6}>
-					<Paper style={{ height: 'calc(100vh - 20px)', overflowY: 'auto' }}>
-						<MultiSelectList items={items} onChange={handleChange} />
-					</Paper>
-				</Grid>
-				<Grid item xs={6} style={{ padding: '10px', paddingTop: '20px' }}>
-					<CheckboxFilter labels={filterOptions} defaultTrue={['Normal', 'Hard', 'Collosus']} onChange={handleFilterChange} />
-					<Paper style={{ height: 'calc(100vh - 20px)', overflowY: 'auto' }}>
-						<List subheader={<ListSubheader>{headerText}</ListSubheader>} dense>
-							{farmList.map((item, index) => (
-								<Tooltip
-									key={index}
-									title={formatTooltipContent(item.drops, item.name)}
-									placement="right"
-									arrow
-								>
-									<Typography key={index} variant="body1" style={{paddingLeft: '10px'}}>
-										{item.name} ({item.matchCount}): {(item.score * 100).toFixed(0)}%
-									</Typography>
-								</Tooltip>
-							))}
-						</List>
-					</Paper>
-				</Grid>
-			</Grid>
+		<div style={{ width: '100%', display: 'flex', height: '100vh' }}>
+			<div style={{ flex: view === 'both' || view === 'left' ? 1 : 0, transition: 'flex 0.3s', overflow: 'auto', position: 'relative' }}>
+				{view !== 'right' && (
+				<Button onClick={toggleLeft} variant="contained" style={{ position: 'absolute', top: 0, right: 0, zIndex: 1 }}>
+					{'<<'}
+				</Button>
+				)}
+				<Paper style={{ height: 'calc(100vh - 20px)', overflowY: 'auto' }}>
+					<MultiSelectList items={items} onChange={handleChange} />
+				</Paper>
+			</div>
+			<div style={{ flex: view === 'both' || view === 'right' ? 1 : 0, transition: 'flex 0.3s', overflow: 'auto', position: 'relative' }}>
+				{view !== 'left' && (
+				<Button onClick={toggleRight} variant="contained" style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}>
+					{'>>'}
+				</Button>
+				)}
+				<CheckboxFilter labels={filterOptions} localStorageName={'selectedFilters'} defaultTrue={['Normal', 'Hard', 'Collosus']} onChange={handleFilterChange} />
+				{('Collosus' in filters) && (!!filters.Collosus) && <CheckboxFilter labels={collosusOptions} localStorageName={'selectedCollossusFilters'} defaultTrue={collosusOptions} onChange={handleCollosusChange} />}
+				<Paper style={{ height: 'calc(100vh - 20px)', overflowY: 'auto' }}>
+					<SortableTable data={farmList.map((item, index) => {
+						return {
+							id: item.name,
+							name: item.name,
+							count: item.matchCount,
+							score: (item.score * 100).toFixed(0) + "%",
+							dropsFrom: item.dropsFrom.replace("(Successful Infiltration)", "(Sharen)"),
+							useIn: item.useIn.replace("Void Intercept Battle", "Collosus").replace("Void Fusion Reactor", "Void Outpost"),
+							tooltip: formatTooltipContent(item.drops, item.name)
+						}})} />
+				</Paper>
+			</div>
 		</div>
 	);
 };

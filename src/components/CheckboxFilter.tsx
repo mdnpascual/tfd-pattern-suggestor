@@ -4,17 +4,18 @@ import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 interface CheckboxFilterProps {
 	labels: string[];
 	defaultTrue: string[];
+	localStorageName: string;
 	onChange: (selectedFilters: Record<string, boolean>) => void;
 }
 
-const CheckboxFilter: React.FC<CheckboxFilterProps> = ({ labels, defaultTrue, onChange }) => {
+const CheckboxFilter: React.FC<CheckboxFilterProps> = ({ labels, defaultTrue, localStorageName, onChange }) => {
 	const [selectedFilters, setSelectedFilters] = useState<Record<string, boolean>>(
 	labels.reduce((acc, label) => ({ ...acc, [label]: defaultTrue.includes(label) ? true : false }), {})
 	);
 
 	// Load selections from local storage when the component mounts
 	useEffect(() => {
-		const savedSelections = localStorage.getItem('selectedFilters');
+		const savedSelections = localStorage.getItem(localStorageName);
 		if (savedSelections) {
 			setSelectedFilters(JSON.parse(savedSelections));
 			onChange(JSON.parse(savedSelections));
@@ -25,7 +26,7 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = ({ labels, defaultTrue, on
 
 	// Save selections to local storage whenever 'selected' changes
 	useEffect(() => {
-		localStorage.setItem('selectedFilters', JSON.stringify(selectedFilters));
+		localStorage.setItem(localStorageName, JSON.stringify(selectedFilters));
 	}, [selectedFilters]);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,7 +40,7 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = ({ labels, defaultTrue, on
 	};
 
 	return (
-	<FormGroup row>
+	<FormGroup row style={{paddingLeft: '80px'}}>
 		{labels.map(label => (
 		<FormControlLabel
 			key={label}
