@@ -171,39 +171,11 @@ const PatternSuggestorComponent: React.FC = () => {
 
 			// FILTER COLLOSUS
 			Object.entries(collosusFilters).forEach(([key, data]) => {
-
-				if (key === 'Grave Walker' && !data){
-					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("grave walker"))
-				}
-				if (key === 'Stunning Beauty' && !data){
-					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("stunning beauty"))
-				}
-				if (key === 'Executioner' && !data){
-					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("executioner"))
-				}
-				if (key === 'Dead Bride' && !data){
-					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("dead bride"))
-				}
-				if (key === 'Devourer' && !data){
-					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("devourer"))
-				}
-				if (key === 'Pyromaniac' && !data){
-					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("pyromaniac"))
-				}
-				if (key === 'Swamp Walker' && !data){
-					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("swamp walker"))
-				}
-				if (key === 'Hanged Man' && !data){
-					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("hanged man"))
-				}
-				if (key === 'Obstructer' && !data){
-					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("obstructer"))
-				}
-				if (key === 'Frost Walker' && !data){
-					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("frost walker"))
-				}
-				if (key === 'Molten Fortress' && !data){
-					filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes("molten fortress"))
+				if (!data) {
+					const keyLowerCase = key.toLowerCase(); // Convert the key to lowercase once
+					filteredFarmList = filteredFarmList.filter((list) =>
+						!list.useIn.toLowerCase().includes(keyLowerCase)
+					);
 				}
 			});
 
