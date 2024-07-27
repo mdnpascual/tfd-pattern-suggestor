@@ -6,6 +6,7 @@ interface DataItem {
 	name: string;
 	score: string;
 	count: number;
+	priorityScore: number;
 	dropsFrom: string;
 	useIn: string;
 	tooltip: JSX.Element;
@@ -21,7 +22,7 @@ interface HeadCell {
 
 const headCells: HeadCell[] = [
 	{ id: 'name', disablePadding: true, label: 'Pattern' },
-	{ id: 'count', disablePadding: true, label: 'Matched Count' },
+	{ id: 'priorityScore', disablePadding: true, label: 'Priority(Count)' },
 	{ id: 'score', disablePadding: false, label: 'Percentage' },
 	{ id: 'dropsFrom', disablePadding: false, label: 'Drops From' },
 	{ id: 'useIn', disablePadding: false, label: 'Use In' },
@@ -43,16 +44,31 @@ function SortableTable({ data }: { data: DataItem[] }) {
 		if (order === undefined){
 			return array
 		}
+
 		return array.sort((a, b) => {
-			if (a[orderBy] < b[orderBy]) {
+			let aItem = a[orderBy];
+			let bItem = b[orderBy];
+
+			// Change Datatype for these columns
+			if (orderBy === 'score'){
+				aItem = parseInt(a[orderBy].substring(-1))
+				bItem = parseInt(b[orderBy].substring(-1))
+			} else if (orderBy === 'name'){
+				aItem = parseInt(a[orderBy])
+				bItem = parseInt(b[orderBy])
+			}
+
+			if (aItem < bItem) {
 				return order === 'asc' ? -1 : 1;
 			}
-			if (a[orderBy] > b[orderBy]) {
+			if (aItem > bItem) {
 				return order === 'asc' ? 1 : -1;
 			}
 			return 0;
 		});
 	};
+
+	const tableCellStyle = { padding: '8px 8px' };
 
 	return (
 		<TableContainer component={Paper}>
@@ -76,11 +92,11 @@ function SortableTable({ data }: { data: DataItem[] }) {
 				{sortData(data).map((row) => (
 				<Tooltip title={row.tooltip}>
 					<TableRow key={row.id}>
-						<TableCell align="center">{row.name}</TableCell>
-						<TableCell align="center">{row.count}</TableCell>
-						<TableCell align="center">{row.score}</TableCell>
-						<TableCell align="left">{row.dropsFrom}</TableCell>
-						<TableCell align="left">{row.useIn}</TableCell>
+						<TableCell style={tableCellStyle} align="center">{row.name}</TableCell>
+						<TableCell style={tableCellStyle} align="center">{row.priorityScore}({row.count})</TableCell>
+						<TableCell style={tableCellStyle} align="center">{row.score}</TableCell>
+						<TableCell style={tableCellStyle} align="left">{row.dropsFrom}</TableCell>
+						<TableCell style={tableCellStyle} align="left">{row.useIn}</TableCell>
 					</TableRow>
 				</Tooltip>
 				))}
