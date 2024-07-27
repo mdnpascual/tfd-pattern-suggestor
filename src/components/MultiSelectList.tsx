@@ -4,20 +4,23 @@ import { List, ListItem, ListItemText, Checkbox, ListSubheader, TextField, Butto
 export interface Item {
 	id: string;
 	label: string;
+	priority: number;
 }
 
 interface MultiSelectListProps {
-	items: Item[];
-	onChange: (selectedLabels: string[]) => void; // Callback to pass labels instead of IDs
+	startingItems: Item[];
+	onChange: (selectedLabels: string[], labelPriority: number[]) => void; // Callback to pass labels instead of IDs
 }
 
-const MultiSelectList: React.FC<MultiSelectListProps> = ({ items, onChange }) => {
+const maxPriority = 1000;
+
+const MultiSelectList: React.FC<MultiSelectListProps> = ({ startingItems, onChange }) => {
 	const [selected, setSelected] = useState<string[]>([]);
 	const [searchTerm, setSearchTerm] = useState<string>('');
+	const [items, setItems] = useState<Item[]>(startingItems);
 
 	const sortedItems = useMemo(() => {
 		const itemsCopy = [...items];
-		// Sort items so that selected items come first
 		itemsCopy.sort((a, b) => {
 			const aSelected = selected.includes(a.id) ? 0 : 1;
 			const bSelected = selected.includes(b.id) ? 0 : 1;
@@ -32,14 +35,30 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ items, onChange }) =>
 		if (savedSelections) {
 			setSelected(JSON.parse(savedSelections));
 		}
+		const savedPriorities = JSON.parse(localStorage.getItem('itemPriority') ?? '{}')
+		if (savedPriorities && savedSelections){
+			const newItems = [...items];
+			const startingSelection = JSON.parse(savedSelections) as string[];
+			startingSelection.map((id, idx) => {
+				const foundItem = newItems.find(item => item.id === id)
+				if (foundItem){
+					foundItem.priority = parseInt(savedPriorities[idx] ?? 1, 10);
+				}
+			})
+			setItems(newItems)
+		}
 	}, []);
 
 	// Save selections to local storage whenever 'selected' changes
 	useEffect(() => {
-		localStorage.setItem('selectedItems', JSON.stringify(selected));
 		const selectedLabels = selected.map(id => items.find(item => item.id === id)?.label || '');
-		onChange(selectedLabels);
-	}, [selected]);
+		const priorities = selected.map(id => items.find(item => item.id === id)?.priority || 1);
+
+		localStorage.setItem('selectedItems', JSON.stringify(selected));
+		localStorage.setItem('itemPriority', JSON.stringify(priorities))
+
+		onChange(selectedLabels, priorities);
+	}, [selected, items]);
 
 	const handleToggle = (value: string) => () => {
 		const currentIndex = selected.indexOf(value);
@@ -54,7 +73,35 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ items, onChange }) =>
 		setSelected(newSelected);
 		// Convert selected item IDs to their corresponding labels
 		const selectedLabels = newSelected.map(id => items.find(item => item.id === id)?.label || '');
-		onChange(selectedLabels);
+		onChange(selectedLabels, []);
+	};
+
+	const handleIncreasePriority = (id: string, event: React.MouseEvent) => {
+		event.stopPropagation();
+		setItems(items.map(item =>
+			item.id === id ? { ...item, priority: Math.min(item.priority + 1, maxPriority) } : item
+		));
+	};
+
+	const handleDecreasePriority = (id: string, event: React.MouseEvent) => {
+		event.stopPropagation();
+		setItems(items.map(item =>
+			item.id === id ? { ...item, priority: Math.max(item.priority - 1, 1) } : item
+		));
+	};
+
+	const handlePriorityChange = (id: string, value: string, event: React.ChangeEvent) => {
+		const newPriority = parseInt(value, 10);
+		if (isNaN(newPriority)){
+			setItems(items.map(item =>
+				item.id === id ? { ...item, priority: 1 } : item
+			));
+		}
+		if (!isNaN(newPriority) && newPriority >= 1 && newPriority <= maxPriority) {
+			setItems(items.map(item =>
+				item.id === id ? { ...item, priority: newPriority } : item
+			));
+		}
 	};
 
 	const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,7 +112,7 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ items, onChange }) =>
 		const confirmed = window.confirm("Are you sure you want to clear all selections?");
 		if (confirmed) {
 			setSelected([]);
-			onChange([]);
+			onChange([], []);
 		}
 	};
 
@@ -88,21 +135,50 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ items, onChange }) =>
 			<Button onClick={handleClearAll} variant="contained" color="primary" style={{ marginBottom: '10px' }}>
 				Clear All
 			</Button>
-			<List subheader={<ListSubheader>Material List</ListSubheader>} dense>
+			<List subheader={
+					<ListSubheader component="div" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+						<span>Materials</span>
+						<span>Priority</span>
+					</ListSubheader>
+				} dense>
 				{filteredAndSortedItems.map((item) => (
 					<ListItem
-					key={item.id}
-					button
-					onClick={handleToggle(item.id)}
+						key={item.id}
+						button
+						onClick={handleToggle(item.id)}
+						style={{ paddingTop: '0px', paddingBottom: '0px' }}
 					>
-					<Checkbox
-						edge="start"
-						checked={selected.indexOf(item.id) !== -1}
-						tabIndex={-1}
-						disableRipple
-					/>
-					<ListItemText primary={item.label} />
-					</ListItem>
+						<Checkbox
+							edge="start"
+							checked={selected.indexOf(item.id) !== -1}
+							tabIndex={-1}
+							disableRipple
+						/>
+						<ListItemText primary={item.label} />
+						<div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
+							<Button
+								size="small"
+								onClick={(e) => handleDecreasePriority(item.id, e)}
+								style={{ height: '100%', margin: '0', padding: '8px 0' }}>-</Button>
+							<TextField
+								size="small"
+								value={item.priority}
+								onChange={(e) => {handlePriorityChange(item.id, e.target.value, e)}}
+								onClick={(e) => e.stopPropagation()}
+								style={{ width: '60px', height: '100%', overflow: 'hidden' }}
+								inputProps={{
+									style: {textAlign: 'center', height: '100%'},
+									min: 1,
+									max: maxPriority,
+									type: 'text',
+								}}
+							/>
+							<Button
+								size="small"
+								onClick={(e) => handleIncreasePriority(item.id, e)}
+								style={{ height: '100%', margin: '0', padding: '8px 0' }}>+</Button>
+						</div>
+						</ListItem>
 				))}
 			</List>
 		</div>

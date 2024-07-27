@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
+import { FormGroup, FormControlLabel, Checkbox, Tooltip } from '@mui/material';
 
+export interface FilterProps {
+	label: string,
+	tooltip: string
+}
 interface CheckboxFilterProps {
-	labels: string[];
+	labels: FilterProps[];
 	defaultTrue: string[];
 	localStorageName: string;
 	onChange: (selectedFilters: Record<string, boolean>) => void;
@@ -10,7 +14,7 @@ interface CheckboxFilterProps {
 
 const CheckboxFilter: React.FC<CheckboxFilterProps> = ({ labels, defaultTrue, localStorageName, onChange }) => {
 	const [selectedFilters, setSelectedFilters] = useState<Record<string, boolean>>(
-	labels.reduce((acc, label) => ({ ...acc, [label]: defaultTrue.includes(label) ? true : false }), {})
+	labels.reduce((acc, label) => ({ ...acc, [label.label]: defaultTrue.includes(label.label) ? true : false }), {})
 	);
 
 	// Load selections from local storage when the component mounts
@@ -42,11 +46,13 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = ({ labels, defaultTrue, lo
 	return (
 	<FormGroup row style={{paddingLeft: '80px'}}>
 		{labels.map(label => (
-		<FormControlLabel
-			key={label}
-			control={<Checkbox checked={selectedFilters[label]} onChange={handleChange} name={label} />}
-			label={label}
-		/>
+			<Tooltip title={label.tooltip}>
+				<FormControlLabel
+					key={label.label}
+					control={<Checkbox checked={selectedFilters[label.label]} onChange={handleChange} name={label.label} />}
+					label={label.label}
+				/>
+			</Tooltip>
 		))}
 	</FormGroup>
 	);

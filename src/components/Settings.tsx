@@ -9,6 +9,7 @@ const SettingsComponent: React.FC = () => {
 		if (confirmed) {
 			localStorage.setItem('selectedItems', '');
 			localStorage.setItem('selectedFilters', '');
+			localStorage.setItem('itemPriority', '');
 		}
 	};
 
