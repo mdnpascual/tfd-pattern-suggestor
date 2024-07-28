@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Button, Paper } from '@mui/material';
 import MultiSelectList, { Item } from './MultiSelectList';
 import data from '../data/patterns.json';
-import CheckboxFilter, { FilterProps } from './CheckboxFilter';
+import voidFusionRawData from '../data/voidFusionReactorShards.json';
 import SortableTable from './SortableTable';
+import { specOpsKeywords, filterOptions, collosusOptions, dataKeywordCollosus, dataKeywordHard, dataKeywordNormal, dataKeywordSharen, dataKeywordVoidReactor, VoidFusionLocations } from '../data/constants';
+import CheckboxFilter from './CheckboxFilter';
+
+const voidFusionData = voidFusionRawData as VoidFusionLocations;
+const voidFusionLocations = Object.keys(voidFusionData);
 
 interface DropList {
 	chance: number,
@@ -15,35 +20,6 @@ interface Pattern {
 	dropsFrom: string,
 	useIn: string
 }
-
-const filterOptions: FilterProps[] = [
-	{label: 'Normal', tooltip: "Adds Patterns in Normal Difficulty"},
-	{label: 'Hard', tooltip: "Adds Patterns in Hard Difficulty"},
-	{label: 'Collosus', tooltip: "Filters Patterns only useable in Collosus"},
-	{label: 'Special Ops', tooltip: "Filters Patterns that only drops in Special Ops"},
-	{label: 'Void Reactor', tooltip: "Filters Patterns only useable in Void Reactors"},
-	{label: 'Sharen Exclusive', tooltip: "Filters Patterns that only drops with Sharen's succesful infiltration"},
-];
-
-const collosusOptions: FilterProps[] = [
-	{label: 'Grave Walker', tooltip: "Only Show Patterns useable by beating Grave Walker"},
-	{label: 'Stunning Beauty', tooltip: "Only Show Patterns useable by beating Stunning Beauty"},
-	{label: 'Executioner', tooltip: "Only Show Patterns useable by beating Executioner"},
-	{label: 'Dead Bride', tooltip: "Only Show Patterns useable by beating Dead Bride"},
-	{label: 'Devourer', tooltip: "Only Show Patterns useable by beating Devourer"},
-	{label: 'Pyromaniac', tooltip: "Only Show Patterns useable by beating Pyromaniac"},
-	{label: 'Swamp Walker', tooltip: "Only Show Patterns useable by beating Swamp Walker"},
-	{label: 'Hanged Man', tooltip: "Only Show Patterns useable by beating Hanged Man"},
-	{label: 'Obstructer', tooltip: "Only Show Patterns useable by beating Obstructer"},
-	{label: 'Frost Walker', tooltip: "Only Show Patterns useable by beating Frost Walker"},
-	{label: 'Molten Fortress', tooltip: "Only Show Patterns useable by beating Molten Fortress"}
-]
-
-const specOpsKeywords = [
-	'defend albion resource',
-	'neutralize void experiment',
-	'block kuiper mining'
-]
 
 let items: Item[] = []
 const patternData: Record<string, Pattern> = data;
@@ -142,28 +118,28 @@ const PatternSuggestorComponent: React.FC = () => {
 			let filteredFarmList: PatternCount[] = []
 			Object.entries(filters).forEach(([key, data]) => {
 				if (key === 'Normal' && data){
-					filteredFarmList = filteredFarmList.concat(newFarmList.filter((list) => list.dropsFrom.toLowerCase().includes("(normal)")))
+					filteredFarmList = filteredFarmList.concat(newFarmList.filter((list) => list.dropsFrom.toLowerCase().includes(dataKeywordNormal)))
 				}
 				if (key === 'Hard' && data){
-					filteredFarmList = filteredFarmList.concat(newFarmList.filter((list) => list.dropsFrom.toLowerCase().includes("(hard)")))
+					filteredFarmList = filteredFarmList.concat(newFarmList.filter((list) => list.dropsFrom.toLowerCase().includes(dataKeywordHard)))
 				}
 				if (key === 'Collosus' && data){
 					if(filteredFarmList.length === 0){
-						filteredFarmList = filteredFarmList.concat(newFarmList.filter((list) => list.useIn.toLowerCase().includes("void intercept battle")))
+						filteredFarmList = filteredFarmList.concat(newFarmList.filter((list) => list.useIn.toLowerCase().includes(dataKeywordCollosus)))
 					}
-					filteredFarmList = filteredFarmList.filter((list) => list.useIn.toLowerCase().includes("void intercept battle"))
+					filteredFarmList = filteredFarmList.filter((list) => list.useIn.toLowerCase().includes(dataKeywordCollosus))
 				}
 				if (key === 'Sharen Exclusive' && data){
 					if(filteredFarmList.length === 0){
-						filteredFarmList = filteredFarmList.concat(newFarmList.filter((list) => list.dropsFrom.toLowerCase().includes("(successful infiltration)")))
+						filteredFarmList = filteredFarmList.concat(newFarmList.filter((list) => list.dropsFrom.toLowerCase().includes(dataKeywordSharen)))
 					}
-					filteredFarmList = filteredFarmList.filter((list) => list.dropsFrom.toLowerCase().includes("(successful infiltration)"))
+					filteredFarmList = filteredFarmList.filter((list) => list.dropsFrom.toLowerCase().includes(dataKeywordSharen))
 				}
 				if (key === 'Void Reactor' && data){
 					if(filteredFarmList.length === 0){
-						filteredFarmList = filteredFarmList.concat(newFarmList.filter((list) => list.useIn.toLowerCase().includes("void fusion reactor")))
+						filteredFarmList = filteredFarmList.concat(newFarmList.filter((list) => list.useIn.toLowerCase().includes(dataKeywordVoidReactor)))
 					}
-					filteredFarmList = filteredFarmList.filter((list) => list.useIn.toLowerCase().includes("void fusion reactor"))
+					filteredFarmList = filteredFarmList.filter((list) => list.useIn.toLowerCase().includes(dataKeywordVoidReactor))
 				}
 				if (key === 'Special Ops' && data){
 					if(filteredFarmList.length === 0){
@@ -177,7 +153,7 @@ const PatternSuggestorComponent: React.FC = () => {
 			// FILTER COLLOSUS
 			Object.entries(collosusFilters).forEach(([key, data]) => {
 				if (!data) {
-					const keyLowerCase = key.toLowerCase(); // Convert the key to lowercase once
+					const keyLowerCase = key.toLowerCase();
 					filteredFarmList = filteredFarmList.filter((list) =>
 						!list.useIn.toLowerCase().includes(keyLowerCase)
 					);
@@ -214,16 +190,29 @@ const PatternSuggestorComponent: React.FC = () => {
 		})
 	}, [selectedItems, priorities, collosusFilters, filters]);
 
-	const formatTooltipContent = (drops: DropList[], name: string) => {
+	const formatTooltipContent = (drops: DropList[], name: string, useIn: string) => {
 		const filteredDrops = drops.filter((drop) => selectedItems.includes(drop.name))
+		const location = useIn as keyof VoidFusionLocations;
 		return (
 			<div>
 				{name} Matched Droplist:
-				{filteredDrops.map((drop, index) => (
-					<div key={index}>
+				{filteredDrops.map((drop, idx) => (
+					<div key={idx}>
 						{drop.name} - Chance: {drop.chance * 100}%
 					</div>
 				))}
+
+				{voidFusionLocations.includes(useIn) && (
+					<div>
+						<br/>
+						Shard Requirements:
+						{voidFusionData[location].drops.map((drop, idx) => (
+							<div>
+								{drop.type}: {drop.count}
+							</div>
+						))}
+					</div>
+				)}
 			</div>
 		);
 	};
@@ -262,7 +251,7 @@ const PatternSuggestorComponent: React.FC = () => {
 							score: (item.score * 100).toFixed(0) + "%",
 							dropsFrom: item.dropsFrom.replace("(Successful Infiltration)", "(Sharen)"),
 							useIn: item.useIn.replace("Void Intercept Battle", "Collosus").replace("Void Fusion Reactor", "Void Outpost"),
-							tooltip: formatTooltipContent(item.drops, item.name)
+							tooltip: formatTooltipContent(item.drops, item.name, item.useIn)
 						}})} />
 				</Paper>
 			</div>

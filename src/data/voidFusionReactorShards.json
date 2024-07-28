@@ -1,0 +1,254 @@
+{
+	"Kingston (Normal) - Grand Square: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Inorganic", "count": 12 },
+			{ "type": "Organic", "count": 3 }
+		]
+	},
+	"Sterile Land (Normal) - Rockfall: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Monomer", "count": 12 },
+			{ "type": "Polymer", "count": 3 }
+		]
+	},
+	"Sterile Land (Normal) - The Repository: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Monomer", "count": 11 },
+			{ "type": "Inorganic", "count": 4 }
+		]
+	},
+	"Sterile Land (Normal) - Restriction Zone: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Polymer", "count": 13 },
+			{ "type": "Organic", "count": 2 }
+		]
+	},
+	"Vespers (Normal) - The Ruins: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Polymer", "count": 11 },
+			{ "type": "Monomer", "count": 4 }
+		]
+	},
+	"Vespers (Normal) - Lost Supply Depot: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Polymer", "count": 12 },
+			{ "type": "Organic", "count": 3 }
+		]
+	},
+	"Vespers (Normal) - Moonlight Lake: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Organic", "count": 13 },
+			{ "type": "Polymer", "count": 2 }
+		]
+	},
+	"Echo Swamp (Normal) - Musket Swamp: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Organic", "count": 11 },
+			{ "type": "Monomer", "count": 4 }
+		]
+	},
+	"Echo Swamp (Normal) - Derelict Covert: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Inorganic", "count": 13 },
+			{ "type": "Organic", "count": 2 }
+		]
+	},
+	"Agna Desert (Normal) - Vermillion Waste: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Organic", "count": 12 },
+			{ "type": "Inorganic", "count": 3 }
+		]
+	},
+	"Agna Desert (Normal) - The Storage: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Organic", "count": 11 },
+			{ "type": "Polymer", "count": 4 }
+		]
+	},
+	"Agna Desert (Normal) - Miragestone Deposit: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Monomer", "count": 12 },
+			{ "type": "Polymer", "count": 3 }
+		]
+	},
+	"White-night Gulch (Normal) - The Mountaintops: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Inorganic", "count": 11 },
+			{ "type": "Polymer", "count": 4 }
+		]
+	},
+	"White-night Gulch (Normal) - Observatory: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Monomer", "count": 13 },
+			{ "type": "Organic", "count": 2 }
+		]
+	},
+	"White-night Gulch (Normal) - Hatchery: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Inorganic", "count": 12 },
+			{ "type": "Organic", "count": 3 }
+		]
+	},
+	"Hagios (Normal) - Dune Base: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Organic", "count": 11 },
+			{ "type": "Monomer", "count": 4 }
+		]
+	},
+	"Hagios (Normal) - The Corrupted Zone: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Organic", "count": 14 },
+			{ "type": "Inorganic", "count": 1 }
+		]
+	},
+	"Hagios (Normal) - Fractured Monolith: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Inorganic", "count": 11 },
+			{ "type": "Polymer", "count": 4 }
+		]
+	},
+	"Fortress (Normal) - Frozen Valley: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Polymer", "count": 12 },
+			{ "type": "Organic", "count": 3 }
+		]
+	},
+	"Fortress (Normal) - Fallen Ark: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Monomer", "count": 14 },
+			{ "type": "Inorganic", "count": 1 }
+		]
+	},
+	"Fortress (Normal) - Defense Line: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Polymer", "count": 13 },
+			{ "type": "Monomer", "count": 2 }
+		]
+	},
+	"Kingston (Hard) - Grand Square: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Inorganic", "count": 36 },
+			{ "type": "Organic", "count": 9 }
+		]
+	},
+	"Sterile Land (Hard) - Rockfall: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Monomer", "count": 38 },
+			{ "type": "Polymer", "count": 7 }
+		]
+	},
+	"Sterile Land (Hard) - The Repository: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Monomer", "count": 37 },
+			{ "type": "Inorganic", "count": 8 }
+		]
+	},
+	"Sterile Land (Hard) - Restriction Zone: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Polymer", "count": 38 },
+			{ "type": "Organic", "count": 7 }
+		]
+	},
+	"Vespers (Hard) - The Ruins: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Polymer", "count": 34 },
+			{ "type": "Monomer", "count": 11 }
+		]
+	},
+	"Vespers (Hard) - Lost Supply Depot: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Polymer", "count": 38 },
+			{ "type": "Organic", "count": 7 }
+		]
+	},
+	"Vespers (Hard) - Moonlight Lake: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Organic", "count": 36 },
+			{ "type": "Polymer", "count": 9 }
+		]
+	},
+	"Echo Swamp (Hard) - Musket Swamp: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Organic", "count": 35 },
+			{ "type": "Monomer", "count": 10 }
+		]
+	},
+	"Echo Swamp (Hard) - Derelict Covert: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Inorganic", "count": 39 },
+			{ "type": "Organic", "count": 6 }
+		]
+	},
+	"Agna Desert (Hard) - Vermillion Waste: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Organic", "count": 40 },
+			{ "type": "Inorganic", "count": 5 }
+		]
+	},
+	"Agna Desert (Hard) - The Storage: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Organic", "count": 38 },
+			{ "type": "Polymer", "count": 7 }
+		]
+	},
+	"Agna Desert (Hard) - Miragestone Deposit: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Monomer", "count": 39 },
+			{ "type": "Polymer", "count": 6 }
+		]
+	},
+	"White-night Gulch (Hard) - The Mountaintops: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Inorganic", "count": 31 },
+			{ "type": "Polymer", "count": 14 }
+		]
+	},
+	"White-night Gulch (Hard) - Observatory: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Monomer", "count": 37 },
+			{ "type": "Organic", "count": 8 }
+		]
+	},
+	"White-night Gulch (Hard) - Hatchery: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Inorganic", "count": 40 },
+			{ "type": "Organic", "count": 5 }
+		]
+	},
+	"Hagios (Hard) - Dune Base: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Organic", "count": 34 },
+			{ "type": "Monomer", "count": 11 }
+		]
+	},
+	"Hagios (Hard) - The Corrupted Zone: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Organic", "count": 35 },
+			{ "type": "Inorganic", "count": 10 }
+		]
+	},
+	"Hagios (Hard) - Fractured Monolith: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Inorganic", "count": 36 },
+			{ "type": "Polymer", "count": 9 }
+		]
+	},
+	"Fortress (Hard) - Frozen Valley: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Polymer", "count": 37 },
+			{ "type": "Organic", "count": 8 }
+		]
+	},
+	"Fortress (Hard) - Fallen Ark: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Monomer", "count": 34 },
+			{ "type": "Inorganic", "count": 11 }
+		]
+	},
+	"Fortress (Hard) - Defense Line: Void Fusion Reactor": {
+		"drops": [
+			{ "type": "Polymer", "count": 39 },
+			{ "type": "Monomer", "count": 6 }
+		]
+	}
+}
