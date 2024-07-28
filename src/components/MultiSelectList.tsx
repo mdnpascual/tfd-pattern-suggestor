@@ -35,14 +35,15 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ startingItems, onChan
 		if (savedSelections) {
 			setSelected(JSON.parse(savedSelections));
 		}
-		const savedPriorities = JSON.parse(localStorage.getItem('itemPriority') ?? '{}')
+		const savedPriorities = localStorage.getItem('itemPriority')
 		if (savedPriorities && savedSelections){
+			const parsedPriorities = JSON.parse(savedPriorities)
 			const newItems = [...items];
 			const startingSelection = JSON.parse(savedSelections) as string[];
 			startingSelection.map((id, idx) => {
 				const foundItem = newItems.find(item => item.id === id)
 				if (foundItem){
-					foundItem.priority = parseInt(savedPriorities[idx] ?? 1, 10);
+					foundItem.priority = parseInt(parsedPriorities[idx] ?? 1, 10);
 				}
 			})
 			setItems(newItems)

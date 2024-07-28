@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
-import { AppBar, Tabs, Tab, Box, CssBaseline  } from '@mui/material';
+import { AppBar, Tabs, Tab, CssBaseline  } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import darkTheme from './theme';
 import PatternSuggestorComponent from './components/PatternSuggestor';
