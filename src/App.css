@@ -33,6 +33,62 @@
   overflow-y: auto; /* Enable vertical scrolling */
 }
 
+.page-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 200px;
+  background: #333;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  color: #fff;
+}
+
+.sidebar button {
+  all: unset;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: #fff;
+  display: block;
+  text-align: left;
+}
+
+.sidebar.collapsed {
+  width: 0;
+}
+
+.sidebar li:hover {
+  background-color: #444; /* Change background color on hover */
+}
+
+.sidebar ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidebar li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  /* background: #fff; */
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

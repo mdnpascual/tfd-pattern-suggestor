@@ -6,6 +6,7 @@ import darkTheme from './theme';
 import PatternSuggestorComponent from './components/PatternSuggestor';
 import InventoryComponent from './components/Inventory';
 import SettingsComponent from './components/Settings'
+import GearComponent from './components/Gear';
 
 const App = () => {
 	return (
@@ -19,6 +20,7 @@ const App = () => {
 					path="/patternSuggestor"
 					element={<PatternSuggestorComponent />}
 				/>
+				<Route path="/gear" element={<GearComponent />} />
 				<Route path="/inventory" element={<InventoryComponent />} />
 				<Route path="/settings" element={<SettingsComponent />} />
 				<Route path="/" element={<Navigate replace to="/patternSuggestor" />} />
@@ -34,13 +36,15 @@ const NavTabs = () => {
 	const location = useLocation();
 	const tabNameToIndex = {
 		0: "/patternSuggestor",
-		1: "/inventory",
-		2: "/settings",
+		1: "/gear",
+		2: "/inventory",
+		3: "/settings",
 	};
 	const indexToTabName = {
 		"/patternSuggestor": 0,
-		"/inventory": 1,
-		"/settings": 2,
+		"/gear": 1,
+		"/inventory": 2,
+		"/settings": 3,
 	};
 
 	const handleTabChange = (event: React.SyntheticEvent, newValue: keyof typeof tabNameToIndex) => {
@@ -52,13 +56,14 @@ const NavTabs = () => {
 	return (
 		<AppBar position="static">
 			<Tabs
-			value={indexToTabName[pathname] || 0}
-			onChange={handleTabChange}
-			centered
+				value={indexToTabName[pathname] || 0}
+				onChange={handleTabChange}
+				centered
 			>
-			<Tab label="Pattern Suggestor" />
-			<Tab label="Component Inventory" />
-			<Tab label="Settings" />
+				<Tab label="Pattern Suggestor" />
+				<Tab label="Gear Inventory" />
+				<Tab label="Component Inventory" />
+				<Tab label="Settings" />
 			</Tabs>
 		</AppBar>
 	);
