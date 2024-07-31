@@ -1,0 +1,386 @@
+{
+	"Gley": {
+		"parts": [
+			{ "name": "Gley Enhanced Cells", "mats": [
+				{ "name": "Monad Shard", "quantity": 246 },
+				{ "name": "Silicon", "quantity": 430 },
+				{ "name": "Cooling Metallic Foil", "quantity": 38 },
+				{ "name": "Gley Enhanced Cells Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Gley Stabilizer", "mats": [
+				{ "name": "Metal Accelerant", "quantity": 519 },
+				{ "name": "Flectorite", "quantity": 292 },
+				{ "name": "Complex Carbon Activator", "quantity": 60 },
+				{ "name": "Gley Stabilizer Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Gley Spiral Catalyst", "mats": [
+				{ "name": "Nanopolymers", "quantity": 363 },
+				{ "name": "Ceramic Composite", "quantity": 408 },
+				{ "name": "Synthesized Artificial Biometal", "quantity": 99 },
+				{ "name": "Gley Spiral Catalyst Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Gley Code", "mats": [{ "name": "Gley Code", "quantity": 1 }]}
+		],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/gley.png"
+	},
+	"Jayber": {
+		"parts": [
+			{ "name": "Jayber Enhanced Cells", "mats": [
+				{ "name": "Hellion", "quantity": 303 },
+				{ "name": "Reverse Charging Coil", "quantity": 455 },
+				{ "name": "Insulated Mettalic Foil", "quantity": 34 },
+				{ "name": "Jayber Enhanced Cells Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Jayber Stabilizer", "mats": [
+				{ "name": "Nanopolymers", "quantity": 363 },
+				{ "name": "Shape Memory Alloy", "quantity": 462 },
+				{ "name": "Balanced Plasma Battery", "quantity": 43 },
+				{ "name": "Jayber Stabilizer Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Jayber Spiral Catalyst", "mats": [
+				{ "name": "Flectorite", "quantity": 292 },
+				{ "name": "Carbon Crystal", "quantity": 554 },
+				{ "name": "Thermal Metallic Foil", "quantity": 26 },
+				{ "name": "Jayber Spiral Catalyst Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Jayber Code", "mats": [{ "name": "Jayber Code", "quantity": 1 }]}
+		],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/jayber.png"
+	},
+	"Lepic": {
+		"parts": [
+			{ "name": "Lepic Enhanced Cells", "mats": [
+				{ "name": "Semi-permanent Plasma", "quantity": 290 },
+				{ "name": "Monomolecular Extractor", "quantity": 499 },
+				{ "name": "Highly-concentrated Energy Residue", "quantity": 34 },
+				{ "name": "Lepic Enhanced Cells Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Lepic Stabilizer", "mats": [
+				{ "name": "Superfluid", "quantity": 571 },
+				{ "name": "Shape Memory Alloy", "quantity": 462 },
+				{ "name": "Crystal Biogel", "quantity": 43 },
+				{ "name": "Lepic Stabilizer Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Lepic Spiral Catalyst", "mats": [
+				{ "name": "Metal Accelerant", "quantity": 519 },
+				{ "name": "Carbon Crystal", "quantity": 554 },
+				{ "name": "Complex Carbon Activator", "quantity": 60 },
+				{ "name": "Lepic Spiral Catalyst Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Lepic Code", "mats": [{ "name": "Lepic Code", "quantity": 1 }]}
+		],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/lepic.png"
+	},
+	"Viessa": {
+		"parts": [
+			{ "name": "Viessa Enhanced Cells", "mats": [
+				{ "name": "Repton", "quantity": 422 },
+				{ "name": "Semi-permanent Plasma", "quantity": 290 },
+				{ "name": "Fusion Plasma Battery", "quantity": 40 },
+				{ "name": "Viessa Enhanced Cells Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Viessa Stabilizer", "mats": [
+				{ "name": "Compound Coating Material", "quantity": 239 },
+				{ "name": "Monomolecular Extractor", "quantity": 499 },
+				{ "name": "Common Carbon Activator", "quantity": 14 },
+				{ "name": "Viessa Stabilizer Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Viessa Spiral Catalyst", "mats": [
+				{ "name": "Superfluid", "quantity": 571 },
+				{ "name": "Hardener", "quantity": 386 },
+				{ "name": "Synthesized Artificial Biometal", "quantity": 99 },
+				{ "name": "Viessa Spiral Catalyst Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Viessa Code", "mats": [{ "name": "Viessa Code", "quantity": 1 }]}
+		],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/viessa.png"
+	},
+	"Ajax": {
+		"parts": [
+			{ "name": "Ajax Enhanced Cells", "mats": [
+				{ "name": "Silicon", "quantity": 430 },
+				{ "name": "Hellion", "quantity": 303 },
+				{ "name": "Artificial Biometal", "quantity": 35 },
+				{ "name": "Ajax Enhanced Cells Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ajax Stabilizer", "mats": [
+				{ "name": "Hardener", "quantity": 386 },
+				{ "name": "Ceramic Composite", "quantity": 408 },
+				{ "name": "Compund Carbon Activator", "quantity": 30 },
+				{ "name": "Ajax Stabilizer Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ajax Spiral Catalyst", "mats": [
+				{ "name": "Compound Coating Material", "quantity": 239 },
+				{ "name": "Shape Memory Alloy", "quantity": 462 },
+				{ "name": "Positive Ion Particle", "quantity": 42 },
+				{ "name": "Ajax Spiral Catalyst Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ajax Code", "mats": [{ "name": "Ajax Code", "quantity": 1 }]}
+		],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ajax.png"
+	},
+	"Ultimate Lepic": {
+		"parts": [
+			{ "name": "Ultimate Lepic Enhanced Cells", "mats": [
+				{ "name": "Semi-permanent Plasma", "quantity": 652 },
+				{ "name": "Flectorite", "quantity": 656 },
+				{ "name": "Divided Plasma Battery", "quantity": 50 },
+				{ "name": "Ultimate Lepic Enhanced Cells Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Lepic Stabilizer", "mats": [
+				{ "name": "Monad Shard", "quantity": 554 },
+				{ "name": "Shape Memory Alloy", "quantity": 1039 },
+				{ "name": "Crystal Biogel", "quantity": 97 },
+				{ "name": "Ultimate Lepic Stabilizer Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Lepic Spiral Catalyst", "mats": [
+				{ "name": "Metal Accelerant", "quantity": 1168 },
+				{ "name": "Nanopolymers", "quantity": 817 },
+				{ "name": "Data Processing Neural Circuit", "quantity": 107 },
+				{ "name": "Ultimate Lepic Spiral Catalyst Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Lepic Code", "mats": [{ "name": "Ultimate Lepic Code", "quantity": 1 }]}
+		],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimatelepic.png"
+	},
+	"Valby": {
+		"parts": [
+			{ "name": "Valby Enhanced Cells", "mats": [
+				{ "name": "Repton", "quantity": 422 },
+				{ "name": "Superfluid", "quantity": 571 },
+				{ "name": "Data Processing Neural Circuit", "quantity": 48 },
+				{ "name": "Valby Enhanced Cells Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Valby Stabilizer", "mats": [
+				{ "name": "Monad Shard", "quantity": 246 },
+				{ "name": "Compound Coating Material", "quantity": 239 },
+				{ "name": "Murky Energy Residue", "quantity": 40 },
+				{ "name": "Valby Stabilizer Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Valby Spiral Catalyst", "mats": [
+				{ "name": "Metal Accelerant", "quantity": 519 },
+				{ "name": "Hardener", "quantity": 386 },
+				{ "name": "Encrypted Neural Circuit", "quantity": 32 },
+				{ "name": "Valby Spiral Catalyst Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Valby Code", "mats": [{ "name": "Valby Code", "quantity": 1 }]}
+		],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/valby.png"
+	},
+	"Kyle": {
+		"parts": [
+			{ "name": "Kyle Enhanced Cells", "mats": [
+				{ "name": "Carbon Crystal", "quantity": 554 },
+				{ "name": "Hellion", "quantity": 303 },
+				{ "name": "Inorganic Biogel", "quantity": 58 },
+				{ "name": "Kyle Enhanced Cells Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Kyle Stabilizer", "mats": [
+				{ "name": "Metal Accelerant", "quantity": 519 },
+				{ "name": "Monomolecular Extractor", "quantity": 499 },
+				{ "name": "Deformed Biometal", "quantity": 76 },
+				{ "name": "Kyle Stabilizer Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Kyle Spiral Catalyst", "mats": [
+				{ "name": "Ceramic Composite", "quantity": 408 },
+				{ "name": "Reverse Charging Coil", "quantity": 455 },
+				{ "name": "Compund Carbon Activator", "quantity": 30 },
+				{ "name": "Kyle Spiral Catalyst Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Kyle Code", "mats": [{ "name": "Kyle Code", "quantity": 1 }]}
+		],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/kyle.png"
+	},
+	"Ultimate Viessa": {
+		"parts": [
+			{ "name": "Ultimate Viessa Enhanced Cells", "mats": [
+				{ "name": "Flectorite", "quantity": 656 },
+				{ "name": "Hellion", "quantity": 682 },
+				{ "name": "Insulated Mettalic Foil", "quantity": 76 },
+				{ "name": "Ultimate Viessa Enhanced Cells Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Viessa Stabilizer", "mats": [
+				{ "name": "Compound Coating Material", "quantity": 538 },
+				{ "name": "Monomolecular Extractor", "quantity": 1123 },
+				{ "name": "Artificial Biometal", "quantity": 79 },
+				{ "name": "Ultimate Viessa Stabilizer Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Viessa Spiral Catalyst", "mats": [
+				{ "name": "Superfluid", "quantity": 1285 },
+				{ "name": "Shape Memory Alloy", "quantity": 1039 },
+				{ "name": "Organic Biogel", "quantity": 59 },
+				{ "name": "Ultimate Viessa Spiral Catalyst Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Viessa Code", "mats": [{ "name": "Ultimate Viessa Code", "quantity": 1 }]}
+		],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimateviessa.png"
+	},
+	"Yujin": {
+		"parts": [
+			{ "name": "Yujin Enhanced Cells", "mats": [
+				{ "name": "Flectorite", "quantity": 292 },
+				{ "name": "Reverse Charging Coil", "quantity": 455 },
+				{ "name": "Divided Plasma Battery", "quantity": 22 },
+				{ "name": "Yujin Enhanced Cells Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Yujin Stabilizer", "mats": [
+				{ "name": "Compound Coating Material", "quantity": 239 },
+				{ "name": "Carbon Crystal", "quantity": 554 },
+				{ "name": "Pure Energy Residue", "quantity": 40 },
+				{ "name": "Yujin Stabilizer Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Yujin Spiral Catalyst", "mats": [
+				{ "name": "Hardener", "quantity": 386 },
+				{ "name": "Ceramic Composite", "quantity": 408 },
+				{ "name": "Anode Ion Particle", "quantity": 27 },
+				{ "name": "Yujin Spiral Catalyst Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Yujin Code", "mats": [{ "name": "Yujin Code", "quantity": 1 }]}
+		],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/yujin.png"
+	},
+	"Ultimate Gley": {
+		"parts": [
+			{ "name": "Ultimate Gley Enhanced Cells", "mats": [
+				{ "name": "Metal Accelerant", "quantity": 1168 },
+				{ "name": "Hardener", "quantity": 869 },
+				{ "name": "Thermal Metallic Foil", "quantity": 58 },
+				{ "name": "Ultimate Gley Enhanced Cells Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Gley Stabilizer", "mats": [
+				{ "name": "Carbon Crystal", "quantity": 1247 },
+				{ "name": "Reverse Charging Coil", "quantity": 1023 },
+				{ "name": "Cooling Metallic Foil", "quantity": 85 },
+				{ "name": "Ultimate Gley Stabilizer Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Gley Spiral Catalyst", "mats": [
+				{ "name": "Monomolecular Extractor", "quantity": 1123 },
+				{ "name": "Ceramic Composite", "quantity": 919 },
+				{ "name": "Common Carbon Activator", "quantity": 32 },
+				{ "name": "Ultimate Gley Spiral Catalyst Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Gley Code", "mats": [{ "name": "Ultimate Gley Code", "quantity": 1 }]}
+		],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimategley.png"
+	},
+	"Enzo": {
+		"parts": [
+			{ "name": "Enzo Enhanced Cells", "mats": [
+				{ "name": "Monomolecular Extractor", "quantity": 499 },
+				{ "name": "Flectorite", "quantity": 292 },
+				{ "name": "Inorganic Biogel", "quantity": 58 },
+				{ "name": "Enzo Enhanced Cells Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Enzo Stabilizer", "mats": [
+				{ "name": "Silicon", "quantity": 430 },
+				{ "name": "Nanopolymers", "quantity": 363 },
+				{ "name": "Advanced Neural Circuit", "quantity": 90 },
+				{ "name": "Enzo Stabilizer Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Enzo Spiral Catalyst", "mats": [
+				{ "name": "Semi-permanent Plasma", "quantity": 290 },
+				{ "name": "Ceramic Composite", "quantity": 408 },
+				{ "name": "Positive Ion Particle", "quantity": 42 },
+				{ "name": "Enzo Spiral Catalyst Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Enzo Code", "mats": [{ "name": "Enzo Code", "quantity": 1 }]}
+		],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/enzo.png"
+	},
+	"Ultimate Bunny": {
+		"parts": [
+			{ "name": "Ultimate Bunny Enhanced Cells", "mats": [
+				{ "name": "Repton", "quantity": 949 },
+				{ "name": "Ceramic Composite", "quantity": 919 },
+				{ "name": "Encrypted Neural Circuit", "quantity": 73 },
+				{ "name": "Ultimate Bunny Enhanced Cells Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Bunny Stabilizer", "mats": [
+				{ "name": "Superfluid", "quantity": 1285 },
+				{ "name": "Hardener", "quantity": 869 },
+				{ "name": "Specialized Biometal", "quantity": 102 },
+				{ "name": "Ultimate Bunny Stabilizer Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Bunny Spiral Catalyst", "mats": [
+				{ "name": "Carbon Crystal", "quantity": 1247 },
+				{ "name": "Reverse Charging Coil", "quantity": 1023 },
+				{ "name": "Pure Energy Residue", "quantity": 89 },
+				{ "name": "Ultimate Bunny Spiral Catalyst Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Bunny Code", "mats": [{ "name": "Ultimate Bunny Code", "quantity": 1 }]}
+		],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimatebunny.png"
+	},
+	"Esiemo": {
+		"parts": [
+			{ "name": "Esiemo Enhanced Cells", "mats": [
+				{ "name": "Flectorite", "quantity": 292 },
+				{ "name": "Shape Memory Alloy", "quantity": 462 },
+				{ "name": "Deformed Biometal", "quantity": 76 },
+				{ "name": "Esiemo Enhanced Cells Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Esiemo Stabilizer", "mats": [
+				{ "name": "Ceramic Composite", "quantity": 408 },
+				{ "name": "Reverse Charging Coil", "quantity": 455 },
+				{ "name": "Organic Biogel", "quantity": 26 },
+				{ "name": "Esiemo Stabilizer Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Esiemo Spiral Catalyst", "mats": [
+				{ "name": "Semi-permanent Plasma", "quantity": 290 },
+				{ "name": "Nanopolymers", "quantity": 363 },
+				{ "name": "Specialized Biometal", "quantity": 46 },
+				{ "name": "Esiemo Spiral Catalyst Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Esiemo Code", "mats": [{ "name": "Esiemo Code", "quantity": 1 }]}
+		],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/esiemo.png"
+	},
+	"Ultimate Ajax": {
+		"parts": [
+			{ "name": "Ultimate Ajax Enhanced Cells", "mats": [
+				{ "name": "Silicon", "quantity": 969 },
+				{ "name": "Flectorite", "quantity": 656 },
+				{ "name": "Balanced Plasma Battery", "quantity": 98 },
+				{ "name": "Ultimate Ajax Enhanced Cells Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Ajax Stabilizer", "mats": [
+				{ "name": "Ceramic Composite", "quantity": 919 },
+				{ "name": "Hellion", "quantity": 682 },
+				{ "name": "Anode Ion Particle", "quantity": 62 },
+				{ "name": "Ultimate Ajax Stabilizer Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Ajax Spiral Catalyst", "mats": [
+				{ "name": "Nanopolymers", "quantity": 817 },
+				{ "name": "Shape Memory Alloy", "quantity": 1039 },
+				{ "name": "Fusion Plasma Battery", "quantity": 91 },
+				{ "name": "Ultimate Ajax Spiral Catalyst Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Ajax Code", "mats": [{ "name": "Ultimate Ajax Code", "quantity": 1 }]}
+		],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimateajax.png"
+	},
+	"Bunny": { "parts": [
+		{ "name": "Bunny Enhanced Cells", "mats": []},
+		{ "name": "Bunny Stabilizer", "mats": []},
+		{ "name": "Bunny Spiral Catalyst", "mats": []},
+		{ "name": "Bunny Code", "mats": []}
+	], "img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/bunny.png" },
+	"Freyna": { "parts": [
+		{ "name": "Freyna Enhanced Cells", "mats": []},
+		{ "name": "Freyna Stabilizer", "mats": []},
+		{ "name": "Freyna Spiral Catalyst", "mats": []},
+		{ "name": "Freyna Code", "mats": []}
+	], "img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/freyna.png" },
+	"Sharen": { "parts": [
+		{ "name": "Sharen Enhanced Cells", "mats": []},
+		{ "name": "Sharen Stabilizer", "mats": []},
+		{ "name": "Sharen Spiral Catalyst", "mats": []},
+		{ "name": "Sharen Code", "mats": []}
+	], "img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/sharen.png" },
+	"Blair": { "parts": [
+		{ "name": "Blair Enhanced Cells", "mats": []},
+		{ "name": "Blair Stabilizer", "mats": []},
+		{ "name": "Blair Spiral Catalyst", "mats": []},
+		{ "name": "Blair Code", "mats": []}
+	], "img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/blair.png" }
+}

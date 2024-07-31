@@ -20,32 +20,32 @@ const PageWithSidebarComponent: React.FC<PageWithSidebarProps> = ({ items }) => 
 	};
 
 	return (
-			<div className="page-container">
-				<div className={`sidebar ${sidebarOpen ? '' : 'collapsed'}`}>
-					{sidebarOpen && (
-					<ul>
-						{items.map((item, index) => (
-						<li key={index} onClick={() => setActiveIndex(index)}>
-							<img src={item.iconPath} alt={item.label} style={{ width: 24, height: 24, marginRight: 10 }} />
-							{item.label}
-						</li>
-						))}
-					</ul>
-					)}
-				</div>
-
-				<button
-					className={`toggle-button ${sidebarOpen ? '' : 'collapsed'}`}
-					onClick={toggleSidebar}
-				>
-					{sidebarOpen ? '<<' : '>>'}
-				</button>
-
-				<div className="content">
-					{items[activeIndex].Component}
-				</div>
+		<div className="page-container">
+			<div className={`sidebar ${sidebarOpen ? '' : 'collapsed'}`}>
+				{sidebarOpen && (
+				<ul>
+					{items.map((item, index) => (
+					<li key={index} onClick={() => setActiveIndex(index)}>
+						<img src={item.iconPath} alt={item.label} style={{ width: 24, height: 24, marginRight: 10 }} />
+						{item.label}
+					</li>
+					))}
+				</ul>
+				)}
 			</div>
-		);
-	};
+
+			<button
+				className={`toggle-button ${sidebarOpen ? '' : 'collapsed'}`}
+				onClick={toggleSidebar}
+			>
+				{sidebarOpen ? '<<' : '>>'}
+			</button>
+
+			<div className="content">
+				{items[activeIndex].Component}
+			</div>
+		</div>
+	);
+};
 
 export default PageWithSidebarComponent;

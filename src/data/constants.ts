@@ -77,6 +77,43 @@ interface VoidFusionLocationsPropData {
 	"count": number
 }
 
+export interface Characters {
+	"Gley": GearProp;
+	"Jayber": GearProp;
+	"Lepic": GearProp;
+	"Viessa": GearProp;
+	"Ajax": GearProp;
+	"Ultimate Lepic": GearProp;
+	"Valby": GearProp;
+	"Kyle": GearProp;
+	"Ultimate Viessa": GearProp;
+	"Yujin": GearProp;
+	"Ultimate Gley": GearProp;
+	"Enzo": GearProp;
+	"Ultimate Bunny": GearProp;
+	"Esiemo": GearProp;
+	"Ultimate Ajax": GearProp;
+	"Bunny": GearProp;
+	"Freyna": GearProp;
+	"Sharen": GearProp;
+	"Blair": GearProp;
+}
+
+interface GearProp {
+	"parts": GearPart[];
+	"img": string;
+}
+
+export interface GearPart {
+	"name": string;
+	"mats"?: Material[];
+}
+
+interface Material {
+	"name": string;
+	"quantity": number;
+}
+
 export const specOpsKeywords = [
 	'defend albion resource',
 	'neutralize void experiment',
