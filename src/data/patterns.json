@@ -1269,7 +1269,7 @@
 			{ "chance": 0.32, "name": "Executor Polymer Syncytium Blueprint" },
 			{ "chance": 0.32, "name": "Esiemo Enhanced Cells Blueprint" }
 		],
-		"dropsFrom": "Hagios (Hard) - The Haven",
+		"dropsFrom": "White-night Gulch (Hard) - Mystery's End",
 		"useIn": "Void Intercept Battle (Hard): Obstructer"
 	},
 	"105": {
@@ -1283,7 +1283,7 @@
 			},
 			{ "chance": 0.32, "name": "Python Synthetic Fiber Blueprint" }
 		],
-		"dropsFrom": "Hagios (Hard) - The Haven",
+		"dropsFrom": "White-night Gulch (Hard) - Mystery's End",
 		"useIn": "Void Intercept Battle (Hard): Obstructer"
 	},
 	"106": {
@@ -1294,7 +1294,7 @@
 			{ "chance": 0.32, "name": "Piercing Light Nano Tube Blueprint" },
 			{ "chance": 0.32, "name": "Clairvoyance Synthetic Fiber Blueprint" }
 		],
-		"dropsFrom": "Hagios (Hard) - Old Mystery",
+		"dropsFrom": "White-night Gulch (Hard) - Bio-Lab",
 		"useIn": "Void Intercept Battle (Hard): Obstructer"
 	},
 	"107": {
@@ -1305,7 +1305,7 @@
 			{ "chance": 0.32, "name": "Ajax Stabilizer Blueprint" },
 			{ "chance": 0.32, "name": "Albion Cavalry Gun Nano Tube Blueprint" }
 		],
-		"dropsFrom": "Hagios (Hard) - Old Mystery",
+		"dropsFrom": "White-night Gulch (Hard) - Bio-Lab",
 		"useIn": "Void Intercept Battle (Hard): Obstructer"
 	},
 	"108": {
@@ -1388,7 +1388,7 @@
 				"name": "Greg\u0027s Reversed Fate Nano Tube Blueprint"
 			}
 		],
-		"dropsFrom": "White-night Gulch (Hard) - Mystery's End",
+		"dropsFrom": "Hagios (Hard) - The Haven",
 		"useIn": "Void Intercept Battle (Hard): Frost Walker"
 	},
 	"115 AA": {
@@ -1399,7 +1399,7 @@
 			{ "chance": 0.32, "name": "Ultimate Valby Enhanced Cells Blueprint" },
 			{ "chance": 0.32, "name": "Wave of Light Blueprint" }
 		],
-		"dropsFrom": "White-night Gulch (Hard) - Mystery's End",
+		"dropsFrom": "Hagios (Hard) - The Haven",
 		"useIn": "Void Intercept Battle (Hard): Frost Walker, Gluttony"
 	},
 	"116": {
@@ -1410,7 +1410,7 @@
 			{ "chance": 0.32, "name": "Divine Punishment Blueprint" },
 			{ "chance": 0.32, "name": "Clairvoyance Polymer Syncytium Blueprint" }
 		],
-		"dropsFrom": "White-night Gulch (Hard) - Bio-Lab",
+		"dropsFrom": "Hagios (Hard) - Old Mystery",
 		"useIn": "Void Intercept Battle (Hard): Frost Walker"
 	},
 	"117": {
@@ -1424,7 +1424,7 @@
 			},
 			{ "chance": 0.32, "name": "King\u0027s Guard Lance Blueprint" }
 		],
-		"dropsFrom": "White-night Gulch (Hard) - Bio-Lab",
+		"dropsFrom": "Hagios (Hard) - Old Mystery",
 		"useIn": "Void Intercept Battle (Hard): Frost Walker"
 	},
 	"118": {
