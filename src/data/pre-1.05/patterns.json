@@ -130,9 +130,9 @@
 		"dropsFrom": "Sterile Land (Normal) - Unknown Laboratory",
 		"useIn": "Void Intercept Battle: Stunning Beauty"
 	},
-	"011 AA": {
+	"011": {
 		"drops": [
-			{ "chance": 0.03, "name": "Ultimate Valby Enhanced Cells Blueprint" },
+			{ "chance": 0.03, "name": "Perforator Polymer Syncytium Blueprint" },
 			{
 				"chance": 0.06,
 				"name": "Divine Punishment Polymer Syncytium Blueprint"
@@ -183,12 +183,12 @@
 		"dropsFrom": "Vespers (Normal) - Lost Supply Depot: Vulgus Strategic Outpost",
 		"useIn": "Vespers (Normal) - Lost Supply Depot: Void Fusion Reactor"
 	},
-	"015 AA": {
+	"015": {
 		"drops": [
 			{ "chance": 0.03, "name": "Esiemo Spiral Catalyst Blueprint" },
 			{ "chance": 0.06, "name": "Restored Relic Polymer Syncytium Blueprint" },
 			{ "chance": 0.15, "name": "Crystallization Catalyst Blueprint" },
-			{ "chance": 0.38, "name": "Luna Spiral Catalyst Blueprint" },
+			{ "chance": 0.38, "name": "Albion Cavalry Gun Nano Tube Blueprint" },
 			{
 				"chance": 0.38,
 				"name": "Nazeistra\u0027s Devotion Nano Tube Blueprint"
@@ -211,12 +211,15 @@
 		"dropsFrom": "Vespers (Normal) - Sepulcher",
 		"useIn": "Void Intercept Battle: Executioner"
 	},
-	"017 AA": {
+	"017": {
 		"drops": [
 			{ "chance": 0.03, "name": "Ultimate Bunny Spiral Catalyst Blueprint" },
 			{ "chance": 0.06, "name": "Kyle Stabilizer Blueprint" },
 			{ "chance": 0.15, "name": "Crystallization Catalyst Blueprint" },
-			{ "chance": 0.38, "name": "Luna Enhanced Cells Blueprint" },
+			{
+				"chance": 0.38,
+				"name": "Nazeistra\u0027s Devotion Synthetic Fiber Blueprint"
+			},
 			{ "chance": 0.38, "name": "Smithereens Blueprint" }
 		],
 		"dropsFrom": "Vespers (Normal) - The Shelter",
@@ -247,10 +250,10 @@
 		"dropsFrom": "Vespers (Normal) - Neutralize Void Experiment",
 		"useIn": "Void Intercept Battle: Executioner"
 	},
-	"020 AA": {
+	"020": {
 		"drops": [
 			{ "chance": 0.03, "name": "Energy Activator Blueprint" },
-			{ "chance": 0.06, "name": "Luna Stabilizer Blueprint" },
+			{ "chance": 0.06, "name": "Executor Synthetic Fiber Blueprint" },
 			{ "chance": 0.15, "name": "Restored Relic Synthetic Fiber Blueprint" },
 			{ "chance": 0.38, "name": "Valby Stabilizer Blueprint" },
 			{ "chance": 0.38, "name": "Albion Cavalry Gun Synthetic Fiber Blueprint" }
@@ -286,10 +289,10 @@
 		"dropsFrom": "Echo Swamp (Normal) - Seed Vault",
 		"useIn": "Void Intercept Battle: Dead Bride"
 	},
-	"023 AA": {
+	"023": {
 		"drops": [
 			{ "chance": 0.03, "name": "Blue Beetle Blueprint" },
-			{ "chance": 0.06, "name": "Ultimate Valby Spiral Catalyst Blueprint" },
+			{ "chance": 0.06, "name": "Valby Spiral Catalyst Blueprint" },
 			{ "chance": 0.15, "name": "Crystallization Catalyst Blueprint" },
 			{ "chance": 0.38, "name": "Restored Relic Nano Tube Blueprint" },
 			{
@@ -336,9 +339,9 @@
 		"dropsFrom": "Agna Desert (Normal) - Vermillion Waste: Vulgus Strategic Outpost",
 		"useIn": "Agna Desert (Normal) - Vermillion Waste: Void Fusion Reactor"
 	},
-	"027 AA": {
+	"027": {
 		"drops": [
-			{ "chance": 0.03, "name": "Luna Code" },
+			{ "chance": 0.03, "name": "Perforator Synthetic Fiber Blueprint" },
 			{ "chance": 0.06, "name": "Smithereens Polymer Syncytium Blueprint" },
 			{ "chance": 0.15, "name": "Crystallization Catalyst Blueprint" },
 			{ "chance": 0.38, "name": "Ajax Enhanced Cells Blueprint" },
@@ -378,10 +381,10 @@
 		"dropsFrom": "Agna Desert (Normal) - The Asylum",
 		"useIn": "Void Intercept Battle: Devourer"
 	},
-	"030 AA": {
+	"030": {
 		"drops": [
 			{ "chance": 0.03, "name": "Energy Activator Blueprint" },
-			{ "chance": 0.06, "name": "Ultimate Valby Stabilizer Blueprint" },
+			{ "chance": 0.06, "name": "Clairvoyance Synthetic Fiber Blueprint" },
 			{ "chance": 0.15, "name": "Viessa Code" },
 			{
 				"chance": 0.38,
@@ -475,7 +478,7 @@
 		"dropsFrom": "White-night Gulch (Normal) - Bio Lab",
 		"useIn": "Void Intercept Battle: Pyromaniac"
 	},
-	"038 AA": {
+	"038": {
 		"drops": [
 			{ "chance": 0.03, "name": "Ultimate Viessa Code" },
 			{ "chance": 0.06, "name": "Perforator Nano Tube Blueprint" },
@@ -484,7 +487,7 @@
 				"chance": 0.38,
 				"name": "Divine Punishment Polymer Syncytium Blueprint"
 			},
-			{ "chance": 0.38, "name": "Luna Enhanced Cells Blueprint" }
+			{ "chance": 0.38, "name": "Smithereens Synthetic Fiber Blueprint" }
 		],
 		"dropsFrom": "White-night Gulch (Normal) - Block Kuiper mining",
 		"useIn": "Void Intercept Battle: Pyromaniac"
@@ -553,10 +556,10 @@
 		"dropsFrom": "Hagios (Normal) - The Haven",
 		"useIn": "Void Intercept Battle: Swamp Walker"
 	},
-	"044 AA": {
+	"044": {
 		"drops": [
 			{ "chance": 0.03, "name": "Energy Activator Blueprint" },
-			{ "chance": 0.06, "name": "Ultimate Valby Enhanced Cells Blueprint" },
+			{ "chance": 0.06, "name": "Jayber Stabilizer Blueprint" },
 			{ "chance": 0.15, "name": "Python Polymer Syncytium Blueprint" },
 			{
 				"chance": 0.38,
@@ -617,13 +620,13 @@
 		"dropsFrom": "Fortress (Normal) - Converter Facility: Vulgus Strategic Outpost",
 		"useIn": "Fortress (Normal) - Fallen Ark: Void Fusion Reactor"
 	},
-	"049 AA": {
+	"049": {
 		"drops": [
 			{ "chance": 0.03, "name": "Perforator Polymer Syncytium Blueprint" },
 			{ "chance": 0.06, "name": "Ajax Stabilizer Blueprint" },
 			{ "chance": 0.15, "name": "Crystallization Catalyst Blueprint" },
 			{ "chance": 0.38, "name": "Greg\u0027s Reversed Fate Blueprint" },
-			{ "chance": 0.38, "name": "Luna Spiral Catalyst Blueprint" }
+			{ "chance": 0.38, "name": "Restored Relic Blueprint" }
 		],
 		"dropsFrom": "Fortress (Normal) - Defense Line: Vulgus Strategic Outpost",
 		"useIn": "Fortress (Normal) - Defense Line: Void Fusion Reactor"
@@ -659,10 +662,10 @@
 		"dropsFrom": "Fortress (Normal) - Heart of the Fortress",
 		"useIn": "Void Intercept Battle: Hanged Man"
 	},
-	"052 AA": {
+	"052": {
 		"drops": [
 			{ "chance": 0.03, "name": "Ultimate Bunny Code" },
-			{ "chance": 0.06, "name": "Ultimate Valby Spiral Catalyst Blueprint" },
+			{ "chance": 0.06, "name": "Smithereens Nano Tube Blueprint" },
 			{ "chance": 0.15, "name": "Crystallization Catalyst Blueprint" },
 			{ "chance": 0.38, "name": "Wave of Light Nano Tube Blueprint" },
 			{
@@ -695,13 +698,13 @@
 		"dropsFrom": "Kingston (Hard) - Fallen Theater: Vulgus Strategic Outpost",
 		"useIn": "Kingston (Hard) - Kingston Grand Square: Void Fusion Reactor"
 	},
-	"055 AA": {
+	"055": {
 		"drops": [
 			{ "chance": 0.06, "name": "Energy Activator Blueprint" },
 			{ "chance": 0.1, "name": "Kyle Spiral Catalyst Blueprint" },
 			{ "chance": 0.2, "name": "Jayber Enhanced Cells Blueprint" },
 			{ "chance": 0.32, "name": "Executor Blueprint" },
-			{ "chance": 0.32, "name": "Ultimate Valby Stabilizer Blueprint" }
+			{ "chance": 0.32, "name": "Afterglow Sword Synthetic Fiber Blueprint" }
 		],
 		"dropsFrom": "Kingston (Hard) - Fallen Theater: Vulgus Strategic Outpost (Successful Infiltration)",
 		"useIn": "Kingston (Hard) - Kingston Grand Square: Void Fusion Reactor"
@@ -841,7 +844,7 @@
 		"dropsFrom": "Sterile Land (Hard) - The Forgottense",
 		"useIn": "Void Intercept Battle (Hard): Dead Bride"
 	},
-	"068 AA": {
+	"068": {
 		"drops": [
 			{ "chance": 0.06, "name": "Ultimate Gley Code" },
 			{
@@ -850,7 +853,7 @@
 			},
 			{ "chance": 0.2, "name": "Crystallization Catalyst Blueprint" },
 			{ "chance": 0.32, "name": "Wave of Light Polymer Syncytium Blueprint" },
-			{ "chance": 0.32, "name": "Luna Stabilizer Blueprint" }
+			{ "chance": 0.32, "name": "Viessa Enhanced Cells Blueprint" }
 		],
 		"dropsFrom": "Sterile Land (Hard) - Unknown Laboratory",
 		"useIn": "Void Intercept Battle (Hard): Dead Bride"
@@ -877,11 +880,11 @@
 		"dropsFrom": "Vespers (Hard) - Lumber Yard: Vulgus Strategic Outpost",
 		"useIn": "Vespers (Hard) - The Ruins: Void Fusion Reactor"
 	},
-	"071 AA": {
+	"071": {
 		"drops": [
 			{ "chance": 0.06, "name": "Energy Activator Blueprint" },
 			{ "chance": 0.1, "name": "Yujin Spiral Catalyst Blueprint" },
-			{ "chance": 0.2, "name": "Luna Spiral Catalyst Blueprint" },
+			{ "chance": 0.2, "name": "Jayber Spiral Catalyst Blueprint" },
 			{ "chance": 0.32, "name": "Afterglow Sword Synthetic Fiber Blueprint" },
 			{ "chance": 0.32, "name": "Python Blueprint" }
 		],
@@ -902,11 +905,11 @@
 		"dropsFrom": "Vespers (Hard) - Lost Supply Depot: Vulgus Strategic Outpost",
 		"useIn": "Vespers (Hard) - Lost Supply Depot: Void Fusion Reactor"
 	},
-	"073 AA": {
+	"073": {
 		"drops": [
 			{ "chance": 0.06, "name": "Energy Activator Blueprint" },
 			{ "chance": 0.1, "name": "Ultimate Bunny Enhanced Cells Blueprint" },
-			{ "chance": 0.2, "name": "Ultimate Valby Spiral Catalyst Blueprint" },
+			{ "chance": 0.2, "name": "Kyle Code" },
 			{ "chance": 0.32, "name": "Divine Punishment Nano Tube Blueprint" },
 			{ "chance": 0.32, "name": "Perforator Nano Tube Blueprint" }
 		],
@@ -999,10 +1002,10 @@
 		"dropsFrom": "Echo Swamp (Hard) - Muskeg Swamp: Vulgus Strategic Outpost",
 		"useIn": "Echo Swamp (Hard) - Musket Swamp: Void Fusion Reactor"
 	},
-	"081 AA": {
+	"081": {
 		"drops": [
 			{ "chance": 0.06, "name": "Energy Activator Blueprint" },
-			{ "chance": 0.1, "name": "Luna Enhanced Cells Blueprint" },
+			{ "chance": 0.1, "name": "Esiemo Stabilizer Blueprint" },
 			{ "chance": 0.2, "name": "Afterglow Sword Nano Tube Blueprint" },
 			{ "chance": 0.32, "name": "Enzo Stabilizer Blueprint" },
 			{
@@ -1071,10 +1074,10 @@
 		"dropsFrom": "Echo Swamp (Hard) - The Chapel",
 		"useIn": "Void Intercept Battle (Hard): Pyromaniac"
 	},
-	"087 AA": {
+	"087": {
 		"drops": [
 			{ "chance": 0.06, "name": "Energy Activator Blueprint" },
-			{ "chance": 0.1, "name": "Ultimate Valby Code" },
+			{ "chance": 0.1, "name": "Kyle Spiral Catalyst Blueprint" },
 			{ "chance": 0.2, "name": "Ultimate Bunny Spiral Catalyst Blueprint" },
 			{ "chance": 0.32, "name": "Wave of Light Blueprint" },
 			{ "chance": 0.32, "name": "Enduring Legacy Nano Tube Blueprint" }
@@ -1104,10 +1107,10 @@
 		"dropsFrom": "Agna Desert (Hard) - Vermillion Waste: Vulgus Strategic Outpost (Successful Infiltration)",
 		"useIn": "Agna Desert (Hard) - Vermillion Waste: Void Fusion Reactor"
 	},
-	"090 AA": {
+	"090": {
 		"drops": [
 			{ "chance": 0.06, "name": "Esiemo Code" },
-			{ "chance": 0.1, "name": "Luna Code" },
+			{ "chance": 0.1, "name": "Yujin Enhanced Cells Blueprint" },
 			{ "chance": 0.2, "name": "Crystallization Catalyst Blueprint" },
 			{ "chance": 0.32, "name": "Executor Nano Tube Blueprint" },
 			{
@@ -1151,12 +1154,12 @@
 		"dropsFrom": "Agna Desert (Hard) - Miragestone: Vulgus Strategic Outpost (Successful Infiltration)",
 		"useIn": "Agna Desert (Hard) - Miragestone Deposit: Void Fusion Reactor"
 	},
-	"094 AA": {
+	"094": {
 		"drops": [
 			{ "chance": 0.06, "name": "Ultimate Ajax Spiral Catalyst Blueprint" },
 			{ "chance": 0.1, "name": "Afterglow Sword Blueprint" },
 			{ "chance": 0.2, "name": "Crystallization Catalyst Blueprint" },
-			{ "chance": 0.32, "name": "Luna Code" },
+			{ "chance": 0.32, "name": "Lepic Spiral Catalyst Blueprint" },
 			{ "chance": 0.32, "name": "Blue Beetle Synthetic Fiber Blueprint" }
 		],
 		"dropsFrom": "Agna Desert (Hard) - The Asylum",
@@ -1195,10 +1198,10 @@
 		"dropsFrom": "Agna Desert (Hard) - Caligo Ossuary",
 		"useIn": "Void Intercept Battle (Hard): Swamp Walker"
 	},
-	"098 AA": {
+	"098": {
 		"drops": [
 			{ "chance": 0.06, "name": "Ultimate Ajax Spiral Catalyst Blueprint" },
-			{ "chance": 0.1, "name": "Luna Stabilizer Blueprint" },
+			{ "chance": 0.1, "name": "Lepic Code" },
 			{ "chance": 0.2, "name": "Crystallization Catalyst Blueprint" },
 			{ "chance": 0.32, "name": "Wave of Light Nano Tube Blueprint" },
 			{ "chance": 0.32, "name": "King\u0027s Guard Lance Nano Tube Blueprint" }
@@ -1333,9 +1336,9 @@
 		"dropsFrom": "Hagios (Hard) - Dune Base: Vulgus Strategic Outpost (Successful Infiltration)",
 		"useIn": "Hagios (Hard) - Dune Base: Void Fusion Reactor"
 	},
-	"110 AA": {
+	"110": {
 		"drops": [
-			{ "chance": 0.06, "name": "Ultimate Valby Code" },
+			{ "chance": 0.06, "name": "Esiemo Code" },
 			{ "chance": 0.1, "name": "Enzo Spiral Catalyst Blueprint" },
 			{ "chance": 0.2, "name": "Crystallization Catalyst Blueprint" },
 			{ "chance": 0.32, "name": "Clairvoyance Nano Tube Blueprint" },
@@ -1366,13 +1369,13 @@
 		"dropsFrom": "Hagios (Hard) - Forward Base: Vulgus Strategic Outpost",
 		"useIn": "Hagios (Hard) - Fractured Monolith: Void Fusion Reactor"
 	},
-	"113 AA": {
+	"113": {
 		"drops": [
 			{ "chance": 0.06, "name": "Energy Activator Blueprint" },
 			{ "chance": 0.1, "name": "Ultimate Bunny Enhanced Cells Blueprint" },
 			{ "chance": 0.2, "name": "Clairvoyance Blueprint" },
 			{ "chance": 0.32, "name": "Perforator Nano Tube Blueprint" },
-			{ "chance": 0.32, "name": "Ultimate Valby Stabilizer Blueprint" }
+			{ "chance": 0.32, "name": "Ajax Stabilizer Blueprint" }
 		],
 		"dropsFrom": "Hagios (Hard) - Forward Base: Vulgus Strategic Outpost (Successful Infiltration)",
 		"useIn": "Hagios (Hard) - Fractured Monolith: Void Fusion Reactor"
@@ -1391,12 +1394,12 @@
 		"dropsFrom": "White-night Gulch (Hard) - Mystery's End",
 		"useIn": "Void Intercept Battle (Hard): Frost Walker"
 	},
-	"115 AA": {
+	"115": {
 		"drops": [
 			{ "chance": 0.06, "name": "Energy Activator Blueprint" },
 			{ "chance": 0.1, "name": "Viessa Stabilizer Blueprint" },
 			{ "chance": 0.2, "name": "Enduring Legacy Polymer Syncytium Blueprint" },
-			{ "chance": 0.32, "name": "Ultimate Valby Enhanced Cells Blueprint" },
+			{ "chance": 0.32, "name": "Gley Stabilizer Blueprint" },
 			{ "chance": 0.32, "name": "Wave of Light Blueprint" }
 		],
 		"dropsFrom": "White-night Gulch (Hard) - Mystery's End",
@@ -1507,11 +1510,11 @@
 		"dropsFrom": "Fortress (Hard) - Quarantine Zone",
 		"useIn": "Void Intercept Battle (Hard): Molten Fortress"
 	},
-	"125 AA": {
+	"125": {
 		"drops": [
 			{ "chance": 0.06, "name": "Energy Activator Blueprint" },
 			{ "chance": 0.1, "name": "Ultimate Viessa Code" },
-			{ "chance": 0.2, "name": "Ultimate Valby Code" },
+			{ "chance": 0.2, "name": "Yujin Spiral Catalyst Blueprint" },
 			{ "chance": 0.32, "name": "Piercing Light Synthetic Fiber Blueprint" },
 			{ "chance": 0.32, "name": "Wave of Light Polymer Syncytium Blueprint" }
 		],

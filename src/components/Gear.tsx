@@ -7,15 +7,16 @@ import RectangularBox from './RectangularBox';
 const CharacterList = () => {
 	const characterData = CharacterRawData as Characters;
 	const characterList = Object.keys(characterData);
-	return <div className="rectangular-box-grid">
-		{characterList.map((character) => (
-			<RectangularBox
-				title={character}
-				backgroundImage={characterData[character as keyof Characters].img}
-				outlineColor={'#FFF'}
-				items={characterData[character as keyof Characters].parts.map(part => {return {name: part.name, mats: part.mats}})}/>
-	))}
-	</div>
+	return <div>Character List Content (WIP)</div>
+	// return <div className="rectangular-box-grid">
+	// 	{characterList.map((character) => (
+	// 		<RectangularBox
+	// 			title={character}
+	// 			backgroundImage={characterData[character as keyof Characters].img}
+	// 			outlineColor={'#FFF'}
+	// 			items={characterData[character as keyof Characters].parts.map(part => {return {name: part.name, mats: part.mats}})}/>
+	// ))}
+	// </div>
 };
 const ComponentB = () => <div>Weapon List Content (WIP)</div>;
 

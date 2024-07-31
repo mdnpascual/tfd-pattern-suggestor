@@ -54,6 +54,8 @@ function SortableTable({ data }: { data: DataItem[] }) {
 				aItem = parseInt(a[orderBy].substring(-1))
 				bItem = parseInt(b[orderBy].substring(-1))
 			} else if (orderBy === 'name'){
+				aItem = (aItem as string).replace(" AA", "")
+				bItem = (bItem as string).replace(" AA", "")
 				aItem = parseInt(a[orderBy])
 				bItem = parseInt(b[orderBy])
 			}
