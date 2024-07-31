@@ -114,6 +114,8 @@ const PatternSuggestorComponent: React.FC = () => {
 				})
 			});
 
+			let withCollosusFilters = false;
+
 			// FILTER
 			let filteredFarmList: PatternCount[] = []
 			Object.entries(filters).forEach(([key, data]) => {
@@ -124,10 +126,9 @@ const PatternSuggestorComponent: React.FC = () => {
 					filteredFarmList = filteredFarmList.concat(newFarmList.filter((list) => list.dropsFrom.toLowerCase().includes(dataKeywordHard)))
 				}
 				if (key === 'Collosus' && data){
-					if(filteredFarmList.length === 0){
-						filteredFarmList = filteredFarmList.concat(newFarmList.filter((list) => list.useIn.toLowerCase().includes(dataKeywordCollosus)))
-					}
-					filteredFarmList = filteredFarmList.filter((list) => list.useIn.toLowerCase().includes(dataKeywordCollosus))
+					withCollosusFilters = true;
+					const collosusOnly = newFarmList.filter((list) => list.useIn.toLowerCase().includes(dataKeywordCollosus));
+					filteredFarmList = filteredFarmList.concat(collosusOnly);
 				}
 				if (key === 'Sharen Exclusive' && data){
 					if(filteredFarmList.length === 0){
@@ -151,14 +152,21 @@ const PatternSuggestorComponent: React.FC = () => {
 			});
 
 			// FILTER COLLOSUS
-			Object.entries(collosusFilters).forEach(([key, data]) => {
-				if (!data) {
+			if (withCollosusFilters) {
+				Object.entries(collosusFilters).forEach(([key, data]) => {
+
 					const keyLowerCase = key.toLowerCase();
-					filteredFarmList = filteredFarmList.filter((list) =>
-						!list.useIn.toLowerCase().includes(keyLowerCase)
-					);
-				}
-			});
+					const specificCollosusOnly = newFarmList.filter((list) => list.useIn.toLowerCase().includes(keyLowerCase));
+					if (data) {
+						filteredFarmList = filteredFarmList.concat(specificCollosusOnly);
+					} else {
+						filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes(keyLowerCase));
+					}
+				});
+			}
+
+			// UNIQUE
+			filteredFarmList = Array.from(new Set(filteredFarmList));
 
 			// SORT
 			filteredFarmList = filteredFarmList.sort((a: PatternCount, b: PatternCount) => {
@@ -186,7 +194,7 @@ const PatternSuggestorComponent: React.FC = () => {
 				return (a.priorityScore - b.priorityScore) * -1;
 			})
 
-			setFarmList(Array.from(new Set(filteredFarmList)))
+			setFarmList(filteredFarmList)
 		})
 	}, [selectedItems, priorities, collosusFilters, filters]);
 

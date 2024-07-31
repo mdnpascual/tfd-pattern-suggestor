@@ -693,7 +693,7 @@
 			{ "chance": 0.32, "name": "Secret Garden Blueprint" }
 		],
 		"dropsFrom": "Kingston (Hard) - Fallen Theater: Vulgus Strategic Outpost",
-		"useIn": "Kingston (Hard) - Kingston Grand Square: Void Fusion Reactor"
+		"useIn": "Kingston (Hard) - Grand Square: Void Fusion Reactor"
 	},
 	"055 AA": {
 		"drops": [
@@ -704,7 +704,7 @@
 			{ "chance": 0.32, "name": "Ultimate Valby Stabilizer Blueprint" }
 		],
 		"dropsFrom": "Kingston (Hard) - Fallen Theater: Vulgus Strategic Outpost (Successful Infiltration)",
-		"useIn": "Kingston (Hard) - Kingston Grand Square: Void Fusion Reactor"
+		"useIn": "Kingston (Hard) - Grand Square: Void Fusion Reactor"
 	},
 	"056": {
 		"drops": [
@@ -853,7 +853,7 @@
 			{ "chance": 0.32, "name": "Luna Stabilizer Blueprint" }
 		],
 		"dropsFrom": "Sterile Land (Hard) - Unknown Laboratory",
-		"useIn": "Void Intercept Battle (Hard): Dead Bride"
+		"useIn": "Void Intercept Battle (Hard): Dead Bride, Gluttony"
 	},
 	"069": {
 		"drops": [
@@ -1160,7 +1160,7 @@
 			{ "chance": 0.32, "name": "Blue Beetle Synthetic Fiber Blueprint" }
 		],
 		"dropsFrom": "Agna Desert (Hard) - The Asylum",
-		"useIn": "Void Intercept Battle (Hard): Swamp Walker"
+		"useIn": "Void Intercept Battle (Hard): Swamp Walker, Gluttony"
 	},
 	"095": {
 		"drops": [
@@ -1400,7 +1400,7 @@
 			{ "chance": 0.32, "name": "Wave of Light Blueprint" }
 		],
 		"dropsFrom": "White-night Gulch (Hard) - Mystery's End",
-		"useIn": "Void Intercept Battle (Hard): Frost Walker"
+		"useIn": "Void Intercept Battle (Hard): Frost Walker, Gluttony"
 	},
 	"116": {
 		"drops": [
@@ -1516,7 +1516,7 @@
 			{ "chance": 0.32, "name": "Wave of Light Polymer Syncytium Blueprint" }
 		],
 		"dropsFrom": "Fortress (Hard) - Quarantine Zone",
-		"useIn": "Void Intercept Battle (Hard): Molten Fortress"
+		"useIn": "Void Intercept Battle (Hard): Molten Fortress, Gluttony"
 	},
 	"126": {
 		"drops": [

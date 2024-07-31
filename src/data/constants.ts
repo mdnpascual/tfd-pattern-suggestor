@@ -20,7 +20,8 @@ export const collosusOptions: FilterProps[] = [
 	{label: 'Hanged Man', tooltip: "Only Show Patterns useable by beating Hanged Man"},
 	{label: 'Obstructer', tooltip: "Only Show Patterns useable by beating Obstructer"},
 	{label: 'Frost Walker', tooltip: "Only Show Patterns useable by beating Frost Walker"},
-	{label: 'Molten Fortress', tooltip: "Only Show Patterns useable by beating Molten Fortress"}
+	{label: 'Molten Fortress', tooltip: "Only Show Patterns useable by beating Molten Fortress"},
+	{label: 'Gluttony', tooltip: "Only Show Patterns useable by beating Gluttony"}
 ]
 
 export interface VoidFusionLocations {

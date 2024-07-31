@@ -15,7 +15,7 @@ interface CheckboxFilterProps {
 const CheckboxFilter: React.FC<CheckboxFilterProps> = ({ labels, defaultTrue, localStorageName, onChange }) => {
 	const [selectedFilters, setSelectedFilters] = useState<Record<string, boolean>>(
 	labels.reduce((acc, label) => ({ ...acc, [label.label]: defaultTrue.includes(label.label) ? true : false }), {})
-	);
+);
 
 	// Load selections from local storage when the component mounts
 	useEffect(() => {
