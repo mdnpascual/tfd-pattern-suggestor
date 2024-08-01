@@ -7,9 +7,12 @@ interface RectangularBoxProps {
 	backgroundImage: string;
 	outlineColor: string;
 	items: GearPart[];
+	xOffset: number;
+	yOffset: number;
+	onSelect: (title: string) => void;
 }
 
-const RectangularBox: React.FC<RectangularBoxProps> = ({ title, backgroundImage, outlineColor, items }) => {
+const RectangularBox: React.FC<RectangularBoxProps> = ({ title, backgroundImage, outlineColor, items, xOffset, yOffset, onSelect }) => {
 	const [hovered, setHovered] = useState(false);
 
 	return (
@@ -17,10 +20,13 @@ const RectangularBox: React.FC<RectangularBoxProps> = ({ title, backgroundImage,
 			className="rectangular-box"
 			style={{
 				backgroundImage: `url(${backgroundImage})`,
-				borderColor: outlineColor
+				borderColor: outlineColor,
+				backgroundPositionX: xOffset + 'px',
+				backgroundPositionY: yOffset + 'px'
 			}}
 			onMouseEnter={() => setHovered(true)}
-			onMouseLeave={() => setHovered(false)}>
+			onMouseLeave={() => setHovered(false)}
+			onClick={() => onSelect(title)}>
 			<div className="title">{title}</div>
 				{hovered && (
 					<div className="rectangular-overlay">

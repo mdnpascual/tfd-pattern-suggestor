@@ -9,7 +9,7 @@ export interface Item {
 
 interface MultiSelectListProps {
 	startingItems: Item[];
-	onChange: (selectedLabels: string[], labelPriority: number[]) => void; // Callback to pass labels instead of IDs
+	onChange: (selectedLabels: string[], labelPriority: number[]) => void;
 }
 
 const maxPriority = 1000;

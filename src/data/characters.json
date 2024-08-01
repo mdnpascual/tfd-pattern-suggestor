@@ -21,7 +21,9 @@
 			]},
 			{ "name": "Gley Code", "mats": [{ "name": "Gley Code", "quantity": 1 }]}
 		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/gley.png"
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/gley.png",
+		"xOffset": 0,
+		"yOffset": -100
 	},
 	"Jayber": {
 		"parts": [
@@ -45,7 +47,9 @@
 			]},
 			{ "name": "Jayber Code", "mats": [{ "name": "Jayber Code", "quantity": 1 }]}
 		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/jayber.png"
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/jayber.png",
+		"xOffset": 0,
+		"yOffset": -100
 	},
 	"Lepic": {
 		"parts": [
@@ -69,7 +73,9 @@
 			]},
 			{ "name": "Lepic Code", "mats": [{ "name": "Lepic Code", "quantity": 1 }]}
 		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/lepic.png"
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/lepic.png",
+		"xOffset": 0,
+		"yOffset": -100
 	},
 	"Viessa": {
 		"parts": [
@@ -93,7 +99,9 @@
 			]},
 			{ "name": "Viessa Code", "mats": [{ "name": "Viessa Code", "quantity": 1 }]}
 		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/viessa.png"
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/viessa.png",
+		"xOffset": 0,
+		"yOffset": -150
 	},
 	"Ajax": {
 		"parts": [
@@ -117,7 +125,9 @@
 			]},
 			{ "name": "Ajax Code", "mats": [{ "name": "Ajax Code", "quantity": 1 }]}
 		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ajax.png"
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ajax.png",
+		"xOffset": 0,
+		"yOffset": -100
 	},
 	"Ultimate Lepic": {
 		"parts": [
@@ -141,7 +151,9 @@
 			]},
 			{ "name": "Ultimate Lepic Code", "mats": [{ "name": "Ultimate Lepic Code", "quantity": 1 }]}
 		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimatelepic.png"
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimatelepic.png",
+		"xOffset": 0,
+		"yOffset": -90
 	},
 	"Valby": {
 		"parts": [
@@ -165,7 +177,9 @@
 			]},
 			{ "name": "Valby Code", "mats": [{ "name": "Valby Code", "quantity": 1 }]}
 		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/valby.png"
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/valby.png",
+		"xOffset": 0,
+		"yOffset": -110
 	},
 	"Kyle": {
 		"parts": [
@@ -189,7 +203,9 @@
 			]},
 			{ "name": "Kyle Code", "mats": [{ "name": "Kyle Code", "quantity": 1 }]}
 		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/kyle.png"
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/kyle.png",
+		"xOffset": 0,
+		"yOffset": -110
 	},
 	"Ultimate Viessa": {
 		"parts": [
@@ -213,7 +229,9 @@
 			]},
 			{ "name": "Ultimate Viessa Code", "mats": [{ "name": "Ultimate Viessa Code", "quantity": 1 }]}
 		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimateviessa.png"
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimateviessa.png",
+		"xOffset": 0,
+		"yOffset": -70
 	},
 	"Yujin": {
 		"parts": [
@@ -237,7 +255,9 @@
 			]},
 			{ "name": "Yujin Code", "mats": [{ "name": "Yujin Code", "quantity": 1 }]}
 		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/yujin.png"
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/yujin.png",
+		"xOffset": 0,
+		"yOffset": -90
 	},
 	"Ultimate Gley": {
 		"parts": [
@@ -261,7 +281,9 @@
 			]},
 			{ "name": "Ultimate Gley Code", "mats": [{ "name": "Ultimate Gley Code", "quantity": 1 }]}
 		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimategley.png"
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimategley.png",
+		"xOffset": 0,
+		"yOffset": -90
 	},
 	"Enzo": {
 		"parts": [
@@ -285,7 +307,9 @@
 			]},
 			{ "name": "Enzo Code", "mats": [{ "name": "Enzo Code", "quantity": 1 }]}
 		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/enzo.png"
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/enzo.png",
+		"xOffset": 0,
+		"yOffset": -90
 	},
 	"Ultimate Bunny": {
 		"parts": [
@@ -309,7 +333,9 @@
 			]},
 			{ "name": "Ultimate Bunny Code", "mats": [{ "name": "Ultimate Bunny Code", "quantity": 1 }]}
 		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimatebunny.png"
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimatebunny.png",
+		"xOffset": 0,
+		"yOffset": -90
 	},
 	"Esiemo": {
 		"parts": [
@@ -333,7 +359,9 @@
 			]},
 			{ "name": "Esiemo Code", "mats": [{ "name": "Esiemo Code", "quantity": 1 }]}
 		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/esiemo.png"
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/esiemo.png",
+		"xOffset": 0,
+		"yOffset": -90
 	},
 	"Ultimate Ajax": {
 		"parts": [
@@ -357,30 +385,93 @@
 			]},
 			{ "name": "Ultimate Ajax Code", "mats": [{ "name": "Ultimate Ajax Code", "quantity": 1 }]}
 		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimateajax.png"
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimateajax.png",
+		"xOffset": 0,
+		"yOffset": -100
+	},
+	"Luna": {
+		"parts": [
+			{ "name": "Luna Enhanced Cells", "mats": [
+				{ "name": "Silicon", "quantity": 430 },
+				{ "name": "Carbon Crystal", "quantity": 554 },
+				{ "name": "Pure Energy Residue", "quantity": 40 },
+				{ "name": "Luna Enhanced Cells Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Luna Stabilizer", "mats": [
+				{ "name": "Flectorite", "quantity": 292 },
+				{ "name": "Hellion", "quantity": 303 },
+				{ "name": "Highly-concentrated Energy Residue", "quantity": 34 },
+				{ "name": "Luna Stabilizer Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Luna Spiral Catalyst", "mats": [
+				{ "name": "Superfluid", "quantity": 571 },
+				{ "name": "Hardener", "quantity": 386 },
+				{ "name": "Specialized Biometal", "quantity": 46 },
+				{ "name": "Luna Spiral Catalyst Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Luna Code", "mats": [{ "name": "Luna Code", "quantity": 1 }]}
+		],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/luna.png",
+		"xOffset": 0,
+		"yOffset": -90
+	},
+	"Ultimate Valby": {
+		"parts": [
+			{ "name": "Ultimate Valby Enhanced Cells", "mats": [
+				{ "name": "Repton", "quantity": 949 },
+				{ "name": "Compound Coating Material", "quantity": 538 },
+				{ "name": "Conductive Mettalic Foil", "quantity": 75 },
+				{ "name": "Ultimate Valby Enhanced Cells Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Valby Stabilizer", "mats": [
+				{ "name": "Silicon", "quantity": 969 },
+				{ "name": "Hellion", "quantity": 682 },
+				{ "name": "Heat Plasma Battery", "quantity": 166 },
+				{ "name": "Ultimate Valby Stabilizer Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Valby Spiral Catalyst", "mats": [
+				{ "name": "Monad Shard", "quantity": 554 },
+				{ "name": "Semi-permanent Plasma", "quantity": 652 },
+				{ "name": "Macromolecule Biogel", "quantity": 242 },
+				{ "name": "Ultimate Valby Spiral Catalyst Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Ultimate Valby Code", "mats": [{ "name": "Ultimate Valby Code", "quantity": 1 }]}
+		],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimatevalby.png",
+		"xOffset": 0,
+		"yOffset": -100
 	},
 	"Bunny": { "parts": [
 		{ "name": "Bunny Enhanced Cells", "mats": []},
 		{ "name": "Bunny Stabilizer", "mats": []},
 		{ "name": "Bunny Spiral Catalyst", "mats": []},
 		{ "name": "Bunny Code", "mats": []}
-	], "img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/bunny.png" },
+	],
+		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/bunny.png",
+		"xOffset": 0,
+		"yOffset": -70 },
 	"Freyna": { "parts": [
 		{ "name": "Freyna Enhanced Cells", "mats": []},
 		{ "name": "Freyna Stabilizer", "mats": []},
 		{ "name": "Freyna Spiral Catalyst", "mats": []},
 		{ "name": "Freyna Code", "mats": []}
-	], "img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/freyna.png" },
+	], "img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/freyna.png",
+		"xOffset": 0,
+		"yOffset": -80 },
 	"Sharen": { "parts": [
 		{ "name": "Sharen Enhanced Cells", "mats": []},
 		{ "name": "Sharen Stabilizer", "mats": []},
 		{ "name": "Sharen Spiral Catalyst", "mats": []},
 		{ "name": "Sharen Code", "mats": []}
-	], "img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/sharen.png" },
+	], "img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/sharen.png",
+		"xOffset": 0,
+		"yOffset": -80 },
 	"Blair": { "parts": [
 		{ "name": "Blair Enhanced Cells", "mats": []},
 		{ "name": "Blair Stabilizer", "mats": []},
 		{ "name": "Blair Spiral Catalyst", "mats": []},
 		{ "name": "Blair Code", "mats": []}
-	], "img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/blair.png" }
+	], "img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/blair.png",
+		"xOffset": 0,
+		"yOffset": -100 }
 }

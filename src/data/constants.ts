@@ -103,6 +103,8 @@ export interface Characters {
 interface GearProp {
 	"parts": GearPart[];
 	"img": string;
+	"xOffset": number;
+	"yOffset": number;
 }
 
 export interface GearPart {
