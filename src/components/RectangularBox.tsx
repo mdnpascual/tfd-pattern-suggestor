@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
 import '../App.css'; // Assume CSS is defined here
 import { GearPart } from '../data/constants';
+import { Button } from '@mui/material';
 
 interface RectangularBoxProps {
 	title: string;
 	backgroundImage: string;
 	outlineColor: string;
-	items: GearPart[];
 	xOffset: number;
 	yOffset: number;
 	onSelect: (title: string) => void;
+	onOwned: (title: string) => void;
 }
 
-const RectangularBox: React.FC<RectangularBoxProps> = ({ title, backgroundImage, outlineColor, items, xOffset, yOffset, onSelect }) => {
+const RectangularBox: React.FC<RectangularBoxProps> = ({
+	title,
+	backgroundImage,
+	outlineColor,
+	xOffset,
+	yOffset,
+	onSelect,
+	onOwned
+}) => {
 	const [hovered, setHovered] = useState(false);
 
 	return (
@@ -28,18 +37,11 @@ const RectangularBox: React.FC<RectangularBoxProps> = ({ title, backgroundImage,
 			onMouseLeave={() => setHovered(false)}
 			onClick={() => onSelect(title)}>
 			<div className="title">{title}</div>
-				{hovered && (
-					<div className="rectangular-overlay">
-					{items.map((item, index) => (
-						<div key={index} className="rectangular-item">
-						<strong>{item.name}</strong>
-						<ul>
-							{item.mats?.map((mat, idx) => (
-							<li key={idx}>{mat.name}: {mat.quantity}</li>
-							))}
-						</ul>
-						</div>
-					))}
+			{hovered && (
+			<div className="rectangular-overlay">
+				<Button variant="contained" color="secondary" onClick={(e) => {e.stopPropagation(); onOwned(title)}}>
+					✅ Owned
+				</Button>
 			</div>
 		)}
 		</div>

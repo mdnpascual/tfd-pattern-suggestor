@@ -31,7 +31,7 @@ const MaterialPlanner: React.FC<MaterialPlannerProps> = ({
 	const [quantities, setQuantities] = useState<{[key: string]: number}>(() => {
 		return parts.reduce((acc, part) => {
 			part.mats?.forEach(mat => {
-			acc[mat.name] = initialCount * mat.quantity; // Initialize quantities based on initialCount
+			acc[mat.name] = initialCount * mat.quantity;
 			});
 			return acc;
 		}, {} as {[key: string]: number});
@@ -68,10 +68,10 @@ const MaterialPlanner: React.FC<MaterialPlannerProps> = ({
 			</Box>
 			))}
 			<Button variant="contained" color="primary" onClick={onPriorityChange} sx={{ mr: 1 }}>
-			🌟 Set Priority
+			🌟 Prioritize
 			</Button>
 			<Button variant="contained" color="secondary" onClick={() => parts.forEach(part => part.mats?.forEach(mat => onOwnershipToggle(mat.name)))}>
-			✅ Own All
+			✅ Owned
 			</Button>
 		</Box>
 	);

@@ -5,29 +5,35 @@ import { Characters } from '../data/constants';
 import RectangularBox from './RectangularBox';
 import { useState } from 'react';
 import MaterialPlanner from './MaterialPlanner';
+import { Typography } from '@mui/material';
 
 const CharacterList = () => {
 	const [selected, setSelected] = useState<string>('');
 
 	const characterData = CharacterRawData as Characters;
-	const characterList = Object.keys(characterData);
+	const characterList = Object.keys(characterData).sort();
 
 	const handleSelected = (item: string) => {
 		setSelected(item)
 	};
 
-	const handleQuantityChange = (itemName: string, newQuantity: number) => {
+	const handleOwned = (item: string) => {
+		// TODO
+	};
 
+	const handleQuantityChange = (itemName: string, newQuantity: number) => {
+		// TODO
 	}
 	const handlePriorityChange = () => {
-
+		// TODO
 	}
 	const handleOwnershipToggle = (itemName: string) => {
-
+		// TODO
 	}
 
 	// return <div>Character List Content (WIP)</div>
 	return <div className="rectangular-box-grid">
+		<Typography variant="h3" sx={{ mb: 2 }}>WIP WIP WIP</Typography>
 		{characterList.map((character) => (
 			<div>
 				{selected === character && (
@@ -46,10 +52,10 @@ const CharacterList = () => {
 						title={character}
 						backgroundImage={characterData[character as keyof Characters].img}
 						outlineColor={'#FFF'}
-						items={characterData[character as keyof Characters].parts.map(part => {return {name: part.name, mats: part.mats}})}
 						xOffset={characterData[character as keyof Characters].xOffset}
 						yOffset={characterData[character as keyof Characters].yOffset}
-						onSelect={handleSelected}/>
+						onSelect={handleSelected}
+						onOwned={handleOwned}/>
 				</div>
 			</div>
 		))}
