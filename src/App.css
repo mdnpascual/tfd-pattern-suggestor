@@ -50,7 +50,7 @@
 .sidebar button {
   all: unset;
   cursor: pointer;
-  padding: 5px 10px;
+  padding: 0px 0px;
   color: #fff;
   display: block;
   text-align: left;
@@ -92,14 +92,14 @@
 
 .rectangular-box-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 10px;
   padding: 10px;
 }
 
 .rectangular-box {
-  width: 300px;
-  height: 100px;
+  width: 200px;
+  height: 130px;
   border: 2px solid black;
   position: relative;
   overflow: hidden;

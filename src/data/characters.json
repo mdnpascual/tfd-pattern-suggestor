@@ -22,8 +22,8 @@
 			{ "name": "Gley Code", "mats": [{ "name": "Gley Code", "quantity": 1 }]}
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/gley.png",
-		"xOffset": 0,
-		"yOffset": -100
+		"xOffset": 10,
+		"yOffset": -40
 	},
 	"Jayber": {
 		"parts": [
@@ -48,8 +48,8 @@
 			{ "name": "Jayber Code", "mats": [{ "name": "Jayber Code", "quantity": 1 }]}
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/jayber.png",
-		"xOffset": 0,
-		"yOffset": -100
+		"xOffset": 10,
+		"yOffset": -40
 	},
 	"Lepic": {
 		"parts": [
@@ -74,8 +74,8 @@
 			{ "name": "Lepic Code", "mats": [{ "name": "Lepic Code", "quantity": 1 }]}
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/lepic.png",
-		"xOffset": 0,
-		"yOffset": -100
+		"xOffset": 10,
+		"yOffset": -35
 	},
 	"Viessa": {
 		"parts": [
@@ -100,8 +100,8 @@
 			{ "name": "Viessa Code", "mats": [{ "name": "Viessa Code", "quantity": 1 }]}
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/viessa.png",
-		"xOffset": 0,
-		"yOffset": -150
+		"xOffset": 5,
+		"yOffset": -55
 	},
 	"Ajax": {
 		"parts": [
@@ -127,7 +127,7 @@
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ajax.png",
 		"xOffset": 0,
-		"yOffset": -100
+		"yOffset": -25
 	},
 	"Ultimate Lepic": {
 		"parts": [
@@ -152,8 +152,8 @@
 			{ "name": "Ultimate Lepic Code", "mats": [{ "name": "Ultimate Lepic Code", "quantity": 1 }]}
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimatelepic.png",
-		"xOffset": 0,
-		"yOffset": -90
+		"xOffset": 5,
+		"yOffset": -30
 	},
 	"Valby": {
 		"parts": [
@@ -178,8 +178,8 @@
 			{ "name": "Valby Code", "mats": [{ "name": "Valby Code", "quantity": 1 }]}
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/valby.png",
-		"xOffset": 0,
-		"yOffset": -110
+		"xOffset": 10,
+		"yOffset": -40
 	},
 	"Kyle": {
 		"parts": [
@@ -205,7 +205,7 @@
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/kyle.png",
 		"xOffset": 0,
-		"yOffset": -110
+		"yOffset": -40
 	},
 	"Ultimate Viessa": {
 		"parts": [
@@ -230,8 +230,8 @@
 			{ "name": "Ultimate Viessa Code", "mats": [{ "name": "Ultimate Viessa Code", "quantity": 1 }]}
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimateviessa.png",
-		"xOffset": 0,
-		"yOffset": -70
+		"xOffset": 5,
+		"yOffset": -30
 	},
 	"Yujin": {
 		"parts": [
@@ -257,7 +257,7 @@
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/yujin.png",
 		"xOffset": 0,
-		"yOffset": -90
+		"yOffset": -30
 	},
 	"Ultimate Gley": {
 		"parts": [
@@ -282,8 +282,8 @@
 			{ "name": "Ultimate Gley Code", "mats": [{ "name": "Ultimate Gley Code", "quantity": 1 }]}
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimategley.png",
-		"xOffset": 0,
-		"yOffset": -90
+		"xOffset": 5,
+		"yOffset": -30
 	},
 	"Enzo": {
 		"parts": [
@@ -308,8 +308,8 @@
 			{ "name": "Enzo Code", "mats": [{ "name": "Enzo Code", "quantity": 1 }]}
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/enzo.png",
-		"xOffset": 0,
-		"yOffset": -90
+		"xOffset": 20,
+		"yOffset": -35
 	},
 	"Ultimate Bunny": {
 		"parts": [
@@ -334,8 +334,8 @@
 			{ "name": "Ultimate Bunny Code", "mats": [{ "name": "Ultimate Bunny Code", "quantity": 1 }]}
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimatebunny.png",
-		"xOffset": 0,
-		"yOffset": -90
+		"xOffset": 5,
+		"yOffset": -30
 	},
 	"Esiemo": {
 		"parts": [
@@ -360,8 +360,8 @@
 			{ "name": "Esiemo Code", "mats": [{ "name": "Esiemo Code", "quantity": 1 }]}
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/esiemo.png",
-		"xOffset": 0,
-		"yOffset": -90
+		"xOffset": 5,
+		"yOffset": -30
 	},
 	"Ultimate Ajax": {
 		"parts": [
@@ -386,8 +386,8 @@
 			{ "name": "Ultimate Ajax Code", "mats": [{ "name": "Ultimate Ajax Code", "quantity": 1 }]}
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimateajax.png",
-		"xOffset": 0,
-		"yOffset": -100
+		"xOffset": 5,
+		"yOffset": -30
 	},
 	"Luna": {
 		"parts": [
@@ -413,7 +413,7 @@
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/luna.png",
 		"xOffset": 0,
-		"yOffset": -90
+		"yOffset": -40
 	},
 	"Ultimate Valby": {
 		"parts": [
@@ -438,8 +438,8 @@
 			{ "name": "Ultimate Valby Code", "mats": [{ "name": "Ultimate Valby Code", "quantity": 1 }]}
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimatevalby.png",
-		"xOffset": 0,
-		"yOffset": -100
+		"xOffset": 5,
+		"yOffset": -30
 	},
 	"Bunny": { "parts": [
 		{ "name": "Bunny Enhanced Cells", "mats": []},
@@ -449,7 +449,7 @@
 	],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/bunny.png",
 		"xOffset": 0,
-		"yOffset": -70 },
+		"yOffset": -25 },
 	"Freyna": { "parts": [
 		{ "name": "Freyna Enhanced Cells", "mats": []},
 		{ "name": "Freyna Stabilizer", "mats": []},
@@ -457,7 +457,7 @@
 		{ "name": "Freyna Code", "mats": []}
 	], "img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/freyna.png",
 		"xOffset": 0,
-		"yOffset": -80 },
+		"yOffset": -25 },
 	"Sharen": { "parts": [
 		{ "name": "Sharen Enhanced Cells", "mats": []},
 		{ "name": "Sharen Stabilizer", "mats": []},
@@ -465,7 +465,7 @@
 		{ "name": "Sharen Code", "mats": []}
 	], "img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/sharen.png",
 		"xOffset": 0,
-		"yOffset": -80 },
+		"yOffset": -30 },
 	"Blair": { "parts": [
 		{ "name": "Blair Enhanced Cells", "mats": []},
 		{ "name": "Blair Stabilizer", "mats": []},
@@ -473,5 +473,5 @@
 		{ "name": "Blair Code", "mats": []}
 	], "img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/blair.png",
 		"xOffset": 0,
-		"yOffset": -100 }
+		"yOffset": -30 }
 }

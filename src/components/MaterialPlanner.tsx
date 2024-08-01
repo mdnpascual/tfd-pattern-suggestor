@@ -49,19 +49,19 @@ const MaterialPlanner: React.FC<MaterialPlannerProps> = ({
 				<Typography variant="h6" sx={{ mb: 2 }}>{part.name}</Typography>
 				<Grid container spacing={2}>
 				{part.mats?.map(mat => (
-					<Grid item xs={4.1} key={mat.name}>
-					<Box display="flex" alignItems="center">
-						<TextField
-						label={mat.name}
-						type="number"
-						variant="outlined"
-						size="small"
-						value={stock.find(item => item.name === mat.name)?.stock || 0}
-						onChange={e => handleQuantityChange(mat.name, parseInt(e.target.value))}
-						sx={{ width: '200px', mr: 2 }}
-						/>
-						<Typography> / {quantities[mat.name]}</Typography>
-					</Box>
+					<Grid item xs={5} key={mat.name} sx={{maxWidth: '50%'}}>
+						<Box display="flex" alignItems="center" sx={{ width: '100%' }}>
+							<TextField
+							label={mat.name}
+							type="number"
+							variant="outlined"
+							size="small"
+							value={stock.find(item => item.name === mat.name)?.stock || 0}
+							onChange={e => handleQuantityChange(mat.name, parseInt(e.target.value))}
+							sx={{ width: '200px', mr: 2 }}
+							/>
+							<Typography sx={{ flexShrink: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}> / {quantities[mat.name]}</Typography>
+						</Box>
 					</Grid>
 				))}
 				</Grid>
