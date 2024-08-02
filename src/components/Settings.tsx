@@ -10,6 +10,7 @@ const SettingsComponent: React.FC = () => {
 			localStorage.setItem('selectedItems', '');
 			localStorage.setItem('selectedFilters', '');
 			localStorage.setItem('itemPriority', '');
+			localStorage.setItem('characterStatus', '');
 		}
 	};
 

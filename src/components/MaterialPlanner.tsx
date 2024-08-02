@@ -12,35 +12,38 @@ interface StockItem {
 }
 
 interface MaterialPlannerProps {
-	initialCount?: number;
+	title: string;
 	parts: GearPart[];
 	stock: StockItem[];
-	onQuantityChange: (itemName: string, newQuantity: number) => void;
+	onMatCountChange: (itemName: string, newCount: number) => void;
 	onPriorityChange: () => void;
-	onOwnershipToggle: (itemName: string) => void;
+	onOwned: (itemName: string) => void;
+	onQuantityChange?: (quantity: number) => void;
+	enableMultiple?: boolean;
+	initialQuantity?: number;
 }
 
 const MaterialPlanner: React.FC<MaterialPlannerProps> = ({
-	initialCount = 1,
+	title,
 	parts,
 	stock,
-	onQuantityChange,
+	onMatCountChange,
 	onPriorityChange,
-	onOwnershipToggle
+	onOwned,
+	onQuantityChange,
+	enableMultiple,
+	initialQuantity = 1
 }) => {
-	const [quantities, setQuantities] = useState<{[key: string]: number}>(() => {
-		return parts.reduce((acc, part) => {
-			part.mats?.forEach(mat => {
-			acc[mat.name] = initialCount * mat.quantity;
-			});
-			return acc;
-		}, {} as {[key: string]: number});
-	});
 
-	const handleQuantityChange = (name: string, quantity: number) => {
-		setQuantities(prev => ({ ...prev, [name]: quantity }));
-		onQuantityChange(name, quantity);
+	const handleMatCountChange = (name: string, newCount: number) => {
+		onMatCountChange(name, newCount);
 	};
+
+	const handleQuantityChange = (quantity: number) => {
+		if (onQuantityChange){
+			onQuantityChange(quantity);
+		}
+	}
 
 	return (
 		<Box sx={{ p: 2 }}>
@@ -49,30 +52,43 @@ const MaterialPlanner: React.FC<MaterialPlannerProps> = ({
 				<Typography variant="h6" sx={{ mb: 2 }}>{part.name}</Typography>
 				<Grid container spacing={2}>
 				{part.mats?.map(mat => (
-					<Grid item xs={5} key={mat.name} sx={{maxWidth: '50%'}}>
-						<Box display="flex" alignItems="center" sx={{ width: '100%' }}>
+					<Grid item xs={5} key={mat.name} sx={{maxWidth: "50%"}}>
+						<Box display="flex" alignItems="center" sx={{ width: "100%" }}>
 							<TextField
 							label={mat.name}
 							type="number"
 							variant="outlined"
 							size="small"
 							value={stock.find(item => item.name === mat.name)?.stock || 0}
-							onChange={e => handleQuantityChange(mat.name, parseInt(e.target.value))}
-							sx={{ width: '200px', mr: 2 }}
+							onChange={e => handleMatCountChange(mat.name, parseInt(e.target.value))}
+							sx={{ width: "200px", mr: 2 }}
 							/>
-							<Typography sx={{ flexShrink: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}> / {quantities[mat.name]}</Typography>
+							<Typography sx={{ flexShrink: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: 'ellipsis' }}> / {mat.quantity}</Typography>
 						</Box>
 					</Grid>
 				))}
 				</Grid>
 			</Box>
 			))}
-			<Button variant="contained" color="primary" onClick={onPriorityChange} sx={{ mr: 1 }}>
-			🌟 Prioritize
-			</Button>
-			<Button variant="contained" color="secondary" onClick={() => parts.forEach(part => part.mats?.forEach(mat => onOwnershipToggle(mat.name)))}>
-			✅ Owned
-			</Button>
+			<Box display="flex" alignItems="center"> {/* Ensures inline display of all child components */}
+				<Button variant="contained" color="primary" onClick={onPriorityChange} sx={{ mr: 1 }}>
+					🌟 Prioritize
+				</Button>
+				<Button variant="contained" color="secondary" onClick={(e) => {onOwned(title)}}>
+					✅ Owned
+				</Button>
+				{enableMultiple && (
+					<TextField
+					label="Quantity"
+					type="number"
+					variant="outlined"
+					size="small"
+					value={initialQuantity}
+					onChange={e => handleQuantityChange(parseInt(e.target.value))}
+					sx={{ width: '100px', ml: '10px' }} // Adjust margin if necessary
+					/>
+				)}
+			</Box>
 		</Box>
 	);
 };
