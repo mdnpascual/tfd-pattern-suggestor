@@ -112,9 +112,20 @@ export interface GearPart {
 	"mats"?: Material[];
 }
 
-interface Material {
+export interface Material {
 	"name": string;
 	"quantity": number;
+}
+
+export interface Pattern {
+	drops: DropList[],
+	dropsFrom: string,
+	useIn: string
+}
+
+export interface DropList {
+	chance: number,
+	name: string,
 }
 
 export const specOpsKeywords = [

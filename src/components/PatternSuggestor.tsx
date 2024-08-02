@@ -4,22 +4,23 @@ import MultiSelectList, { Item } from './MultiSelectList';
 import data from '../data/patterns.json';
 import voidFusionRawData from '../data/voidFusionReactorShards.json';
 import SortableTable from './SortableTable';
-import { specOpsKeywords, filterOptions, collosusOptions, dataKeywordCollosus, dataKeywordHard, dataKeywordNormal, dataKeywordSharen, dataKeywordVoidReactor, VoidFusionLocations } from '../data/constants';
+import {
+	specOpsKeywords,
+	filterOptions,
+	collosusOptions,
+	dataKeywordCollosus,
+	dataKeywordHard,
+	dataKeywordNormal,
+	dataKeywordSharen,
+	dataKeywordVoidReactor,
+	VoidFusionLocations,
+	Pattern,
+	DropList,
+} from "../data/constants";
 import CheckboxFilter from './CheckboxFilter';
 
 const voidFusionData = voidFusionRawData as VoidFusionLocations;
 const voidFusionLocations = Object.keys(voidFusionData);
-
-interface DropList {
-	chance: number,
-	name: string,
-}
-
-interface Pattern {
-	drops: DropList[],
-	dropsFrom: string,
-	useIn: string
-}
 
 let items: Item[] = []
 const patternData: Record<string, Pattern> = data;

@@ -11,6 +11,8 @@ const SettingsComponent: React.FC = () => {
 			localStorage.setItem('selectedFilters', '');
 			localStorage.setItem('itemPriority', '');
 			localStorage.setItem('characterStatus', '');
+			localStorage.setItem('materialCount', '');
+			localStorage.setItem('selectedCollossusFilters', '');
 		}
 	};
 
