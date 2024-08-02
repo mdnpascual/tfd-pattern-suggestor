@@ -8,6 +8,11 @@ import MaterialPlanner from './MaterialPlanner';
 import { Typography } from '@mui/material';
 
 const CharacterList = () => {
+	const savedCharacterStatus = localStorage.getItem('characterStatus');
+	let initialCharacterStatus: Record<string, boolean>;
+	if (savedCharacterStatus){
+		initialCharacterStatus = JSON.parse(savedCharacterStatus);
+	}
 	const [selected, setSelected] = useState<string>('');
 
 	const characterData = CharacterRawData as Characters;
@@ -15,7 +20,7 @@ const CharacterList = () => {
 	const characterList = Object.keys(characterData).sort();
 	const [characterStatus, setCharacterStatus] = useState<Record<string, boolean>>(
 		characterList.reduce((acc, character) => {
-			acc[character] = false;
+			acc[character] = initialCharacterStatus && character in initialCharacterStatus ? initialCharacterStatus[character] : false;
 			return acc;
 	}, {} as Record<string, boolean>));
 
