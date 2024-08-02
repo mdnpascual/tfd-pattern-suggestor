@@ -31,11 +31,14 @@ const CharacterList = () => {
 	let material: Material[] = []
 	Object.entries(characterData).forEach(([key, data]) => {
 		data.parts.forEach((part: GearPart) => {
+			material.push({name: part.name, quantity: 1})
 			part.mats?.forEach((mat: Material) => {
 				material.push(mat)
 			})
 		})
 	});
+
+	material = Array.from(new Set(material));
 
 	const materialList = material.map((item) => item.name).sort();
 	const [materialCount, setMaterialCount] = useState<Record<string, number>>(

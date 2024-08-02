@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
-import { AppBar, Tabs, Tab, CssBaseline  } from '@mui/material';
-import { ThemeProvider } from '@mui/material/styles';
+import { AppBar, Tabs, Tab, CssBaseline, useMediaQuery  } from '@mui/material';
+import { ThemeProvider, useTheme } from '@mui/material/styles';
 import darkTheme from './theme';
 import PatternSuggestorComponent from './components/PatternSuggestor';
 import InventoryComponent from './components/Inventory';
@@ -32,6 +32,8 @@ const App = () => {
 };
 
 const NavTabs = () => {
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 	const navigate = useNavigate();
 	const location = useLocation();
 	const tabNameToIndex = {
@@ -58,7 +60,10 @@ const NavTabs = () => {
 			<Tabs
 				value={indexToTabName[pathname] || 0}
 				onChange={handleTabChange}
-				centered
+				variant={isMobile ? "scrollable" : undefined}
+				scrollButtons="auto"
+				allowScrollButtonsMobile
+				centered={!isMobile}
 			>
 				<Tab label="Pattern Suggestor" />
 				<Tab label="Gear Inventory" />

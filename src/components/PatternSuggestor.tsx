@@ -230,11 +230,11 @@ const PatternSuggestorComponent: React.FC = () => {
 		<div style={{ width: '100%', display: 'flex', height: '100vh' }}>
 			<div style={{ flex: view === 'both' || view === 'left' ? 1 : 0, transition: 'flex 0.3s', overflow: 'auto', position: 'relative' }}>
 				{view !== 'right' && (
-				<Button onClick={toggleLeft} variant="contained" style={{ position: 'absolute', top: 0, right: 0, zIndex: 1 }}>
+				<Button onClick={toggleLeft} variant="contained" style={{ position: 'absolute', top: 0, right: 0, zIndex: 1000 }}>
 					{'<<'}
 				</Button>
 				)}
-				<Paper style={{ height: 'calc(100vh - 20px)', overflowY: 'auto' }}>
+				<Paper style={{ height: 'calc(100vh - 50px)', overflowY: 'auto' }}>
 					<MultiSelectList startingItems={items} onChange={handleChange} />
 				</Paper>
 			</div>
@@ -250,7 +250,7 @@ const PatternSuggestorComponent: React.FC = () => {
 					defaultTrue={['Normal', 'Hard']}
 					onChange={handleFilterChange} />
 				{('Collosus' in filters) && (!!filters.Collosus) && <CheckboxFilter labels={collosusOptions} localStorageName={'selectedCollossusFilters'} defaultTrue={collosusOptions.map((item) => item.label)} onChange={handleCollosusChange} />}
-				<Paper style={{ height: 'calc(100vh - 20px)', overflowY: 'auto' }}>
+				<Paper style={{ height: 'calc(100vh - 50px)', overflowY: 'auto' }}>
 					<SortableTable data={farmList.map((item, index) => {
 						return {
 							id: item.name,
