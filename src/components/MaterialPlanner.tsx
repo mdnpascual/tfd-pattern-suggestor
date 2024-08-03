@@ -40,7 +40,7 @@ const MaterialPlanner: React.FC<MaterialPlannerProps> = ({
 
 	const setColor = (current: number, goal: number, parts?: Material[]) => {
 		if (parts){
-			if (current < goal * initialQuantity) {
+			if (current < goal) {
 				const partsComplete = parts.every((part) => (stock[part.name] || 0) >= part.quantity)
 
 				if (partsComplete) return "#FFEB3B"
