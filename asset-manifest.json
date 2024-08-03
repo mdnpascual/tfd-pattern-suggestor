@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/tfd-pattern-suggestor/static/css/main.86c54a82.css",
-    "main.js": "/tfd-pattern-suggestor/static/js/main.3a6c6881.js",
+    "main.css": "/tfd-pattern-suggestor/static/css/main.1a6e8d14.css",
+    "main.js": "/tfd-pattern-suggestor/static/js/main.bb939d52.js",
     "static/js/453.8467bda7.chunk.js": "/tfd-pattern-suggestor/static/js/453.8467bda7.chunk.js",
     "index.html": "/tfd-pattern-suggestor/index.html",
-    "main.86c54a82.css.map": "/tfd-pattern-suggestor/static/css/main.86c54a82.css.map",
-    "main.3a6c6881.js.map": "/tfd-pattern-suggestor/static/js/main.3a6c6881.js.map",
+    "main.1a6e8d14.css.map": "/tfd-pattern-suggestor/static/css/main.1a6e8d14.css.map",
+    "main.bb939d52.js.map": "/tfd-pattern-suggestor/static/js/main.bb939d52.js.map",
     "453.8467bda7.chunk.js.map": "/tfd-pattern-suggestor/static/js/453.8467bda7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.86c54a82.css",
-    "static/js/main.3a6c6881.js"
+    "static/css/main.1a6e8d14.css",
+    "static/js/main.bb939d52.js"
   ]
 }
