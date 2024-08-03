@@ -11,8 +11,8 @@ interface RectangularBoxProps {
 	onSelect: (title: string) => void;
 	onOwned: (title: string) => void;
 	isDisabled?: boolean;
-	flipHorizontal?: boolean;
 	scale?: number;
+	disableOwnership?: boolean;
 }
 
 const RectangularBox: React.FC<RectangularBoxProps> = ({
@@ -23,8 +23,8 @@ const RectangularBox: React.FC<RectangularBoxProps> = ({
 	onSelect,
 	onOwned,
 	isDisabled,
-	flipHorizontal,
-	scale
+	scale,
+	disableOwnership
 }) => {
 	const [hovered, setHovered] = useState(false);
 
@@ -35,8 +35,8 @@ const RectangularBox: React.FC<RectangularBoxProps> = ({
 				borderColor: isDisabled ? "#6cfc8c" : "#fff",
 				borderWidth: '5px',
 			}}
-			onMouseEnter={() => setHovered(true)}
-			onMouseLeave={() => setHovered(false)}
+			onMouseEnter={() => !disableOwnership && setHovered(true)}
+			onMouseLeave={() => !disableOwnership && setHovered(false)}
 			onClick={() => !isDisabled && onSelect(title)}>
 
 			<div

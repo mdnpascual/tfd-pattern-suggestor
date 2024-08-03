@@ -1,5 +1,8 @@
 import React, { useState, ReactElement } from 'react';
 import '../App.css'
+import { Button } from '@mui/material';
+import GenerateSuggestion from '../utils/GenerateSuggestions';
+import { useNavigate } from 'react-router-dom';
 
 interface SidebarItem {
 	label: string;
@@ -14,6 +17,8 @@ interface PageWithSidebarProps {
 const PageWithSidebarComponent: React.FC<PageWithSidebarProps> = ({ items }) => {
 	const [sidebarOpen, setSidebarOpen] = useState(true);
 	const [activeIndex, setActiveIndex] = useState(0);
+	const navigate = useNavigate();
+
 
 	const toggleSidebar = () => {
 		setSidebarOpen(!sidebarOpen);
@@ -30,6 +35,11 @@ const PageWithSidebarComponent: React.FC<PageWithSidebarProps> = ({ items }) => 
 						{item.label}
 					</li>
 					))}
+					<li>
+						<Button id="diff-button" onClick={() => {GenerateSuggestion(); navigate('/patternSuggestor');}} variant="contained" color="primary" style={{ marginBottom: '10px' }}>
+							Generate Suggestion
+						</Button>
+					</li>
 				</ul>
 				)}
 			</div>

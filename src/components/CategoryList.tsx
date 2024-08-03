@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import MaterialPlanner from "./MaterialPlanner";
 import RectangularBox from "./RectangularBox";
-import { GearPart, Material } from "../data/constants";
+import { GearPart } from "../data/constants";
 
-interface CategoryData {
+export interface CategoryData {
 	img: string;
 	xOffset: number;
 	yOffset: number;
 	parts: Array<GearPart>;
-	flipHorizontal?: boolean;
 	scale?: number;
 }
 
@@ -16,15 +15,21 @@ interface CategoryListProps<T> {
 	data: Record<string, T>;
 	localStorageStatusKey: string;
 	localStorageMaterialKey: string;
+	preloadedData: any,
 	withQuantity?: boolean;
+	disableOwnership?: boolean;
 }
 
-function CategoryList<T extends CategoryData>({
+const defaultStartingQuantity = 5;
+
+const CategoryList = <T extends CategoryData>({
 	data,
 	localStorageStatusKey,
 	localStorageMaterialKey,
-	withQuantity
-}: CategoryListProps<T>) {
+	preloadedData,
+	withQuantity,
+	disableOwnership
+}: CategoryListProps<T>) => {
 
 	const [selected, setSelected] = useState<string>("");
 	const [categoryStatus, setCategoryStatus] = useState<Record<string, boolean>>({});
@@ -33,59 +38,13 @@ function CategoryList<T extends CategoryData>({
 	const [categoryData, setCategoryData] = useState<Record<string, T>>({});
 
 	useEffect(() => {
-		const savedCategoryStatus = localStorage.getItem(localStorageStatusKey);
-		const initialCategoryStatus: Record<string, boolean> = savedCategoryStatus
-			? JSON.parse(savedCategoryStatus)
-			: {};
-
-		const savedMaterialCount = localStorage.getItem(localStorageMaterialKey);
-		const initialMaterialCount: Record<string, number> = savedMaterialCount
-			? JSON.parse(savedMaterialCount)
-			: {};
-
-
-		const categoryDataCopy = data;
-		setCategoryData(categoryDataCopy);
-		const categoryListCopy = Object.keys(categoryDataCopy).sort();
-		setCategoryList(categoryListCopy);
-
-		setCategoryStatus(
-			categoryListCopy.reduce((acc, category) => {
-				acc[category] =
-				category in initialCategoryStatus
-					? initialCategoryStatus[category]
-					: false;
-				return acc;
-			},
-		{} as Record<string, boolean>))
-
-		let material: Material[] = [];
-		Object.entries(categoryDataCopy).forEach(([key, data]) => {
-			data.parts.forEach((part: GearPart) => {
-				material.push({ name: part.name, quantity: 1 });
-					part.mats?.forEach((mat: Material) => {
-				material.push(mat);
-				});
-			});
-		});
-
-		// With Quantity, include the parent Item
-		if (withQuantity) {
-			Object.entries(categoryDataCopy).forEach(([key, data]) => {
-				material.push({ name: key, quantity: 5 });
-			});
+		if(Object.keys(preloadedData).length > 0){
+			setCategoryStatus(preloadedData.categoryStatus)
+			setCategoryList(Object.keys(preloadedData.categoryStatus).sort())
+			setCategoryData(data)
+			setMaterialCount(preloadedData.materialCount)
 		}
-
-		material = Array.from(new Set(material.map((item) => JSON.stringify(item)))).map((item) => JSON.parse(item));
-		const materialList = material.map((item) => item.name).sort();
-		setMaterialCount(
-			materialList.reduce((acc, material) => {
-				acc[material] =
-				material in initialMaterialCount ? initialMaterialCount[material] : 0;
-				return acc;
-			}, {} as Record<string, number>)
-		)
-	}, []);
+	}, [preloadedData]);
 
 	const handleSelected = (item: string) => {
 		setSelected(item);
@@ -144,9 +103,10 @@ function CategoryList<T extends CategoryData>({
 									? (quantity) => handleQuantityChange(category, quantity)
 									: undefined}
 								initialQuantity={withQuantity
-									? materialCount[category] || 5
+									? materialCount[category] ?? defaultStartingQuantity
 									: undefined
 								}
+								disableOwnership={disableOwnership}
 							/>
 						</div>
 					)}
@@ -156,10 +116,10 @@ function CategoryList<T extends CategoryData>({
 						xOffset={categoryData[category].xOffset}
 						yOffset={categoryData[category].yOffset}
 						isDisabled={categoryStatus[category]}
-						flipHorizontal={categoryData[category].flipHorizontal}
 						scale={categoryData[category].scale}
 						onSelect={handleSelected}
 						onOwned={handleOwned}
+						disableOwnership={disableOwnership}
 					/>
 				</div>
 			))}

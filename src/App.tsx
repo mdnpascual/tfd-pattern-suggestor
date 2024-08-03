@@ -13,6 +13,10 @@ import StorageIcon from '@mui/icons-material/Storage';
 import ChecklistIcon from '@mui/icons-material/Checklist';
 
 const App = () => {
+	const savedSelectedItems = localStorage.getItem('selectedItems');
+	const landingPage = (savedSelectedItems?.length ?? 0) > 2
+		? "/patternSuggestor"
+		: "/gear";
 	return (
 		<ThemeProvider theme={darkTheme}>
 			<CssBaseline />
@@ -27,7 +31,7 @@ const App = () => {
 				<Route path="/gear" element={<GearComponent />} />
 				{/* <Route path="/inventory" element={<InventoryComponent />} /> */}
 				<Route path="/settings" element={<SettingsComponent />} />
-				<Route path="/" element={<Navigate replace to="/patternSuggestor" />} />
+				<Route path="/" element={<Navigate replace to={landingPage} />} />
 				</Routes>
 			</div>
 			</Router>
@@ -44,7 +48,7 @@ const NavTabs = () => {
 		0: "/patternSuggestor",
 		1: "/gear",
 		// 2: "/inventory",
-		3: "/settings",
+		2: "/settings",
 	};
 	const indexToTabName = {
 		"/patternSuggestor": 0,

@@ -14,6 +14,7 @@ const SettingsComponent: React.FC = () => {
 			localStorage.setItem('materialCount', '');
 			localStorage.setItem('selectedCollossusFilters', '');
 			localStorage.setItem('weaponStatus', '');
+			localStorage.setItem('enhancementStatus', '');
 		}
 	};
 

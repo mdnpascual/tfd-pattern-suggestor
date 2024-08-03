@@ -507,9 +507,9 @@
 			]},
 			{ "name": "Peace Maker Blueprint", "mats": [{ "name": "Peace Maker Blueprint", "quantity": 1 }]}
 		],
-		"img": "",
+		"img": "https://nxsvc.inface.nexon.com/meta-binary/d78fa4d509434b6a21a95f6cc87638fe",
 		"xOffset": -80,
-		"yOffset": 28,
+		"yOffset": 27,
 		"scale": 190
 	},
 	"Thunder Cage": {

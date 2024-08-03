@@ -1,0 +1,32 @@
+{
+	"Crystallization Catalyst": {
+		"parts": [
+			{ "name": "Crystallization Catalyst Recipe", "mats": [
+				{ "name": "Murky Energy Residue", "quantity": 8 },
+				{ "name": "Macromolecule Biogel", "quantity": 22 },
+				{ "name": "Mixed Energy Residue", "quantity": 8 },
+				{ "name": "Advanced Neural Circuit", "quantity": 18 },
+				{ "name": "Crystallization Catalyst Blueprint", "quantity": 1 }
+			]}
+		],
+		"img": "https://tfd.wiki/images/8/8f/Icon_Crystallization_Catalyst.png",
+		"xOffset": 40,
+		"yOffset": 25,
+		"scale": 60
+	},
+	"Energy Activator": {
+		"parts": [
+			{ "name": "Energy Activator Recipe", "mats": [
+				{ "name": "Low-Carbon Activator", "quantity": 55 },
+				{ "name": "Conductive Metallic Foil", "quantity": 25 },
+				{ "name": "Heat Plasma Battery", "quantity": 55 },
+				{ "name": "Polyatomic Ion Particle", "quantity": 72 },
+				{ "name": "Energy Activator Blueprint", "quantity": 1 }
+			]}
+		],
+		"img": "http://tfd.wiki/images/b/b2/Icon_Energy_Activators.png",
+		"xOffset": 50,
+		"yOffset": 35,
+		"scale": 50
+	}
+}

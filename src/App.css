@@ -42,7 +42,7 @@
   color: #fff;
 }
 
-.sidebar button {
+.sidebar button:not(#diff-button) {
   all: unset;
   cursor: pointer;
   padding: 0px 0px;
