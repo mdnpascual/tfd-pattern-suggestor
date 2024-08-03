@@ -481,9 +481,9 @@
 			{ "name": "Clairvoyance Blueprint", "mats": [{ "name": "Clairvoyance Blueprint", "quantity": 1 }]}
 		],
 		"img": "https://tfd.wiki/images/2/21/Clairvoyance.png?20240617182524",
-		"xOffset": -80,
-		"yOffset": 28,
-		"scale": 190
+		"xOffset": -48,
+		"yOffset": 40,
+		"scale": 145
 	},
 	"Peace Maker": {
 		"parts": [
