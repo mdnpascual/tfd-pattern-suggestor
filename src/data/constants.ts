@@ -100,11 +100,36 @@ export interface Characters {
 	"Blair": GearProp;
 }
 
+export interface Weapons {
+	"Smithereens": GearProp;
+	"Greg\u0027s Reversed Fate": GearProp;
+	"Blue Beetle": GearProp;
+	"Restored Relic": GearProp;
+	"Divine Punishment": GearProp;
+	"The Final Masterpiece": GearProp;
+	"Nazeistra\u0027s Devotion": GearProp;
+	"Perforator": GearProp;
+	"Executor": GearProp;
+	"Python": GearProp;
+	"Enduring Legacy": GearProp;
+	"Albion Cavalry Gun": GearProp;
+	"Secret Garden": GearProp;
+	"Wave of Light": GearProp;
+	"Afterflow Sword": GearProp;
+	"Piercing Light": GearProp;
+	"King\u0027s Guard Lance": GearProp;
+	"Thunder Cage": GearProp;
+	"The Last Dagger": GearProp;
+	"Fallen Hope": GearProp;
+}
+
 interface GearProp {
 	"parts": GearPart[];
 	"img": string;
 	"xOffset": number;
 	"yOffset": number;
+	"flipHorizontal"?: boolean;
+	"scale"?: number;
 }
 
 export interface GearPart {

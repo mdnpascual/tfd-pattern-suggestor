@@ -11,6 +11,8 @@ interface RectangularBoxProps {
 	onSelect: (title: string) => void;
 	onOwned: (title: string) => void;
 	isDisabled?: boolean;
+	flipHorizontal?: boolean;
+	scale?: number;
 }
 
 const RectangularBox: React.FC<RectangularBoxProps> = ({
@@ -20,7 +22,9 @@ const RectangularBox: React.FC<RectangularBoxProps> = ({
 	yOffset,
 	onSelect,
 	onOwned,
-	isDisabled
+	isDisabled,
+	flipHorizontal,
+	scale
 }) => {
 	const [hovered, setHovered] = useState(false);
 
@@ -28,15 +32,41 @@ const RectangularBox: React.FC<RectangularBoxProps> = ({
 		<div
 			className="rectangular-box"
 			style={{
-				backgroundImage: `url(${backgroundImage})`,
 				borderColor: isDisabled ? "#6cfc8c" : "#fff",
 				borderWidth: '5px',
-				backgroundPositionX: xOffset + 'px',
-				backgroundPositionY: yOffset + 'px'
 			}}
 			onMouseEnter={() => setHovered(true)}
 			onMouseLeave={() => setHovered(false)}
 			onClick={() => !isDisabled && onSelect(title)}>
+
+			<div
+				style={{
+					content: '""',
+					position: 'absolute',
+					top: 0,
+					left: 0,
+					right: 0,
+					bottom: 0,
+					backgroundColor: '#fff', // White base background
+					zIndex: -2
+				}}
+				/>
+
+				<div
+				style={{
+					position: 'absolute',
+					top: 0,
+					left: 0,
+					right: 0,
+					bottom: 0,
+					backgroundImage: `url(${backgroundImage})`,
+					backgroundPositionX: `${xOffset}px`,
+					backgroundPositionY: `${yOffset}px`,
+					backgroundSize: scale ? `${scale}%` : 'cover',
+					backgroundRepeat: 'no-repeat',
+					zIndex: -1
+				}}
+			/>
 			{isDisabled && (
 				<Box sx={{
 					position: 'absolute',
@@ -48,7 +78,7 @@ const RectangularBox: React.FC<RectangularBoxProps> = ({
 					justifyContent: 'center',
 					alignItems: 'center',
 					backgroundColor: 'rgba(255, 255, 255, 0.5)'
-					}}>
+				}}>
 					<CheckCircleOutlineIcon sx={{ fontSize: 100, color: '#6cfc8c' }} />
 				</Box>
 			)}
@@ -56,8 +86,10 @@ const RectangularBox: React.FC<RectangularBoxProps> = ({
 			{hovered && (
 			<div className="rectangular-overlay">
 				<Button variant="contained" color="secondary" onClick={(e) => {onOwned(title); e.stopPropagation();}}>
-					{isDisabled && ('❌ Unown')}
-					{!isDisabled && ('✅ Owned')}
+					{isDisabled && !scale && ('❌ Unown')}
+					{!isDisabled && !scale && ('✅ Owned')}
+					{isDisabled && scale && ('❌ Uncomplete')}
+					{!isDisabled && scale && ('✅ Completed')}
 				</Button>
 			</div>
 		)}

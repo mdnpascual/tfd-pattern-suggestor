@@ -48,6 +48,9 @@ const MaterialPlanner: React.FC<MaterialPlannerProps> = ({
 			}
 			return "#4CAF50"
 		} else {
+			if (current > goal && current < goal * initialQuantity) {
+				return "#FFEB3B"
+			}
 			if (current < goal) return "#F44336"
 			else return "#4CAF50"
 		}

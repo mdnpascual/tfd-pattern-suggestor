@@ -1,0 +1,497 @@
+{
+	"Smithereens": {
+		"parts": [
+			{ "name": "Smithereens Polymer Syncytium", "mats": [
+				{ "name": "Superfluid", "quantity": 143 },
+				{ "name": "Hardener", "quantity": 97 },
+				{ "name": "Insulated Mettalic Foil", "quantity": 8 },
+				{ "name": "Smithereens Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Smithereens Synthetic Fiber", "mats": [
+				{ "name": "Repton", "quantity": 105 },
+				{ "name": "Metal Accelerant", "quantity": 130 },
+				{ "name": "Data Processing Neural Circuit", "quantity": 12 },
+				{ "name": "Smithereens Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Smithereens Nano Tube", "mats": [
+				{ "name": "Monad Shard", "quantity": 105 },
+				{ "name": "Semi-permanent Plasma", "quantity": 130 },
+				{ "name": "Organic Biogel", "quantity": 12 },
+				{ "name": "Smithereens Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Smithereens Blueprint", "mats": [{ "name": "Smithereens Blueprint", "quantity": 1 }]}
+		],
+		"img": "https://tfd.wiki/images/4/40/Smithereens.png",
+		"xOffset": -35,
+		"yOffset": 40,
+		"scale": 140
+	},
+	"Greg\u0027s Reversed Fate": {
+		"parts": [
+			{ "name": "Greg\u0027s Reversed Fate Polymer Syncytium", "mats": [
+				{ "name": "Carbon Crystal", "quantity": 139 },
+				{ "name": "Hellion", "quantity": 76 },
+				{ "name": "Compund Carbon Activator", "quantity": 7 },
+				{ "name": "Greg\u0027s Reversed Fate Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Greg\u0027s Reversed Fate Synthetic Fiber", "mats": [
+				{ "name": "Compound Coating Material", "quantity": 60 },
+				{ "name": "Nanopolymers", "quantity": 91 },
+				{ "name": "Deformed Biometal", "quantity": 19 },
+				{ "name": "Greg\u0027s Reversed Fate Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Greg\u0027s Reversed Fate Nano Tube", "mats": [
+				{ "name": "Hardener", "quantity": 97 },
+				{ "name": "Reverse Charging Coil", "quantity": 114 },
+				{ "name": "Anode Ion Particle", "quantity": 7 },
+				{ "name": "Greg\u0027s Reversed Fate Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Greg\u0027s Reversed Fate Blueprint", "mats": [{ "name": "Greg\u0027s Reversed Fate Blueprint", "quantity": 1 }]}
+		],
+		"img": "http://tfd.wiki/images/4/4a/Greg%27s_Reversed_Fate.png",
+		"xOffset": -35,
+		"yOffset": 40,
+		"scale": 140
+	},
+	"Blue Beetle": {
+		"parts": [
+			{ "name": "Blue Beetle Polymer Syncytium", "mats": [
+				{ "name": "Superfluid", "quantity": 143 },
+				{ "name": "Flectorite", "quantity": 73 },
+				{ "name": "Anode Ion Particle", "quantity": 7 },
+				{ "name": "Blue Beetle Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Blue Beetle Synthetic Fiber", "mats": [
+				{ "name": "Semi-permanent Plasma", "quantity": 72 },
+				{ "name": "Shape Memory Alloy", "quantity": 115 },
+				{ "name": "Synthesized Artificial Biometal", "quantity": 25 },
+				{ "name": "Blue Beetle Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Blue Beetle Nano Tube", "mats": [
+				{ "name": "Metal Accelerant", "quantity": 130 },
+				{ "name": "Monomolecular Extractor", "quantity": 125 },
+				{ "name": "Compund Carbon Activator", "quantity": 7 },
+				{ "name": "Blue Beetle Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Blue Beetle Blueprint", "mats": [{ "name": "Blue Beetle Blueprint", "quantity": 1 }]}
+		],
+		"img": "http://tfd.wiki/images/6/63/Blue_Beetle.png",
+		"xOffset": -35,
+		"yOffset": 40,
+		"scale": 140
+	},
+	"Restored Relic": {
+		"parts": [
+			{ "name": "Restored Relic Polymer Syncytium", "mats": [
+				{ "name": "Semi-permanent Plasma", "quantity": 72 },
+				{ "name": "Flectorite", "quantity": 73 },
+				{ "name": "Positive Ion Particle", "quantity": 10 },
+				{ "name": "Restored Relic Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Restored Relic Synthetic Fiber", "mats": [
+				{ "name": "Ceramic Composite", "quantity": 102 },
+				{ "name": "Shape Memory Alloy", "quantity": 115 },
+				{ "name": "Complex Carbon Activator", "quantity": 15 },
+				{ "name": "Restored Relic Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Restored Relic Nano Tube", "mats": [
+				{ "name": "Superfluid", "quantity": 143 },
+				{ "name": "Monomolecular Extractor", "quantity": 125 },
+				{ "name": "Highly-concentrated Energy Residue", "quantity": 8 },
+				{ "name": "Restored Relic Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Restored Relic Blueprint", "mats": [{ "name": "Restored Relic Blueprint", "quantity": 1 }]}
+		],
+		"img": "http://tfd.wiki/images/f/f9/Restored_Relic.png",
+		"xOffset": -32,
+		"yOffset": 40,
+		"scale": 135
+	},
+	"Divine Punishment": {
+		"parts": [
+			{ "name": "Divine Punishment Polymer Syncytium", "mats": [
+				{ "name": "Superfluid", "quantity": 143 },
+				{ "name": "Monomolecular Extractor", "quantity": 125 },
+				{ "name": "Inorganic Biogel", "quantity": 15 },
+				{ "name": "Divine Punishment Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Divine Punishment Synthetic Fiber", "mats": [
+				{ "name": "Hardener", "quantity": 97 },
+				{ "name": "Nanopolymers", "quantity": 91 },
+				{ "name": "Encrypted Neural Circuit", "quantity": 8 },
+				{ "name": "Divine Punishment Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Divine Punishment Nano Tube", "mats": [
+				{ "name": "Semi-permanent Plasma", "quantity": 72 },
+				{ "name": "Compound Coating Material", "quantity": 60 },
+				{ "name": "Divided Plasma Battery", "quantity": 6 },
+				{ "name": "Divine Punishment Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Divine Punishment Blueprint", "mats": [{ "name": "Divine Punishment Blueprint", "quantity": 1 }]}
+		],
+		"img": "http://tfd.wiki/images/f/f6/Divine_Punishment.png",
+		"xOffset": -40,
+		"yOffset": 40,
+		"scale": 140
+	},
+	"The Final Masterpiece": {
+		"parts": [
+			{ "name": "The Final Masterpiece Polymer Syncytium", "mats": [
+				{ "name": "Monad Shard", "quantity": 62 },
+				{ "name": "Metal Accelerant", "quantity": 130 },
+				{ "name": "Thermal Metallic Foil", "quantity": 6 },
+				{ "name": "The Final Masterpiece Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "The Final Masterpiece Synthetic Fiber", "mats": [
+				{ "name": "Semi-permanent Plasma", "quantity": 72 },
+				{ "name": "Silicon", "quantity": 108 },
+				{ "name": "Insulated Mettalic Foil", "quantity": 8 },
+				{ "name": "The Final Masterpiece Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "The Final Masterpiece Nano Tube", "mats": [
+				{ "name": "Superfluid", "quantity": 143 },
+				{ "name": "Compound Coating Material", "quantity": 60 },
+				{ "name": "Low-Carbon Activator", "quantity": 18 },
+				{ "name": "The Final Masterpiece Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "The Final Masterpiece Blueprint", "mats": [{ "name": "The Final Masterpiece Blueprint", "quantity": 1 }]}
+		],
+		"img": "https://tfd.wiki/images/3/35/The_Final_Masterpiece.png?20240617182821",
+		"xOffset": -70,
+		"yOffset": 32,
+		"scale": 170
+	},
+	"Nazeistra\u0027s Devotion": {
+		"parts": [
+			{ "name": "Nazeistra\u0027s Devotion Polymer Syncytium", "mats": [
+				{ "name": "Repton", "quantity": 105 },
+				{ "name": "Hardener", "quantity": 97 },
+				{ "name": "Artificial Biometal", "quantity": 9 },
+				{ "name": "Nazeistra\u0027s Devotion Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Nazeistra\u0027s Devotion Synthetic Fiber", "mats": [
+				{ "name": "Metal Accelerant", "quantity": 130 },
+				{ "name": "Semi-permanent Plasma", "quantity": 72 },
+				{ "name": "Organic Biogel", "quantity": 7 },
+				{ "name": "Nazeistra\u0027s Devotion Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Nazeistra\u0027s Devotion Nano Tube", "mats": [
+				{ "name": "Monad Shard", "quantity": 62 },
+				{ "name": "Superfluid", "quantity": 143 },
+				{ "name": "Common Carbon Activator", "quantity": 4 },
+				{ "name": "Nazeistra\u0027s Devotion Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Nazeistra\u0027s Devotion Blueprint", "mats": [{ "name": "Nazeistra\u0027s Devotion Blueprint", "quantity": 1 }]}
+		],
+		"img": "http://tfd.wiki/images/5/5c/Nazeistra%27s_Devotion.png",
+		"xOffset": -80,
+		"yOffset": 28,
+		"scale": 190
+	},
+	"Perforator": {
+		"parts": [
+			{ "name": "Perforator Polymer Syncytium", "mats": [
+				{ "name": "Ceramic Composite", "quantity": 102 },
+				{ "name": "Shape Memory Alloy", "quantity": 115 },
+				{ "name": "Polyatomic Ion Particle", "quantity": 24 },
+				{ "name": "Perforator Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Perforator Synthetic Fiber", "mats": [
+				{ "name": "Compound Coating Material", "quantity": 60 },
+				{ "name": "Reverse Charging Coil", "quantity": 114 },
+				{ "name": "Compound Carbon Activator", "quantity": 7 },
+				{ "name": "Perforator Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Perforator Nano Tube", "mats": [
+				{ "name": "Metal Accelerant", "quantity": 130 },
+				{ "name": "Monomolecular Extractor", "quantity": 125 },
+				{ "name": "Synthesized Artificial Biometal", "quantity": 25 },
+				{ "name": "Perforator Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Perforator Blueprint", "mats": [{ "name": "Perforator Blueprint", "quantity": 1 }]}
+		],
+		"img": "http://tfd.wiki/images/0/04/Perforator.png",
+		"xOffset": -75,
+		"yOffset": 27,
+		"scale": 180
+	},
+	"Executor": {
+		"parts": [
+			{ "name": "Executor Polymer Syncytium", "mats": [
+				{ "name": "Ceramic Composite", "quantity": 102 },
+				{ "name": "Hellion", "quantity": 76 },
+				{ "name": "Heat Plasma Battery", "quantity": 18 },
+				{ "name": "Executor Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Executor Synthetic Fiber", "mats": [
+				{ "name": "Flectorite", "quantity": 73 },
+				{ "name": "Carbon Crystal", "quantity": 139 },
+				{ "name": "Complex Carbon Activator", "quantity": 15 },
+				{ "name": "Executor Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Executor Nano Tube", "mats": [
+				{ "name": "Repton", "quantity": 105 },
+				{ "name": "Silicon", "quantity": 108 },
+				{ "name": "Balanced Plasma Battery", "quantity": 11 },
+				{ "name": "Executor Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Executor Blueprint", "mats": [{ "name": "Executor Blueprint", "quantity": 1 }]}
+		],
+		"img": "http://tfd.wiki/images/2/21/Executor.png",
+		"xOffset": -20,
+		"yOffset": 50,
+		"scale": 120
+	},
+	"Python": {
+		"parts": [
+			{ "name": "Python Polymer Syncytium", "mats": [
+				{ "name": "Hardener", "quantity": 97 },
+				{ "name": "Nanopolymers", "quantity": 91 },
+				{ "name": "Crystal Biogel", "quantity": 11 },
+				{ "name": "Python Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Python Synthetic Fiber", "mats": [
+				{ "name": "Silicon", "quantity": 108 },
+				{ "name": "Flectorite", "quantity": 73 },
+				{ "name": "Positive Ion Particle", "quantity": 10 },
+				{ "name": "Python Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Python Nano Tube", "mats": [
+				{ "name": "Monad Shard", "quantity": 62 },
+				{ "name": "Ceramic Composite", "quantity": 102 },
+				{ "name": "Conductive Mettalic Foil", "quantity": 8 },
+				{ "name": "Python Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Python Blueprint", "mats": [{ "name": "Python Blueprint", "quantity": 1 }]}
+		],
+		"img": "http://tfd.wiki/images/e/e4/Python.png",
+		"xOffset": -47,
+		"yOffset": 40,
+		"scale": 150
+	},
+	"Enduring Legacy": {
+		"parts": [
+			{ "name": "Enduring Legacy Polymer Syncytium", "mats": [
+				{ "name": "Semi-permanent Plasma", "quantity": 72 },
+				{ "name": "Reverse Charging Coil", "quantity": 114 },
+				{ "name": "Thermal Metallic Foil", "quantity": 6 },
+				{ "name": "Enduring Legacy Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Enduring Legacy Synthetic Fiber", "mats": [
+				{ "name": "Ceramic Composite", "quantity": 102 },
+				{ "name": "Hellion", "quantity": 76 },
+				{ "name": "Highly-concentrated Energy Residue", "quantity": 8 },
+				{ "name": "Enduring Legacy Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Enduring Legacy Nano Tube", "mats": [
+				{ "name": "Metal Accelerant", "quantity": 130 },
+				{ "name": "Carbon Crystal", "quantity": 139 },
+				{ "name": "Deformed Biometal", "quantity": 19 },
+				{ "name": "Enduring Legacy Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Enduring Legacy Blueprint", "mats": [{ "name": "Enduring Legacy Blueprint", "quantity": 1 }]}
+		],
+		"img": "https://tfd.wiki/images/6/60/Enduring_Legacy.png?20240617183131",
+		"xOffset": -40,
+		"yOffset": 40,
+		"scale": 140
+	},
+	"Albion Cavalry Gun": {
+		"parts": [
+			{ "name": "Albion Cavalry Gun Polymer Syncytium", "mats": [
+				{ "name": "Metal Accelerant", "quantity": 130 },
+				{ "name": "Monomolecular Extractor", "quantity": 125 },
+				{ "name": "Inorganic Biogel", "quantity": 15 },
+				{ "name": "Albion Cavalry Gun Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Albion Cavalry Gun Synthetic Fiber", "mats": [
+				{ "name": "Repton", "quantity": 105 },
+				{ "name": "Silicon", "quantity": 108 },
+				{ "name": "Synthesized Artificial Biometal", "quantity": 25 },
+				{ "name": "Albion Cavalry Gun Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Albion Cavalry Gun Nano Tube", "mats": [
+				{ "name": "Hardener", "quantity": 97 },
+				{ "name": "Compound Coating Material", "quantity": 60 },
+				{ "name": "Fusion Plasma Battery", "quantity": 10 },
+				{ "name": "Albion Cavalry Gun Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Albion Cavalry Gun Blueprint", "mats": [{ "name": "Albion Cavalry Gun Blueprint", "quantity": 1 }]}
+		],
+		"img": "http://tfd.wiki/images/6/66/Albion_Cavalry_Gun.png",
+		"xOffset": -35,
+		"yOffset": 40,
+		"scale": 140
+	},
+	"Secret Garden": {
+		"parts": [
+			{ "name": "Secret Garden Polymer Syncytium", "mats": [
+				{ "name": "Silicon", "quantity": 108 },
+				{ "name": "Hellion", "quantity": 76 },
+				{ "name": "Highly-concentrated Energy Residue", "quantity": 8 },
+				{ "name": "Secret Garden Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Secret Garden Synthetic Fiber", "mats": [
+				{ "name": "Nanopolymers", "quantity": 91 },
+				{ "name": "Reverse Charging Coil", "quantity": 114 },
+				{ "name": "Data Processing Neural Circuit", "quantity": 12 },
+				{ "name": "Secret Garden Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Secret Garden Nano Tube", "mats": [
+				{ "name": "Flectorite", "quantity": 73 },
+				{ "name": "Carbon Crystal", "quantity": 139 },
+				{ "name": "Balanced Plasma Battery", "quantity": 11 },
+				{ "name": "Secret Garden Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Secret Garden Blueprint", "mats": [{ "name": "Secret Garden Blueprint", "quantity": 1 }]}
+		],
+		"img": "http://tfd.wiki/images/8/8e/Secret_Garden.png",
+		"xOffset": -37,
+		"yOffset": 40,
+		"scale": 140
+	},
+	"Wave of Light": {
+		"parts": [
+			{ "name": "Wave of Light Polymer Syncytium", "mats": [
+				{ "name": "Monad Shard", "quantity": 62 },
+				{ "name": "Flectorite", "quantity": 73 },
+				{ "name": "Negative Ion Particle", "quantity": 12 },
+				{ "name": "Wave of Light Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Wave of Light Synthetic Fiber", "mats": [
+				{ "name": "Superfluid", "quantity": 143 },
+				{ "name": "Semi-permanent Plasma", "quantity": 72 },
+				{ "name": "Positive Ion Particle", "quantity": 10 },
+				{ "name": "Wave of Light Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Wave of Light Nano Tube", "mats": [
+				{ "name": "Silicon", "quantity": 108 },
+				{ "name": "Nanopolymers", "quantity": 91 },
+				{ "name": "Cooling Metallic Foil", "quantity": 9 },
+				{ "name": "Wave of Light Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Wave of Light Blueprint", "mats": [{ "name": "Wave of Light Blueprint", "quantity": 1 }]}
+		],
+		"img": "http://tfd.wiki/images/3/3f/Wave_of_Light.png",
+		"xOffset": -38,
+		"yOffset": 40,
+		"scale": 140
+	},
+	"Afterglow Sword": {
+		"parts": [
+			{ "name": "Afterglow Sword Polymer Syncytium", "mats": [
+				{ "name": "Ceramic Composite", "quantity": 102 },
+				{ "name": "Hellion", "quantity": 76 },
+				{ "name": "Common Carbon Activator", "quantity": 4 },
+				{ "name": "Afterglow Sword Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Afterglow Sword Synthetic Fiber", "mats": [
+				{ "name": "Flectorite", "quantity": 73 },
+				{ "name": "Carbon Crystal", "quantity": 139 },
+				{ "name": "Pure Energy Residue", "quantity": 10 },
+				{ "name": "Afterglow Sword Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Afterglow Sword Nano Tube", "mats": [
+				{ "name": "Shape Memory Alloy", "quantity": 115 },
+				{ "name": "Reverse Charging Coil", "quantity": 114 },
+				{ "name": "Cooling Metallic Foil", "quantity": 9 },
+				{ "name": "Afterglow Sword Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Afterglow Sword Blueprint", "mats": [{ "name": "Afterglow Sword Blueprint", "quantity": 1 }]}
+		],
+		"img": "http://tfd.wiki/images/6/6e/Afterglow_Sword.png",
+		"xOffset": -20,
+		"yOffset": 45,
+		"scale": 120
+	},
+	"Piercing Light": {
+		"parts": [
+			{ "name": "Piercing Light Polymer Syncytium", "mats": [
+				{ "name": "Repton", "quantity": 105 },
+				{ "name": "Metal Accelerant", "quantity": 130 },
+				{ "name": "Divided Plasma Battery", "quantity": 6 },
+				{ "name": "Piercing Light Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Piercing Light Synthetic Fiber", "mats": [
+				{ "name": "Silicon", "quantity": 108 },
+				{ "name": "Nanopolymers", "quantity": 91 },
+				{ "name": "Artificial Biometal", "quantity": 9 },
+				{ "name": "Piercing Light Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Piercing Light Nano Tube", "mats": [
+				{ "name": "Semi-permanent Plasma", "quantity": 72 },
+				{ "name": "Compound Coating Material", "quantity": 60 },
+				{ "name": "Complex Carbon Activator", "quantity": 15 },
+				{ "name": "Piercing Light Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Piercing Light Blueprint", "mats": [{ "name": "Piercing Light Blueprint", "quantity": 1 }]}
+		],
+		"img": "https://tfd.wiki/images/2/2d/Piercing_Light.png?20240617184942",
+		"xOffset": -20,
+		"yOffset": 45,
+		"scale": 120
+	},
+	"King\u0027s Guard Lance": {
+		"parts": [
+			{ "name": "King\u0027s Guard Lance Polymer Syncytium", "mats": [
+				{ "name": "Monomolecular Extractor", "quantity": 125 },
+				{ "name": "Shape Memory Alloy", "quantity": 115 },
+				{ "name": "Inorganic Biogel", "quantity": 15 },
+				{ "name": "King\u0027s Guard Lance Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "King\u0027s Guard Lance Synthetic Fiber", "mats": [
+				{ "name": "Compound Coating Material", "quantity": 60 },
+				{ "name": "Ceramic Composite", "quantity": 102 },
+				{ "name": "Specialized Biometal", "quantity": 11 },
+				{ "name": "King\u0027s Guard Lance Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "King\u0027s Guard Lance Nano Tube", "mats": [
+				{ "name": "Superfluid", "quantity": 143 },
+				{ "name": "Carbon Crystal", "quantity": 139 },
+				{ "name": "Crystal Biogel", "quantity": 11 },
+				{ "name": "King\u0027s Guard Lance Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "King\u0027s Guard Lance Blueprint", "mats": [{ "name": "King\u0027s Guard Lance Blueprint", "quantity": 1 }]}
+		],
+		"img": "https://tfd.wiki/images/4/40/King%27s_Guard_Lance.png?20240617182512",
+		"xOffset": -35,
+		"yOffset": 45,
+		"scale": 130
+	},
+	"Thunder Cage": {
+		"parts": [
+			{ "name": "Thunder Cage Polymer Syncytium", "mats": []},
+			{ "name": "Thunder Cage Synthetic Fiber", "mats": []},
+			{ "name": "Thunder Cage Nano Tube", "mats": []},
+			{ "name": "Thunder Cage Blueprint", "mats": []}
+		],
+		"img": "http://tfd.wiki/images/3/30/Icon_RW_SMG_1005_A001.png",
+		"xOffset": -55,
+		"yOffset": 35,
+		"scale": 165
+	},
+	"The Last Dagger": {
+		"parts": [
+			{ "name": "The Last Dagger Polymer Syncytium", "mats": []},
+			{ "name": "The Last Dagger Synthetic Fiber", "mats": []},
+			{ "name": "The Last Dagger Nano Tube", "mats": []},
+			{ "name": "The Last Dagger Blueprint", "mats": []}
+		],
+		"img": "http://tfd.wiki/images/c/c3/The_Last_Dagger.png",
+		"xOffset": -75,
+		"yOffset": 30,
+		"scale": 180
+	},
+	"Fallen Hope": {
+		"parts": [
+			{ "name": "Fallen Hope Polymer Syncytium", "mats": []},
+			{ "name": "Fallen Hope Synthetic Fiber", "mats": []},
+			{ "name": "Fallen Hope Nano Tube", "mats": []},
+			{ "name": "Fallen Hope Blueprint", "mats": []}
+		],
+		"img": "https://tfd.wiki/images/thumb/8/85/Fallen_Hope.png/327px-Fallen_Hope.png",
+		"xOffset": -50,
+		"yOffset": 40,
+		"scale": 150
+	}
+}

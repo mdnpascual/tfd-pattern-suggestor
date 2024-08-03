@@ -13,6 +13,7 @@ const SettingsComponent: React.FC = () => {
 			localStorage.setItem('characterStatus', '');
 			localStorage.setItem('materialCount', '');
 			localStorage.setItem('selectedCollossusFilters', '');
+			localStorage.setItem('weaponStatus', '');
 		}
 	};
 

@@ -7,6 +7,10 @@ import PatternSuggestorComponent from './components/PatternSuggestor';
 import InventoryComponent from './components/Inventory';
 import SettingsComponent from './components/Settings'
 import GearComponent from './components/Gear';
+import SettingsIcon from '@mui/icons-material/Settings';
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import StorageIcon from '@mui/icons-material/Storage';
+import ChecklistIcon from '@mui/icons-material/Checklist';
 
 const App = () => {
 	return (
@@ -21,7 +25,7 @@ const App = () => {
 					element={<PatternSuggestorComponent />}
 				/>
 				<Route path="/gear" element={<GearComponent />} />
-				<Route path="/inventory" element={<InventoryComponent />} />
+				{/* <Route path="/inventory" element={<InventoryComponent />} /> */}
 				<Route path="/settings" element={<SettingsComponent />} />
 				<Route path="/" element={<Navigate replace to="/patternSuggestor" />} />
 				</Routes>
@@ -39,14 +43,14 @@ const NavTabs = () => {
 	const tabNameToIndex = {
 		0: "/patternSuggestor",
 		1: "/gear",
-		2: "/inventory",
+		// 2: "/inventory",
 		3: "/settings",
 	};
 	const indexToTabName = {
 		"/patternSuggestor": 0,
 		"/gear": 1,
-		"/inventory": 2,
-		"/settings": 3,
+		// "/inventory": 2,
+		"/settings": 2,
 	};
 
 	const handleTabChange = (event: React.SyntheticEvent, newValue: keyof typeof tabNameToIndex) => {
@@ -60,15 +64,15 @@ const NavTabs = () => {
 			<Tabs
 				value={indexToTabName[pathname] || 0}
 				onChange={handleTabChange}
-				variant={isMobile ? "scrollable" : undefined}
-				scrollButtons="auto"
-				allowScrollButtonsMobile
-				centered={!isMobile}
+				// variant={isMobile ? "scrollable" : undefined}
+				// scrollButtons="auto"
+				// allowScrollButtonsMobile
+				centered
 			>
-				<Tab label="Pattern Suggestor" />
-				<Tab label="Gear Inventory" />
-				<Tab label="Component Inventory" />
-				<Tab label="Settings" />
+				<Tab icon={isMobile ? <ChecklistIcon /> : undefined} label={!isMobile ? "Pattern Suggestor" : undefined} />
+                <Tab icon={isMobile ? <AddTaskIcon /> : undefined} label={!isMobile ? "Gear Inventory" : undefined} />
+                {/* <Tab icon={isMobile ? <StorageIcon /> : undefined} label={!isMobile ? "Component Inventory" : undefined} /> */}
+                <Tab icon={isMobile ? <SettingsIcon /> : undefined} label={!isMobile ? "Settings" : undefined} />
 			</Tabs>
 		</AppBar>
 	);
