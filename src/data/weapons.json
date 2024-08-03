@@ -458,6 +458,60 @@
 		"yOffset": 45,
 		"scale": 130
 	},
+	"Clairvoyance": {
+		"parts": [
+			{ "name": "Clairvoyance Polymer Syncytium", "mats": [
+				{ "name": "Flectorite", "quantity": 73 },
+				{ "name": "Reverse Charging Coil", "quantity": 114 },
+				{ "name": "Encrypted Neural Circuit", "quantity": 8 },
+				{ "name": "Clairvoyance Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Clairvoyance Synthetic Fiber", "mats": [
+				{ "name": "Hardener", "quantity": 97 },
+				{ "name": "Shape Memory Alloy", "quantity": 115 },
+				{ "name": "Deformed Biometal", "quantity": 19 },
+				{ "name": "Clairvoyance Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Clairvoyance Nano Tube", "mats": [
+				{ "name": "Carbon Crystal", "quantity": 139 },
+				{ "name": "Hellion", "quantity": 76 },
+				{ "name": "Fusion Plasma Battery", "quantity": 10 },
+				{ "name": "Clairvoyance Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Clairvoyance Blueprint", "mats": [{ "name": "Clairvoyance Blueprint", "quantity": 1 }]}
+		],
+		"img": "https://tfd.wiki/images/2/21/Clairvoyance.png?20240617182524",
+		"xOffset": -80,
+		"yOffset": 28,
+		"scale": 190
+	},
+	"Peace Maker": {
+		"parts": [
+			{ "name": "Peace Maker Polymer Syncytium", "mats": [
+				{ "name": "Ceramic Composite", "quantity": 102 },
+				{ "name": "Reverse Charging Coil", "quantity": 114 },
+				{ "name": "Mixed Energy Residue", "quantity": 10 },
+				{ "name": "Peace Maker Polymer Syncytium Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Peace Maker Synthetic Fiber", "mats": [
+				{ "name": "Monomolecular Extractor", "quantity": 125 },
+				{ "name": "Shape Memory Alloy", "quantity": 115 },
+				{ "name": "Low-Carbon Activator", "quantity": 18 },
+				{ "name": "Peace Maker Synthetic Fiber Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Peace Maker Nano Tube", "mats": [
+				{ "name": "Metal Accelerant", "quantity": 130 },
+				{ "name": "Nanopolymers", "quantity": 91 },
+				{ "name": "Anode Ion Particle", "quantity": 7 },
+				{ "name": "Peace Maker Nano Tube Blueprint", "quantity": 1 }
+			]},
+			{ "name": "Peace Maker Blueprint", "mats": [{ "name": "Peace Maker Blueprint", "quantity": 1 }]}
+		],
+		"img": "",
+		"xOffset": -80,
+		"yOffset": 28,
+		"scale": 190
+	},
 	"Thunder Cage": {
 		"parts": [
 			{ "name": "Thunder Cage Polymer Syncytium", "mats": []},

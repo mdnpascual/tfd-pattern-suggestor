@@ -1,5 +1,4 @@
 import '../App.css'
-// import CharacterList from './CharacterList';
 import PageWithSidebarComponent from './PageWithSidebar';
 import CharacterRawData from '../data/characters.json';
 import WeaponRawData from '../data/weapons.json';
@@ -15,15 +14,17 @@ const GearComponent = () => {
 					label: 'Descendants',
 					iconPath: 'https://nxsvc.inface.nexon.com/meta-binary/3abbdecc406856f017166f73ff96aaf7',
 					Component: <CategoryList
-									data={CharacterRawData}
-									localStorageStatusKey={'characterStatus'}
-									localStorageMaterialKey={'materialCount'}
-								/>
+						key='Descendants'
+						data={CharacterRawData}
+						localStorageStatusKey={'characterStatus'}
+						localStorageMaterialKey={'materialCount'}
+					/>
 				},
 				{
 					label: 'Weapons',
 					iconPath: 'https://nxsvc.inface.nexon.com/meta-binary/c68f037038b03f1f28a668ef2eb55b85',
 					Component: <CategoryList
+						key='Weapons'
 						data={WeaponRawData}
 						localStorageStatusKey={'weaponStatus'}
 						localStorageMaterialKey={'materialCount'}

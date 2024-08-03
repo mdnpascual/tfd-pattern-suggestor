@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MaterialPlanner from "./MaterialPlanner";
 import RectangularBox from "./RectangularBox";
 import { GearPart, Material } from "../data/constants";
@@ -25,57 +25,67 @@ function CategoryList<T extends CategoryData>({
 	localStorageMaterialKey,
 	withQuantity
 }: CategoryListProps<T>) {
-	const savedCategoryStatus = localStorage.getItem(localStorageStatusKey);
-	const initialCategoryStatus: Record<string, boolean> = savedCategoryStatus
-		? JSON.parse(savedCategoryStatus)
-		: {};
-
-	const savedMaterialCount = localStorage.getItem(localStorageMaterialKey);
-	const initialMaterialCount: Record<string, number> = savedMaterialCount
-		? JSON.parse(savedMaterialCount)
-		: {};
 
 	const [selected, setSelected] = useState<string>("");
-	const categoryData = data;
-	const categoryList = Object.keys(categoryData).sort();
+	const [categoryStatus, setCategoryStatus] = useState<Record<string, boolean>>({});
+	const [materialCount, setMaterialCount] = useState<Record<string, number>>({});
+	const [categoryList, setCategoryList] = useState<string[]>([]);
+	const [categoryData, setCategoryData] = useState<Record<string, T>>({});
 
-	const [categoryStatus, setCategoryStatus] = useState<Record<string, boolean>>(
-		categoryList.reduce((acc, category) => {
-			acc[category] =
-			category in initialCategoryStatus
-				? initialCategoryStatus[category]
-				: false;
-			return acc;
-		}, {} as Record<string, boolean>)
-	);
+	useEffect(() => {
+		const savedCategoryStatus = localStorage.getItem(localStorageStatusKey);
+		const initialCategoryStatus: Record<string, boolean> = savedCategoryStatus
+			? JSON.parse(savedCategoryStatus)
+			: {};
 
-	let material: Material[] = [];
-	Object.entries(categoryData).forEach(([key, data]) => {
-		data.parts.forEach((part: GearPart) => {
-			material.push({ name: part.name, quantity: 1 });
-				part.mats?.forEach((mat: Material) => {
-			material.push(mat);
+		const savedMaterialCount = localStorage.getItem(localStorageMaterialKey);
+		const initialMaterialCount: Record<string, number> = savedMaterialCount
+			? JSON.parse(savedMaterialCount)
+			: {};
+
+
+		const categoryDataCopy = data;
+		setCategoryData(categoryDataCopy);
+		const categoryListCopy = Object.keys(categoryDataCopy).sort();
+		setCategoryList(categoryListCopy);
+
+		setCategoryStatus(
+			categoryListCopy.reduce((acc, category) => {
+				acc[category] =
+				category in initialCategoryStatus
+					? initialCategoryStatus[category]
+					: false;
+				return acc;
+			},
+		{} as Record<string, boolean>))
+
+		let material: Material[] = [];
+		Object.entries(categoryDataCopy).forEach(([key, data]) => {
+			data.parts.forEach((part: GearPart) => {
+				material.push({ name: part.name, quantity: 1 });
+					part.mats?.forEach((mat: Material) => {
+				material.push(mat);
+				});
 			});
 		});
-	});
 
-	// With Quantity, include the parent Item
-	if (withQuantity) {
-		Object.entries(categoryData).forEach(([key, data]) => {
-			material.push({ name: key, quantity: 5 });
-		});
-	}
+		// With Quantity, include the parent Item
+		if (withQuantity) {
+			Object.entries(categoryDataCopy).forEach(([key, data]) => {
+				material.push({ name: key, quantity: 5 });
+			});
+		}
 
-	material = Array.from(
-		new Set(material.map((item) => JSON.stringify(item)))).map((item) => JSON.parse(item));
+		material = Array.from(new Set(material.map((item) => JSON.stringify(item)))).map((item) => JSON.parse(item));
 		const materialList = material.map((item) => item.name).sort();
-		const [materialCount, setMaterialCount] = useState<Record<string, number>>(
-		materialList.reduce((acc, material) => {
-			acc[material] =
-			material in initialMaterialCount ? initialMaterialCount[material] : 0;
-			return acc;
-		}, {} as Record<string, number>)
-	);
+		setMaterialCount(
+			materialList.reduce((acc, material) => {
+				acc[material] =
+				material in initialMaterialCount ? initialMaterialCount[material] : 0;
+				return acc;
+			}, {} as Record<string, number>)
+		)
+	}, []);
 
 	const handleSelected = (item: string) => {
 		setSelected(item);

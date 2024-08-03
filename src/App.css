@@ -88,8 +88,8 @@
 .rectangular-box-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 10px;
-  padding: 10px;
+  gap: 5px;
+  padding: 5px;
 }
 
 .rectangular-box {
