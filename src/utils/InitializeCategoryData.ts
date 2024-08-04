@@ -23,10 +23,14 @@ const InitializeCategoryData = <T extends CategoryData>(
 
 	let material: Material[] = [];
 	Object.entries(data).forEach(([key, data]) => {
+		material.push({
+			name: key,
+			quantity: 0
+		})
 		data.parts.forEach((part: GearPart) => {
 			material.push({ name: part.name, quantity: 1 });
 				part.mats?.forEach((mat: Material) => {
-			material.push(mat);
+					material.push(mat);
 			});
 		});
 	});

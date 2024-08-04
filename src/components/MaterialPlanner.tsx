@@ -65,7 +65,7 @@ const MaterialPlanner: React.FC<MaterialPlannerProps> = ({
 	return (
 		<Box sx={{ p: 2 }}>
 			{parts.map(part => (
-				<Box key={part.name} sx={{ mb: 2, width: isMobile ? '90vw' : undefined }}>
+				<Box key={part.name} sx={{ mb: 2, width: isMobile ? '90vw' : undefined, maxHeight: '20vh' }}>
 					<Grid container alignItems="center" sx={{ display: 'flex', width: '100%' }}>
 						<Box
 							sx={{
