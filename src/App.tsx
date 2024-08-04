@@ -5,9 +5,9 @@ import { ThemeProvider, useTheme } from '@mui/material/styles';
 import darkTheme from './theme';
 import PatternSuggestorComponent from './components/PatternSuggestor';
 import InventoryComponent from './components/Inventory';
-import SettingsComponent from './components/Settings'
+import AboutComponent from './components/About'
 import GearComponent from './components/Gear';
-import SettingsIcon from '@mui/icons-material/Settings';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import StorageIcon from '@mui/icons-material/Storage';
 import ChecklistIcon from '@mui/icons-material/Checklist';
@@ -30,7 +30,7 @@ const App = () => {
 				/>
 				<Route path="/gear" element={<GearComponent />} />
 				{/* <Route path="/inventory" element={<InventoryComponent />} /> */}
-				<Route path="/settings" element={<SettingsComponent />} />
+				<Route path="/about" element={<AboutComponent />} />
 				<Route path="/" element={<Navigate replace to={landingPage} />} />
 				</Routes>
 			</div>
@@ -48,13 +48,13 @@ const NavTabs = () => {
 		0: "/patternSuggestor",
 		1: "/gear",
 		// 2: "/inventory",
-		2: "/settings",
+		2: "/about",
 	};
 	const indexToTabName = {
 		"/patternSuggestor": 0,
 		"/gear": 1,
 		// "/inventory": 2,
-		"/settings": 2,
+		"/about": 2,
 	};
 
 	const handleTabChange = (event: React.SyntheticEvent, newValue: keyof typeof tabNameToIndex) => {
@@ -76,7 +76,7 @@ const NavTabs = () => {
 				<Tab icon={isMobile ? <ChecklistIcon /> : undefined} label={!isMobile ? "Pattern Suggestor" : undefined} />
                 <Tab icon={isMobile ? <AddTaskIcon /> : undefined} label={!isMobile ? "Gear Inventory" : undefined} />
                 {/* <Tab icon={isMobile ? <StorageIcon /> : undefined} label={!isMobile ? "Component Inventory" : undefined} /> */}
-                <Tab icon={isMobile ? <SettingsIcon /> : undefined} label={!isMobile ? "Settings" : undefined} />
+                <Tab icon={isMobile ? <HelpOutlineIcon /> : undefined} label={!isMobile ? "Help" : undefined} />
 			</Tabs>
 		</AppBar>
 	);
