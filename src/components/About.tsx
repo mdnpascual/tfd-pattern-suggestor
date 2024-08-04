@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Button, Container, TextField, Typography } from '@mui/material';
 
 const AboutComponent: React.FC = () => {
 	const [loadString, setLoadString] = useState('');
+	const [deviceDimensions, setDeviceDimensions] = useState({
+		width: window.innerWidth,
+		height: window.innerHeight
+	});
 
 	const copyLocalStorageToClipboard = () => {
 		const localStorageData = JSON.stringify(localStorage);
@@ -39,6 +43,18 @@ const AboutComponent: React.FC = () => {
 			localStorage.setItem('enhancementStatus', '');
 		}
 	};
+
+	useEffect(() => {
+		const handleResize = () => {
+			setDeviceDimensions({
+			width: window.innerWidth,
+			height: window.innerHeight
+			});
+		};
+
+		window.addEventListener('resize', handleResize);
+		return () => window.removeEventListener('resize', handleResize);
+	}, []);
 
 	return (
 		<Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
@@ -104,6 +120,9 @@ const AboutComponent: React.FC = () => {
 						disabled={!loadString.trim()}>
 						Load String into Local Storage
 					</Button>
+					<Typography variant="body2" sx={{ mt: 2 }}>
+						Device Dimensions: {deviceDimensions.width} x {deviceDimensions.height}
+					</Typography>
 					<Typography
 						variant="caption"
 						sx={{
@@ -113,7 +132,7 @@ const AboutComponent: React.FC = () => {
 							color: 'text.secondary',
 						}}
 						>
-						Version 0.6.0
+						Version 0.6.1
 					</Typography>
 				</Box>
 			</Box>
