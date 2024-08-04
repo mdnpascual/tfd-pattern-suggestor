@@ -35,8 +35,8 @@ const RectangularBox: React.FC<RectangularBoxProps> = ({
 				borderColor: isDisabled ? "#6cfc8c" : "#fff",
 				borderWidth: '5px',
 			}}
-			onMouseEnter={() => !disableOwnership && setHovered(true)}
-			onMouseLeave={() => !disableOwnership && setHovered(false)}
+			onMouseEnter={() => !disableOwnership && isDisabled && setHovered(true)}
+			onMouseLeave={() => !disableOwnership && isDisabled && setHovered(false)}
 			onClick={() => !isDisabled && onSelect(title)}>
 
 			<div
@@ -85,7 +85,7 @@ const RectangularBox: React.FC<RectangularBoxProps> = ({
 			<div className="title">{title}</div>
 			{hovered && (
 			<div className="rectangular-overlay">
-				<Button variant="contained" color="secondary" onClick={(e) => {onOwned(title); e.stopPropagation();}}>
+				<Button variant="contained" color="secondary" onClick={(e) => {onOwned(title); setHovered(false); e.stopPropagation();}}>
 					{isDisabled && !scale && ('❌ Unown')}
 					{!isDisabled && !scale && ('✅ Owned')}
 					{isDisabled && scale && ('❌ Uncomplete')}
