@@ -56,10 +56,10 @@ const GenerateSuggestion = () => {
 			if(!characterStatus[key]){	// Unowned
 				let relatedItems: Material[] = [];
 				data.parts.forEach((part: GearPart) => {
-						part.mats?.forEach((mat: Material) => {
-							if (itemLabels.includes(mat.name)){
-								relatedItems.push(mat)
-							}
+					part.mats?.forEach((mat: Material) => {
+						if (itemLabels.includes(mat.name)){
+							relatedItems.push(mat)
+						}
 					});
 				});
 				const unownedItems = relatedItems.filter((item) => {
@@ -83,63 +83,71 @@ const GenerateSuggestion = () => {
 		const weaponData = WeaponRawData as Record<string, CategoryData>
 		Object.entries(weaponData).forEach(([key, data]) => {
 			if(!weaponStatus[key]){	// Unowned
-				let relatedItems: Material[] = [];
-				data.parts.forEach((part: GearPart) => {
-						part.mats?.forEach((mat: Material) => {
-							if (itemLabels.includes(mat.name)){
-								relatedItems.push(mat)
-							}
+				const goal = materialStatus[key] ?? 0;
+				if (goal) {
+					let relatedItems: Material[] = [];
+					data.parts.forEach((part: GearPart) => {
+						const parentQuantity = materialStatus[part.name] ?? 0;
+						if (parentQuantity < goal){
+							part.mats?.forEach((mat: Material) => {
+								if (itemLabels.includes(mat.name)){
+									relatedItems.push(mat)
+								}
+							});
+						}
 					});
-				});
 
-				const unownedItems = relatedItems.filter((item) => {
-					if (materialStatus[item.name]){
-						return materialStatus[item.name] <= 0
-					}
-					return true
-				})
+					const unownedItems = relatedItems.filter((item) => {
+						if (materialStatus[item.name]){
+							return materialStatus[item.name] <= 0
+						}
+						return true
+					})
 
-				unownedItems.forEach((unowned) => {
-					const matchedItem = items.find(item => item.label === unowned.name);
-					if (matchedItem) {
-						selectedItemsToBeSaved.push(matchedItem.id)
-						itemPriorityToBeSaved.push(5 - unownedItems.length)
-					}
-				})
-
+					unownedItems.forEach((unowned) => {
+						const matchedItem = items.find(item => item.label === unowned.name);
+						if (matchedItem) {
+							selectedItemsToBeSaved.push(matchedItem.id)
+							itemPriorityToBeSaved.push(5 - unownedItems.length)
+						}
+					})
+				}
 			}
-
 		});
 
 		const enhancementData = EnhancementRawData as Record<string, CategoryData>
 		Object.entries(enhancementData).forEach(([key, data]) => {
 			if(!enhancementStatus[key]){	// Unowned
-				let relatedItems: Material[] = [];
-				data.parts.forEach((part: GearPart) => {
-						part.mats?.forEach((mat: Material) => {
-							if (itemLabels.includes(mat.name)){
-								relatedItems.push(mat)
-							}
+				const goal = materialStatus[key] ?? 0;
+				if (goal) {
+					let relatedItems: Material[] = [];
+					data.parts.forEach((part: GearPart) => {
+						const parentQuantity = materialStatus[part.name] ?? 0;
+						if (parentQuantity < goal) {
+							part.mats?.forEach((mat: Material) => {
+								if (itemLabels.includes(mat.name)){
+									relatedItems.push(mat)
+								}
+							});
+						}
 					});
-				});
 
-				const unownedItems = relatedItems.filter((item) => {
-					if (materialStatus[item.name]){
-						return materialStatus[item.name] <= 0
-					}
-					return true
-				})
+					const unownedItems = relatedItems.filter((item) => {
+						if (materialStatus[item.name]){
+							return materialStatus[item.name] <= 0
+						}
+						return true
+					})
 
-				unownedItems.forEach((unowned) => {
-					const matchedItem = items.find(item => item.label === unowned.name);
-					if (matchedItem) {
-						selectedItemsToBeSaved.push(matchedItem.id)
-						itemPriorityToBeSaved.push(5 - unownedItems.length)
-					}
-				})
-
+					unownedItems.forEach((unowned) => {
+						const matchedItem = items.find(item => item.label === unowned.name);
+						if (matchedItem) {
+							selectedItemsToBeSaved.push(matchedItem.id)
+							itemPriorityToBeSaved.push(5 - unownedItems.length)
+						}
+					})
+				}
 			}
-
 		});
 
 		localStorage.setItem('selectedItems', JSON.stringify(selectedItemsToBeSaved));

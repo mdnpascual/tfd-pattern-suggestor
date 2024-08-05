@@ -128,8 +128,6 @@ const PatternSuggestorComponent: React.FC = () => {
 				}
 				if (key === 'Collosus' && data){
 					withCollosusFilters = true;
-					const collosusOnly = newFarmList.filter((list) => list.useIn.toLowerCase().includes(dataKeywordCollosus));
-					filteredFarmList = filteredFarmList.concat(collosusOnly);
 				}
 				if (key === 'Sharen Exclusive' && data){
 					if(filteredFarmList.length === 0){
@@ -154,16 +152,16 @@ const PatternSuggestorComponent: React.FC = () => {
 
 			// FILTER COLLOSUS
 			if (withCollosusFilters) {
+				let collosusOnly: PatternCount[] = [];
 				Object.entries(collosusFilters).forEach(([key, data]) => {
 
 					const keyLowerCase = key.toLowerCase();
 					const specificCollosusOnly = newFarmList.filter((list) => list.useIn.toLowerCase().includes(keyLowerCase));
 					if (data) {
-						filteredFarmList = filteredFarmList.concat(specificCollosusOnly);
-					} else {
-						filteredFarmList = filteredFarmList.filter((list) => !list.useIn.toLowerCase().includes(keyLowerCase));
+						collosusOnly = collosusOnly.concat(specificCollosusOnly);
 					}
 				});
+				filteredFarmList = filteredFarmList.filter((list) => collosusOnly.includes(list));
 			}
 
 			// UNIQUE
