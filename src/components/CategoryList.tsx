@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MaterialPlanner from "./MaterialPlanner";
 import RectangularBox from "./RectangularBox";
 import { GearPart } from "../data/constants";
+import InitializeCategoryData from "../utils/InitializeCategoryData";
 
 export interface CategoryData {
 	img: string;
@@ -45,6 +46,14 @@ const CategoryList = <T extends CategoryData>({
 			setMaterialCount(preloadedData.materialCount)
 		}
 	}, [preloadedData]);
+
+	useEffect(() => {
+		const currentData = InitializeCategoryData(data, localStorageStatusKey, localStorageMaterialKey)
+		setCategoryStatus(currentData.categoryStatus)
+		setCategoryList(Object.keys(currentData.categoryStatus).sort())
+		setCategoryData(data)
+		setMaterialCount(currentData.materialCount)
+	}, []);
 
 	const handleSelected = (item: string) => {
 		setSelected(item);
