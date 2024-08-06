@@ -56,11 +56,14 @@ const GenerateSuggestion = () => {
 			if(!characterStatus[key]){	// Unowned
 				let relatedItems: Material[] = [];
 				data.parts.forEach((part: GearPart) => {
-					part.mats?.forEach((mat: Material) => {
-						if (itemLabels.includes(mat.name)){
-							relatedItems.push(mat)
-						}
-					});
+					const parentQuantity = materialStatus[part.name] ?? 0;
+					if (parentQuantity === 0) {
+						part.mats?.forEach((mat: Material) => {
+							if (itemLabels.includes(mat.name)){
+								relatedItems.push(mat)
+							}
+						});
+					}
 				});
 				const unownedItems = relatedItems.filter((item) => {
 					if (materialStatus[item.name]){
