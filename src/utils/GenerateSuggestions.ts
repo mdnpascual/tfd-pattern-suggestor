@@ -86,7 +86,7 @@ const GenerateSuggestion = () => {
 		const weaponData = WeaponRawData as Record<string, CategoryData>
 		Object.entries(weaponData).forEach(([key, data]) => {
 			if(!weaponStatus[key]){	// Unowned
-				const goal = materialStatus[key] ?? 0;
+				const goal = materialStatus[key] ?? 1;
 				if (goal) {
 					let relatedItems: Material[] = [];
 					data.parts.forEach((part: GearPart) => {
@@ -99,14 +99,12 @@ const GenerateSuggestion = () => {
 							});
 						}
 					});
-
 					const unownedItems = relatedItems.filter((item) => {
 						if (materialStatus[item.name]){
 							return materialStatus[item.name] <= 0
 						}
 						return true
 					})
-
 					unownedItems.forEach((unowned) => {
 						const matchedItem = items.find(item => item.label === unowned.name);
 						if (matchedItem) {
@@ -121,7 +119,7 @@ const GenerateSuggestion = () => {
 		const enhancementData = EnhancementRawData as Record<string, CategoryData>
 		Object.entries(enhancementData).forEach(([key, data]) => {
 			if(!enhancementStatus[key]){	// Unowned
-				const goal = materialStatus[key] ?? 0;
+				const goal = materialStatus[key] ?? 1;
 				if (goal) {
 					let relatedItems: Material[] = [];
 					data.parts.forEach((part: GearPart) => {

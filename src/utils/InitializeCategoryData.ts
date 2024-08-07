@@ -36,12 +36,19 @@ const InitializeCategoryData = <T extends CategoryData>(
 	});
 
 	material = Array.from(new Set(material.map((item) => JSON.stringify(item)))).map((item) => JSON.parse(item));
-		const materialList = material.map((item) => item.name).sort();
-		const startingMaterialCount = materialList.reduce((acc, material) => {
-			acc[material] =
-			material in materialCount ? materialCount[material] : 0;
-			return acc;
-		}, {} as Record<string, number>)
+	const materialList = material.map((item) => item.name).sort();
+
+	const startingMaterialCount = materialList.reduce((acc, material) => {
+		acc[material] =
+		material in materialCount
+			? materialCount[material]
+			: categoryList.includes(material)
+				? localStorageStatusKey === 'characterStatus'
+					? 1
+					: 5
+				: 0;
+		return acc;
+	}, {} as Record<string, number>)
 
 	if (Object.keys(categoryStatus).length === 0) {
 		localStorage.setItem(
