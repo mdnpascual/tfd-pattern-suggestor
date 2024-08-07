@@ -256,6 +256,7 @@ const PatternSuggestorComponent: React.FC = () => {
 							count: item.count,
 							priorityScore: item.priorityScore,
 							score: (item.score * 100).toFixed(0) + "%",
+							drops: item.drops,
 							dropsFrom: item.dropsFrom.replace("(Successful Infiltration)", "(Sharen)"),
 							useIn: item.useIn.replace("Void Intercept Battle", "Collosus").replace("Void Fusion Reactor", "Void Outpost"),
 							tooltip: formatTooltipContent(item.drops, item.name, item.useIn)

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GearPart, Material } from '../data/constants';
+import { GearPart } from '../data/constants';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
+import ColorByGoal from '../utils/ColorByGoal';
 
 interface MaterialPlannerProps {
 	title: string;
@@ -44,24 +45,6 @@ const MaterialPlanner: React.FC<MaterialPlannerProps> = ({
 		}
 	}
 
-	const setColor = (current: number, goal: number, parts?: Material[]) => {
-		if (parts){
-			if (current < goal) {
-				const partsComplete = parts.every((part) => (stock[part.name] || 0) >= part.quantity)
-
-				if (partsComplete) return "#FFEB3B" // Yellow
-				else return "#F44336" // Red
-			}
-			return "#4CAF50" // Green
-		} else {
-			if (current > goal && current < goal * initialQuantity) {
-				return "#FFEB3B" // Yellow
-			}
-			if (current < goal) return "#F44336" // Red
-			else return "#4CAF50" // Green
-		}
-	}
-
 	return (
 		<Box sx={{ p: 2 }}>
 			{parts.map(part => (
@@ -81,7 +64,7 @@ const MaterialPlanner: React.FC<MaterialPlannerProps> = ({
 						>
 							<Typography
 								variant="h6"
-								color={setColor(stock[part.name] || 0, initialQuantity, part.mats)}
+								color={ColorByGoal(stock[part.name] || 0, initialQuantity, initialQuantity, stock, part.mats)}
 								noWrap
 								sx={{
 									flexGrow: isMobile ? 1 : 0,
@@ -117,7 +100,7 @@ const MaterialPlanner: React.FC<MaterialPlannerProps> = ({
 									onChange={e => handleMatCountChange(mat.name, parseInt(e.target.value))}
 									sx={{ width: "200px", mr: 2 }}
 									inputProps={{ min: 0, style: { textAlign: 'right' } }}
-									InputLabelProps={{sx: {color: setColor(stock[mat.name] || 0, mat.quantity)}}}
+									InputLabelProps={{sx: {color: ColorByGoal(stock[mat.name] || 0, mat.quantity, initialQuantity, stock)}}}
 								/>
 								<Typography sx={{ flexShrink: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: 'ellipsis' }}> / {mat.quantity}</Typography>
 							</Box>
