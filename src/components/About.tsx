@@ -132,7 +132,7 @@ const AboutComponent: React.FC = () => {
 							color: 'text.secondary',
 						}}
 						>
-						Version 0.7.0
+						Version 0.7.1
 					</Typography>
 				</Box>
 			</Box>

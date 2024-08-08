@@ -224,6 +224,28 @@ const PatternSuggestorComponent: React.FC = () => {
 		);
 	};
 
+	const formatShardRequirements = (useIn: string) => {
+		const location = useIn as keyof VoidFusionLocations;
+		return (
+			<div>
+				{voidFusionLocations.includes(useIn) && (
+				<div>
+					<br />
+					<span>
+					Shard Requirements:&nbsp;
+					{voidFusionData[location].drops.map((drop, idx) => (
+						<span key={idx}>
+						{drop.type} ({drop.count})
+						{idx < voidFusionData[location].drops.length - 1 ? ', ' : ''}
+						</span>
+					))}
+					</span>
+				</div>
+				)}
+			</div>
+		);
+	}
+
 	return (
 		<div style={{ width: '100%', display: 'flex', height: '100vh' }}>
 			<div style={{ flex: view === 'both' || view === 'left' ? 1 : 0, transition: 'flex 0.3s', overflow: 'auto', position: 'relative' }}>
@@ -259,7 +281,8 @@ const PatternSuggestorComponent: React.FC = () => {
 							drops: item.drops,
 							dropsFrom: item.dropsFrom.replace("(Successful Infiltration)", "(Sharen)"),
 							useIn: item.useIn.replace("Void Intercept Battle", "Collosus").replace("Void Fusion Reactor", "Void Outpost"),
-							tooltip: formatTooltipContent(item.drops, item.name, item.useIn)
+							tooltip: formatTooltipContent(item.drops, item.name, item.useIn),
+							shardRequirements: formatShardRequirements(item.useIn)
 						}})} />
 				</Paper>
 			</div>

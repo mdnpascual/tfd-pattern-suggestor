@@ -10,13 +10,15 @@ interface DropListOverlayProps {
 	materialCount: Record<string, number>;
 	materialMapping: Record<string, string>;
 	onMatCountChange: (itemName: string, newCount: number) => void;
+	shardRequirements?: JSX.Element;
 }
 
 const DropListOverlay: React.FC<DropListOverlayProps> = ({
 	dropTable,
 	materialCount,
 	materialMapping,
-	onMatCountChange
+	onMatCountChange,
+	shardRequirements
 }) => {
 
 	const theme = useTheme();
@@ -36,9 +38,14 @@ const DropListOverlay: React.FC<DropListOverlayProps> = ({
 		};
 
 		return (
-			<Box sx={{ p: 2, height: '90vh' }}>
-				<Typography variant="h5" sx={{ fontWeight: 'bold', mb: '20px' }}>
+			<Box sx={{ p: 2, pt: 0, height: '95vh' }}>
+				<Typography variant="h5" sx={{ fontWeight: 'bold' }}>
 					Amorphous Pattern #{dropTable.name}
+				</Typography>
+				<Typography sx={{ mt:'20px', mb: '20px' }}>
+					Drops From: {dropTable.dropsFrom}<br/>
+					Use In: {dropTable.useIn}
+					{shardRequirements}
 				</Typography>
 				<Box key={dropTable.name} sx={{ mb: 2, width: isMobile ? '90vw' : undefined, maxHeight: '20vh' }}>
 					{dropTable.drops.map((drop, index) => (
@@ -50,6 +57,8 @@ const DropListOverlay: React.FC<DropListOverlayProps> = ({
 								border: '3px solid',
 								borderColor: ColorByGoal(materialCount[drop.name] ?? 0, getGoal(drop.name), 1, materialCount),
 								padding: 1,
+								paddingBottom: 0,
+								paddingTop: 1,
 								mb: 1,
 							}}
 						>

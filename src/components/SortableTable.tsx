@@ -18,6 +18,7 @@ export interface TableItem {
 	dropsFrom: string;
 	useIn: string;
 	tooltip: JSX.Element;
+	shardRequirements: JSX.Element;
 }
 
 type Order = 'asc' | 'desc' | undefined;
@@ -82,7 +83,7 @@ const initializeData = () => {
 		return mergeMaterialCount(character2, weapon, enhancement);
 }
 
-function SortableTable({ data }: { data: TableItem[] }) {
+const SortableTable = ({ data }: { data: TableItem[] }) => {
 	const [order, setOrder] = useState<Order>(undefined);
 	const [orderBy, setOrderBy] = useState<keyof TableItem>('name');
 	const [overlayOpen, setOverlayOpen] = useState(false);
@@ -205,7 +206,8 @@ function SortableTable({ data }: { data: TableItem[] }) {
 						dropTable={selectedDataItem}
 						materialCount={materialCount}
 						materialMapping={materialMapping}
-						onMatCountChange={handleMatCountChange}/>
+						onMatCountChange={handleMatCountChange}
+						shardRequirements={selectedDataItem?.shardRequirements}/>
 				</div>
 			)}
 		</div>
