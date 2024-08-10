@@ -159,6 +159,30 @@ export const specOpsKeywords = [
 	'block kuiper mining'
 ]
 
+export const localStorageKeys: Array<keyof SaveData> = [
+	'selectedItems',
+	'selectedFilters',
+	'itemPriority',
+	'characterStatus',
+	'materialCount',
+	'selectedCollossusFilters',
+	'weaponStatus',
+	'enhancementStatus',
+	'percentileValues'
+]
+
+export type SaveData = {
+    selectedItems?: string;
+    selectedFilters?: string;
+    itemPriority?: string;
+    characterStatus?: string;
+    materialCount?: string;
+    selectedCollossusFilters?: string;
+    weaponStatus?: string;
+    enhancementStatus?: string;
+    percentileValues?: string;
+};
+
 export const dataKeywordNormal = '(normal)';
 export const dataKeywordHard = '(hard)';
 export const dataKeywordCollosus = 'void intercept battle';

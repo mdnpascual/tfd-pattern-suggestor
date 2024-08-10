@@ -4,12 +4,10 @@ import { AppBar, Tabs, Tab, CssBaseline, useMediaQuery  } from '@mui/material';
 import { ThemeProvider, useTheme } from '@mui/material/styles';
 import darkTheme from './theme';
 import PatternSuggestorComponent from './components/PatternSuggestor';
-import InventoryComponent from './components/Inventory';
 import AboutComponent from './components/About'
 import GearComponent from './components/Gear';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import AddTaskIcon from '@mui/icons-material/AddTask';
-import StorageIcon from '@mui/icons-material/Storage';
 import ChecklistIcon from '@mui/icons-material/Checklist';
 
 const App = () => {

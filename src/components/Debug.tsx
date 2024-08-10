@@ -1,13 +1,30 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Alert, Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import { localStorageKeys } from "../data/constants";
 
 const DebugComponent: React.FC = () => {
 
+	const [confirmationOpen, setConfirmationOpen] = useState<boolean>(false);
 	const [loadString, setLoadString] = useState('');
 	const [deviceDimensions, setDeviceDimensions] = useState({
 		width: window.innerWidth,
 		height: window.innerHeight
 	});
+	const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
+    const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'error' | 'info'>('info');
+
+	const handleSnackbarClose = () => {
+        setSnackbarMessage(null);
+    };
+
+    const showSnackbar = (message: string, severity: 'success' | 'error' | 'info') => {
+        setSnackbarMessage(message);
+        setSnackbarSeverity(severity);
+    };
+
+	const confirmDelete = () => {
+		setConfirmationOpen(true);
+	};
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -24,8 +41,8 @@ const DebugComponent: React.FC = () => {
 	const copyLocalStorageToClipboard = () => {
 		const localStorageData = JSON.stringify(localStorage);
 		navigator.clipboard.writeText(localStorageData).then(
-			() => alert('Local storage copied to clipboard.'),
-			(err) => alert('Failed to copy to clipboard.')
+			() => showSnackbar('Local storage copied to clipboard.', 'info'),
+			(err) => showSnackbar('Failed top copy to clipboard' + err, 'error')
 		);
 	};
 
@@ -33,28 +50,23 @@ const DebugComponent: React.FC = () => {
 		try {
 			const parsedData = JSON.parse(loadString);
 			for (const key in parsedData) {
-			if (parsedData.hasOwnProperty(key)) {
-				localStorage.setItem(key, parsedData[key]);
+				if (parsedData.hasOwnProperty(key)) {
+					localStorage.setItem(key, parsedData[key]);
+				}
 			}
-			}
-			alert('Local storage updated from string.');
+			showSnackbar('Local storage updated from string.', 'info');
 		} catch (error) {
-			alert('Invalid JSON string.');
+			showSnackbar('Invalid JSON string', 'error');
 		}
 	};
 
 	const handleClearLocalStorage = () => {
 		const confirmed = window.confirm("Are you sure you want to clear all selections?");
 		if (confirmed) {
-			localStorage.setItem('selectedItems', '');
-			localStorage.setItem('selectedFilters', '');
-			localStorage.setItem('itemPriority', '');
-			localStorage.setItem('characterStatus', '');
-			localStorage.setItem('materialCount', '');
-			localStorage.setItem('selectedCollossusFilters', '');
-			localStorage.setItem('weaponStatus', '');
-			localStorage.setItem('enhancementStatus', '');
-			localStorage.setItem('percentileValues', '');
+			localStorageKeys.forEach((key) => {
+				localStorage.setItem(key, '');
+			})
+
 		}
 	};
 
@@ -63,7 +75,7 @@ const DebugComponent: React.FC = () => {
 			<Button
 				variant="outlined"
 				color="error"
-				onClick={handleClearLocalStorage}
+				onClick={() => confirmDelete()}
 				sx={{ mb: 2 }}
 			>
 				Clear Local Storage
@@ -96,6 +108,35 @@ const DebugComponent: React.FC = () => {
 			<Typography variant="body2" sx={{ mt: 2 }}>
 				Device Dimensions: {deviceDimensions.width} x {deviceDimensions.height}
 			</Typography>
+			<Dialog
+				open={confirmationOpen}
+				onClose={() => setConfirmationOpen(false)}
+			>
+				<DialogTitle>Confirm Delete</DialogTitle>
+				<DialogContent>
+					<DialogContentText>
+						Are you sure you want to clear all selections?
+					</DialogContentText>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={() => setConfirmationOpen(false)} color="primary">
+						Cancel
+					</Button>
+					<Button onClick={() => handleClearLocalStorage()} color="secondary" autoFocus>
+						Delete
+					</Button>
+				</DialogActions>
+			</Dialog>
+			<Snackbar
+                open={!!snackbarMessage}
+                autoHideDuration={6000}
+                onClose={handleSnackbarClose}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            >
+                <Alert onClose={handleSnackbarClose} severity={snackbarSeverity}>
+                    {snackbarMessage}
+                </Alert>
+            </Snackbar>
 		</Box>
 	)
 }
