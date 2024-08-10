@@ -1,74 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Button, Container, TextField, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Button, Container, Tab, Tabs, Typography } from '@mui/material';
+import SettingsComponent from './Settings';
+import DebugComponent from './Debug';
 
 const AboutComponent: React.FC = () => {
-	const [loadString, setLoadString] = useState('');
-	const [deviceDimensions, setDeviceDimensions] = useState({
-		width: window.innerWidth,
-		height: window.innerHeight
-	});
+	const [tabValue, setTabValue] = useState(0);
 
-	const copyLocalStorageToClipboard = () => {
-		const localStorageData = JSON.stringify(localStorage);
-		navigator.clipboard.writeText(localStorageData).then(
-			() => alert('Local storage copied to clipboard.'),
-			(err) => alert('Failed to copy to clipboard.')
-		);
+	const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+		setTabValue(newValue);
 	};
-
-	const loadStringIntoLocalStorage = () => {
-		try {
-			const parsedData = JSON.parse(loadString);
-			for (const key in parsedData) {
-			if (parsedData.hasOwnProperty(key)) {
-				localStorage.setItem(key, parsedData[key]);
-			}
-			}
-			alert('Local storage updated from string.');
-		} catch (error) {
-			alert('Invalid JSON string.');
-		}
-	};
-
-	const handleClearLocalStorage = () => {
-		const confirmed = window.confirm("Are you sure you want to clear all selections?");
-		if (confirmed) {
-			localStorage.setItem('selectedItems', '');
-			localStorage.setItem('selectedFilters', '');
-			localStorage.setItem('itemPriority', '');
-			localStorage.setItem('characterStatus', '');
-			localStorage.setItem('materialCount', '');
-			localStorage.setItem('selectedCollossusFilters', '');
-			localStorage.setItem('weaponStatus', '');
-			localStorage.setItem('enhancementStatus', '');
-		}
-	};
-
-	useEffect(() => {
-		const handleResize = () => {
-			setDeviceDimensions({
-			width: window.innerWidth,
-			height: window.innerHeight
-			});
-		};
-
-		window.addEventListener('resize', handleResize);
-		return () => window.removeEventListener('resize', handleResize);
-	}, []);
 
 	return (
-		<Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
+		<Container maxWidth="md" sx={{ mt: 0, mb: 4 }}>
 			<Box
-			sx={{
-				display: 'flex',
-				flexDirection: 'column',
-				alignItems: 'center',
-				textAlign: 'center',
-				padding: 3,
-				borderRadius: 2,
-				boxShadow: 1,
-				bgcolor: 'background.paper',
-			}}
+				sx={{
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'center',
+					textAlign: 'center',
+					padding: 2,
+					pb: 0,
+					borderRadius: 2,
+					boxShadow: 1,
+					bgcolor: 'background.paper',
+				}}
 			>
 			<Typography variant="h4" gutterBottom>
 				About / Support
@@ -82,59 +37,34 @@ const AboutComponent: React.FC = () => {
 				href="https://discord.gg/d9HrFwUYfx"
 				target="_blank"
 				rel="noopener noreferrer"
-				sx={{ mb: 4 }}
+				sx={{ mb: 2 }}
 			>
 				Join our Discord
 			</Button>
 
-			<Typography variant="h5" sx={{ mt: 4, mb: 2 }}>
-				Debug
+			<Tabs value={tabValue} onChange={handleTabChange} sx={{ mb: 3 }}>
+				<Tab label="Settings" />
+				<Tab label="Debug" />
+			</Tabs>
+
+			{tabValue === 0 && (
+				<SettingsComponent/>
+			)}
+
+			{tabValue === 1 && (
+				<DebugComponent/>
+			)}
+			<Typography
+				variant="caption"
+				sx={{
+					position: 'absolute',
+					bottom: 8,
+					right: 16,
+					color: 'text.secondary',
+				}}
+			>
+				Version 0.8.0
 			</Typography>
-				<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-					<Button
-						variant="outlined"
-						color="error"
-						onClick={handleClearLocalStorage}
-						sx={{ mb: 2 }}>
-						Clear Local Storage
-					</Button>
-					<Button
-						variant="outlined"
-						color="secondary"
-						onClick={copyLocalStorageToClipboard}
-						sx={{ mb: 2 }}>
-						Copy Local Storage to Clipboard
-					</Button>
-					<TextField
-						label="Load JSON into Local Storage"
-						variant="outlined"
-						multiline
-						rows={4}
-						value={loadString}
-						onChange={(e) => setLoadString(e.target.value)}
-						sx={{ mb: 2, width: '100%' }}/>
-					<Button
-						variant="outlined"
-						color="secondary"
-						onClick={loadStringIntoLocalStorage}
-						disabled={!loadString.trim()}>
-						Load String into Local Storage
-					</Button>
-					<Typography variant="body2" sx={{ mt: 2 }}>
-						Device Dimensions: {deviceDimensions.width} x {deviceDimensions.height}
-					</Typography>
-					<Typography
-						variant="caption"
-						sx={{
-							position: 'absolute',
-							bottom: 8,
-							right: 16,
-							color: 'text.secondary',
-						}}
-						>
-						Version 0.7.2
-					</Typography>
-				</Box>
 			</Box>
 		</Container>
 	);

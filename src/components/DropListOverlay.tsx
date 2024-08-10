@@ -1,9 +1,10 @@
-import React from 'react';
-import { Box, Typography, TextField } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { Box, Typography, TextField, Grid, Tooltip } from '@mui/material';
 import { TableItem } from './SortableTable';
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
 import ColorByGoal from '../utils/ColorByGoal';
+import calculateRolls, { PercentileDisplayProps } from '../utils/CalculateRolls';
 
 interface DropListOverlayProps {
 	dropTable?: TableItem;
@@ -20,15 +21,64 @@ const DropListOverlay: React.FC<DropListOverlayProps> = ({
 	onMatCountChange,
 	shardRequirements
 }) => {
-
+	const [percentiles, setPercentiles] = useState<PercentileDisplayProps>({percentiles: [0.5, 0.85, 0.95], values: [0, 0 ,0]});
+	const [percentileValues, setPercentileValues] = useState<number[]>(
+		JSON.parse(localStorage.getItem('percentileValues') || '[0.5, 0.85, 0.95]')
+	);
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+	const isEmptyShardRequirements = () => {
+		if (!shardRequirements) return true;
+		if (shardRequirements.type === 'div' && (!shardRequirements.props.children || shardRequirements.props.children.length === 0)) {
+			return true;
+		}
+
+		return false;
+    };
+
+	const computeTooltipShards = (count: number) => {
+		if (isEmptyShardRequirements()){
+			return (<div></div>)
+		} else {
+			return (
+				<div>
+					Total Shards Needed:
+					{shardRequirements?.props.children.props.children[1].props.children[1].map((shard: any) => (
+						<div>
+							{shard.props.children[0]}: {shard.props.children[2] * count}
+						</div>
+					))}
+				</div>
+			);
+		}
+	};
 
 	const getGoal = (name: string) => {
 		if (materialCount[materialMapping[materialMapping[name]]]) {
 			return (materialCount[materialMapping[materialMapping[name]]]) - (materialCount[materialMapping[name]] ?? 0)
 		} else {
 			return (materialCount[materialMapping[name]] ?? 0)
+		}
+	}
+
+	useEffect(() => {
+		compute();
+	}, [materialCount]);
+
+	const compute = () => {
+		if (dropTable) {
+			const probabilities: Record<string, number> = {};
+			const requirements: Record<string, number> = {};
+			dropTable.drops.map((drop, index) => {
+				const goal = getGoal(drop.name);
+				if (ColorByGoal(materialCount[drop.name] ?? 0, goal, 1, materialCount) === "#F44336") {
+					probabilities[drop.name] = drop.chance
+					requirements[drop.name] = goal - (materialCount[drop.name] ?? 0)
+				}
+			});
+
+			setPercentiles(calculateRolls(probabilities, requirements, percentileValues));
 		}
 	}
 
@@ -39,15 +89,23 @@ const DropListOverlay: React.FC<DropListOverlayProps> = ({
 
 		return (
 			<Box sx={{ p: 2, pt: 0, height: '95vh' }}>
-				<Typography variant="h5" sx={{ fontWeight: 'bold' }}>
-					Amorphous Pattern #{dropTable.name}
-				</Typography>
-				<Typography sx={{ mt:'20px', mb: '20px' }}>
-					Drops From: {dropTable.dropsFrom}<br/>
-					Use In: {dropTable.useIn}
-					{shardRequirements}
-				</Typography>
-				<Box key={dropTable.name} sx={{ mb: 2, width: isMobile ? '90vw' : undefined, maxHeight: '20vh' }}>
+				<Box sx={{overflowY: 'auto', maxHeight: isEmptyShardRequirements() ? '15vh' : '25vh',}}>
+					<Typography variant="h5" sx={{ fontWeight: 'bold' }}>
+						Amorphous Pattern #{dropTable.name}
+					</Typography>
+					<Typography sx={{ mt:'20px', mb: '20px' }}>
+						Drops From: {dropTable.dropsFrom}<br/>
+						Use In: {dropTable.useIn}
+						{shardRequirements}
+					</Typography>
+				</Box>
+				<Box key={dropTable.name} sx={{
+					mb: 0,
+					width: isMobile ? '90vw' : undefined,
+					maxHeight: isEmptyShardRequirements() ? '65vh' : '55vh',
+					overflowY: 'auto',
+					borderColor: 'transparent'
+				}}>
 					{dropTable.drops.map((drop, index) => (
 						<Box
 							key={index}
@@ -88,6 +146,40 @@ const DropListOverlay: React.FC<DropListOverlayProps> = ({
 							</Box>
 						</Box>
 					))}
+
+				</Box>
+				<Box sx={{overflowY: 'auto', maxHeight: '20vh'}}>
+					<Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+						Number of Patterns needed:
+					</Typography>
+
+					<Grid container spacing={0}>
+						{percentiles.percentiles.map((percentile, index) => (
+							<Grid item xs={4} key={index}>
+								<Tooltip title={isEmptyShardRequirements() ? undefined : computeTooltipShards(percentiles.values[index])}>
+									<Box
+										sx={{
+											padding: '2px',
+											backgroundColor: 'background.default',
+											borderRadius: '8px',
+											color: 'text.primary',
+											display: 'flex',
+											flexDirection: 'column',
+											alignItems: 'center',
+											justifyContent: 'center',
+										}}
+									>
+										<Typography variant="subtitle1">
+											~{percentile}%:
+										</Typography>
+										<Typography variant="h6">
+											{percentiles.values[index]}
+										</Typography>
+									</Box>
+								</Tooltip>
+							</Grid>
+						))}
+					</Grid>
 				</Box>
 			</Box>
 		);
