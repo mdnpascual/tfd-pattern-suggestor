@@ -200,9 +200,6 @@ const Saves: React.FC = () => {
 			<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', pt: 2 }}>
 				<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', pt: 2 }}>
 					<Typography variant="body1">Google Drive sync</Typography>
-					<Tooltip title="API Access to Google Drive is currently pending review by Google.">
-						<Chip label="Pending" color="warning" sx={{ ml: 1 }} />
-					</Tooltip>
 				</Box>
 				<GoogleDriveSave onLoadFromGoogleDrive={handleLoadFromGoogleDrive} />
 			</Box>

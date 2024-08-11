@@ -1,6 +1,6 @@
 import React, { useState, ReactElement } from 'react';
 import '../App.css'
-import { Button } from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import GenerateSuggestion from '../utils/GenerateSuggestions';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,8 +17,12 @@ interface PageWithSidebarProps {
 const PageWithSidebarComponent: React.FC<PageWithSidebarProps> = ({ items }) => {
 	const [sidebarOpen, setSidebarOpen] = useState(true);
 	const [activeIndex, setActiveIndex] = useState(0);
+	const [confirmationOpen, setConfirmationOpen] = useState<boolean>(false);
 	const navigate = useNavigate();
 
+	const confirmGenerate = () => {
+		setConfirmationOpen(true);
+	};
 
 	const toggleSidebar = () => {
 		setSidebarOpen(!sidebarOpen);
@@ -36,7 +40,7 @@ const PageWithSidebarComponent: React.FC<PageWithSidebarProps> = ({ items }) => 
 					</li>
 					))}
 					<li>
-						<Button id="diff-button" onClick={() => {GenerateSuggestion(); navigate('/patternSuggestor');}} variant="contained" color="primary" style={{ marginBottom: '10px' }}>
+						<Button id="diff-button" onClick={() => {confirmGenerate()}} variant="contained" color="primary" style={{ marginBottom: '10px' }}>
 							Generate Suggestion
 						</Button>
 					</li>
@@ -54,6 +58,26 @@ const PageWithSidebarComponent: React.FC<PageWithSidebarProps> = ({ items }) => 
 			<div className="content">
 				{items[activeIndex].Component}
 			</div>
+
+			<Dialog
+				open={confirmationOpen}
+				onClose={() => setConfirmationOpen(false)}
+			>
+				<DialogTitle>Confirm Generate Suggestion</DialogTitle>
+				<DialogContent>
+					<DialogContentText>
+						This will overwrite the current selected list in the pattern suggestor, do you want to continue?
+					</DialogContentText>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={() => setConfirmationOpen(false)} color="primary">
+						Cancel
+					</Button>
+					<Button onClick={() => {GenerateSuggestion(); navigate('/patternSuggestor');}} color="secondary" autoFocus>
+						Continue
+					</Button>
+				</DialogActions>
+			</Dialog>
 		</div>
 	);
 };

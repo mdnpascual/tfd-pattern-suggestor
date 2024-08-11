@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
-import { Alert, Box, Button, Snackbar } from '@mui/material';
+import { Alert, Box, Button, Snackbar, Typography } from '@mui/material';
 import { gapi } from 'gapi-script';
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
@@ -13,6 +13,7 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [token, setToken] = useState<string | undefined>(undefined);
 	const [fileId, setFileId] = useState<string | null>(null);
+	const [lastModifiedTime, setLastModifiedTime] = useState<string | null>(null);
 	const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
     const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'error' | 'info'>('info');
 
@@ -41,7 +42,7 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 						const accessToken = currentUser.getAuthResponse().access_token;
 						setToken(accessToken);
 						setIsLoggedIn(true);
-						findFileId(accessToken);
+						findFileIdAndFetchMetadata(accessToken);
 					} else {
 						authInstance.signIn({ scope: SCOPES });
 					}
@@ -50,28 +51,29 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 		});
 	}, []);
 
-	const findFileId = async (accessToken: string) => {
-        try {
-            const response = await gapi.client.request({
-                path: '/drive/v3/files',
-                method: 'GET',
-                params: {
-                    q: `name='${FILE_NAME}' and trashed=false`,
-                    fields: 'files(id, name)',
-                },
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`,
-                },
-            });
+	const findFileIdAndFetchMetadata = async (accessToken: string) => {
+		try {
+			const response = await gapi.client.request({
+				path: '/drive/v3/files',
+				method: 'GET',
+				params: {
+					q: `name='${FILE_NAME}' and trashed=false`,
+					fields: 'files(id, name, modifiedTime)',
+				},
+				headers: {
+					'Authorization': `Bearer ${accessToken}`,
+				},
+			});
 
-            const files = response.result.files;
-            if (files && files.length > 0) {
-                setFileId(files[0].id);
-            }
-        } catch (error) {
+			const files = response.result.files;
+			if (files && files.length > 0) {
+				setFileId(files[0].id);
+				setLastModifiedTime(files[0].modifiedTime);
+			}
+		} catch (error) {
 			showSnackbar('Error finding save file: ' + error, 'error');
-        }
-    };
+		}
+	};
 
 	const onSuccess = (response: any) => {
 		const authInstance = gapi.auth2.getAuthInstance();
@@ -81,6 +83,7 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 		if (currentUser.hasGrantedScopes(SCOPES)) {
 			setIsLoggedIn(true);
 			setToken(accessToken);
+			findFileIdAndFetchMetadata(accessToken);
 		} else {
 			showSnackbar('User did not grant the required scopes.', 'error');
 		}
@@ -198,6 +201,11 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 					<Button variant="contained" color="secondary" onClick={handleLogout}>
 						Logout
 					</Button>
+					{lastModifiedTime && (
+						<Typography variant="body2" color="textSecondary" sx={{pt: 2}}>
+							Last synced at: {new Date(lastModifiedTime).toLocaleString()}
+						</Typography>
+					)}
 				</Box>
 			)}
 			<Snackbar
