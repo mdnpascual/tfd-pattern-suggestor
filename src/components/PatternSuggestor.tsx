@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Button, Paper } from '@mui/material';
 import MultiSelectList, { Item } from './MultiSelectList';
 import data from '../data/patterns.json';
@@ -21,24 +21,7 @@ import CheckboxFilter from './CheckboxFilter';
 
 const voidFusionData = voidFusionRawData as VoidFusionLocations;
 const voidFusionLocations = Object.keys(voidFusionData);
-
-let items: Item[] = []
 const patternData: Record<string, Pattern> = data;
-
-Object.entries(patternData).forEach(([key, data]) => {
-	data.drops.forEach((drop) => {
-		if (!items.find(item => item.label === drop.name)){
-			items.push({id: key + drop.name, label: drop.name, priority: 1})
-		}
-	})
-});
-
-
-items = items.sort((a: Item, b: Item) => {
-	if (a.label < b.label) return -1
-	if (b.label < a.label) return 1
-	return 0;
-})
 
 interface PatternCount {
 	name: string,
@@ -57,6 +40,18 @@ const PatternSuggestorComponent: React.FC = () => {
 	const [filters, setFilters] = useState({});
 	const [collosusFilters, setCollosusFilters] = useState({});
 	const [view, setView] = useState('both');
+
+	const items = useMemo(() => {
+		const newItems: Item[] = [];
+		Object.entries(patternData).forEach(([key, data]) => {
+			data.drops.forEach((drop) => {
+				if (!newItems.find(item => item.label === drop.name)){
+					newItems.push({id: key + drop.name, label: drop.name, priority: 1})
+				}
+			});
+		});
+		return newItems.sort((a, b) => a.label.localeCompare(b.label));
+	}, []);
 
 	const handleChange = (items: string[], priorities: number[]) => {
 		setSelectedItems(items)

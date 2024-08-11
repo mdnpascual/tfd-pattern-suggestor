@@ -10,6 +10,17 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import ChecklistIcon from '@mui/icons-material/Checklist';
 
+const tabNameToIndex = {
+	0: "/patternSuggestor",
+	1: "/gear",
+	2: "/about",
+};
+const indexToTabName = {
+	"/patternSuggestor": 0,
+	"/gear": 1,
+	"/about": 2,
+};
+
 const App = () => {
 	const savedSelectedItems = localStorage.getItem('selectedItems');
 	const landingPage = (savedSelectedItems?.length ?? 0) > 2
@@ -27,7 +38,6 @@ const App = () => {
 					element={<PatternSuggestorComponent />}
 				/>
 				<Route path="/gear" element={<GearComponent />} />
-				{/* <Route path="/inventory" element={<InventoryComponent />} /> */}
 				<Route path="/about" element={<AboutComponent />} />
 				<Route path="/" element={<Navigate replace to={landingPage} />} />
 				</Routes>
@@ -42,18 +52,6 @@ const NavTabs = () => {
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 	const navigate = useNavigate();
 	const location = useLocation();
-	const tabNameToIndex = {
-		0: "/patternSuggestor",
-		1: "/gear",
-		// 2: "/inventory",
-		2: "/about",
-	};
-	const indexToTabName = {
-		"/patternSuggestor": 0,
-		"/gear": 1,
-		// "/inventory": 2,
-		"/about": 2,
-	};
 
 	const handleTabChange = (event: React.SyntheticEvent, newValue: keyof typeof tabNameToIndex) => {
 		navigate(tabNameToIndex[newValue]);
@@ -66,14 +64,10 @@ const NavTabs = () => {
 			<Tabs
 				value={indexToTabName[pathname] || 0}
 				onChange={handleTabChange}
-				// variant={isMobile ? "scrollable" : undefined}
-				// scrollButtons="auto"
-				// allowScrollButtonsMobile
 				centered
 			>
 				<Tab icon={isMobile ? <ChecklistIcon /> : undefined} label={!isMobile ? "Pattern Suggestor" : undefined} />
                 <Tab icon={isMobile ? <AddTaskIcon /> : undefined} label={!isMobile ? "Gear Inventory" : undefined} />
-                {/* <Tab icon={isMobile ? <StorageIcon /> : undefined} label={!isMobile ? "Component Inventory" : undefined} /> */}
                 <Tab icon={isMobile ? <HelpOutlineIcon /> : undefined} label={!isMobile ? "Help" : undefined} />
 			</Tabs>
 		</AppBar>

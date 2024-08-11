@@ -1,5 +1,8 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { List, ListItem, ListItemText, Checkbox, ListSubheader, TextField, Button } from '@mui/material';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { ListSubheader, TextField, Button, Checkbox, ListItemText, ListItem } from '@mui/material';
+import { FixedSizeList as VirtualizedList, ListChildComponentProps } from 'react-window';
+import { useTheme } from '@mui/material/styles';
+import { useMediaQuery } from '@mui/material';
 
 export interface Item {
 	id: string;
@@ -18,6 +21,10 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ startingItems, onChan
 	const [selected, setSelected] = useState<string[]>([]);
 	const [searchTerm, setSearchTerm] = useState<string>('');
 	const [items, setItems] = useState<Item[]>(startingItems);
+	const divRef = useRef<HTMLDivElement>(null);
+
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
 	const sortedItems = useMemo(() => {
 		const itemsCopy = [...items];
@@ -29,34 +36,32 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ startingItems, onChan
 		return itemsCopy;
 	}, [items, selected]);
 
-  	// Load selections from local storage when the component mounts
 	useEffect(() => {
 		const savedSelections = localStorage.getItem('selectedItems');
 		if (savedSelections) {
 			setSelected(JSON.parse(savedSelections));
 		}
-		const savedPriorities = localStorage.getItem('itemPriority')
-		if (savedPriorities && savedSelections){
-			const parsedPriorities = JSON.parse(savedPriorities)
+		const savedPriorities = localStorage.getItem('itemPriority');
+		if (savedPriorities && savedSelections) {
+			const parsedPriorities = JSON.parse(savedPriorities);
 			const newItems = [...items];
 			const startingSelection = JSON.parse(savedSelections) as string[];
-			startingSelection.map((id, idx) => {
-				const foundItem = newItems.find(item => item.id === id)
-				if (foundItem){
+			startingSelection.forEach((id, idx) => {
+				const foundItem = newItems.find(item => item.id === id);
+				if (foundItem) {
 					foundItem.priority = parseInt(parsedPriorities[idx] ?? 1, 10);
 				}
-			})
-			setItems(newItems)
+			});
+			setItems(newItems);
 		}
 	}, []);
 
-	// Save selections to local storage whenever 'selected' changes
 	useEffect(() => {
 		const selectedLabels = selected.map(id => items.find(item => item.id === id)?.label || '');
 		const priorities = selected.map(id => items.find(item => item.id === id)?.priority || 1);
 
 		localStorage.setItem('selectedItems', JSON.stringify(selected));
-		localStorage.setItem('itemPriority', JSON.stringify(priorities))
+		localStorage.setItem('itemPriority', JSON.stringify(priorities));
 
 		onChange(selectedLabels, priorities);
 	}, [selected, items]);
@@ -72,7 +77,6 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ startingItems, onChan
 		}
 
 		setSelected(newSelected);
-		// Convert selected item IDs to their corresponding labels
 		const selectedLabels = newSelected.map(id => items.find(item => item.id === id)?.label || '');
 		onChange(selectedLabels, []);
 	};
@@ -93,12 +97,11 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ startingItems, onChan
 
 	const handlePriorityChange = (id: string, value: string, event: React.ChangeEvent) => {
 		const newPriority = parseInt(value, 10);
-		if (isNaN(newPriority)){
+		if (isNaN(newPriority)) {
 			setItems(items.map(item =>
 				item.id === id ? { ...item, priority: 1 } : item
 			));
-		}
-		if (!isNaN(newPriority) && newPriority >= 1 && newPriority <= maxPriority) {
+		} else if (newPriority >= 1 && newPriority <= maxPriority) {
 			setItems(items.map(item =>
 				item.id === id ? { ...item, priority: newPriority } : item
 			));
@@ -118,13 +121,57 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ startingItems, onChan
 	};
 
 	const filteredAndSortedItems = useMemo(() => {
-		return sortedItems.filter((item) =>
+		return sortedItems.filter(item =>
 			item.label.toLowerCase().includes(searchTerm.toLowerCase())
 		);
 	}, [sortedItems, searchTerm]);
 
+	const renderRow = ({ index, style }: ListChildComponentProps) => {
+		const item = filteredAndSortedItems[index];
+		return (
+			<div style={style} key={item.id}>
+				<ListItem
+					button
+					onClick={handleToggle(item.id)}
+					style={{ paddingTop: '0px', paddingBottom: '0px' }}
+				>
+					<Checkbox
+						edge="start"
+						checked={selected.indexOf(item.id) !== -1}
+						tabIndex={-1}
+						disableRipple
+					/>
+					<ListItemText primary={item.label} />
+					<div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
+						<Button
+							size="small"
+							onClick={(e) => handleDecreasePriority(item.id, e)}
+							style={{ height: '100%', margin: '0', padding: '8px 0' }}>-</Button>
+						<TextField
+							size="small"
+							value={item.priority}
+							onChange={(e) => { handlePriorityChange(item.id, e.target.value, e) }}
+							onClick={(e) => e.stopPropagation()}
+							style={{ width: '60px', height: '100%', overflow: 'hidden' }}
+							inputProps={{
+								style: { textAlign: 'center', height: '100%' },
+								min: 1,
+								max: maxPriority,
+								type: 'text',
+							}}
+						/>
+						<Button
+							size="small"
+							onClick={(e) => handleIncreasePriority(item.id, e)}
+							style={{ height: '100%', margin: '0', padding: '8px 0' }}>+</Button>
+					</div>
+				</ListItem>
+			</div>
+		);
+	};
+
 	return (
-		<div>
+		<div ref={divRef}>
 			<TextField
 				placeholder="Search materials..."
 				value={searchTerm}
@@ -136,52 +183,18 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ startingItems, onChan
 			<Button onClick={handleClearAll} variant="contained" color="primary" style={{ marginBottom: '10px' }}>
 				Clear All
 			</Button>
-			<List subheader={
-					<ListSubheader component="div" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-						<span>Materials</span>
-						<span>Priority</span>
-					</ListSubheader>
-				} dense>
-				{filteredAndSortedItems.map((item) => (
-					<ListItem
-						key={item.id}
-						button
-						onClick={handleToggle(item.id)}
-						style={{ paddingTop: '0px', paddingBottom: '0px' }}
-					>
-						<Checkbox
-							edge="start"
-							checked={selected.indexOf(item.id) !== -1}
-							tabIndex={-1}
-							disableRipple
-						/>
-						<ListItemText primary={item.label} />
-						<div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
-							<Button
-								size="small"
-								onClick={(e) => handleDecreasePriority(item.id, e)}
-								style={{ height: '100%', margin: '0', padding: '8px 0' }}>-</Button>
-							<TextField
-								size="small"
-								value={item.priority}
-								onChange={(e) => {handlePriorityChange(item.id, e.target.value, e)}}
-								onClick={(e) => e.stopPropagation()}
-								style={{ width: '60px', height: '100%', overflow: 'hidden' }}
-								inputProps={{
-									style: {textAlign: 'center', height: '100%'},
-									min: 1,
-									max: maxPriority,
-									type: 'text',
-								}}
-							/>
-							<Button
-								size="small"
-								onClick={(e) => handleIncreasePriority(item.id, e)}
-								style={{ height: '100%', margin: '0', padding: '8px 0' }}>+</Button>
-						</div>
-						</ListItem>
-				))}
-			</List>
+			<ListSubheader component="div" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+				<span>Materials</span>
+				<span>Priority</span>
+			</ListSubheader>
+			<VirtualizedList
+				height={window.innerHeight - 230}
+				itemCount={filteredAndSortedItems.length}
+				itemSize={isMobile ? 60 : 40}
+				width="100%"
+			>
+				{renderRow}
+			</VirtualizedList>
 		</div>
 	);
 };
