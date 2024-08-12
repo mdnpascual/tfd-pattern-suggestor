@@ -55,8 +55,8 @@ const DropListOverlay: React.FC<DropListOverlayProps> = ({
 	};
 
 	const getGoal = (name: string) => {
-		if (materialCount[materialMapping[materialMapping[name]]]) {
-			return (materialCount[materialMapping[materialMapping[name]]]) - (materialCount[materialMapping[name]] ?? 0)
+		if (materialCount[materialMapping[materialMapping[name]]] !== undefined) {
+			return Math.min(materialCount[materialMapping[materialMapping[name]]]) - (materialCount[materialMapping[name]] ?? 0, 0)
 		} else {
 			return (materialCount[materialMapping[name]] ?? 0)
 		}

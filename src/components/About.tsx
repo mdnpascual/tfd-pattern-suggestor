@@ -64,18 +64,18 @@ const AboutComponent: React.FC = () => {
 					variant="caption"
 					sx={{
 						position: 'absolute',
-						bottom: { xs: 58, sm: 32 }, // Responsive spacing for version number
+						bottom: { xs: 58, sm: 32 },
 						right: 16,
 						color: 'text.secondary',
 					}}>
-					Version 0.9.2
+					Version 0.9.3
 				</Typography>
 
 				<Typography
 					variant="caption"
 					sx={{
 						position: 'absolute',
-						bottom: { xs: 16, sm: 8 }, // Responsive spacing for API message
+						bottom: { xs: 16, sm: 8 },
 						right: 16,
 						color: 'text.secondary',
 						textAlign: 'right',
