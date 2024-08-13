@@ -1,6 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
-import { Alert, Box, Button, Snackbar, Typography } from '@mui/material';
+import {
+	Alert,
+	Box,
+	Button,
+	Snackbar,
+	Typography,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogContentText,
+	DialogTitle,
+} from "@mui/material";
 import { gapi } from 'gapi-script';
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
@@ -15,11 +26,13 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 	const [fileId, setFileId] = useState<string | null>(null);
 	const [lastModifiedTime, setLastModifiedTime] = useState<string | null>(null);
 	const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
-    const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'error' | 'info'>('info');
+	const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'error' | 'info'>('info');
+	const [isProcessing, setIsProcessing] = useState(false);
+	const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
 	const handleSnackbarClose = () => {
-        setSnackbarMessage(null);
-    };
+		setSnackbarMessage(null);
+	};
 
     const showSnackbar = (message: string, severity: 'success' | 'error' | 'info') => {
         setSnackbarMessage(message);
@@ -90,7 +103,7 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 	};
 
 	const onError = () => {
-		console.log('Login failed');
+		showSnackbar('Login Failed', 'error');
 	};
 
 	const handleLogout = () => {
@@ -101,6 +114,8 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 	};
 
 	const saveToGoogleDrive = async () => {
+		setShowConfirmDialog(false);
+
 		if (!token) {
 			showSnackbar('Failed to fetch auth token', 'error');
 			return;
@@ -111,6 +126,8 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 			showSnackbar('No Saves found', 'info');
 			return;
 		}
+
+		setIsProcessing(true);
 
 		const boundary = 'foo_bar_baz';
 		const metadata = {
@@ -141,6 +158,8 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 		request.execute((file: any) => {
 			showSnackbar('Saves synced to Google Drive', 'success');
 			setFileId(file.id); // Store the file ID for future updates
+			setLastModifiedTime(new Date().toISOString());
+			setIsProcessing(false);
 		});
 	};
 
@@ -154,6 +173,8 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 			showSnackbar('Failed to sync save data', 'error');
 			return;
 		}
+
+		setIsProcessing(true);
 
 		const request = gapi.client.request({
 			path: `/drive/v3/files/${fileId}`,
@@ -169,7 +190,12 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 			localStorage.setItem('saves', JSON.stringify(saves));
 			showSnackbar('Saves Loaded from Google Drive', 'success');
 			onLoadFromGoogleDrive(saves);
+			setIsProcessing(false);
 		});
+	};
+
+	const handleSaveClick = () => {
+		setShowConfirmDialog(true);
 	};
 
 	return (
@@ -184,8 +210,9 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 					<Button
 						variant="contained"
 						color="primary"
-						onClick={saveToGoogleDrive}
+						onClick={handleSaveClick}
 						sx={{ mr: 1 }}
+						disabled={isProcessing}
 					>
 						{isMobile ? 'Save' : 'Save to Google Drive'}
 					</Button>
@@ -194,11 +221,16 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 						color="primary"
 						onClick={loadFromGoogleDrive}
 						sx={{ mr: 1 }}
-						disabled={!fileId}
+						disabled={!fileId || isProcessing}
 					>
 						{isMobile ? 'Load' : 'Load from Google Drive'}
 					</Button>
-					<Button variant="contained" color="secondary" onClick={handleLogout}>
+					<Button
+						variant="contained"
+						color="secondary"
+						onClick={handleLogout}
+						disabled={isProcessing}
+					>
 						Logout
 					</Button>
 					{lastModifiedTime && (
@@ -218,6 +250,26 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
                     {snackbarMessage}
                 </Alert>
             </Snackbar>
+
+			<Dialog
+				open={showConfirmDialog}
+				onClose={() => setShowConfirmDialog(false)}
+			>
+				<DialogTitle>Confirm Sync</DialogTitle>
+				<DialogContent>
+					<DialogContentText>
+						Have you clicked the Save button for the local saves before syncing to Google Drive?
+					</DialogContentText>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={() => setShowConfirmDialog(false)} color="primary">
+						Cancel
+					</Button>
+					<Button onClick={saveToGoogleDrive} color="secondary">
+						Yes, Continue
+					</Button>
+				</DialogActions>
+			</Dialog>
 		</Box>
 	);
 };

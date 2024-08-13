@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Button, TextField, IconButton, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Tooltip, Typography, Chip } from '@mui/material';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import {
+	Box,
+	Button,
+	TextField,
+	IconButton,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogContentText,
+	DialogTitle,
+	Typography,
+	Alert,
+	Snackbar,
+} from "@mui/material";
 import { localStorageKeys, SaveData } from "../data/constants";
 import GoogleDriveSave from './GoogleDriveSave';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
@@ -23,6 +35,8 @@ const Saves: React.FC = () => {
 	const [saves, setSaves] = useState<Record<string, SaveData>>({});
 	const [newSaveName, setNewSaveName] = useState('');
 	const [deleteKey, setDeleteKey] = useState<string | null>(null);
+	const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
+	const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'error' | 'info'>('info');
 
 	useEffect(() => {
 		const storage = localStorage.getItem('saves');
@@ -31,12 +45,25 @@ const Saves: React.FC = () => {
 		}
 	}, []);
 
+	const handleSnackbarClose = () => {
+		setSnackbarMessage(null);
+	};
+
+    const showSnackbar = (message: string, severity: 'success' | 'error' | 'info') => {
+        setSnackbarMessage(message);
+        setSnackbarSeverity(severity);
+    };
+
 	const handleSave = (key: string, data?: any) => {
+		if (/^\d/.test(key)) { // Check if the key starts with a number
+			showSnackbar('Save name cannot start with a number.', 'error');
+			return;
+		}
 		let updatedSaves = { ...saves }
 		if (data) {
-			updatedSaves[key] = data;
+			updatedSaves[key.toString()] = data;
 		} else {
-			updatedSaves[key] = compileData();
+			updatedSaves[key.toString()] = compileData();
 		}
 
 		setSaves(updatedSaves);
@@ -123,8 +150,11 @@ const Saves: React.FC = () => {
 
 	return (
 		<Box>
+			<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', pt: 0 }}>
+					<Typography variant="body1">Local Saves</Typography>
+				</Box>
 			<Box sx={{
-				maxHeight: '50vh',
+				maxHeight: '30vh',
 				overflowY: 'auto',
 				p: 1,
 			}}>
@@ -174,7 +204,14 @@ const Saves: React.FC = () => {
 				<Box sx={{ display: 'flex', alignItems: 'center' }}>
 					<TextField
 						value={newSaveName}
-						onChange={(e) => setNewSaveName(e.target.value)}
+						onChange={(e) => {
+							const value = e.target.value;
+							if (/^\d/.test(value)) {
+								showSnackbar('Save name cannot start with a number.', 'error');
+							} else {
+								setNewSaveName(value);
+							}
+						}}
 						placeholder="New Save"
 						variant="outlined"
 						size="small"
@@ -203,6 +240,18 @@ const Saves: React.FC = () => {
 				</Box>
 				<GoogleDriveSave onLoadFromGoogleDrive={handleLoadFromGoogleDrive} />
 			</Box>
+
+			<Snackbar
+				open={!!snackbarMessage}
+				autoHideDuration={6000}
+				onClose={handleSnackbarClose}
+				anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+			>
+				<Alert onClose={handleSnackbarClose} severity={snackbarSeverity}>
+					{snackbarMessage}
+				</Alert>
+			</Snackbar>
+
 			<Dialog
 				open={deleteKey !== null}
 				onClose={() => setDeleteKey(null)}
