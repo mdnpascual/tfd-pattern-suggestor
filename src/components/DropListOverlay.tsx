@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { Box, Typography, TextField, Grid, Tooltip } from '@mui/material';
 import { TableItem } from './SortableTable';
 import { useTheme } from '@mui/material/styles';
@@ -21,91 +21,89 @@ const DropListOverlay: React.FC<DropListOverlayProps> = ({
 	onMatCountChange,
 	shardRequirements
 }) => {
-	const [percentiles, setPercentiles] = useState<PercentileDisplayProps>({percentiles: [0.5, 0.85, 0.95], values: [0, 0 ,0]});
-	const [percentileValues, setPercentileValues] = useState<number[]>(
-		JSON.parse(localStorage.getItem('percentileValues') || '[0.5, 0.85, 0.95]')
-	);
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-	const isEmptyShardRequirements = () => {
+	const [percentileValues] = useState<number[]>(
+		JSON.parse(localStorage.getItem('percentileValues') || '[0.5, 0.85, 0.95]')
+	);
+
+	const isEmptyShardRequirements = useCallback(() => {
 		if (!shardRequirements) return true;
 		if (shardRequirements.type === 'div' && (!shardRequirements.props.children || shardRequirements.props.children.length === 0)) {
 			return true;
 		}
-
 		return false;
-    };
+	}, [shardRequirements]);
 
-	const computeTooltipShards = (count: number) => {
-		if (isEmptyShardRequirements()){
-			return (<div></div>)
+	const computeTooltipShards = useCallback((count: number) => {
+		if (isEmptyShardRequirements()) {
+			return null;
 		} else {
 			return (
 				<div>
 					Total Shards Needed:
 					{shardRequirements?.props.children.props.children[1].props.children[1].map((shard: any) => (
-						<div>
+						<div key={shard.props.children[0]}>
 							{shard.props.children[0]}: {shard.props.children[2] * count}
 						</div>
 					))}
 				</div>
 			);
 		}
-	};
+	}, [shardRequirements, isEmptyShardRequirements]);
 
-	const getGoal = (name: string) => {
+	const getGoal = useCallback((name: string) => {
 		if (materialCount[materialMapping[materialMapping[name]]] !== undefined) {
-			return Math.max(0, Math.min((materialCount[materialMapping[materialMapping[name]]] - materialCount[materialMapping[name]] ?? 0), Number.MAX_SAFE_INTEGER))
+			return Math.max(0, Math.min((materialCount[materialMapping[materialMapping[name]]] - materialCount[materialMapping[name]] ?? 0), Number.MAX_SAFE_INTEGER));
 		} else {
-			return (materialCount[materialMapping[name]] ?? 0)
+			return (materialCount[materialMapping[name]] ?? 0);
 		}
-	}
+	}, [materialCount, materialMapping]);
 
-	useEffect(() => {
-		compute();
-	}, [materialCount]);
-
-	const compute = () => {
+	const percentiles = useMemo(() => {
 		if (dropTable) {
 			const probabilities: Record<string, number> = {};
 			const requirements: Record<string, number> = {};
-			dropTable.drops.map((drop, index) => {
+			dropTable.drops.forEach((drop) => {
 				const goal = getGoal(drop.name);
 				if (ColorByGoal(materialCount[drop.name] ?? 0, goal, 1, materialCount) === "#F44336") {
-					probabilities[drop.name] = drop.chance
-					requirements[drop.name] = goal - (materialCount[drop.name] ?? 0)
+					probabilities[drop.name] = drop.chance;
+					requirements[drop.name] = goal - (materialCount[drop.name] ?? 0);
 				}
 			});
-
-			setPercentiles(calculateRolls(probabilities, requirements, percentileValues));
+			return calculateRolls(probabilities, requirements, percentileValues);
 		}
-	}
+		return { percentiles: [], values: [] };
+	}, [dropTable, materialCount, getGoal, percentileValues]);
+
+	const handleMatCountChange = useCallback((name: string, newCount: number) => {
+		onMatCountChange(name, newCount);
+	}, [onMatCountChange]);
 
 	if (dropTable) {
-		const handleMatCountChange = (name: string, newCount: number) => {
-			onMatCountChange(name, newCount);
-		};
-
 		return (
 			<Box sx={{ p: 2, pt: 0, height: '95vh' }}>
-				<Box sx={{overflowY: 'auto', maxHeight: isEmptyShardRequirements() ? '15vh' : '25vh',}}>
+				<Box sx={{ overflowY: 'auto', maxHeight: isEmptyShardRequirements() ? '15vh' : '25vh' }}>
 					<Typography variant="h5" sx={{ fontWeight: 'bold' }}>
 						Amorphous Pattern #{dropTable.name}
 					</Typography>
-					<Typography sx={{ mt:'20px', mb: '20px' }}>
-						Drops From: {dropTable.dropsFrom}<br/>
+					<Typography sx={{ mt: '20px', mb: '20px' }}>
+						Drops From: {dropTable.dropsFrom}<br />
 						Use In: {dropTable.useIn}
 						{shardRequirements}
 					</Typography>
 				</Box>
-				<Box key={dropTable.name} sx={{
-					mb: 0,
-					width: isMobile ? '90vw' : undefined,
-					maxHeight: isEmptyShardRequirements() ? '65vh' : '55vh',
-					overflowY: 'auto',
-					borderColor: 'transparent'
-				}}>
+				<Box
+					key={dropTable.name}
+					sx={{
+						mb: 0,
+						width: isMobile ? '90vw' : undefined,
+						maxHeight: isEmptyShardRequirements() ? '65vh' : '55vh',
+						overflowY: 'auto',
+						borderColor: 'transparent',
+					}}
+				>
 					{dropTable.drops.map((drop, index) => (
 						<Box
 							key={index}
@@ -135,7 +133,7 @@ const DropListOverlay: React.FC<DropListOverlayProps> = ({
 										variant="outlined"
 										size="small"
 										value={materialCount[drop.name] ?? 0}
-										onChange={e => handleMatCountChange(drop.name, parseInt(e.target.value))}
+										onChange={(e) => handleMatCountChange(drop.name, parseInt(e.target.value))}
 										sx={{ width: '60px', mb: 1, mr: '15px' }}
 										inputProps={{ min: 0, style: { textAlign: 'right' } }}
 									/>
@@ -146,13 +144,11 @@ const DropListOverlay: React.FC<DropListOverlayProps> = ({
 							</Box>
 						</Box>
 					))}
-
 				</Box>
-				<Box sx={{overflowY: 'auto', maxHeight: '20vh'}}>
+				<Box sx={{ overflowY: 'auto', maxHeight: '20vh' }}>
 					<Typography variant="h6" sx={{ fontWeight: 'bold' }}>
 						Number of Patterns needed:
 					</Typography>
-
 					<Grid container spacing={0}>
 						{percentiles.percentiles.map((percentile, index) => (
 							<Grid item xs={4} key={index}>
@@ -184,9 +180,8 @@ const DropListOverlay: React.FC<DropListOverlayProps> = ({
 			</Box>
 		);
 	} else {
-		return (<div></div>);
+		return null;
 	}
-
 };
 
-export default DropListOverlay;
+export default React.memo(DropListOverlay);
