@@ -72,6 +72,14 @@ const DebugComponent: React.FC = () => {
 			<Button
 				variant="outlined"
 				color="error"
+				onClick={() => {localStorage.setItem("finishedGearTutorial", "");window.location.reload();}}
+				sx={{ mb: 2 }}
+			>
+				Replay Tutorial
+			</Button>
+			<Button
+				variant="outlined"
+				color="error"
 				onClick={() => confirmDelete()}
 				sx={{ mb: 2 }}
 			>

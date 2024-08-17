@@ -265,7 +265,10 @@ export const JoyrideWithNavigation = ({
 		const { status, action, index, type, lifecycle } = data;
 
 		const stepsToAutoAdvance: { [key: number]: () => void } = {
-			0: () => waitForElement('gear-inventory-tab', () => setStepIndex(1)),
+			0: () => waitForElement('gear-inventory-tab', () => {
+				clickElementById('gear-inventory-tab');
+				setTimeout(() => setStepIndex(1), 400)
+			}),
 			1: () => waitForElement('Luna-textfield-planner', () => setStepIndex(3)),
 			4: () => {
 				clickElementById('Luna-close-material-button');
