@@ -153,7 +153,7 @@ const SortableTable = ({ data }: { data: TableItem[] }) => {
 							<Tooltip title={row.tooltip} key={row.id} placement="top">
 								<TableRow onClick={() => handleRowClick(row)}>
 									<TableCell style={tableCellStyle} align="center">{row.name}</TableCell>
-									<TableCell id={`${row.name.replaceAll(" ", "-")}-priority-score-entry`} style={tableCellStyle} align="center">{row.priorityScore}({row.count})</TableCell>
+									<TableCell id={`p${row.name.replaceAll(" ", "-")}-priority-score-entry`} style={tableCellStyle} align="center">{row.priorityScore}({row.count})</TableCell>
 									<TableCell style={tableCellStyle} align="center">{row.score}</TableCell>
 									<TableCell style={tableCellStyle} align="left">{row.dropsFrom}</TableCell>
 									<TableCell style={tableCellStyle} align="left">{row.useIn}</TableCell>
@@ -168,6 +168,7 @@ const SortableTable = ({ data }: { data: TableItem[] }) => {
 				<div className="category-list-overlay">
 					<button
 						className="overlay-close-button"
+						id="material-overlay-close-button"
 						onClick={() => setOverlayOpen(false)}>
 						X
 					</button>

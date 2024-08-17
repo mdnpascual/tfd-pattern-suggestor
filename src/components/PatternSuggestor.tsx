@@ -265,7 +265,7 @@ const PatternSuggestorComponent: React.FC = () => {
 					defaultTrue={['Normal', 'Hard']}
 					onChange={handleFilterChange} />
 				{('Collosus' in filters) && (!!filters.Collosus) && <CheckboxFilter labels={collosusOptions} localStorageName={'selectedCollossusFilters'} defaultTrue={collosusOptions.map((item) => item.label)} onChange={handleCollosusChange} />}
-				<Paper style={{ height: 'calc(100vh - 50px)', overflowY: 'auto' }}>
+				<Paper style={{ height: 'calc(100vh - 50px)', overflowY: 'auto' }} id="sortable-table">
 					<SortableTable data={farmList.map((item, index) => {
 						return {
 							id: item.name,

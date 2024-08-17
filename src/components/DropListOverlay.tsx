@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { Box, Typography, TextField, Grid, Tooltip } from '@mui/material';
 import { TableItem } from './SortableTable';
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
 import ColorByGoal from '../utils/ColorByGoal';
-import calculateRolls, { PercentileDisplayProps } from '../utils/CalculateRolls';
+import calculateRolls from '../utils/CalculateRolls';
 
 interface DropListOverlayProps {
 	dropTable?: TableItem;
@@ -95,6 +95,7 @@ const DropListOverlay: React.FC<DropListOverlayProps> = ({
 					</Typography>
 				</Box>
 				<Box
+					id={`p${dropTable.name.replaceAll(" ", "-")}-droplist-overlay`}
 					key={dropTable.name}
 					sx={{
 						mb: 0,
@@ -145,7 +146,7 @@ const DropListOverlay: React.FC<DropListOverlayProps> = ({
 						</Box>
 					))}
 				</Box>
-				<Box sx={{ overflowY: 'auto', maxHeight: '20vh' }}>
+				<Box sx={{ overflowY: 'auto', maxHeight: '20vh' }} id={`p${dropTable.name.replaceAll(" ", "-")}-pattern-statistics`}>
 					<Typography variant="h6" sx={{ fontWeight: 'bold' }}>
 						Number of Patterns needed:
 					</Typography>
