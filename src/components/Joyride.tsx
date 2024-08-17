@@ -5,6 +5,15 @@ import { useTheme } from '@mui/material/styles';
 import { BackupData, joyrideStyles, localStorageBackupKeys, SaveData } from '../data/constants';
 import { useNavigate } from 'react-router-dom';
 
+export const loadBackupDataToLocalStorage = (backupData: { [key: string]: SaveData | BackupData }) => {
+	localStorageBackupKeys.forEach((key) => {
+		const data = backupData[key];
+		if (data) {
+			localStorage.setItem(key.replace("Backup", ""), JSON.stringify(data));
+		}
+	});
+};
+
 export const JoyrideWithNavigation = ({
 	isTutorialOpen,
 	handleCloseTutorial,
@@ -33,15 +42,6 @@ export const JoyrideWithNavigation = ({
 		style.id = 'joyride-dynamic-style';
 		style.appendChild(document.createTextNode(css));
 		document.head.appendChild(style);
-	};
-
-	const loadBackupDataToLocalStorage = (backupData: { [key: string]: SaveData | BackupData }) => {
-		localStorageBackupKeys.forEach((key) => {
-			const data = backupData[key];
-			if (data) {
-				localStorage.setItem(key.replace("Backup", ""), JSON.stringify(data));
-			}
-		});
 	};
 
 	const joyrideSteps = [

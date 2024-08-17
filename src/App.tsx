@@ -9,7 +9,7 @@ import GearComponent from './components/Gear';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import ChecklistIcon from '@mui/icons-material/Checklist';
-import { JoyrideWithNavigation } from './components/Joyride';
+import { JoyrideWithNavigation, loadBackupDataToLocalStorage } from './components/Joyride';
 import { BackupData, localStorageKeys, SaveData } from './data/constants';
 import { compileData } from './components/Saves';
 
@@ -32,13 +32,32 @@ const App = () => {
 
 	useEffect(() => {
 		const finishedGearTutorial = localStorage.getItem('finishedGearTutorial');
+		let bData = {}
 		if (finishedGearTutorial === null || finishedGearTutorial.length === 0) {
-			setBackupData(compileData("Backup"))
+			bData = compileData("Backup")
+			setBackupData(bData)
 			localStorageKeys.forEach((key) => {
 				localStorage.setItem(key, '');
 			})
 			setReloadKey((prevKey) => prevKey + 1)
 			setIsTutorialOpen(true);
+		}
+
+		const handleBeforeUnload = () => {
+			if ((finishedGearTutorial === null || finishedGearTutorial.length === 0) && Object.keys(bData).length !== 0) {
+				loadBackupDataToLocalStorage(bData);
+			}
+		};
+
+		window.addEventListener('pagehide', handleBeforeUnload)
+		window.addEventListener('visibilitychange', handleBeforeUnload)
+		window.addEventListener('unload', handleBeforeUnload)
+		window.addEventListener('beforeunload', handleBeforeUnload)
+		return () => {
+			window.removeEventListener('pagehide', handleBeforeUnload)
+			window.removeEventListener('visibilitychange', handleBeforeUnload)
+			window.removeEventListener('unload', handleBeforeUnload)
+			window.removeEventListener('beforeunload', handleBeforeUnload)
 		}
 	}, []);
 
