@@ -6,65 +6,50 @@ const InitializeCategoryData = <T extends CategoryData>(
 	localStorageStatusKey: string,
 	localStorageMaterialKey: string
 ) => {
-    const savedCategoryStatus = localStorage.getItem(localStorageStatusKey);
-    const categoryStatus = savedCategoryStatus ? JSON.parse(savedCategoryStatus) : {};
+	const savedCategoryStatus = localStorage.getItem(localStorageStatusKey);
+	const categoryStatus = savedCategoryStatus ? JSON.parse(savedCategoryStatus) : {};
 
-    const savedMaterialCount = localStorage.getItem(localStorageMaterialKey);
-    const materialCount = savedMaterialCount ? JSON.parse(savedMaterialCount) : {};
+	const savedMaterialCount = localStorage.getItem(localStorageMaterialKey);
+	const materialCount = savedMaterialCount ? JSON.parse(savedMaterialCount) : {};
 
 	const categoryList = Object.keys(data).sort();
 	const startingCategoryList = categoryList.reduce((acc, category) => {
-		acc[category] =
-		category in categoryStatus
-			? categoryStatus[category]
-			: false;
+		acc[category] = categoryStatus[category] ?? false;
 		return acc;
-	}, {} as Record<string, boolean>)
+	}, {} as Record<string, boolean>);
 
-	let material: Material[] = [];
-	Object.entries(data).forEach(([key, data]) => {
-		material.push({
-			name: key,
-			quantity: 0
-		})
-		data.parts.forEach((part: GearPart) => {
-			material.push({ name: part.name, quantity: 1 });
-				part.mats?.forEach((mat: Material) => {
-					material.push(mat);
-			});
+	const materialSet = new Set<string>();
+	categoryList.forEach((category) => {
+		materialSet.add(JSON.stringify({ name: category, quantity: 0 }));
+		data[category].parts.forEach((part: GearPart) => {
+			materialSet.add(JSON.stringify({ name: part.name, quantity: 1 }));
+			part.mats?.forEach((mat: Material) => materialSet.add(JSON.stringify(mat)));
 		});
 	});
 
-	material = Array.from(new Set(material.map((item) => JSON.stringify(item)))).map((item) => JSON.parse(item));
-	const materialList = material.map((item) => item.name).sort();
+	const materialList = Array.from(materialSet).map((item) => JSON.parse(item).name).sort();
 
 	const startingMaterialCount = materialList.reduce((acc, material) => {
-		acc[material] =
-		material in materialCount
-			? materialCount[material]
-			: categoryList.includes(material)
-				? localStorageStatusKey === 'characterStatus'
-					? 1
-					: 5
-				: 0;
+		acc[material] = materialCount[material] ?? (
+			categoryList.includes(material)
+				? (localStorageStatusKey === 'characterStatus'
+					? 1 // Default count for characters
+					: 5 // Default count for weapons
+				)
+				: 0
+		);
 		return acc;
-	}, {} as Record<string, number>)
+	}, {} as Record<string, number>);
 
 	if (Object.keys(categoryStatus).length === 0) {
-		localStorage.setItem(
-			localStorageStatusKey,
-			JSON.stringify(startingCategoryList)
-		);
+		localStorage.setItem(localStorageStatusKey, JSON.stringify(startingCategoryList));
 	}
 
 	if (Object.keys(materialCount).length === 0) {
-		localStorage.setItem(
-			localStorageMaterialKey,
-			JSON.stringify(startingMaterialCount)
-		);
+		localStorage.setItem(localStorageMaterialKey, JSON.stringify(startingMaterialCount));
 	}
 
 	return { categoryStatus: startingCategoryList, materialCount: startingMaterialCount };
-}
+};
 
-export default InitializeCategoryData
+export default InitializeCategoryData;

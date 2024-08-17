@@ -134,7 +134,7 @@ const SortableTable = ({ data }: { data: TableItem[] }) => {
 			<TableContainer component={Paper}>
 				<Table aria-label="sortable table">
 					<TableHead>
-						<TableRow>
+						<TableRow id="list-header">
 							{headCells.map((headCell) => (
 								<TableCell key={headCell.id} align={'center'}>
 									<TableSortLabel
@@ -150,10 +150,10 @@ const SortableTable = ({ data }: { data: TableItem[] }) => {
 					</TableHead>
 					<TableBody>
 						{sortedData.map((row) => (
-							<Tooltip title={row.tooltip} key={row.id}>
+							<Tooltip title={row.tooltip} key={row.id} placement="top">
 								<TableRow onClick={() => handleRowClick(row)}>
 									<TableCell style={tableCellStyle} align="center">{row.name}</TableCell>
-									<TableCell style={tableCellStyle} align="center">{row.priorityScore}({row.count})</TableCell>
+									<TableCell id={`${row.name.replaceAll(" ", "-")}-priority-score-entry`} style={tableCellStyle} align="center">{row.priorityScore}({row.count})</TableCell>
 									<TableCell style={tableCellStyle} align="center">{row.score}</TableCell>
 									<TableCell style={tableCellStyle} align="left">{row.dropsFrom}</TableCell>
 									<TableCell style={tableCellStyle} align="left">{row.useIn}</TableCell>

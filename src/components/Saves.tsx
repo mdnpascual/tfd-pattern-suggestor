@@ -13,19 +13,19 @@ import {
 	Alert,
 	Snackbar,
 } from "@mui/material";
-import { localStorageKeys, SaveData } from "../data/constants";
+import { BackupData, localStorageKeys, SaveData } from "../data/constants";
 import GoogleDriveSave from './GoogleDriveSave';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const compileData = () => {
-	const newSaveData: { [key: string]: SaveData; } = {};
+export const compileData = (suffix?: string) => {
+	const newSaveData: { [key: string]: SaveData | BackupData; } = {};
 
 	localStorageKeys.forEach((localStorageKey) => {
 		const value = localStorage.getItem(localStorageKey);
 		if (value !== null) {
-			newSaveData[localStorageKey] = value ? JSON.parse(value) : '';
+			newSaveData[`${localStorageKey}${suffix ?? ''}`] = value ? JSON.parse(value) : '';
 		}
 	});
 	return newSaveData;

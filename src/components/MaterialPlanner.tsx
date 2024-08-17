@@ -46,7 +46,7 @@ const MaterialPlanner: React.FC<MaterialPlannerProps> = ({
 	}
 
 	return (
-		<Box sx={{ p: 2 }}>
+		<Box sx={{ p: 2 }} id={`${title.replaceAll(" ", "-")}-textfield-planner`}>
 			{parts.map(part => (
 				<Box key={part.name} sx={{ mb: 2, width: isMobile ? '90vw' : undefined, maxHeight: '20vh' }}>
 					<Grid container alignItems="center" sx={{ display: 'flex', width: '100%' }}>
@@ -109,8 +109,8 @@ const MaterialPlanner: React.FC<MaterialPlannerProps> = ({
 					</Grid>
 				</Box>
 			))}
-			<Box display="flex" alignItems="center">
-				{!disableOwnership && <Button variant="contained" color="secondary" onClick={(e) => {onOwned(title)}}>
+			<Box display="flex" alignItems="center" id={`${title.replaceAll(" ", "-")}-desired-quantity`}>
+				{!disableOwnership && <Button id={`${title.replaceAll(" ", "-")}-owned-button`} variant="contained" color="secondary" onClick={(e) => {onOwned(title)}}>
 					{enableMultiple && ('✅ Completed')}
 					{!enableMultiple && ('✅ Owned')}
 				</Button>}

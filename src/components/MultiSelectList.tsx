@@ -142,7 +142,7 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ startingItems, onChan
 						disableRipple
 					/>
 					<ListItemText primary={item.label} />
-					<div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }}>
+					<div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center' }} className='priority-part'>
 						<Button
 							size="small"
 							onClick={(e) => handleDecreasePriority(item.id, e)}
@@ -171,7 +171,7 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ startingItems, onChan
 	};
 
 	return (
-		<div ref={divRef}>
+		<div ref={divRef} id="material-list">
 			<TextField
 				placeholder="Search materials..."
 				value={searchTerm}

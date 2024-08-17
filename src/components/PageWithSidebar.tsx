@@ -34,7 +34,7 @@ const PageWithSidebarComponent: React.FC<PageWithSidebarProps> = ({ items }) => 
 				{sidebarOpen && (
 				<ul>
 					{items.map((item, index) => (
-					<li key={index} onClick={() => setActiveIndex(index)}>
+					<li id={`${item.label.replaceAll(" ", "-")}-list-name`} key={index} onClick={() => setActiveIndex(index)}>
 						<img src={item.iconPath} alt={item.label} style={{ width: 24, height: 24, marginRight: 10 }} />
 						{item.label}
 					</li>

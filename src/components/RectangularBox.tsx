@@ -30,6 +30,7 @@ const RectangularBox: React.FC<RectangularBoxProps> = ({
 
 	return (
 		<div
+			id={`${title.replaceAll(" ", "-")}-rectangular-box`}
 			className="rectangular-box"
 			style={{
 				borderColor: isDisabled ? "#6cfc8c" : "#fff",

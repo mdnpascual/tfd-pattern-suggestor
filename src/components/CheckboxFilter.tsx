@@ -44,7 +44,7 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = ({ labels, defaultTrue, lo
 	};
 
 	return (
-	<FormGroup row style={{paddingLeft: '80px'}}>
+	<FormGroup row style={{paddingLeft: '80px'}} id="checkbox-filters">
 		{labels.map(label => (
 			<Tooltip title={label.tooltip}>
 				<FormControlLabel

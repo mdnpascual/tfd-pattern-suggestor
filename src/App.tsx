@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation, Navigate, NavigateFunction } from 'react-router-dom';
 import { AppBar, Tabs, Tab, CssBaseline, useMediaQuery  } from '@mui/material';
 import { ThemeProvider, useTheme } from '@mui/material/styles';
 import darkTheme from './theme';
@@ -9,6 +9,10 @@ import GearComponent from './components/Gear';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import ChecklistIcon from '@mui/icons-material/Checklist';
+import { JoyrideWithNavigation } from './components/Joyride';
+import { BackupData, localStorageKeys, SaveData } from './data/constants';
+import { compileData } from './components/Saves';
+
 
 const tabNameToIndex = {
 	0: "/patternSuggestor",
@@ -22,26 +26,51 @@ const indexToTabName = {
 };
 
 const App = () => {
+	const [isTutorialOpen, setIsTutorialOpen] = useState(false);
+	const [backupData, setBackupData] = useState<Record<string, SaveData | BackupData>>({})
+	const [reloadKey, setReloadKey] = useState(0);
+
+	useEffect(() => {
+		const finishedGearTutorial = localStorage.getItem('finishedGearTutorial');
+		if (finishedGearTutorial === null || finishedGearTutorial.length === 0) {
+			setBackupData(compileData("Backup"))
+			localStorageKeys.forEach((key) => {
+				localStorage.setItem(key, '');
+			})
+			setReloadKey((prevKey) => prevKey + 1)
+			setIsTutorialOpen(true);
+		}
+	}, []);
+
+	const handleCloseTutorial = () => {
+		setIsTutorialOpen(false);
+		setReloadKey((prevKey) => prevKey + 1)
+	};
+
 	const savedSelectedItems = localStorage.getItem('selectedItems');
 	const landingPage = (savedSelectedItems?.length ?? 0) > 2
 		? "/patternSuggestor"
 		: "/gear";
+
 	return (
 		<ThemeProvider theme={darkTheme}>
 			<CssBaseline />
 			<Router basename="/tfd-pattern-suggestor">
-			<div>
-				<NavTabs />
-				<Routes>
-				<Route
-					path="/patternSuggestor"
-					element={<PatternSuggestorComponent />}
-				/>
-				<Route path="/gear" element={<GearComponent />} />
-				<Route path="/about" element={<AboutComponent />} />
-				<Route path="/" element={<Navigate replace to={landingPage} />} />
-				</Routes>
-			</div>
+				{isTutorialOpen && (
+					<JoyrideWithNavigation isTutorialOpen={isTutorialOpen} handleCloseTutorial={handleCloseTutorial} backupData={backupData}/>
+				)}
+				<div>
+					<NavTabs />
+					<Routes>
+						<Route
+							path="/patternSuggestor"
+							element={<PatternSuggestorComponent key={reloadKey}/>}
+						/>
+						<Route path="/gear" element={<GearComponent key={reloadKey}/>} />
+						<Route path="/about" element={<AboutComponent />} />
+						<Route path="/" element={<Navigate replace to={landingPage} />} />
+					</Routes>
+				</div>
 			</Router>
 		</ThemeProvider>
 	);
@@ -66,9 +95,9 @@ const NavTabs = () => {
 				onChange={handleTabChange}
 				centered
 			>
-				<Tab icon={isMobile ? <ChecklistIcon /> : undefined} label={!isMobile ? "Pattern Suggestor" : undefined} />
-                <Tab icon={isMobile ? <AddTaskIcon /> : undefined} label={!isMobile ? "Gear Inventory" : undefined} />
-                <Tab icon={isMobile ? <HelpOutlineIcon /> : undefined} label={!isMobile ? "Help" : undefined} />
+				<Tab id="suggestor-tab" icon={isMobile ? <ChecklistIcon /> : undefined} label={!isMobile ? "Pattern Suggestor" : undefined} />
+				<Tab id="gear-inventory-tab" icon={isMobile ? <AddTaskIcon /> : undefined} label={!isMobile ? "Gear Inventory" : undefined} />
+				<Tab icon={isMobile ? <HelpOutlineIcon /> : undefined} label={!isMobile ? "Help" : undefined} />
 			</Tabs>
 		</AppBar>
 	);

@@ -243,9 +243,9 @@ const PatternSuggestorComponent: React.FC = () => {
 
 	return (
 		<div style={{ width: '100%', display: 'flex', height: '100vh' }}>
-			<div style={{ flex: view === 'both' || view === 'left' ? 1 : 0, transition: 'flex 0.3s', overflow: 'auto', position: 'relative' }}>
+			<div style={{ flex: view === 'both' || view === 'left' ? 1 : 0, transition: 'flex 0.3s', overflow: 'hidden', position: 'relative' }}>
 				{view !== 'right' && (
-				<Button onClick={toggleLeft} variant="contained" style={{ position: 'absolute', top: 0, right: 0, zIndex: 1000 }}>
+				<Button onClick={toggleLeft} variant="contained" style={{ position: 'absolute', top: 0, right: 0, zIndex: 1000 }} id="toggle-left-button">
 					{'<<'}
 				</Button>
 				)}
@@ -253,9 +253,9 @@ const PatternSuggestorComponent: React.FC = () => {
 					<MultiSelectList startingItems={items} onChange={handleChange} />
 				</Paper>
 			</div>
-			<div style={{ flex: view === 'both' || view === 'right' ? 1 : 0, transition: 'flex 0.3s', overflow: 'auto', position: 'relative' }}>
+			<div style={{ flex: view === 'both' || view === 'right' ? 1 : 0, transition: 'flex 0.3s', overflow: 'hidden', position: 'relative' }} id="pattern-suggested-list">
 				{view !== 'left' && (
-				<Button onClick={toggleRight} variant="contained" style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}>
+				<Button onClick={toggleRight} variant="contained" style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }} id="toggle-right-button">
 					{'>>'}
 				</Button>
 				)}

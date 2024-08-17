@@ -97,6 +97,7 @@ const CategoryList = <T extends CategoryData>({
 					{selected === category && (
 						<div className="category-list-overlay">
 							<button
+								id={`${category.replaceAll(" ", "-")}-close-material-button`}
 								className="overlay-close-button"
 								onClick={() => setSelected("")}>
 								X

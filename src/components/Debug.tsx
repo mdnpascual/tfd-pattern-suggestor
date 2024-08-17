@@ -61,13 +61,10 @@ const DebugComponent: React.FC = () => {
 	};
 
 	const handleClearLocalStorage = () => {
-		const confirmed = window.confirm("Are you sure you want to clear all selections?");
-		if (confirmed) {
-			localStorageKeys.forEach((key) => {
-				localStorage.setItem(key, '');
-			})
-
-		}
+		localStorageKeys.forEach((key) => {
+			localStorage.setItem(key, '');
+		})
+		setConfirmationOpen(false)
 	};
 
 	return (

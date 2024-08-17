@@ -168,7 +168,8 @@ export const localStorageKeys: Array<keyof SaveData> = [
 	'selectedCollossusFilters',
 	'weaponStatus',
 	'enhancementStatus',
-	'percentileValues'
+	'percentileValues',
+	'finishedGearTutorial'
 ]
 
 export type SaveData = {
@@ -181,6 +182,55 @@ export type SaveData = {
     weaponStatus?: string;
     enhancementStatus?: string;
     percentileValues?: string;
+	finishedGearTutorial?: string;
+};
+
+export const localStorageBackupKeys: Array<keyof BackupData> = [
+	'selectedItemsBackup',
+	'selectedFiltersBackup',
+	'itemPriorityBackup',
+	'characterStatusBackup',
+	'materialCountBackup',
+	'selectedCollossusFiltersBackup',
+	'weaponStatusBackup',
+	'enhancementStatusBackup',
+	'percentileValuesBackup',
+	'finishedGearTutorialBackup'
+]
+
+export type BackupData = {
+    selectedItemsBackup?: string;
+    selectedFiltersBackup?: string;
+    itemPriorityBackup?: string;
+    characterStatusBackup?: string;
+    materialCountBackup?: string;
+    selectedCollossusFiltersBackup?: string;
+    weaponStatusBackup?: string;
+    enhancementStatusBackup?: string;
+    percentileValuesBackup?: string;
+	finishedGearTutorialBackup?: string;
+};
+
+export const joyrideStyles = {
+	options: {
+	arrowColor: '#333', // Dark background color
+	backgroundColor: '#333', // Dark background color
+	textColor: '#fff', // White text color
+	primaryColor: '#1a73e8', // Accent color for buttons and highlights
+	spotlightShadow: '0 0 15px rgba(255, 255, 255, 0.5)', // Soft white spotlight
+	overlayColor: 'rgba(0, 0, 0, 0.7)', // Dark overlay background
+	zIndex: 1000, // Ensures the tutorial is on top of other elements
+	},
+	buttonNext: {
+	backgroundColor: '#1a73e8', // Dark blue next button
+	color: '#fff',
+	},
+	buttonBack: {
+	color: '#fff', // White back button
+	},
+	buttonClose: {
+	color: '#fff', // White close button
+	},
 };
 
 export const dataKeywordNormal = '(normal)';
