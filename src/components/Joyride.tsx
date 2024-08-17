@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import Joyride, { CallBackProps, STATUS, EVENTS, ACTIONS, LIFECYCLE, Placement } from 'react-joyride';
-import { useMediaQuery  } from '@mui/material';
+import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { BackupData, joyrideStyles, localStorageBackupKeys, SaveData } from '../data/constants';
 import { useNavigate } from 'react-router-dom';
@@ -21,28 +21,13 @@ export const JoyrideWithNavigation = ({
 }: {
 	isTutorialOpen: boolean,
 	handleCloseTutorial: () => void,
-	backupData: { [key: string]: SaveData | BackupData;}
+	backupData: { [key: string]: SaveData | BackupData; }
 }) => {
 	const [stepIndex, setStepIndex] = useState(0);
 	const updatePosition = useRef<(() => void) | null>(null);
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 	const navigate = useNavigate();
-
-	const removeCSS = () => {
-		const style = document.getElementById('joyride-dynamic-style');
-		if (style) {
-			document.head.removeChild(style);
-		}
-	};
-
-	const injectCSS = (css: string) => {
-		const style = document.createElement('style');
-		style.type = 'text/css';
-		style.id = 'joyride-dynamic-style';
-		style.appendChild(document.createTextNode(css));
-		document.head.appendChild(style);
-	};
 
 	const joyrideSteps = [
 		{
@@ -229,289 +214,191 @@ export const JoyrideWithNavigation = ({
 		},
 	];
 
-	const handleJoyrideCallback = (data: CallBackProps) => {
-		const { status, action, index, type, lifecycle } = data;
-		let tooltipTarget = document.getElementById('p071-AA-priority-score-entry');
+	const isTouchscreenOnly = () => {
+		return 'ontouchstart' in window && !(window as any).MSPointerEvent && !('onmousemove' in window);
+	};
 
-		if (type === EVENTS.STEP_AFTER && index === 0 && action === ACTIONS.NEXT) {
-			const interval = setInterval(() => {
-				const targetElement = document.getElementById('gear-inventory-tab');
-				if (targetElement) {
-					targetElement.click()
-					const interval2 = setInterval(() => {
-						const targetElement = document.getElementById('gear-inventory-tab');
-						if (targetElement) {
-							setStepIndex(1)
-							clearInterval(interval2);
-							clearInterval(interval);
-						}
-					}, 400);
-
-				}
-			}, 100);
+	const removeCSS = () => {
+		const style = document.getElementById('joyride-dynamic-style');
+		if (style) {
+			document.head.removeChild(style);
 		}
+	};
 
-		if (type === EVENTS.STEP_AFTER && index === 1) {
+	const injectCSS = (css: string) => {
+		const style = document.createElement('style');
+		style.type = 'text/css';
+		style.id = 'joyride-dynamic-style';
+		style.appendChild(document.createTextNode(css));
+		document.head.appendChild(style);
+	};
+
+	const clickElementById = (id: string) => {
+		const element = document.getElementById(id);
+		element?.click();
+	};
+
+	const waitForElement = (
+		id: string,
+		callback: () => void,
+		intervalTime = 100,
+		initialDelay = 0
+	) => {
+		const startWaiting = () => {
 			const interval = setInterval(() => {
-				const targetElement = document.getElementById('Luna-textfield-planner');
-				if (targetElement) {
-					setStepIndex(3)
+				const element = document.getElementById(id);
+				if (element) {
+					callback();
 					clearInterval(interval);
 				}
-			}, 100);
-		}
+			}, intervalTime);
+		};
 
-		if (type === EVENTS.STEP_AFTER && index === 2) {
-			const element = document.getElementById('#Bunny-rectangular-box');
-			if (element) {
-				element.click();
-			}
+		if (initialDelay > 0) {
+			setTimeout(startWaiting, initialDelay);
+		} else {
+			startWaiting();
 		}
+	};
 
-		if (type === EVENTS.STEP_AFTER && index === 4 && action !== ACTIONS.CLOSE && action !== ACTIONS.PREV) {
-			const targetElement = document.getElementById('Luna-close-material-button');
-			targetElement?.click();
-			let earlyStop = false;
-			const interval = setInterval(() => {
-				const targetElement2 = document.getElementById('Weapons-list-name');
-				if (targetElement2) {
-					targetElement2?.click();
-					const interval2 = setInterval(() => {
-						const interval3 = setInterval(() => {
-							const targetElement3 = document.getElementById('Afterglow-Sword-rectangular-box');
-							if (targetElement3) {
-								if (!earlyStop) setStepIndex(5)
-								const interval4 = setInterval(() => {
-									const targetElement4 = document.getElementById('Afterglow-Sword-textfield-planner');
-									if (targetElement4) {
-										setStepIndex(6)
-										earlyStop = true
-										clearInterval(interval4);
-										clearInterval(interval3);
-									}
-								}, 50);
-								clearInterval(interval2);
-								clearInterval(interval);
-							}
+	const handleJoyrideCallback = (data: CallBackProps) => {
+		const { status, action, index, type, lifecycle } = data;
+
+		const stepsToAutoAdvance: { [key: number]: () => void } = {
+			0: () => waitForElement('gear-inventory-tab', () => setStepIndex(1)),
+			1: () => waitForElement('Luna-textfield-planner', () => setStepIndex(3)),
+			4: () => {
+				clickElementById('Luna-close-material-button');
+				waitForElement('Weapons-list-name', () => {
+					clickElementById('Weapons-list-name');
+					waitForElement('Afterglow-Sword-rectangular-box', () => {
+						setStepIndex(5);
+						waitForElement('Afterglow-Sword-textfield-planner', () => setStepIndex(6), 50);
+					}, 400);
+				}, 400);
+			},
+			6: () => {
+				localStorage.setItem(
+					"itemPriority",
+					'[1,1,1,1,1,1,1,1]'
+				);
+				localStorage.setItem(
+					"selectedItems",
+					'["027 AALuna Code","017 AALuna Enhanced Cells Blueprint","015 AALuna Spiral Catalyst Blueprint","020 AALuna Stabilizer Blueprint","107Afterglow Sword Blueprint","111Afterglow Sword Nano Tube Blueprint","100Afterglow Sword Polymer Syncytium Blueprint","026Afterglow Sword Synthetic Fiber Blueprint"]'
+				);
+				localStorage.setItem(
+					"materialCount",
+					'{"Advanced Neural Circuit":0,"Ajax":1,"Ajax Code":0,"Ajax Enhanced Cells":0,"Ajax Enhanced Cells Blueprint":0,"Ajax Spiral Catalyst":0,"Ajax Spiral Catalyst Blueprint":0,"Ajax Stabilizer":0,"Ajax Stabilizer Blueprint":0,"Anode Ion Particle":0,"Artificial Biometal":0,"Balanced Plasma Battery":0,"Blair":1,"Blair Code":0,"Blair Enhanced Cells":0,"Blair Spiral Catalyst":0,"Blair Stabilizer":0,"Bunny":1,"Bunny Code":0,"Bunny Enhanced Cells":0,"Bunny Spiral Catalyst":0,"Bunny Stabilizer":0,"Carbon Crystal":0,"Ceramic Composite":0,"Common Carbon Activator":0,"Complex Carbon Activator":0,"Compound Coating Material":0,"Compund Carbon Activator":0,"Conductive Mettalic Foil":0,"Cooling Metallic Foil":0,"Crystal Biogel":0,"Data Processing Neural Circuit":0,"Deformed Biometal":0,"Divided Plasma Battery":0,"Encrypted Neural Circuit":0,"Energy Activator Blueprint":4,"Enzo":1,"Enzo Code":0,"Enzo Enhanced Cells":0,"Enzo Enhanced Cells Blueprint":0,"Enzo Spiral Catalyst":0,"Enzo Spiral Catalyst Blueprint":0,"Enzo Stabilizer":0,"Enzo Stabilizer Blueprint":0,"Esiemo":1,"Esiemo Code":0,"Esiemo Enhanced Cells":0,"Esiemo Enhanced Cells Blueprint":0,"Esiemo Spiral Catalyst":0,"Esiemo Spiral Catalyst Blueprint":0,"Esiemo Stabilizer":0,"Esiemo Stabilizer Blueprint":0,"Flectorite":0,"Freyna":1,"Freyna Code":0,"Freyna Enhanced Cells":0,"Freyna Spiral Catalyst":0,"Freyna Stabilizer":0,"Fusion Plasma Battery":0,"Gley":1,"Gley Code":0,"Gley Enhanced Cells":0,"Gley Enhanced Cells Blueprint":0,"Gley Spiral Catalyst":0,"Gley Spiral Catalyst Blueprint":0,"Gley Stabilizer":0,"Gley Stabilizer Blueprint":0,"Hardener":0,"Heat Plasma Battery":0,"Hellion":0,"Highly-concentrated Energy Residue":0,"Inorganic Biogel":0,"Insulated Mettalic Foil":0,"Jayber":1,"Jayber Code":0,"Jayber Enhanced Cells":0,"Jayber Enhanced Cells Blueprint":0,"Jayber Spiral Catalyst":0,"Jayber Spiral Catalyst Blueprint":0,"Jayber Stabilizer":0,"Jayber Stabilizer Blueprint":0,"Kyle":1,"Kyle Code":0,"Kyle Enhanced Cells":0,"Kyle Enhanced Cells Blueprint":0,"Kyle Spiral Catalyst":0,"Kyle Spiral Catalyst Blueprint":0,"Kyle Stabilizer":0,"Kyle Stabilizer Blueprint":0,"Lepic":1,"Lepic Code":0,"Lepic Enhanced Cells":0,"Lepic Enhanced Cells Blueprint":0,"Lepic Spiral Catalyst":0,"Lepic Spiral Catalyst Blueprint":0,"Lepic Stabilizer":0,"Lepic Stabilizer Blueprint":0,"Luna":1,"Luna Code":0,"Luna Enhanced Cells":0,"Luna Enhanced Cells Blueprint":0,"Luna Spiral Catalyst":0,"Luna Spiral Catalyst Blueprint":0,"Luna Stabilizer":0,"Luna Stabilizer Blueprint":0,"Macromolecule Biogel":0,"Metal Accelerant":0,"Monad Shard":0,"Monomolecular Extractor":0,"Murky Energy Residue":0,"Nanopolymers":0,"Organic Biogel":0,"Positive Ion Particle":0,"Pure Energy Residue":0,"Repton":0,"Reverse Charging Coil":0,"Semi-permanent Plasma":0,"Shape Memory Alloy":0,"Sharen":1,"Sharen Code":0,"Sharen Enhanced Cells":0,"Sharen Spiral Catalyst":0,"Sharen Stabilizer":0,"Silicon":0,"Specialized Biometal":0,"Superfluid":0,"Synthesized Artificial Biometal":0,"Thermal Metallic Foil":0,"Ultimate Ajax":1,"Ultimate Ajax Code":0,"Ultimate Ajax Enhanced Cells":0,"Ultimate Ajax Enhanced Cells Blueprint":0,"Ultimate Ajax Spiral Catalyst":0,"Ultimate Ajax Spiral Catalyst Blueprint":0,"Ultimate Ajax Stabilizer":0,"Ultimate Ajax Stabilizer Blueprint":0,"Ultimate Bunny":1,"Ultimate Bunny Code":0,"Ultimate Bunny Enhanced Cells":0,"Ultimate Bunny Enhanced Cells Blueprint":0,"Ultimate Bunny Spiral Catalyst":0,"Ultimate Bunny Spiral Catalyst Blueprint":0,"Ultimate Bunny Stabilizer":0,"Ultimate Bunny Stabilizer Blueprint":0,"Ultimate Gley":1,"Ultimate Gley Code":0,"Ultimate Gley Enhanced Cells":0,"Ultimate Gley Enhanced Cells Blueprint":0,"Ultimate Gley Spiral Catalyst":0,"Ultimate Gley Spiral Catalyst Blueprint":0,"Ultimate Gley Stabilizer":0,"Ultimate Gley Stabilizer Blueprint":0,"Ultimate Lepic":1,"Ultimate Lepic Code":0,"Ultimate Lepic Enhanced Cells":0,"Ultimate Lepic Enhanced Cells Blueprint":0,"Ultimate Lepic Spiral Catalyst":0,"Ultimate Lepic Spiral Catalyst Blueprint":0,"Ultimate Lepic Stabilizer":0,"Ultimate Lepic Stabilizer Blueprint":0,"Ultimate Valby":1,"Ultimate Valby Code":0,"Ultimate Valby Enhanced Cells":0,"Ultimate Valby Enhanced Cells Blueprint":0,"Ultimate Valby Spiral Catalyst":0,"Ultimate Valby Spiral Catalyst Blueprint":0,"Ultimate Valby Stabilizer":0,"Ultimate Valby Stabilizer Blueprint":0,"Ultimate Viessa":1,"Ultimate Viessa Code":0,"Ultimate Viessa Enhanced Cells":0,"Ultimate Viessa Enhanced Cells Blueprint":0,"Ultimate Viessa Spiral Catalyst":0,"Ultimate Viessa Spiral Catalyst Blueprint":0,"Ultimate Viessa Stabilizer":0,"Ultimate Viessa Stabilizer Blueprint":0,"Valby":1,"Valby Code":0,"Valby Enhanced Cells":0,"Valby Enhanced Cells Blueprint":0,"Valby Spiral Catalyst":0,"Valby Spiral Catalyst Blueprint":0,"Valby Stabilizer":0,"Valby Stabilizer Blueprint":0,"Viessa":1,"Viessa Code":0,"Viessa Enhanced Cells":0,"Viessa Enhanced Cells Blueprint":0,"Viessa Spiral Catalyst":0,"Viessa Spiral Catalyst Blueprint":0,"Viessa Stabilizer":0,"Viessa Stabilizer Blueprint":0,"Yujin":1,"Yujin Code":0,"Yujin Enhanced Cells":0,"Yujin Enhanced Cells Blueprint":0,"Yujin Spiral Catalyst":0,"Yujin Spiral Catalyst Blueprint":0,"Yujin Stabilizer":0,"Yujin Stabilizer Blueprint":0}'
+				)
+				clickElementById('Afterglow-Sword-close-material-button');
+			},
+			7: () => {
+				clickElementById('suggestor-tab');
+				if (isMobile) {
+					waitForElement('toggle-right-button', () => {
+						clickElementById('toggle-right-button');
+						setStepIndex(8);
+					}, 400);
+				} else {
+					setStepIndex(8);
+				}
+			},
+			8: () => {
+				if (isMobile) {
+					waitForElement('toggle-left-button', () => {
+						clickElementById('toggle-left-button');
+						waitForElement('toggle-left-button', () => {
+							clickElementById('toggle-left-button');
+							setTimeout(() => setStepIndex(9), 400);
 						}, 400);
 					}, 400);
+				} else {
+					setStepIndex(9);
 				}
-			}, 400);
-		}
-
-		if (type === EVENTS.STEP_AFTER && index === 6 && action !== ACTIONS.CLOSE && action !== ACTIONS.PREV) {
-			localStorage.setItem(
-				"itemPriority",
-				'[1,1,1,1,1,1,1,1]'
-			);
-			localStorage.setItem(
-				"selectedItems",
-				'["027 AALuna Code","017 AALuna Enhanced Cells Blueprint","015 AALuna Spiral Catalyst Blueprint","020 AALuna Stabilizer Blueprint","107Afterglow Sword Blueprint","111Afterglow Sword Nano Tube Blueprint","100Afterglow Sword Polymer Syncytium Blueprint","026Afterglow Sword Synthetic Fiber Blueprint"]'
-			);
-			localStorage.setItem(
-				"materialCount",
-				'{"Advanced Neural Circuit":0,"Ajax":1,"Ajax Code":0,"Ajax Enhanced Cells":0,"Ajax Enhanced Cells Blueprint":0,"Ajax Spiral Catalyst":0,"Ajax Spiral Catalyst Blueprint":0,"Ajax Stabilizer":0,"Ajax Stabilizer Blueprint":0,"Anode Ion Particle":0,"Artificial Biometal":0,"Balanced Plasma Battery":0,"Blair":1,"Blair Code":0,"Blair Enhanced Cells":0,"Blair Spiral Catalyst":0,"Blair Stabilizer":0,"Bunny":1,"Bunny Code":0,"Bunny Enhanced Cells":0,"Bunny Spiral Catalyst":0,"Bunny Stabilizer":0,"Carbon Crystal":0,"Ceramic Composite":0,"Common Carbon Activator":0,"Complex Carbon Activator":0,"Compound Coating Material":0,"Compund Carbon Activator":0,"Conductive Mettalic Foil":0,"Cooling Metallic Foil":0,"Crystal Biogel":0,"Data Processing Neural Circuit":0,"Deformed Biometal":0,"Divided Plasma Battery":0,"Encrypted Neural Circuit":0,"Energy Activator Blueprint":4,"Enzo":1,"Enzo Code":0,"Enzo Enhanced Cells":0,"Enzo Enhanced Cells Blueprint":0,"Enzo Spiral Catalyst":0,"Enzo Spiral Catalyst Blueprint":0,"Enzo Stabilizer":0,"Enzo Stabilizer Blueprint":0,"Esiemo":1,"Esiemo Code":0,"Esiemo Enhanced Cells":0,"Esiemo Enhanced Cells Blueprint":0,"Esiemo Spiral Catalyst":0,"Esiemo Spiral Catalyst Blueprint":0,"Esiemo Stabilizer":0,"Esiemo Stabilizer Blueprint":0,"Flectorite":0,"Freyna":1,"Freyna Code":0,"Freyna Enhanced Cells":0,"Freyna Spiral Catalyst":0,"Freyna Stabilizer":0,"Fusion Plasma Battery":0,"Gley":1,"Gley Code":0,"Gley Enhanced Cells":0,"Gley Enhanced Cells Blueprint":0,"Gley Spiral Catalyst":0,"Gley Spiral Catalyst Blueprint":0,"Gley Stabilizer":0,"Gley Stabilizer Blueprint":0,"Hardener":0,"Heat Plasma Battery":0,"Hellion":0,"Highly-concentrated Energy Residue":0,"Inorganic Biogel":0,"Insulated Mettalic Foil":0,"Jayber":1,"Jayber Code":0,"Jayber Enhanced Cells":0,"Jayber Enhanced Cells Blueprint":0,"Jayber Spiral Catalyst":0,"Jayber Spiral Catalyst Blueprint":0,"Jayber Stabilizer":0,"Jayber Stabilizer Blueprint":0,"Kyle":1,"Kyle Code":0,"Kyle Enhanced Cells":0,"Kyle Enhanced Cells Blueprint":0,"Kyle Spiral Catalyst":0,"Kyle Spiral Catalyst Blueprint":0,"Kyle Stabilizer":0,"Kyle Stabilizer Blueprint":0,"Lepic":1,"Lepic Code":0,"Lepic Enhanced Cells":0,"Lepic Enhanced Cells Blueprint":0,"Lepic Spiral Catalyst":0,"Lepic Spiral Catalyst Blueprint":0,"Lepic Stabilizer":0,"Lepic Stabilizer Blueprint":0,"Luna":1,"Luna Code":0,"Luna Enhanced Cells":0,"Luna Enhanced Cells Blueprint":0,"Luna Spiral Catalyst":0,"Luna Spiral Catalyst Blueprint":0,"Luna Stabilizer":0,"Luna Stabilizer Blueprint":0,"Macromolecule Biogel":0,"Metal Accelerant":0,"Monad Shard":0,"Monomolecular Extractor":0,"Murky Energy Residue":0,"Nanopolymers":0,"Organic Biogel":0,"Positive Ion Particle":0,"Pure Energy Residue":0,"Repton":0,"Reverse Charging Coil":0,"Semi-permanent Plasma":0,"Shape Memory Alloy":0,"Sharen":1,"Sharen Code":0,"Sharen Enhanced Cells":0,"Sharen Spiral Catalyst":0,"Sharen Stabilizer":0,"Silicon":0,"Specialized Biometal":0,"Superfluid":0,"Synthesized Artificial Biometal":0,"Thermal Metallic Foil":0,"Ultimate Ajax":1,"Ultimate Ajax Code":0,"Ultimate Ajax Enhanced Cells":0,"Ultimate Ajax Enhanced Cells Blueprint":0,"Ultimate Ajax Spiral Catalyst":0,"Ultimate Ajax Spiral Catalyst Blueprint":0,"Ultimate Ajax Stabilizer":0,"Ultimate Ajax Stabilizer Blueprint":0,"Ultimate Bunny":1,"Ultimate Bunny Code":0,"Ultimate Bunny Enhanced Cells":0,"Ultimate Bunny Enhanced Cells Blueprint":0,"Ultimate Bunny Spiral Catalyst":0,"Ultimate Bunny Spiral Catalyst Blueprint":0,"Ultimate Bunny Stabilizer":0,"Ultimate Bunny Stabilizer Blueprint":0,"Ultimate Gley":1,"Ultimate Gley Code":0,"Ultimate Gley Enhanced Cells":0,"Ultimate Gley Enhanced Cells Blueprint":0,"Ultimate Gley Spiral Catalyst":0,"Ultimate Gley Spiral Catalyst Blueprint":0,"Ultimate Gley Stabilizer":0,"Ultimate Gley Stabilizer Blueprint":0,"Ultimate Lepic":1,"Ultimate Lepic Code":0,"Ultimate Lepic Enhanced Cells":0,"Ultimate Lepic Enhanced Cells Blueprint":0,"Ultimate Lepic Spiral Catalyst":0,"Ultimate Lepic Spiral Catalyst Blueprint":0,"Ultimate Lepic Stabilizer":0,"Ultimate Lepic Stabilizer Blueprint":0,"Ultimate Valby":1,"Ultimate Valby Code":0,"Ultimate Valby Enhanced Cells":0,"Ultimate Valby Enhanced Cells Blueprint":0,"Ultimate Valby Spiral Catalyst":0,"Ultimate Valby Spiral Catalyst Blueprint":0,"Ultimate Valby Stabilizer":0,"Ultimate Valby Stabilizer Blueprint":0,"Ultimate Viessa":1,"Ultimate Viessa Code":0,"Ultimate Viessa Enhanced Cells":0,"Ultimate Viessa Enhanced Cells Blueprint":0,"Ultimate Viessa Spiral Catalyst":0,"Ultimate Viessa Spiral Catalyst Blueprint":0,"Ultimate Viessa Stabilizer":0,"Ultimate Viessa Stabilizer Blueprint":0,"Valby":1,"Valby Code":0,"Valby Enhanced Cells":0,"Valby Enhanced Cells Blueprint":0,"Valby Spiral Catalyst":0,"Valby Spiral Catalyst Blueprint":0,"Valby Stabilizer":0,"Valby Stabilizer Blueprint":0,"Viessa":1,"Viessa Code":0,"Viessa Enhanced Cells":0,"Viessa Enhanced Cells Blueprint":0,"Viessa Spiral Catalyst":0,"Viessa Spiral Catalyst Blueprint":0,"Viessa Stabilizer":0,"Viessa Stabilizer Blueprint":0,"Yujin":1,"Yujin Code":0,"Yujin Enhanced Cells":0,"Yujin Enhanced Cells Blueprint":0,"Yujin Spiral Catalyst":0,"Yujin Spiral Catalyst Blueprint":0,"Yujin Stabilizer":0,"Yujin Stabilizer Blueprint":0}'
-			)
-			const element = document.getElementById('Afterglow-Sword-close-material-button');
-			if (element) {
-				element.click();
-			}
-		}
-
-		if (type === EVENTS.STEP_AFTER && index === 7 && action !== ACTIONS.CLOSE && action !== ACTIONS.PREV) {
-			const element = document.getElementById('suggestor-tab');
-			let stepIndexFired = false
-			if (element) {
-				element.click();
+			},
+			9: () => {
+				document.querySelectorAll('#pattern-suggested-list table tbody tr td:nth-child(2)').forEach(cell => {
+					cell.classList.add('highlight');
+				});
+			},
+			10: () => {
+				document.querySelectorAll('#pattern-suggested-list table tbody tr td:nth-child(2)').forEach(cell => {
+					cell.classList.remove('highlight');
+				});
+				if (isMobile || isTouchscreenOnly()) {
+					waitForElement('p071-AA-priority-score-entry', () => {
+						document.getElementById('p071-AA-priority-score-entry')?.dispatchEvent(new MouseEvent('mouseover', {
+							bubbles: true,
+							cancelable: true,
+							view: window,
+						}));
+					}, 1200);
+				}
+			},
+			11: () => {
+				waitForElement('p071-AA-droplist-overlay', () => {
+					setStepIndex(13);
+					document.getElementById('p071-AA-priority-score-entry')?.dispatchEvent(new MouseEvent('mouseout', {
+						bubbles: true,
+						cancelable: true,
+						view: window,
+					}));
+				}, 400);
+			},
+			14: () => {
+				injectCSS(`
+					.priority-part {
+						background-color: green;
+						color: white;
+					}
+				`);
+				clickElementById('material-overlay-close-button');
 				if (isMobile) {
-					let firstClicked = false;
-					const interval = setInterval(() => {
-						const interval2 = setInterval(() => {
-							const targetElement = document.getElementById('toggle-right-button');
-							if (targetElement) {
-								if (!firstClicked) targetElement.click()
-								firstClicked = true
-								const interval3 = setInterval(() => {
-									if (!stepIndexFired) setStepIndex(8)
-									stepIndexFired = true
-									clearInterval(interval3);
-									clearInterval(interval2);
-									clearInterval(interval);
-								}, 400);
-							}
+					waitForElement('toggle-right-button', () => {
+						clickElementById('toggle-right-button');
+						waitForElement('toggle-right-button', () => {
+							clickElementById('toggle-right-button');
+							setTimeout(() => setStepIndex(15), 400);
 						}, 100);
 					}, 400);
 				} else {
-					setStepIndex(8)
+					setStepIndex(15);
 				}
-			}
-		}
-
-		if (type === EVENTS.STEP_AFTER && index === 8 && action !== ACTIONS.CLOSE && action !== ACTIONS.PREV) {
-			if (isMobile) {
-				let firstClicked = false;
-				let secondClicked = false;
-				let stepIndexFired = false
-				let targetElement = document.getElementById('toggle-left-button');
-				if (targetElement) {
-					if (!firstClicked) targetElement.click()
-					firstClicked = true
-					const interval = setInterval(() => {
-						targetElement = document.getElementById('toggle-left-button');
-						if (targetElement) {
-							if (!secondClicked) targetElement.click()
-								secondClicked = true
-							const interval2 = setInterval(() => {
-								if (!stepIndexFired) setStepIndex(9)
-								stepIndexFired = true
-								clearInterval(interval2);
-								clearInterval(interval);
-							}, 400);
-						}
-					}, 400);
-				}
-			} else {
-				setStepIndex(9)
-			}
-		}
-
-		if (type === EVENTS.STEP_AFTER && index === 9 && action !== ACTIONS.CLOSE && action !== ACTIONS.PREV) {
-			document.querySelectorAll('#pattern-suggested-list table tbody tr td:nth-child(2)').forEach(cell => {
-				cell.classList.add('highlight');
-			});
-		}
-
-		if (type === EVENTS.STEP_AFTER && index === 10 && action !== ACTIONS.CLOSE && action !== ACTIONS.PREV) {
-			document.querySelectorAll('#pattern-suggested-list table tbody tr td:nth-child(2)').forEach(cell => {
-				cell.classList.remove('highlight');
-			});
-		}
-
-		if (type === EVENTS.STEP_BEFORE && index === 11 && action !== ACTIONS.CLOSE && action !== ACTIONS.PREV) {
-			if (isMobile) {
-				tooltipTarget = document.getElementById('p071-AA-priority-score-entry');
-				const interval = setInterval(() => {
-					if (tooltipTarget) {
-						tooltipTarget.dispatchEvent(new MouseEvent('mouseover', {
-							bubbles: true,
-							cancelable: true,
-							view: window,
-						}))
-						clearInterval(interval)
-					}
-				}, 1200);
-			}
-		}
-
-		if (type === EVENTS.STEP_BEFORE && index === 12 && action !== ACTIONS.CLOSE && action !== ACTIONS.PREV) {
-			const interval = setInterval(() => {
-				const targetElement = document.getElementById('p071-AA-droplist-overlay');
-				if (targetElement) {
-					setStepIndex(13)
-					if (tooltipTarget) {
-						tooltipTarget.dispatchEvent(new MouseEvent('mouseout', {
-							bubbles: true,
-							cancelable: true,
-							view: window,
-						}))
-					}
-					clearInterval(interval);
-				}
-			}, 400);
-		}
-
-		if (type === EVENTS.STEP_AFTER && index === 14 && action !== ACTIONS.CLOSE && action !== ACTIONS.PREV) {
-			injectCSS(`
-				.priority-part {
-					background-color: green;
-					color: white;
-				}
-			`);
-
-			const closeButton = document.getElementById('material-overlay-close-button');
-			closeButton?.click();
-			let enteredOnce = false;
-			const interval = setInterval(() => {
+			},
+			15: () => {
+				const tableContainer = document.getElementById('sortable-table');
+				tableContainer?.scrollTo({ top: 0 });
+				removeCSS();
 				if (isMobile) {
-					if (!enteredOnce) {
-						enteredOnce = true;
-						let firstClicked = false;
-						let secondClicked = false;
-						let stepIndexFired = false
-						let targetElement = document.getElementById('toggle-right-button');
-						if (targetElement) {
-							if (!firstClicked) targetElement.click()
-							firstClicked = true
-							const interval2 = setInterval(() => {
-								targetElement = document.getElementById('toggle-right-button');
-								if (targetElement) {
-									if (!secondClicked) targetElement.click()
-									secondClicked = true
-									const interval3 = setInterval(() => {
-										if (!stepIndexFired) setStepIndex(15)
-										stepIndexFired = true
-										clearInterval(interval3);
-										clearInterval(interval2);
-										clearInterval(interval);
-									}, 100);
-								}
-							}, 400);
-						}
-					}
-				} else {
-					setStepIndex(15)
-					clearInterval(interval);
-				}
-			}, 400);
-		}
-
-		if (type === EVENTS.STEP_AFTER && index === 15 && action !== ACTIONS.CLOSE && action !== ACTIONS.PREV) {
-			const tableContainer = document.getElementById('sortable-table');
-			if (tableContainer) {
-				tableContainer.scrollTo({
-					top: 0,
-				});
-			}
-			removeCSS();
-			if (isMobile) {
-				let firstClicked = false;
-				let secondClicked = false;
-				let stepIndexFired = false
-				let targetElement = document.getElementById('toggle-left-button');
-				if (targetElement) {
-					if (!firstClicked) targetElement.click()
-					firstClicked = true
-					const interval = setInterval(() => {
-						targetElement = document.getElementById('toggle-left-button');
-						if (targetElement) {
-							if (!secondClicked) targetElement.click()
-								secondClicked = true
-							const interval2 = setInterval(() => {
-								if (!stepIndexFired) setStepIndex(16)
-								stepIndexFired = true
-								clearInterval(interval2);
-								clearInterval(interval);
-							}, 400);
-						}
+					waitForElement('toggle-left-button', () => {
+						clickElementById('toggle-left-button');
+						waitForElement('toggle-left-button', () => {
+							clickElementById('toggle-left-button');
+							setTimeout(() => setStepIndex(16), 400);
+						}, 400);
 					}, 400);
+				} else {
+					setStepIndex(16);
 				}
-			} else {
-				setStepIndex(16)
-			}
+			},
+		};
+
+		if (type === EVENTS.STEP_AFTER && stepsToAutoAdvance[index]) {
+			stepsToAutoAdvance[index]();
 		}
 
 		if (status === STATUS.FINISHED || status === STATUS.SKIPPED) {
-			loadBackupDataToLocalStorage(backupData)
-			handleCloseTutorial()
+			loadBackupDataToLocalStorage(backupData);
+			handleCloseTutorial();
 			localStorage.setItem('finishedGearTutorial', '[1]');
 			if (status === STATUS.FINISHED) {
-				navigate('/gear')
+				navigate('/gear');
 			}
 		}
 
-		const stepsToIgnore = [0,2,4,5,7,8,12,14,15];
+		const stepsToIgnore = [0, 2, 4, 5, 7, 8, 12, 14, 15];
 		if (action === ACTIONS.NEXT && lifecycle === LIFECYCLE.COMPLETE && !stepsToIgnore.includes(index)) {
-			setStepIndex(index+1);
+			setStepIndex(index + 1);
 		}
 	};
 
