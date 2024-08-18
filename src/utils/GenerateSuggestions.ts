@@ -5,6 +5,7 @@ import PatternRawData from '../data/patterns.json';
 import { CategoryData } from "../components/CategoryList";
 import { Item } from "../components/MultiSelectList";
 import { Pattern, Material, GearPart } from "../data/constants";
+import { getRespectUserPrioritySetting } from '../components/Settings';
 
 const GenerateSuggestion = () => {
 	let selectedItemsToBeSaved: string[] = []
@@ -12,6 +13,8 @@ const GenerateSuggestion = () => {
 
 	let items: Item[] = []
 	const patternData: Record<string, Pattern> = PatternRawData;
+
+	const respectCustomPrioritySetting = getRespectUserPrioritySetting();
 
 	Object.entries(patternData).forEach(([key, data]) => {
 		data.drops.forEach((drop) => {
@@ -151,6 +154,9 @@ const GenerateSuggestion = () => {
 
 	localStorage.setItem('selectedItems', JSON.stringify(selectedItemsToBeSaved));
 	localStorage.setItem('itemPriority', JSON.stringify(itemPriorityToBeSaved));
+	if (!respectCustomPrioritySetting) {
+		localStorage.setItem('customItemPriority', JSON.stringify({}));
+	}
 }
 
 export default GenerateSuggestion

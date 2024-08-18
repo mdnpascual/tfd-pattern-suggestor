@@ -159,7 +159,7 @@ export const specOpsKeywords = [
 	'block kuiper mining'
 ]
 
-export const localStorageKeys: Array<keyof SaveData> = [
+const baseKeys = [
 	'selectedItems',
 	'selectedFilters',
 	'itemPriority',
@@ -169,47 +169,22 @@ export const localStorageKeys: Array<keyof SaveData> = [
 	'weaponStatus',
 	'enhancementStatus',
 	'percentileValues',
-	'finishedGearTutorial'
-]
+	'finishedGearTutorial',
+	'customItemPriority',
+	'respectUserPriority',
+] as const;
 
 export type SaveData = {
-    selectedItems?: string;
-    selectedFilters?: string;
-    itemPriority?: string;
-    characterStatus?: string;
-    materialCount?: string;
-    selectedCollossusFilters?: string;
-    weaponStatus?: string;
-    enhancementStatus?: string;
-    percentileValues?: string;
-	finishedGearTutorial?: string;
+	[K in typeof baseKeys[number]]?: string;
 };
 
-export const localStorageBackupKeys: Array<keyof BackupData> = [
-	'selectedItemsBackup',
-	'selectedFiltersBackup',
-	'itemPriorityBackup',
-	'characterStatusBackup',
-	'materialCountBackup',
-	'selectedCollossusFiltersBackup',
-	'weaponStatusBackup',
-	'enhancementStatusBackup',
-	'percentileValuesBackup',
-	'finishedGearTutorialBackup'
-]
+export const localStorageKeys: Array<keyof SaveData> = [...baseKeys];
 
 export type BackupData = {
-    selectedItemsBackup?: string;
-    selectedFiltersBackup?: string;
-    itemPriorityBackup?: string;
-    characterStatusBackup?: string;
-    materialCountBackup?: string;
-    selectedCollossusFiltersBackup?: string;
-    weaponStatusBackup?: string;
-    enhancementStatusBackup?: string;
-    percentileValuesBackup?: string;
-	finishedGearTutorialBackup?: string;
+	[K in keyof SaveData as `${K}Backup`]?: string;
 };
+
+export const localStorageBackupKeys: Array<keyof BackupData> = baseKeys.map(key => `${key}Backup` as keyof BackupData);
 
 export const joyrideStyles = {
 	options: {
