@@ -172,6 +172,8 @@ const baseKeys = [
 	'finishedGearTutorial',
 	'customItemPriority',
 	'respectUserPriority',
+	'suggestUntilQuantityReached',
+	'realTimeSuggestor'
 ] as const;
 
 export type SaveData = {

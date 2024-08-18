@@ -3,6 +3,7 @@ import '../App.css'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import GenerateSuggestion from '../utils/GenerateSuggestions';
 import { useNavigate } from 'react-router-dom';
+import { getBooleanSetting } from './Settings';
 
 interface SidebarItem {
 	label: string;
@@ -19,6 +20,8 @@ const PageWithSidebarComponent: React.FC<PageWithSidebarProps> = ({ items }) => 
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [confirmationOpen, setConfirmationOpen] = useState<boolean>(false);
 	const navigate = useNavigate();
+
+	const realTimeSuggestorSetting = getBooleanSetting('realTimeSuggestor', false);
 
 	const confirmGenerate = () => {
 		setConfirmationOpen(true);
@@ -40,7 +43,7 @@ const PageWithSidebarComponent: React.FC<PageWithSidebarProps> = ({ items }) => 
 					</li>
 					))}
 					<li>
-						<Button id="diff-button" onClick={() => {confirmGenerate()}} variant="contained" color="primary" style={{ marginBottom: '10px' }}>
+						<Button id="diff-button" disabled={realTimeSuggestorSetting} onClick={() => {confirmGenerate()}} variant="contained" color="primary" style={{ marginBottom: '10px' }}>
 							Generate Suggestion
 						</Button>
 					</li>

@@ -18,6 +18,8 @@ import {
 	DropList,
 } from "../data/constants";
 import CheckboxFilter from './CheckboxFilter';
+import GenerateSuggestion from '../utils/GenerateSuggestions';
+import { getBooleanSetting } from './Settings';
 
 const voidFusionData = voidFusionRawData as VoidFusionLocations;
 const voidFusionLocations = Object.keys(voidFusionData);
@@ -41,7 +43,11 @@ const PatternSuggestorComponent: React.FC = () => {
 	const [collosusFilters, setCollosusFilters] = useState({});
 	const [view, setView] = useState('both');
 
+	const [realTimeKeyUpdate, setRealTimeKeyUpdate] = useState(0);
+	const realTimeSuggestorSetting = getBooleanSetting('realTimeSuggestor', false)
+
 	const items = useMemo(() => {
+		if(realTimeSuggestorSetting) GenerateSuggestion();
 		const newItems: Item[] = [];
 		Object.entries(patternData).forEach(([key, data]) => {
 			data.drops.forEach((drop) => {
@@ -190,7 +196,14 @@ const PatternSuggestorComponent: React.FC = () => {
 
 			setFarmList(filteredFarmList)
 		})
-	}, [selectedItems, priorities, collosusFilters, filters]);
+	}, [selectedItems, priorities, collosusFilters, filters, realTimeKeyUpdate]);
+
+	const handleMatCountChange = (item: string, newCount: number) => {
+		if(realTimeSuggestorSetting) {
+			GenerateSuggestion();
+			setRealTimeKeyUpdate(realTimeKeyUpdate + 1);
+		}
+	};
 
 	const formatTooltipContent = (drops: DropList[], name: string, useIn: string) => {
 		const filteredDrops = drops.filter((drop) => selectedItems.includes(drop.name))
@@ -250,7 +263,7 @@ const PatternSuggestorComponent: React.FC = () => {
 				</Button>
 				)}
 				<Paper style={{ height: 'calc(100vh - 50px)', overflowY: 'auto' }}>
-					<MultiSelectList startingItems={items} onChange={handleChange} />
+					<MultiSelectList startingItems={items} onChange={handleChange} key={realTimeKeyUpdate} />
 				</Paper>
 			</div>
 			<div style={{ flex: view === 'both' || view === 'right' ? 1 : 0, transition: 'flex 0.3s', overflow: 'hidden', position: 'relative' }} id="pattern-suggested-list">
@@ -266,18 +279,20 @@ const PatternSuggestorComponent: React.FC = () => {
 					onChange={handleFilterChange} />
 				{('Collosus' in filters) && (!!filters.Collosus) && <CheckboxFilter labels={collosusOptions} localStorageName={'selectedCollossusFilters'} defaultTrue={collosusOptions.map((item) => item.label)} onChange={handleCollosusChange} />}
 				<Paper style={{ height: 'calc(100vh - 50px)', overflowY: 'auto' }} id="sortable-table">
-					<SortableTable data={farmList.map((item, index) => {
-						return {
-							id: item.name,
-							name: item.name,
-							count: item.count,
-							priorityScore: item.priorityScore,
-							score: (item.score * 100).toFixed(0) + "%",
-							drops: item.drops,
-							dropsFrom: item.dropsFrom.replace("(Successful Infiltration)", "(Sharen)"),
-							useIn: item.useIn.replace("Void Intercept Battle", "Collosus").replace("Void Fusion Reactor", "Void Outpost"),
-							tooltip: formatTooltipContent(item.drops, item.name, item.useIn),
-							shardRequirements: formatShardRequirements(item.useIn)
+					<SortableTable
+						onMatCountChange={handleMatCountChange}
+						data={farmList.map((item, index) => {
+							return {
+								id: item.name,
+								name: item.name,
+								count: item.count,
+								priorityScore: item.priorityScore,
+								score: (item.score * 100).toFixed(0) + "%",
+								drops: item.drops,
+								dropsFrom: item.dropsFrom.replace("(Successful Infiltration)", "(Sharen)"),
+								useIn: item.useIn.replace("Void Intercept Battle", "Collosus").replace("Void Fusion Reactor", "Void Outpost"),
+								tooltip: formatTooltipContent(item.drops, item.name, item.useIn),
+								shardRequirements: formatShardRequirements(item.useIn)
 						}})} />
 				</Paper>
 			</div>

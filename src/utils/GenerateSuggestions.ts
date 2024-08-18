@@ -5,7 +5,7 @@ import PatternRawData from '../data/patterns.json';
 import { CategoryData } from "../components/CategoryList";
 import { Item } from "../components/MultiSelectList";
 import { Pattern, Material, GearPart } from "../data/constants";
-import { getRespectUserPrioritySetting } from '../components/Settings';
+import { getBooleanSetting } from '../components/Settings';
 
 const GenerateSuggestion = () => {
 	let selectedItemsToBeSaved: string[] = []
@@ -14,7 +14,8 @@ const GenerateSuggestion = () => {
 	let items: Item[] = []
 	const patternData: Record<string, Pattern> = PatternRawData;
 
-	const respectCustomPrioritySetting = getRespectUserPrioritySetting();
+	const respectUserPrioritySetting = getBooleanSetting('respectUserPriority');
+	const suggestUntilQuantityReachedSetting = getBooleanSetting('suggestUntilQuantityReached');
 
 	Object.entries(patternData).forEach(([key, data]) => {
 		data.drops.forEach((drop) => {
@@ -102,7 +103,7 @@ const GenerateSuggestion = () => {
 				});
 				const unownedItems = relatedItems.filter((item) => {
 					if (materialStatus[item.name]){
-						return materialStatus[item.name] <= 0
+						return materialStatus[item.name] < (suggestUntilQuantityReachedSetting ? goal : 1)
 					}
 					return true
 				})
@@ -136,7 +137,7 @@ const GenerateSuggestion = () => {
 
 				const unownedItems = relatedItems.filter((item) => {
 					if (materialStatus[item.name]){
-						return materialStatus[item.name] <= 0
+						return materialStatus[item.name] < (suggestUntilQuantityReachedSetting ? goal : 1)
 					}
 					return true
 				})
@@ -154,7 +155,7 @@ const GenerateSuggestion = () => {
 
 	localStorage.setItem('selectedItems', JSON.stringify(selectedItemsToBeSaved));
 	localStorage.setItem('itemPriority', JSON.stringify(itemPriorityToBeSaved));
-	if (!respectCustomPrioritySetting) {
+	if (!respectUserPrioritySetting) {
 		localStorage.setItem('customItemPriority', JSON.stringify({}));
 	}
 }

@@ -72,7 +72,7 @@ const mapPartsList = (data: Record<string, CategoryData>): Record<string, string
 	return partToCategoryMap;
 }
 
-const SortableTable = ({ data }: { data: TableItem[] }) => {
+const SortableTable = ({ data, onMatCountChange }: { data: TableItem[], onMatCountChange: (itemName: string, newCount: number) => void; }) => {
 	const [order, setOrder] = useState<Order>(undefined);
 	const [orderBy, setOrderBy] = useState<keyof TableItem>('priorityScore');
 	const [overlayOpen, setOverlayOpen] = useState(false);
@@ -125,6 +125,7 @@ const SortableTable = ({ data }: { data: TableItem[] }) => {
 		localStorage.setItem('materialCount', JSON.stringify(newMaterialCount));
 		// Update only the changed count
 		setMaterialCount(prev => ({ ...prev, [item]: newCount }));
+		onMatCountChange(item, newCount);
 	}, [materialCount]);
 
 	const tableCellStyle = { padding: '8px 8px' };
