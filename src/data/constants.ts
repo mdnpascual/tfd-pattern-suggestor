@@ -121,6 +121,7 @@ export interface Weapons {
 	"Thunder Cage": GearProp;
 	"The Last Dagger": GearProp;
 	"Fallen Hope": GearProp;
+	"Clairvoyance": GearProp;
 }
 
 interface GearProp {
@@ -190,23 +191,23 @@ export const localStorageBackupKeys: Array<keyof BackupData> = baseKeys.map(key 
 
 export const joyrideStyles = {
 	options: {
-	arrowColor: '#333', // Dark background color
-	backgroundColor: '#333', // Dark background color
-	textColor: '#fff', // White text color
-	primaryColor: '#1a73e8', // Accent color for buttons and highlights
-	spotlightShadow: '0 0 15px rgba(255, 255, 255, 0.5)', // Soft white spotlight
-	overlayColor: 'rgba(0, 0, 0, 0.7)', // Dark overlay background
-	zIndex: 1000, // Ensures the tutorial is on top of other elements
+		arrowColor: '#333', // Dark background color
+		backgroundColor: '#333', // Dark background color
+		textColor: '#fff', // White text color
+		primaryColor: '#1a73e8', // Accent color for buttons and highlights
+		spotlightShadow: '0 0 15px rgba(255, 255, 255, 0.5)', // Soft white spotlight
+		overlayColor: 'rgba(0, 0, 0, 0.7)', // Dark overlay background
+		zIndex: 1000, // Ensures the tutorial is on top of other elements
 	},
 	buttonNext: {
-	backgroundColor: '#1a73e8', // Dark blue next button
-	color: '#fff',
+		backgroundColor: '#1a73e8', // Dark blue next button
+		color: '#fff',
 	},
 	buttonBack: {
-	color: '#fff', // White back button
+		color: '#fff', // White back button
 	},
 	buttonClose: {
-	color: '#fff', // White close button
+		color: '#fff', // White close button
 	},
 };
 

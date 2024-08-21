@@ -231,7 +231,7 @@ const MultiSelectList: React.FC<MultiSelectListProps> = ({ startingItems, onChan
 				<span>Priority</span>
 			</ListSubheader>
 			<VirtualizedList
-				height={window.innerHeight - 230}
+				height={window.innerHeight - 225}
 				itemCount={filteredAndSortedItems.length}
 				itemSize={isMobile ? 60 : 40}
 				width="100%"

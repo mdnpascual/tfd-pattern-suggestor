@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableSortLabel, Tooltip } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableSortLabel, Tooltip, Box, Button, Typography } from '@mui/material';
 import DropListOverlay from './DropListOverlay';
 import { DropList } from '../data/constants';
 import CharacterRawData from '../data/characters.json';
@@ -7,6 +7,7 @@ import WeaponRawData from '../data/weapons.json';
 import EnhancementRawData from '../data/enhancements.json';
 import InitializeCategoryData from '../utils/InitializeCategoryData';
 import { CategoryData } from './CategoryList';
+import WarningIcon from '@mui/icons-material/Warning';
 
 export interface TableItem {
 	id: string;
@@ -72,7 +73,15 @@ const mapPartsList = (data: Record<string, CategoryData>): Record<string, string
 	return partToCategoryMap;
 }
 
-const SortableTable = ({ data, onMatCountChange }: { data: TableItem[], onMatCountChange: (itemName: string, newCount: number) => void; }) => {
+const SortableTable = ({
+	data,
+	onMatCountChange,
+	onApplyNormalAndHardFilters
+}: {
+	data: TableItem[],
+	onMatCountChange: (itemName: string, newCount: number) => void,
+	onApplyNormalAndHardFilters: () => void;
+}) => {
 	const [order, setOrder] = useState<Order>(undefined);
 	const [orderBy, setOrderBy] = useState<keyof TableItem>('priorityScore');
 	const [overlayOpen, setOverlayOpen] = useState(false);
@@ -82,7 +91,7 @@ const SortableTable = ({ data, onMatCountChange }: { data: TableItem[], onMatCou
 	const [materialCount, setMaterialCount] = useState<Record<string, number>>(initialMaterialCount);
 	const [materialMapping, setMaterialMapping] = useState<Record<string, string>>(initialMaterialMapping);
 
-
+	const isDefaultFilters = localStorage.getItem('selectedFilters') === '{"Normal":true,"Hard":true,"Collosus":false,"Special Ops":false,"Void Reactor":false,"Sharen Exclusive":false}';
 	const sortedData = useMemo(() => {
 		const sortKey = orderBy;
 		if (order === undefined) return data
@@ -93,6 +102,12 @@ const SortableTable = ({ data, onMatCountChange }: { data: TableItem[], onMatCou
 			if (sortKey === 'score') {
 				aValue = parseFloat(a.score);
 				bValue = parseFloat(b.score);
+
+				// If same score, use count instead
+				if (aValue === bValue) {
+					aValue = a.count
+					bValue = b.count
+				}
 			} else if (sortKey === 'name') {
 				aValue = (aValue as string).replace(" AA", "");
 				bValue = (bValue as string).replace(" AA", "");
@@ -128,41 +143,98 @@ const SortableTable = ({ data, onMatCountChange }: { data: TableItem[], onMatCou
 		onMatCountChange(item, newCount);
 	}, [materialCount]);
 
+	const handleApplyNormalAndHardFilters = () => {
+		onApplyNormalAndHardFilters();
+	};
+
 	const tableCellStyle = { padding: '8px 8px' };
 
 	return (
-		<div>
-			<TableContainer component={Paper}>
-				<Table aria-label="sortable table">
-					<TableHead>
-						<TableRow id="list-header">
-							{headCells.map((headCell) => (
-								<TableCell key={headCell.id} align={'center'}>
-									<TableSortLabel
-										active={orderBy === headCell.id}
-										direction={order === undefined ? 'desc' : orderBy === headCell.id ? order : 'asc'}
-										onClick={() => handleRequestSort(headCell.id)}
-									>
-										{headCell.label}
-									</TableSortLabel>
-								</TableCell>
+		<Box sx={{ display: sortedData.length === 0 && !isDefaultFilters ? 'flex' : 'block', flexDirection: 'column', height: '100%', width: '100%' }}>
+			<TableContainer
+				component={Paper}
+				sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: 0 }}
+			>
+				{sortedData.length === 0 && !isDefaultFilters ? (
+					<Box
+						sx={{
+							flexGrow: 1,
+							display: 'flex',
+							flexDirection: 'column',
+							justifyContent: 'center',
+							alignItems: 'center',
+							textAlign: 'center',
+							minHeight: 0,
+						}}
+					>
+						<Box
+							sx={{
+								flexGrow: 1,
+								display: 'flex',
+								flexDirection: 'column',
+								justifyContent: 'center',
+								alignItems: 'center',
+								textAlign: 'center',
+								padding: 4
+							}}>
+								<WarningIcon color="warning" sx={{ fontSize: 40, mb: 2 }} />
+								<Typography variant="h6" gutterBottom>
+									No results found.
+								</Typography>
+								<Typography variant="body1" gutterBottom>
+									Make sure you are not filtering too much. Only select "Normal" and "Hard" checkboxes to see all possible results.
+								</Typography>
+								<Button
+									variant="contained"
+									color="primary"
+									onClick={handleApplyNormalAndHardFilters}
+								>
+									Apply Normal and Hard Filters
+								</Button>
+						</Box>
+						<Box
+							sx={{
+								flexGrow: 1,
+								display: 'flex',
+								flexDirection: 'column',
+								justifyContent: 'center',
+								alignItems: 'center',
+								textAlign: 'center',
+								padding: 10
+							}}></Box>
+					</Box>
+				) : (
+					<Table aria-label="sortable table" sx={{ flexGrow: 1 }}>
+						<TableHead>
+							<TableRow id="list-header">
+								{headCells.map((headCell) => (
+									<TableCell key={headCell.id} align={'center'}>
+										<TableSortLabel
+											active={orderBy === headCell.id}
+											direction={order === undefined ? 'desc' : orderBy === headCell.id ? order : 'asc'}
+											onClick={() => handleRequestSort(headCell.id)}
+										>
+											{headCell.label}
+										</TableSortLabel>
+									</TableCell>
+								))}
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{sortedData.map((row) => (
+								<Tooltip title={row.tooltip} key={row.id} placement="top">
+									<TableRow onClick={() => handleRowClick(row)}>
+										<TableCell style={tableCellStyle} align="center">{row.name}</TableCell>
+										<TableCell id={`p${row.name.replaceAll(" ", "-")}-priority-score-entry`} style={tableCellStyle} align="center">{row.priorityScore}({row.count})</TableCell>
+										<TableCell style={tableCellStyle} align="center">{row.score}</TableCell>
+										<TableCell style={tableCellStyle} align="left">{row.dropsFrom}</TableCell>
+										<TableCell style={tableCellStyle} align="left">{row.useIn}</TableCell>
+									</TableRow>
+								</Tooltip>
 							))}
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{sortedData.map((row) => (
-							<Tooltip title={row.tooltip} key={row.id} placement="top">
-								<TableRow onClick={() => handleRowClick(row)}>
-									<TableCell style={tableCellStyle} align="center">{row.name}</TableCell>
-									<TableCell id={`p${row.name.replaceAll(" ", "-")}-priority-score-entry`} style={tableCellStyle} align="center">{row.priorityScore}({row.count})</TableCell>
-									<TableCell style={tableCellStyle} align="center">{row.score}</TableCell>
-									<TableCell style={tableCellStyle} align="left">{row.dropsFrom}</TableCell>
-									<TableCell style={tableCellStyle} align="left">{row.useIn}</TableCell>
-								</TableRow>
-							</Tooltip>
-						))}
-					</TableBody>
-				</Table>
+						</TableBody>
+					</Table>
+				)}
 			</TableContainer>
 
 			{overlayOpen && selectedDataItem && (
@@ -181,7 +253,7 @@ const SortableTable = ({ data, onMatCountChange }: { data: TableItem[], onMatCou
 						shardRequirements={selectedDataItem.shardRequirements} />
 				</div>
 			)}
-		</div>
+		</Box>
 	);
 }
 

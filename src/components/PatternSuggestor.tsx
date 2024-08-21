@@ -44,6 +44,7 @@ const PatternSuggestorComponent: React.FC = () => {
 	const [view, setView] = useState('both');
 
 	const [realTimeKeyUpdate, setRealTimeKeyUpdate] = useState(0);
+	const [resetCheckboxFiltersUpdate, setResetCheckboxFiltersUpdate] = useState(0);
 	const realTimeSuggestorSetting = getBooleanSetting('realTimeSuggestor', false)
 
 	const items = useMemo(() => {
@@ -205,6 +206,14 @@ const PatternSuggestorComponent: React.FC = () => {
 		}
 	};
 
+	const handleApplyNormalAndHardFilters = () => {
+		localStorage.setItem('selectedFilters', '{"Normal":true,"Hard":true,"Collosus":false,"Special Ops":false,"Void Reactor":false,"Sharen Exclusive":false}');
+		if(realTimeSuggestorSetting) {
+			setRealTimeKeyUpdate(realTimeKeyUpdate + 1);
+		}
+		setResetCheckboxFiltersUpdate(resetCheckboxFiltersUpdate + 1)
+	}
+
 	const formatTooltipContent = (drops: DropList[], name: string, useIn: string) => {
 		const filteredDrops = drops.filter((drop) => selectedItems.includes(drop.name))
 		const location = useIn as keyof VoidFusionLocations;
@@ -255,14 +264,14 @@ const PatternSuggestorComponent: React.FC = () => {
 	}
 
 	return (
-		<div style={{ width: '100%', display: 'flex', height: '100vh' }}>
+		<div style={{ width: '100%', display: 'flex', height: 'calc(100vh - 45px)' }}>
 			<div style={{ flex: view === 'both' || view === 'left' ? 1 : 0, transition: 'flex 0.3s', overflow: 'hidden', position: 'relative' }}>
 				{view !== 'right' && (
 				<Button onClick={toggleLeft} variant="contained" style={{ position: 'absolute', top: 0, right: 0, zIndex: 1000 }} id="toggle-left-button">
 					{'<<'}
 				</Button>
 				)}
-				<Paper style={{ height: 'calc(100vh - 50px)', overflowY: 'auto' }}>
+				<Paper style={{ height: '100%', overflowY: 'auto' }}>
 					<MultiSelectList startingItems={items} onChange={handleChange} key={realTimeKeyUpdate} />
 				</Paper>
 			</div>
@@ -276,11 +285,14 @@ const PatternSuggestorComponent: React.FC = () => {
 					labels={filterOptions}
 					localStorageName={'selectedFilters'}
 					defaultTrue={['Normal', 'Hard']}
-					onChange={handleFilterChange} />
+					onChange={handleFilterChange}
+					key={resetCheckboxFiltersUpdate} />
 				{('Collosus' in filters) && (!!filters.Collosus) && <CheckboxFilter labels={collosusOptions} localStorageName={'selectedCollossusFilters'} defaultTrue={collosusOptions.map((item) => item.label)} onChange={handleCollosusChange} />}
-				<Paper style={{ height: 'calc(100vh - 50px)', overflowY: 'auto' }} id="sortable-table">
+				<Paper style={{ height: '100%', overflowY: 'auto' }} id="sortable-table">
 					<SortableTable
+						key={resetCheckboxFiltersUpdate}
 						onMatCountChange={handleMatCountChange}
+						onApplyNormalAndHardFilters={handleApplyNormalAndHardFilters}
 						data={farmList.map((item, index) => {
 							return {
 								id: item.name,

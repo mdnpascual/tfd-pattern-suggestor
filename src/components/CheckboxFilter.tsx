@@ -28,11 +28,6 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = ({ labels, defaultTrue, lo
 		onChange(selectedFilters);
 	}, []);
 
-	// Save selections to local storage whenever 'selected' changes
-	useEffect(() => {
-		localStorage.setItem(localStorageName, JSON.stringify(selectedFilters));
-	}, [selectedFilters]);
-
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, checked } = event.target;
 		const newFilters = {
@@ -40,21 +35,22 @@ const CheckboxFilter: React.FC<CheckboxFilterProps> = ({ labels, defaultTrue, lo
 			[name]: checked
 		};
 		setSelectedFilters(newFilters);
+		localStorage.setItem(localStorageName, JSON.stringify(newFilters));
 		onChange(newFilters);
 	};
 
 	return (
-	<FormGroup row style={{paddingLeft: '80px'}} id="checkbox-filters">
-		{labels.map(label => (
-			<Tooltip title={label.tooltip}>
-				<FormControlLabel
-					key={label.label}
-					control={<Checkbox checked={selectedFilters[label.label]} onChange={handleChange} name={label.label} />}
-					label={label.label}
-				/>
-			</Tooltip>
-		))}
-	</FormGroup>
+		<FormGroup row style={{paddingLeft: '80px', maxHeight: '20vh', overflow: 'auto'}} id="checkbox-filters">
+			{labels.map(label => (
+				<Tooltip title={label.tooltip}>
+					<FormControlLabel
+						key={label.label}
+						control={<Checkbox checked={selectedFilters[label.label]} onChange={handleChange} name={label.label} />}
+						label={label.label}
+					/>
+				</Tooltip>
+			))}
+		</FormGroup>
 	);
 };
 
