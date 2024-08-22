@@ -239,18 +239,21 @@ const SortableTable = ({
 
 			{overlayOpen && selectedDataItem && (
 				<div className="category-list-overlay">
-					<button
-						className="overlay-close-button"
-						id="material-overlay-close-button"
-						onClick={() => setOverlayOpen(false)}>
-						X
-					</button>
-					<DropListOverlay
-						dropTable={selectedDataItem}
-						materialCount={materialCount}
-						materialMapping={materialMapping}
-						onMatCountChange={handleMatCountChange}
-						shardRequirements={selectedDataItem.shardRequirements} />
+					<div className="category-list-content">
+						<button
+							className="overlay-close-button"
+							id="material-overlay-close-button"
+							onClick={() => setOverlayOpen(false)}>
+							X
+						</button>
+						<DropListOverlay
+							dropTable={selectedDataItem}
+							materialCount={materialCount}
+							materialMapping={materialMapping}
+							onMatCountChange={handleMatCountChange}
+							shardRequirements={selectedDataItem.shardRequirements}
+						/>
+					</div>
 				</div>
 			)}
 		</Box>

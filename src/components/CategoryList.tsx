@@ -96,28 +96,30 @@ const CategoryList = <T extends CategoryData>({
 				<div key={category}>
 					{selected === category && (
 						<div className="category-list-overlay">
-							<button
-								id={`${category.replaceAll(" ", "-")}-close-material-button`}
-								className="overlay-close-button"
-								onClick={() => setSelected("")}>
-								X
-							</button>
-							<MaterialPlanner
-								title={category}
-								parts={categoryData[category].parts}
-								stock={materialCount}
-								onMatCountChange={handleMatCountChange}
-								onOwned={handleOwned}
-								enableMultiple={withQuantity}
-								onQuantityChange={withQuantity
-									? (quantity) => handleQuantityChange(category, quantity)
-									: undefined}
-								initialQuantity={withQuantity
-									? materialCount[category] ?? defaultStartingQuantity
-									: undefined
-								}
-								disableOwnership={disableOwnership}
-							/>
+							<div className="category-list-content">
+								<button
+									id={`${category.replaceAll(" ", "-")}-close-material-button`}
+									className="overlay-close-button"
+									onClick={() => setSelected("")}>
+									X
+								</button>
+								<MaterialPlanner
+									title={category}
+									parts={categoryData[category].parts}
+									stock={materialCount}
+									onMatCountChange={handleMatCountChange}
+									onOwned={handleOwned}
+									enableMultiple={withQuantity}
+									onQuantityChange={withQuantity
+										? (quantity) => handleQuantityChange(category, quantity)
+										: undefined}
+									initialQuantity={withQuantity
+										? materialCount[category] ?? defaultStartingQuantity
+										: undefined
+									}
+									disableOwnership={disableOwnership}
+								/>
+							</div>
 						</div>
 					)}
 					<RectangularBox

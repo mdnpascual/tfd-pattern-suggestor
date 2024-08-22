@@ -145,9 +145,15 @@
   z-index: 1000;
 }
 
+.category-list-content {
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+}
+
 .overlay-close-button {
   position: absolute;
-  top: 20px;
+  top: 10px;
   right: 20px;
   cursor: pointer;
   background: #fff;
