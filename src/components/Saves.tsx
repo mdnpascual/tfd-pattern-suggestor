@@ -72,8 +72,12 @@ const Saves: React.FC = () => {
 
 	const load = (data: SaveData) => {
 		localStorageKeys.forEach((localStorageKey) => {
-			if (data[localStorageKey]) {
-				localStorage.setItem(localStorageKey, JSON.stringify(data[localStorageKey]))
+			if (data[localStorageKey] !== undefined) {
+				const dataCopy = data[localStorageKey]
+				const stringified = JSON.stringify(data[localStorageKey])
+				if (dataCopy !== undefined){
+					localStorage.setItem(localStorageKey, stringified !== '""' ? JSON.stringify(data[localStorageKey]) : '')
+				}
 			} else {
 				localStorage.setItem(localStorageKey, '')
 			}
