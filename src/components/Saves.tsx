@@ -76,7 +76,7 @@ const Saves: React.FC = () => {
 				const dataCopy = data[localStorageKey]
 				const stringified = JSON.stringify(data[localStorageKey])
 				if (dataCopy !== undefined){
-					localStorage.setItem(localStorageKey, stringified !== '""' ? JSON.stringify(data[localStorageKey]) : '')
+					localStorage.setItem(localStorageKey, stringified !== '""' ? stringified : '')
 				}
 			} else {
 				localStorage.setItem(localStorageKey, '')

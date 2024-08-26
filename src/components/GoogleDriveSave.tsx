@@ -98,7 +98,11 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 			setToken(accessToken);
 			findFileIdAndFetchMetadata(accessToken);
 		} else {
-			showSnackbar('User did not grant the required scopes.', 'error');
+			// showSnackbar('User did not grant the required scopes.', 'error');
+			showSnackbar('Bypassing Scopes Check.', 'info');
+			setIsLoggedIn(true);
+			setToken(accessToken);
+			findFileIdAndFetchMetadata(accessToken);
 		}
 	};
 
