@@ -42,6 +42,19 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
+	const getIn = () => {
+		const authInstance = gapi.auth2.getAuthInstance();
+		const currentUser = authInstance.currentUser.get();
+		if (currentUser.hasGrantedScopes(SCOPES)) {
+			const accessToken = currentUser.getAuthResponse().access_token;
+			setToken(accessToken);
+			setIsLoggedIn(true);
+			findFileIdAndFetchMetadata(accessToken);
+			return true
+		}
+		return false
+	}
+
 	useEffect(() => {
 		gapi.load('client:auth2', () => {
 			gapi.auth2.init({
@@ -50,14 +63,10 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 			}).then(() => {
 				const authInstance = gapi.auth2.getAuthInstance();
 				if (authInstance.isSignedIn.get()) {
-					const currentUser = authInstance.currentUser.get();
-					if (currentUser.hasGrantedScopes(SCOPES)) {
-						const accessToken = currentUser.getAuthResponse().access_token;
-						setToken(accessToken);
-						setIsLoggedIn(true);
-						findFileIdAndFetchMetadata(accessToken);
-					} else {
-						authInstance.signIn({ scope: SCOPES });
+					if (!getIn()) {
+						authInstance.signIn({ scope: SCOPES }).then(() => {
+							getIn();
+						});
 					}
 				}
 			});
@@ -100,9 +109,9 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 		} else {
 			// showSnackbar('User did not grant the required scopes.', 'error');
 			showSnackbar('Bypassing Scopes Check.', 'info');
-			setIsLoggedIn(true);
-			setToken(accessToken);
-			findFileIdAndFetchMetadata(accessToken);
+			authInstance.signIn({ scope: SCOPES }).then(() => {
+				getIn();
+			});
 		}
 	};
 
