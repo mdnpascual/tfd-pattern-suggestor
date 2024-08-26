@@ -42,21 +42,6 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-	const getIn = (caller: string) => {
-		const authInstance = gapi.auth2.getAuthInstance();
-		const currentUser = authInstance.currentUser.get();
-		if (currentUser.hasGrantedScopes(SCOPES)) {
-			const accessToken = currentUser.getAuthResponse().access_token;
-			setToken(accessToken);
-			setIsLoggedIn(true);
-			findFileIdAndFetchMetadata(accessToken);
-			showSnackbar('In Get in with status True from ' + caller, 'info');
-			return true
-		}
-		showSnackbar('In Get in with status False from ' + caller, 'info');
-		return false
-	}
-
 	useEffect(() => {
 		gapi.load('client:auth2', () => {
 			gapi.auth2.init({
@@ -65,10 +50,14 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 			}).then(() => {
 				const authInstance = gapi.auth2.getAuthInstance();
 				if (authInstance.isSignedIn.get()) {
-					if (!getIn("page init")) {
-						authInstance.signIn({ scope: SCOPES }).then(() => {
-							getIn("page init scopes login");
-						});
+					const currentUser = authInstance.currentUser.get();
+					if (currentUser.hasGrantedScopes(SCOPES)) {
+						const accessToken = currentUser.getAuthResponse().access_token;
+						setToken(accessToken);
+						setIsLoggedIn(true);
+						findFileIdAndFetchMetadata(accessToken);
+					} else {
+						authInstance.signIn({ scope: SCOPES });
 					}
 				}
 			});
@@ -109,12 +98,7 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 			setToken(accessToken);
 			findFileIdAndFetchMetadata(accessToken);
 		} else {
-			// showSnackbar('User did not grant the required scopes.', 'error');
-			showSnackbar('Bypassing Scopes Check.', 'info');
-			authInstance.signIn({ scope: SCOPES }).then(() => {
-				showSnackbar('Finish sign in with scopes in onSuccess', 'info');
-				getIn("success scopes login");
-			});
+			showSnackbar('User did not grant the required scopes.', 'error');
 		}
 	};
 
@@ -257,15 +241,15 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 				</Box>
 			)}
 			<Snackbar
-                open={!!snackbarMessage}
-                autoHideDuration={6000}
-                onClose={handleSnackbarClose}
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-            >
-                <Alert onClose={handleSnackbarClose} severity={snackbarSeverity}>
-                    {snackbarMessage}
-                </Alert>
-            </Snackbar>
+				open={!!snackbarMessage}
+				autoHideDuration={6000}
+				onClose={handleSnackbarClose}
+				anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+			>
+				<Alert onClose={handleSnackbarClose} severity={snackbarSeverity}>
+					{snackbarMessage}
+				</Alert>
+			</Snackbar>
 
 			<Dialog
 				open={showConfirmDialog}
