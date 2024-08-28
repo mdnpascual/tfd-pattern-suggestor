@@ -202,6 +202,7 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 		<Box sx={{ p: 2, alignItems: 'center' }}>
 			{!isLoggedIn ? (
 				<GoogleLogin
+					nonce='NjU3NjI3NjUyMjMyLW43c2FlYWZiYnVjbXRybDNuY2c2ZWloNzhmdjAzZHFz'
 					onSuccess={onSuccess}
 					onError={onError}
 				/>
