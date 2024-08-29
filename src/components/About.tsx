@@ -68,7 +68,7 @@ const AboutComponent: React.FC = () => {
 						right: 16,
 						color: 'text.secondary',
 					}}>
-					Version 1.1.3a
+					Version 1.1.4
 				</Typography>
 
 				<Typography
