@@ -104,6 +104,7 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 
 	const handleLogout = () => {
 		googleLogout();
+        localStorage.removeItem('googleAccessToken');
 		setIsLoggedIn(false);
 		setToken(undefined);
 		setFileId(null);
