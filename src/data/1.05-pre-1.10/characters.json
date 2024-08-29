@@ -441,33 +441,6 @@
 		"xOffset": 5,
 		"yOffset": -30
 	},
-	"Hailey": {
-		"parts": [
-			{ "name": "Hailey Enhanced Cells", "mats": [
-				{ "name": "Monad Shard", "quantity": 246 },
-				{ "name": "Compound Coating Material", "quantity": 239 },
-				{ "name": "Polyatomic Ion Particle", "quantity": 96 },
-				{ "name": "Hailey Enhanced Cells Blueprint", "quantity": 36 }
-			]},
-			{ "name": "Hailey Stabilizer", "mats": [
-				{ "name": "Nanopolymers", "quantity": 363 },
-				{ "name": "Reverse Charging Coil", "quantity": 455 },
-				{ "name": "Negative Ion Particle", "quantity": 47 },
-				{ "name": "Hailey Stabilizer Blueprint", "quantity": 36 }
-			]},
-			{ "name": "Hailey Spiral Catalyst", "mats": [
-				{ "name": "Repton", "quantity": 422 },
-				{ "name": "Carbon Crystal", "quantity": 554 },
-				{ "name": "Common Carbon Activator", "quantity": 14 },
-				{ "name": "Hailey Spiral Catalyst Blueprint", "quantity": 36 }
-			]},
-			{ "name": "Hailey Code", "mats": [{ "name": "Hailey Code", "quantity": 36 }]}
-		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/hailey.png",
-		"scale": 120,
-		"xOffset": -5,
-		"yOffset": -48
-	},
 	"Bunny": { "parts": [
 		{ "name": "Bunny Enhanced Cells", "mats": []},
 		{ "name": "Bunny Stabilizer", "mats": []},
