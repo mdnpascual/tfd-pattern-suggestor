@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { GoogleLogin, googleLogout } from '@react-oauth/google';
+import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import {
 	Alert,
 	Box,
@@ -12,11 +12,9 @@ import {
 	DialogContentText,
 	DialogTitle,
 } from "@mui/material";
-import { gapi } from 'gapi-script';
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
 
-const CLIENT_ID = '657627652232-n7saeafbbucmtrl3ncg6eih78fv03dqs.apps.googleusercontent.com';
 const SCOPES = 'https://www.googleapis.com/auth/drive.file';
 const FILE_NAME = 'tfd-pattern-suggestor-saves.json';
 
@@ -30,58 +28,58 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 	const [isProcessing, setIsProcessing] = useState(false);
 	const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
+	useEffect(() => {
+		const accessToken = sessionStorage.getItem('googleAccessToken');
+
+		if (!accessToken) {
+			return;
+		}
+
+		const tokenValid = async (accessToken: string) => {
+			try {
+				const response = await fetch('https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=' + accessToken);
+				const data = await response.json();
+				if (data.error) {
+					throw new Error('Invalid token');
+				}
+
+				setIsLoggedIn(true);
+				setToken(accessToken);
+				findFileIdAndFetchMetadata(accessToken);
+			} catch (error) {
+				setIsLoggedIn(false);
+				setToken(undefined);
+				sessionStorage.removeItem('googleAccessToken');
+			}
+		};
+
+		tokenValid(accessToken);
+	}, []);
+
 	const handleSnackbarClose = () => {
 		setSnackbarMessage(null);
 	};
 
-    const showSnackbar = (message: string, severity: 'success' | 'error' | 'info') => {
-        setSnackbarMessage(message);
-        setSnackbarSeverity(severity);
-    };
+	const showSnackbar = (message: string, severity: 'success' | 'error' | 'info') => {
+		setSnackbarMessage(message);
+		setSnackbarSeverity(severity);
+	};
 
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-	useEffect(() => {
-		gapi.load('client:auth2', () => {
-			gapi.auth2.init({
-				client_id: CLIENT_ID,
-				scope: SCOPES,
-			}).then(() => {
-				const authInstance = gapi.auth2.getAuthInstance();
-				if (authInstance.isSignedIn.get()) {
-					const currentUser = authInstance.currentUser.get();
-					if (currentUser.hasGrantedScopes(SCOPES)) {
-						const accessToken = currentUser.getAuthResponse().access_token;
-						setToken(accessToken);
-						setIsLoggedIn(true);
-						findFileIdAndFetchMetadata(accessToken);
-					} else {
-						authInstance.signIn({ scope: SCOPES });
-					}
-				}
-			});
-		});
-	}, []);
-
 	const findFileIdAndFetchMetadata = async (accessToken: string) => {
 		try {
-			const response = await gapi.client.request({
-				path: '/drive/v3/files',
+			const response = await fetch('https://www.googleapis.com/drive/v3/files?q=name=\'' + FILE_NAME + '\' and trashed=false&fields=files(id,name,modifiedTime)', {
 				method: 'GET',
-				params: {
-					q: `name='${FILE_NAME}' and trashed=false`,
-					fields: 'files(id, name, modifiedTime)',
-				},
 				headers: {
-					'Authorization': `Bearer ${accessToken}`,
+					Authorization: `Bearer ${accessToken}`,
 				},
 			});
-
-			const files = response.result.files;
-			if (files && files.length > 0) {
-				setFileId(files[0].id);
-				setLastModifiedTime(files[0].modifiedTime);
+			const data = await response.json();
+			if (data.files && data.files.length > 0) {
+				setFileId(data.files[0].id);
+				setLastModifiedTime(data.files[0].modifiedTime);
 			}
 		} catch (error) {
 			showSnackbar('Error finding save file: ' + error, 'error');
@@ -89,17 +87,12 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 	};
 
 	const onSuccess = (response: any) => {
-		const authInstance = gapi.auth2.getAuthInstance();
-		const currentUser = authInstance.currentUser.get();
-		const accessToken = currentUser.getAuthResponse().access_token;
+		const accessToken = response.access_token;
 
-		if (currentUser.hasGrantedScopes(SCOPES)) {
-			setIsLoggedIn(true);
-			setToken(accessToken);
-			findFileIdAndFetchMetadata(accessToken);
-		} else {
-			showSnackbar('User did not grant the required scopes.', 'error');
-		}
+		sessionStorage.setItem('googleAccessToken', accessToken);
+		setIsLoggedIn(true);
+		setToken(accessToken);
+		findFileIdAndFetchMetadata(accessToken);
 	};
 
 	const onError = () => {
@@ -144,23 +137,25 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 			saves + '\r\n' +
 			`--${boundary}--`;
 
-		const request = gapi.client.request({
-			path: `/upload/drive/v3/files${fileId ? "/" + fileId : undefined}`,
-			method: fileId ? 'PATCH' : 'POST',
-			params: { uploadType: 'multipart' },
-			headers: {
-				'Authorization': `Bearer ${token}`,
-				'Content-Type': `multipart/related; boundary="${boundary}"`,
-			},
-			body: multipartRequestBody,
-		});
+		try {
+			const response = await fetch(`https://www.googleapis.com/upload/drive/v3/files${fileId ? '/' + fileId : ''}?uploadType=multipart`, {
+				method: fileId ? 'PATCH' : 'POST',
+				headers: {
+					'Authorization': `Bearer ${token}`,
+					'Content-Type': `multipart/related; boundary="${boundary}"`,
+				},
+				body: multipartRequestBody,
+			});
 
-		request.execute((file: any) => {
+			const file = await response.json();
 			showSnackbar('Saves synced to Google Drive', 'success');
 			setFileId(file.id); // Store the file ID for future updates
 			setLastModifiedTime(new Date().toISOString());
+		} catch (error) {
+			showSnackbar('Failed to save to Google Drive: ' + error, 'error');
+		} finally {
 			setIsProcessing(false);
-		});
+		}
 	};
 
 	const loadFromGoogleDrive = async () => {
@@ -176,36 +171,46 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 
 		setIsProcessing(true);
 
-		const request = gapi.client.request({
-			path: `/drive/v3/files/${fileId}`,
-			method: 'GET',
-			params: { alt: 'media' },
-			headers: {
-				'Authorization': `Bearer ${token}`,
-			},
-		});
+		try {
+			const response = await fetch(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`, {
+				method: 'GET',
+				headers: {
+					'Authorization': `Bearer ${token}`,
+				},
+			});
 
-		request.execute((fileContent: any) => {
-			const saves = fileContent;
-			localStorage.setItem('saves', JSON.stringify(saves));
+			const fileContent = await response.json();
+			localStorage.setItem('saves', JSON.stringify(fileContent));
 			showSnackbar('Saves Loaded from Google Drive', 'success');
-			onLoadFromGoogleDrive(saves);
+			onLoadFromGoogleDrive(fileContent);
+		} catch (error) {
+			showSnackbar('Failed to load from Google Drive: ' + error, 'error');
+		} finally {
 			setIsProcessing(false);
-		});
+		}
 	};
 
 	const handleSaveClick = () => {
 		setShowConfirmDialog(true);
 	};
 
+	const login = useGoogleLogin({
+		scope: SCOPES,
+		onSuccess: onSuccess,
+		onError: onError,
+	});
+
 	return (
 		<Box sx={{ p: 2, alignItems: 'center' }}>
 			{!isLoggedIn ? (
-				<GoogleLogin
-					nonce='NjU3NjI3NjUyMjMyLW43c2FlYWZiYnVjbXRybDNuY2c2ZWloNzhmdjAzZHFz'
-					onSuccess={onSuccess}
-					onError={onError}
-				/>
+
+				<Button
+					color="primary"
+					onClick={() => login()}
+					variant='contained'
+				>
+					Sign in with Google 🚀
+				</Button>
 			) : (
 				<Box>
 					<Button
