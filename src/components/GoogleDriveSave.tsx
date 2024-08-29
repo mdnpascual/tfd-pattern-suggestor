@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import { googleLogout, useGoogleLogin, hasGrantedAllScopesGoogle } from '@react-oauth/google';
 import {
 	Alert,
 	Box,
@@ -28,31 +28,30 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 	const [isProcessing, setIsProcessing] = useState(false);
 	const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
-	useEffect(() => {
-		const accessToken = sessionStorage.getItem('googleAccessToken');
+	const tokenValid = async (accessToken: string) => {
+		try {
+			const response = await fetch('https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=' + accessToken);
+			const data = await response.json();
+			if (data.error) {
+				throw new Error('Invalid token');
+			}
 
+			setIsLoggedIn(true);
+			setToken(accessToken);
+			findFileIdAndFetchMetadata(accessToken);
+		} catch (error) {
+			setIsLoggedIn(false);
+			setToken(undefined);
+			localStorage.removeItem('googleAccessToken');
+			showSnackbar('Google login has expired. Please log in again to use Google Drive sync: ' + error, 'info');
+		}
+	};
+
+	useEffect(() => {
+		const accessToken = localStorage.getItem('googleAccessToken');
 		if (!accessToken) {
 			return;
 		}
-
-		const tokenValid = async (accessToken: string) => {
-			try {
-				const response = await fetch('https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=' + accessToken);
-				const data = await response.json();
-				if (data.error) {
-					throw new Error('Invalid token');
-				}
-
-				setIsLoggedIn(true);
-				setToken(accessToken);
-				findFileIdAndFetchMetadata(accessToken);
-			} catch (error) {
-				setIsLoggedIn(false);
-				setToken(undefined);
-				sessionStorage.removeItem('googleAccessToken');
-			}
-		};
-
 		tokenValid(accessToken);
 	}, []);
 
@@ -70,7 +69,7 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 
 	const findFileIdAndFetchMetadata = async (accessToken: string) => {
 		try {
-			const response = await fetch('https://www.googleapis.com/drive/v3/files?q=name=\'' + FILE_NAME + '\' and trashed=false&fields=files(id,name,modifiedTime)', {
+			const response = await fetch(`https://www.googleapis.com/drive/v3/files?q=name='${FILE_NAME}' and trashed=false&fields=files(id,name,modifiedTime)`, {
 				method: 'GET',
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
@@ -89,10 +88,14 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 	const onSuccess = (response: any) => {
 		const accessToken = response.access_token;
 
-		sessionStorage.setItem('googleAccessToken', accessToken);
-		setIsLoggedIn(true);
-		setToken(accessToken);
-		findFileIdAndFetchMetadata(accessToken);
+		if (hasGrantedAllScopesGoogle(response, SCOPES)) {
+			localStorage.setItem('googleAccessToken', accessToken);
+			setIsLoggedIn(true);
+			setToken(accessToken);
+			findFileIdAndFetchMetadata(accessToken);
+		} else {
+			showSnackbar('User did not grant the required scopes.', 'error');
+		}
 	};
 
 	const onError = () => {
