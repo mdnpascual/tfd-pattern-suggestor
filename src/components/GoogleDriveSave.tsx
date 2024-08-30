@@ -32,7 +32,7 @@ const GoogleDriveSave: React.FC<{onLoadFromGoogleDrive: (saveJSON: any) => void}
 		try {
 			const response = await fetch('https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=' + accessToken);
 			const data = await response.json();
-			if (data.error) {
+			if (!response.ok || data.error) {
 				throw new Error('Invalid token');
 			}
 
