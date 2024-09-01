@@ -3,6 +3,7 @@ import MaterialPlanner from "./MaterialPlanner";
 import RectangularBox from "./RectangularBox";
 import { GearPart } from "../data/constants";
 import InitializeCategoryData from "../utils/InitializeCategoryData";
+import MaterialBox from "./MaterialBox";
 
 export interface CategoryData {
 	img: string;
@@ -19,6 +20,7 @@ interface CategoryListProps<T> {
 	preloadedData: any,
 	withQuantity?: boolean;
 	disableOwnership?: boolean;
+	useMaterialBox?: boolean;
 }
 
 const defaultStartingQuantity = 5;
@@ -29,9 +31,16 @@ const CategoryList = <T extends CategoryData>({
 	localStorageMaterialKey,
 	preloadedData,
 	withQuantity,
-	disableOwnership
+	disableOwnership,
+	useMaterialBox
 }: CategoryListProps<T>) => {
-
+	console.log(data);
+	console.log(localStorageStatusKey);
+	console.log(localStorageMaterialKey);
+	console.log(preloadedData);
+	console.log(withQuantity);
+	console.log(disableOwnership);
+	console.log(useMaterialBox);
 	const [selected, setSelected] = useState<string>("");
 	const [categoryStatus, setCategoryStatus] = useState<Record<string, boolean>>({});
 	const [materialCount, setMaterialCount] = useState<Record<string, number>>({});
@@ -91,7 +100,7 @@ const CategoryList = <T extends CategoryData>({
 	}
 
 	return (
-		<div className="rectangular-box-grid">
+		<div className={`${useMaterialBox ? 'material' : 'rectangular'}-box-grid`}>
 			{categoryList.map((category) => (
 				<div key={category}>
 					{selected === category && (
@@ -122,7 +131,7 @@ const CategoryList = <T extends CategoryData>({
 							</div>
 						</div>
 					)}
-					<RectangularBox
+					{!useMaterialBox && (<RectangularBox
 						title={category}
 						backgroundImage={categoryData[category].img}
 						xOffset={categoryData[category].xOffset}
@@ -132,7 +141,17 @@ const CategoryList = <T extends CategoryData>({
 						onSelect={handleSelected}
 						onOwned={handleOwned}
 						disableOwnership={disableOwnership}
-					/>
+					/>)}
+					{useMaterialBox && (<MaterialBox
+						title={category}
+						backgroundImage={categoryData[category].img}
+						xOffset={categoryData[category].xOffset}
+						yOffset={categoryData[category].yOffset}
+						scale={categoryData[category].scale}
+						onSelect={handleSelected}
+						onOwned={handleOwned}
+						disableOwnership={disableOwnership}
+					/>)}
 				</div>
 			))}
 		</div>

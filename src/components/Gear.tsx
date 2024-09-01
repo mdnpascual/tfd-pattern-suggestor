@@ -63,6 +63,20 @@ const GearComponent = () => {
 						withQuantity
 						disableOwnership
 					/>
+				},
+				{
+					label: 'Basic',
+					iconPath: 'https://nxsvc.inface.nexon.com/meta-binary/7721eedef87ad6fb392af98d2e927fcb',
+					Component: <CategoryList
+						key='Enhancements'
+						data={EnhancementRawData}
+						localStorageStatusKey={'enhancementStatus'}
+						localStorageMaterialKey={'materialCount'}
+						preloadedData={preloadedData.enhancement}
+						withQuantity
+						disableOwnership
+						useMaterialBox
+					/>
 				}
 			]}
 		/>
