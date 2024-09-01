@@ -41,7 +41,7 @@ const AboutComponent: React.FC = () => {
 					sx={{ mb: 2 }}
 				>
 					Join our Discord
-				</Button>
+				</Button>a
 
 				<Tabs value={tabValue} onChange={handleTabChange} sx={{ mb: 3 }}>
 					<Tab label="Settings" />
@@ -68,7 +68,7 @@ const AboutComponent: React.FC = () => {
 						right: 16,
 						color: 'text.secondary',
 					}}>
-					Version 1.1.6
+					Version 1.1.6a
 				</Typography>
 
 				<Typography

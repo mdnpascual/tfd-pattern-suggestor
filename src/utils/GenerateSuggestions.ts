@@ -7,6 +7,42 @@ import { Item } from "../components/MultiSelectList";
 import { Pattern, Material, GearPart, MaterialPair } from "../data/constants";
 import { getBooleanSetting } from '../components/Settings';
 
+type ItemName = {
+	name: string;
+};
+
+type RelatedItem = {
+	item: ItemName;
+	parent: ItemName;
+};
+
+interface MaterialStatus {
+	[key: string]: number;
+}
+
+const shouldSuggest = (
+	item: RelatedItem,
+	materialStatus: MaterialStatus,
+	suggestUntilQuantityReachedSetting: boolean,
+	goal: number
+) => {
+	const itemName = item.item.name;
+	const parentName = item.parent.name;
+	const itemMaterialStatus = materialStatus[itemName] ?? 0;
+	const parentMaterialStatus = materialStatus[parentName] ?? 0;
+
+	if (itemMaterialStatus) {
+		const isDuplicate = itemName === parentName;
+		const divisor = isDuplicate ? 2 : 1;
+		const totalMaterialStatus = (itemMaterialStatus + parentMaterialStatus) / divisor;
+		const threshold = suggestUntilQuantityReachedSetting ? goal : 1;
+
+		return totalMaterialStatus < threshold;
+	}
+
+	return true;
+}
+
 const GenerateSuggestion = () => {
 	let selectedItemsToBeSaved: string[] = []
 	let itemPriorityToBeSaved: number[] = []
@@ -101,14 +137,12 @@ const GenerateSuggestion = () => {
 						});
 					}
 				});
-				const unownedItems = relatedItems.filter((item) => {
-					if (materialStatus[item.item.name]){
-						return ((materialStatus[item.item.name] ?? 0) +
-								(materialStatus[item.parent.name] ?? 0)) <
-								(suggestUntilQuantityReachedSetting ? goal : 1)
-					}
-					return true
-				})
+
+				const unownedItems = relatedItems.filter(item => shouldSuggest(
+					item,
+					materialStatus,
+					suggestUntilQuantityReachedSetting,
+					goal))
 				unownedItems.forEach((unowned) => {
 					const matchedItem = items.find(item => item.label === unowned.item.name);
 					if (matchedItem) {
@@ -136,15 +170,12 @@ const GenerateSuggestion = () => {
 						});
 					}
 				});
-				const unownedItems = relatedItems.filter((item) => {
-					if (materialStatus[item.item.name]){
-						console.log(materialStatus[item.item.name], " ", materialStatus[item.parent.name])
-						return ((materialStatus[item.item.name] ?? 0) +
-								materialStatus[item.parent.name] ?? 0) <
-								(suggestUntilQuantityReachedSetting ? goal : 1)
-					}
-					return true
-				})
+
+				const unownedItems = relatedItems.filter(item => shouldSuggest(
+					item,
+					materialStatus,
+					suggestUntilQuantityReachedSetting,
+					goal))
 				unownedItems.forEach((unowned) => {
 					const matchedItem = items.find(item => item.label === unowned.item.name);
 					if (matchedItem) {
