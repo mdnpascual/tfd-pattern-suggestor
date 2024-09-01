@@ -102,7 +102,7 @@ const MaterialPlanner: React.FC<MaterialPlannerProps> = ({
 										onChange={e => handleMatCountChange(mat.name, parseInt(e.target.value))}
 										sx={{ width: "200px", mr: 2 }}
 										inputProps={{ min: 0, style: { textAlign: 'right' } }}
-										InputLabelProps={{ sx: { color: ColorByGoal(stock[mat.name] || 0, mat.quantity, initialQuantity, stock) } }}
+										InputLabelProps={{ sx: { color: ColorByGoal((stock[mat.name] || 0) + (stock[part.name] || 0), mat.quantity, initialQuantity, stock) } }}
 									/>
 									<Typography sx={{ flexShrink: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: 'ellipsis' }}>
 										/ {mat.quantity}

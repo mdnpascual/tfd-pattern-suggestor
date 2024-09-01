@@ -143,6 +143,11 @@ export interface Material {
 	"quantity": number;
 }
 
+export interface MaterialPair {
+	"parent": GearPart;
+	"item": Material;
+}
+
 export interface Pattern {
 	drops: DropList[],
 	dropsFrom: string,

@@ -4,7 +4,7 @@ import EnhancementRawData from '../data/enhancements.json';
 import PatternRawData from '../data/patterns.json';
 import { CategoryData } from "../components/CategoryList";
 import { Item } from "../components/MultiSelectList";
-import { Pattern, Material, GearPart } from "../data/constants";
+import { Pattern, Material, GearPart, MaterialPair } from "../data/constants";
 import { getBooleanSetting } from '../components/Settings';
 
 const GenerateSuggestion = () => {
@@ -90,25 +90,27 @@ const GenerateSuggestion = () => {
 		if(!weaponStatus[key]){	// Unowned
 			const goal = materialStatus[key] ?? 5;
 			if (goal) {
-				let relatedItems: Material[] = [];
+				let relatedItems: MaterialPair[] = [];
 				data.parts.forEach((part: GearPart) => {
 					const parentQuantity = materialStatus[part.name] ?? 0;
 					if (parentQuantity < goal){
 						part.mats?.forEach((mat: Material) => {
 							if (itemLabels.includes(mat.name)){
-								relatedItems.push(mat)
+								relatedItems.push({parent: part, item: mat})
 							}
 						});
 					}
 				});
 				const unownedItems = relatedItems.filter((item) => {
-					if (materialStatus[item.name]){
-						return materialStatus[item.name] < (suggestUntilQuantityReachedSetting ? goal : 1)
+					if (materialStatus[item.item.name]){
+						return ((materialStatus[item.item.name] ?? 0) +
+								(materialStatus[item.parent.name] ?? 0)) <
+								(suggestUntilQuantityReachedSetting ? goal : 1)
 					}
 					return true
 				})
 				unownedItems.forEach((unowned) => {
-					const matchedItem = items.find(item => item.label === unowned.name);
+					const matchedItem = items.find(item => item.label === unowned.item.name);
 					if (matchedItem) {
 						selectedItemsToBeSaved.push(matchedItem.id)
 						itemPriorityToBeSaved.push(5 - unownedItems.length)
@@ -123,27 +125,28 @@ const GenerateSuggestion = () => {
 		if(!enhancementStatus[key]){	// Unowned
 			const goal = materialStatus[key] ?? 5;
 			if (goal) {
-				let relatedItems: Material[] = [];
+				let relatedItems: MaterialPair[] = [];
 				data.parts.forEach((part: GearPart) => {
 					const parentQuantity = materialStatus[part.name] ?? 0;
 					if (parentQuantity < goal) {
 						part.mats?.forEach((mat: Material) => {
 							if (itemLabels.includes(mat.name)){
-								relatedItems.push(mat)
+								relatedItems.push({parent: part, item: mat})
 							}
 						});
 					}
 				});
-
 				const unownedItems = relatedItems.filter((item) => {
-					if (materialStatus[item.name]){
-						return materialStatus[item.name] < (suggestUntilQuantityReachedSetting ? goal : 1)
+					if (materialStatus[item.item.name]){
+						console.log(materialStatus[item.item.name], " ", materialStatus[item.parent.name])
+						return ((materialStatus[item.item.name] ?? 0) +
+								materialStatus[item.parent.name] ?? 0) <
+								(suggestUntilQuantityReachedSetting ? goal : 1)
 					}
 					return true
 				})
-
 				unownedItems.forEach((unowned) => {
-					const matchedItem = items.find(item => item.label === unowned.name);
+					const matchedItem = items.find(item => item.label === unowned.item.name);
 					if (matchedItem) {
 						selectedItemsToBeSaved.push(matchedItem.id)
 						itemPriorityToBeSaved.push(5 - unownedItems.length)
