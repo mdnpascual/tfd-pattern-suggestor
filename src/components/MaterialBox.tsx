@@ -47,9 +47,11 @@ const MaterialBox: React.FC<MaterialBoxProps> = ({
 	const isComplete = Math.round(Math.random())
 	const [quantity, setQuantity] = useState<string>('');
 
-    const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setQuantity(event.target.value);
-    };
+	backgroundImage = backgroundImage.replaceAll(' ', '%20')
+
+	const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setQuantity(event.target.value);
+	};
 
 	return (
 		<div
@@ -84,7 +86,7 @@ const MaterialBox: React.FC<MaterialBoxProps> = ({
 					left: 0,
 					right: 0,
 					bottom: 0,
-					backgroundImage: `url(${backgroundImage})`,
+					backgroundImage: `url(${process.env.PUBLIC_URL}${backgroundImage})`,
 					backgroundPositionX: `${xOffset}px`,
 					backgroundPositionY: `${yOffset}px`,
 					backgroundSize: scale ? `${scale}%` : 'cover',
@@ -92,7 +94,17 @@ const MaterialBox: React.FC<MaterialBoxProps> = ({
 					zIndex: -1
 				}}
 			/>
-			<div className="title" style={{ padding: '10px' }}>{title}</div>
+			<div
+				className="title"
+				style={{
+					padding: '10px',
+					whiteSpace: 'nowrap',
+					overflow: 'hidden',
+					textOverflow: 'ellipsis'
+				}}
+				>
+				{title}
+			</div>
 			<Box sx={{
 				display: 'flex',
 				justifyContent: 'flex-end',

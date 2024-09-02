@@ -1,0 +1,324 @@
+{
+	"Silicon": {
+		"img": "/img/basic-mats/Silicon.png",
+		"xOffset": -28,
+		"yOffset": 5,
+		"scale": 80,
+		"parts": []
+	},
+	"Hellion": {
+		"img": "/img/basic-mats/Hellion.png",
+		"xOffset": -20,
+		"yOffset": 10,
+		"scale": 70,
+		"parts": []
+	},
+	"Artificial Biometal": {
+		"img": "/img/basic-mats/Artificial Biometal.png",
+		"xOffset": -30,
+		"yOffset": 1,
+		"scale": 85,
+		"parts": []
+	},
+	"Hardener": {
+		"img": "/img/basic-mats/Hardener.png",
+		"xOffset": -25,
+		"yOffset": 5,
+		"scale": 80,
+		"parts": []
+	},
+	"Ceramic Composite": {
+		"img": "/img/basic-mats/Ceramic Composite.png",
+		"xOffset": -20,
+		"yOffset": 5,
+		"scale": 75,
+		"parts": []
+	},
+	"Compound Coating Material": {
+		"img": "/img/basic-mats/Compound Coating Material.png",
+		"xOffset": -20,
+		"yOffset": 13,
+		"scale": 70,
+		"parts": []
+	},
+	"Shape Memory Alloy": {
+		"img": "/img/basic-mats/Shape Memory Alloy.png",
+		"xOffset": -30,
+		"yOffset": 5,
+		"scale": 75,
+		"parts": []
+	},
+	"Positive Ion Particle": {
+		"img": "/img/basic-mats/Positive Ion Particle.png",
+		"xOffset": -15,
+		"yOffset": -5,
+		"scale": 80,
+		"parts": []
+	},
+	"Monomolecular Extractor": {
+		"img": "/img/basic-mats/Monomolecular Extractor.png",
+		"xOffset": -20,
+		"yOffset": 22,
+		"scale": 65,
+		"parts": []
+	},
+	"Flectorite": {
+		"img": "/img/basic-mats/Flectorite.png",
+		"xOffset": -30,
+		"yOffset": 5,
+		"scale": 80,
+		"parts": []
+	},
+	"Inorganic Biogel": {
+		"img": "/img/basic-mats/Inorganic Biogel.png",
+		"xOffset": -25,
+		"yOffset": 10,
+		"scale": 80,
+		"parts": []
+	},
+	"Nanopolymers": {
+		"img": "/img/basic-mats/Nanopolymers.png",
+		"xOffset": -24,
+		"yOffset": 7,
+		"scale": 75,
+		"parts": []
+	},
+	"Advanced Neural Circuit": {
+		"img": "/img/basic-mats/Advanced Neural Circuit.png",
+		"xOffset": -23,
+		"yOffset": 5,
+		"scale": 80,
+		"parts": []
+	},
+	"Semi-permanent Plasma": {
+		"img": "/img/basic-mats/Semi-permanent Plasma.png",
+		"xOffset": -32,
+		"yOffset": 0,
+		"scale": 80,
+		"parts": []
+	},
+	"Deformed Biometal": {
+		"img": "/img/basic-mats/Deformed Biometal.png",
+		"xOffset": -30,
+		"yOffset": 5,
+		"scale": 80,
+		"parts": []
+	},
+	"Reverse Charging Coil": {
+		"img": "/img/basic-mats/Reverse Charging Coil.png",
+		"xOffset": -30,
+		"yOffset": 7,
+		"scale": 80,
+		"parts": []
+	},
+	"Organic Biogel": {
+		"img": "/img/basic-mats/Organic Biogel.png",
+		"xOffset": -25,
+		"yOffset": 10,
+		"scale": 80,
+		"parts": []
+	},
+	"Specialized Biometal": {
+		"img": "/img/basic-mats/Specialized Biometal.png",
+		"xOffset": -30,
+		"yOffset": 1,
+		"scale": 85,
+		"parts": []
+	},
+	"Monad Shard": {
+		"img": "/img/basic-mats/Monad Shard.png",
+		"xOffset": -25,
+		"yOffset": 10,
+		"scale": 70,
+		"parts": []
+	},
+	"Cooling Metallic Foil": {
+		"img": "/img/basic-mats/Cooling Metallic Foil.png",
+		"xOffset": -25,
+		"yOffset": 10,
+		"scale": 80,
+		"parts": []
+	},
+	"Metal Accelerant": {
+		"img": "/img/basic-mats/Metal Accelerant.png",
+		"xOffset": -23,
+		"yOffset": 10,
+		"scale": 75,
+		"parts": []
+	},
+	"Complex Carbon Activator": {
+		"img": "/img/basic-mats/Complex Carbon Activator.png",
+		"xOffset": -20,
+		"yOffset": 13,
+		"scale": 70,
+		"parts": []
+	},
+	"Synthesized Artificial Biometal": {
+		"img": "/img/basic-mats/Synthesized Artificial Biometal.png",
+		"xOffset": -30,
+		"yOffset": 9,
+		"scale": 80,
+		"parts": []
+	},
+	"Polyatomic Ion Particle": {
+		"img": "/img/basic-mats/Polyatomic Ion Particle.png",
+		"xOffset": -15,
+		"yOffset": -5,
+		"scale": 80,
+		"parts": []
+	},
+	"Negative Ion Particle": {
+		"img": "/img/basic-mats/Negative Ion Particle.png",
+		"xOffset": -20,
+		"yOffset": 0,
+		"scale": 80,
+		"parts": []
+	},
+	"Repton": {
+		"img": "/img/basic-mats/Repton.png",
+		"xOffset": -23,
+		"yOffset": 13,
+		"scale": 70,
+		"parts": []
+	},
+	"Carbon Crystal": {
+		"img": "/img/basic-mats/Carbon Crystal.png",
+		"xOffset": -17,
+		"yOffset": 10,
+		"scale": 70,
+		"parts": []
+	},
+	"Common Carbon Activator": {
+		"img": "/img/basic-mats/Common Carbon Activator.png",
+		"xOffset": -20,
+		"yOffset": 13,
+		"scale": 70,
+		"parts": []
+	},
+	"Balanced Plasma Battery": {
+		"img": "/img/basic-mats/Balanced Plasma Battery.png",
+		"xOffset": -18,
+		"yOffset": 10,
+		"scale": 70,
+		"parts": []
+	},
+	"Thermal Metallic Foil": {
+		"img": "/img/basic-mats/Thermal Metallic Foil.png",
+		"xOffset": -25,
+		"yOffset": 10,
+		"scale": 80,
+		"parts": []
+	},
+	"Highly-concentrated Energy Residue": {
+		"img": "/img/basic-mats/Highly-concentrated Energy Residue.png",
+		"xOffset": -17,
+		"yOffset": 18,
+		"scale": 65,
+		"parts": []
+	},
+	"Superfluid": {
+		"img": "/img/basic-mats/Superfluid.png",
+		"xOffset": -20,
+		"yOffset": 0,
+		"scale": 80,
+		"parts": []
+	},
+	"Crystal Biogel": {
+		"img": "/img/basic-mats/Crystal Biogel.png",
+		"xOffset": -25,
+		"yOffset": 10,
+		"scale": 80,
+		"parts": []
+	},
+	"Pure Energy Residue": {
+		"img": "/img/basic-mats/Pure Energy Residue.png",
+		"xOffset": -17,
+		"yOffset": 18,
+		"scale": 65,
+		"parts": []
+	},
+	"Anode Ion Particle": {
+		"img": "/img/basic-mats/Anode Ion Particle.png",
+		"xOffset": -15,
+		"yOffset": -5,
+		"scale": 80,
+		"parts": []
+	},
+	"Fusion Plasma Battery": {
+		"img": "/img/basic-mats/Fusion Plasma Battery.png",
+		"xOffset": -18,
+		"yOffset": 10,
+		"scale": 70,
+		"parts": []
+	},
+	"Encrypted Neural Circuit": {
+		"img": "/img/basic-mats/Encrypted Neural Circuit.png",
+		"xOffset": -23,
+		"yOffset": 5,
+		"scale": 80,
+		"parts": []
+	},
+	"Divided Plasma Battery": {
+		"img": "/img/basic-mats/Divided Plasma Battery.png",
+		"xOffset": -18,
+		"yOffset": 10,
+		"scale": 70,
+		"parts": []
+	},
+	"Data Processing Neural Circuit": {
+		"img": "/img/basic-mats/Data Processing Neural Circuit.png",
+		"xOffset": -23,
+		"yOffset": 5,
+		"scale": 80,
+		"parts": []
+	},
+	"Heat Plasma Battery": {
+		"img": "/img/basic-mats/Heat Plasma Battery.png",
+		"xOffset": -18,
+		"yOffset": 10,
+		"scale": 70,
+		"parts": []
+	},
+	"Macromolecule Biogel": {
+		"img": "/img/basic-mats/Macromolecule Biogel.png",
+		"xOffset": -25,
+		"yOffset": 10,
+		"scale": 80,
+		"parts": []
+	},
+	"Murky Energy Residue": {
+		"img": "/img/basic-mats/Murky Energy Residue.png",
+		"xOffset": -17,
+		"yOffset": 18,
+		"scale": 65,
+		"parts": []
+	},
+	"Mixed Energy Residue": {
+		"img": "/img/basic-mats/Mixed Energy Residue.png",
+		"xOffset": -17,
+		"yOffset": 18,
+		"scale": 65,
+		"parts": []
+	},
+	"Low-Carbon Activator": {
+		"img": "/img/basic-mats/Low-Carbon Activator.png",
+		"xOffset": -20,
+		"yOffset": 13,
+		"scale": 70,
+		"parts": []
+	},
+	"Compound Carbon Activator": {
+		"img": "/img/basic-mats/Compound Carbon Activator.png",
+		"xOffset": -20,
+		"yOffset": 13,
+		"scale": 70,
+		"parts": []
+	},
+	"Conductive Metallic Foil": {
+		"img": "/img/basic-mats/Conductive Metallic Foil.png",
+		"xOffset": -25,
+		"yOffset": 10,
+		"scale": 80,
+		"parts": []
+	}
+}

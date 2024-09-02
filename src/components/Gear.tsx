@@ -3,27 +3,31 @@ import PageWithSidebarComponent from './PageWithSidebar';
 import CharacterRawData from '../data/characters.json';
 import WeaponRawData from '../data/weapons.json';
 import EnhancementRawData from '../data/enhancements.json';
+import BasicMaterialRawData from '../data/basicMaterials.json';
 import CategoryList from './CategoryList';
 import { useEffect, useState } from 'react';
 import InitializeCategoryData from '../utils/InitializeCategoryData';
+import InitializeMaterialData from '../utils/InitializeMaterialData';
 
 const ComponentTODO = () => <div>Shard List Content (WIP)</div>;
 
 const GearComponent = () => {
 	const [preloadedData, setPreloadedData] = useState({
-        character: {},
-        weapon: {},
-        enhancement: {},
-    });
+		character: {},
+		weapon: {},
+		enhancement: {},
+		basicMaterials: {}
+	});
 
-    useEffect(() => {
-        // Preload data for each category
-        setPreloadedData({
-            character: InitializeCategoryData(CharacterRawData, 'characterStatus', 'materialCount'),
-            weapon: InitializeCategoryData(WeaponRawData, 'weaponStatus', 'materialCount'),
-            enhancement: InitializeCategoryData(EnhancementRawData, 'enhancementStatus', 'materialCount'),
-        });
-    }, []);
+	useEffect(() => {
+		// Preload data for each category
+		setPreloadedData({
+			character: InitializeCategoryData(CharacterRawData, 'characterStatus', 'materialCount'),
+			weapon: InitializeCategoryData(WeaponRawData, 'weaponStatus', 'materialCount'),
+			enhancement: InitializeCategoryData(EnhancementRawData, 'enhancementStatus', 'materialCount'),
+			basicMaterials: InitializeMaterialData(BasicMaterialRawData, 'blah', 'materialCount')
+		});
+	}, []);
 
 	return (
 		<PageWithSidebarComponent
@@ -69,10 +73,10 @@ const GearComponent = () => {
 					iconPath: 'https://nxsvc.inface.nexon.com/meta-binary/7721eedef87ad6fb392af98d2e927fcb',
 					Component: <CategoryList
 						key='Enhancements'
-						data={EnhancementRawData}
+						data={BasicMaterialRawData}
 						localStorageStatusKey={'enhancementStatus'}
 						localStorageMaterialKey={'materialCount'}
-						preloadedData={preloadedData.enhancement}
+						preloadedData={preloadedData.basicMaterials}
 						withQuantity
 						disableOwnership
 						useMaterialBox

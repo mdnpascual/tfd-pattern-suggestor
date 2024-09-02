@@ -34,13 +34,6 @@ const CategoryList = <T extends CategoryData>({
 	disableOwnership,
 	useMaterialBox
 }: CategoryListProps<T>) => {
-	console.log(data);
-	console.log(localStorageStatusKey);
-	console.log(localStorageMaterialKey);
-	console.log(preloadedData);
-	console.log(withQuantity);
-	console.log(disableOwnership);
-	console.log(useMaterialBox);
 	const [selected, setSelected] = useState<string>("");
 	const [categoryStatus, setCategoryStatus] = useState<Record<string, boolean>>({});
 	const [materialCount, setMaterialCount] = useState<Record<string, number>>({});
