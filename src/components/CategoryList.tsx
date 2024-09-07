@@ -21,6 +21,7 @@ interface CategoryListProps<T> {
 	withQuantity?: boolean;
 	disableOwnership?: boolean;
 	useMaterialBox?: boolean;
+	onDataChange: () => void;
 }
 
 const defaultStartingQuantity = 5;
@@ -32,7 +33,8 @@ const CategoryList = <T extends CategoryData>({
 	preloadedData,
 	withQuantity,
 	disableOwnership,
-	useMaterialBox
+	useMaterialBox,
+	onDataChange
 }: CategoryListProps<T>) => {
 	const [selected, setSelected] = useState<string>("");
 	const [categoryStatus, setCategoryStatus] = useState<Record<string, boolean>>({});
@@ -86,6 +88,7 @@ const CategoryList = <T extends CategoryData>({
 			JSON.stringify(newMaterialCount)
 		);
 		setMaterialCount(newMaterialCount);
+		onDataChange();
 	};
 
 	const handleQuantityChange = (item: string, quantity: number) => {
@@ -137,12 +140,13 @@ const CategoryList = <T extends CategoryData>({
 					/>)}
 					{useMaterialBox && (<MaterialBox
 						title={category}
+						incomingQuantity={materialCount[category] || 0}
 						backgroundImage={categoryData[category].img}
 						xOffset={categoryData[category].xOffset}
 						yOffset={categoryData[category].yOffset}
 						scale={categoryData[category].scale}
 						onSelect={handleSelected}
-						onOwned={handleOwned}
+						onQuantityChange={(quantity) => handleQuantityChange(category, quantity)}
 						disableOwnership={disableOwnership}
 					/>)}
 				</div>

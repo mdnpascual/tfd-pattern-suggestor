@@ -12,6 +12,7 @@ import ChecklistIcon from '@mui/icons-material/Checklist';
 import { JoyrideWithNavigation, loadBackupDataToLocalStorage } from './components/Joyride';
 import { BackupData, localStorageKeys, SaveData } from './data/constants';
 import { compileData } from './components/Saves';
+import { PreloadedDataProvider } from './components/PreloadedDataContext';
 
 
 const tabNameToIndex = {
@@ -85,7 +86,11 @@ const App = () => {
 							path="/patternSuggestor"
 							element={<PatternSuggestorComponent key={reloadKey}/>}
 						/>
-						<Route path="/gear" element={<GearComponent key={reloadKey}/>} />
+						<Route path="/gear" element={
+							<PreloadedDataProvider>
+								<GearComponent key={reloadKey}/>
+							</PreloadedDataProvider>
+						} />
 						<Route path="/about" element={<AboutComponent />} />
 						<Route path="/" element={<Navigate replace to={landingPage} />} />
 					</Routes>

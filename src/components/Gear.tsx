@@ -5,32 +5,20 @@ import WeaponRawData from '../data/weapons.json';
 import EnhancementRawData from '../data/enhancements.json';
 import BasicMaterialRawData from '../data/basicMaterials.json';
 import CategoryList from './CategoryList';
-import { useEffect, useState } from 'react';
-import InitializeCategoryData from '../utils/InitializeCategoryData';
-import InitializeMaterialData from '../utils/InitializeMaterialData';
+import { usePreloadedData } from './PreloadedDataContext';
 
 const ComponentTODO = () => <div>Shard List Content (WIP)</div>;
 
 const GearComponent = () => {
-	const [preloadedData, setPreloadedData] = useState({
-		character: {},
-		weapon: {},
-		enhancement: {},
-		basicMaterials: {}
-	});
+	const { preloadedData, fetchPreloadedData } = usePreloadedData();
 
-	useEffect(() => {
-		// Preload data for each category
-		setPreloadedData({
-			character: InitializeCategoryData(CharacterRawData, 'characterStatus', 'materialCount'),
-			weapon: InitializeCategoryData(WeaponRawData, 'weaponStatus', 'materialCount'),
-			enhancement: InitializeCategoryData(EnhancementRawData, 'enhancementStatus', 'materialCount'),
-			basicMaterials: InitializeMaterialData(BasicMaterialRawData, 'blah', 'materialCount')
-		});
-	}, []);
+	const handleDataChange = () => {
+		fetchPreloadedData();
+	};
 
 	return (
 		<PageWithSidebarComponent
+			onDataChanged={handleDataChange}
 			items={[
 				{
 					label: 'Descendants',
@@ -41,6 +29,7 @@ const GearComponent = () => {
 						localStorageStatusKey={'characterStatus'}
 						localStorageMaterialKey={'materialCount'}
 						preloadedData={preloadedData.character}
+						onDataChange={handleDataChange}
 					/>
 				},
 				{
@@ -52,6 +41,7 @@ const GearComponent = () => {
 						localStorageStatusKey={'weaponStatus'}
 						localStorageMaterialKey={'materialCount'}
 						preloadedData={preloadedData.weapon}
+						onDataChange={handleDataChange}
 						withQuantity
 					/>
 				},
@@ -64,6 +54,7 @@ const GearComponent = () => {
 						localStorageStatusKey={'enhancementStatus'}
 						localStorageMaterialKey={'materialCount'}
 						preloadedData={preloadedData.enhancement}
+						onDataChange={handleDataChange}
 						withQuantity
 						disableOwnership
 					/>
@@ -77,6 +68,7 @@ const GearComponent = () => {
 						localStorageStatusKey={'enhancementStatus'}
 						localStorageMaterialKey={'materialCount'}
 						preloadedData={preloadedData.basicMaterials}
+						onDataChange={handleDataChange}
 						withQuantity
 						disableOwnership
 						useMaterialBox

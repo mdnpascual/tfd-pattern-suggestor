@@ -13,9 +13,10 @@ interface SidebarItem {
 
 interface PageWithSidebarProps {
 	items: SidebarItem[];
+	onDataChanged: () => void;
 }
 
-const PageWithSidebarComponent: React.FC<PageWithSidebarProps> = ({ items }) => {
+const PageWithSidebarComponent: React.FC<PageWithSidebarProps> = ({ items, onDataChanged }) => {
 	const [sidebarOpen, setSidebarOpen] = useState(true);
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [confirmationOpen, setConfirmationOpen] = useState<boolean>(false);

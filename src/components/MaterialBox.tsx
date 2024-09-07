@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css'; // Assume CSS is defined here
-import { Box, Button, TextField } from '@mui/material';
+import { Box, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 interface MaterialBoxProps {
 	title: string;
+	incomingQuantity: number;
 	backgroundImage: string;
 	xOffset: number;
 	yOffset: number;
 	onSelect: (title: string) => void;
-	onOwned: (title: string) => void;
+	onQuantityChange: (quantity: number) => void;
 	scale?: number;
 	disableOwnership?: boolean;
 }
@@ -35,22 +36,35 @@ const CustomTextField = styled(TextField)({
 
 const MaterialBox: React.FC<MaterialBoxProps> = ({
 	title,
+	incomingQuantity,
 	backgroundImage,
 	xOffset,
 	yOffset,
 	onSelect,
-	onOwned,
+	onQuantityChange,
 	scale,
 	disableOwnership
 }) => {
 	const [hovered, setHovered] = useState(false);
 	const isComplete = Math.round(Math.random())
-	const [quantity, setQuantity] = useState<string>('');
+	const [quantity, setQuantity] = useState<number>(incomingQuantity);
+	const [previousQuantity, setPreviousQuantity] = useState<number>(incomingQuantity);
 
 	backgroundImage = backgroundImage.replaceAll(' ', '%20')
 
-	const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setQuantity(event.target.value);
+	const handleQuantityChange = (event: React.FocusEvent<HTMLInputElement>) => {
+		const newValue = Number(event.target.value);
+		if (newValue !== previousQuantity) {
+			setQuantity(newValue);
+			onQuantityChange(newValue);
+		}
+		setPreviousQuantity(newValue);
+	};
+
+	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const newValue = Number(event.target.value);
+		setPreviousQuantity(quantity);
+		setQuantity(newValue);
 	};
 
 	return (
@@ -60,7 +74,7 @@ const MaterialBox: React.FC<MaterialBoxProps> = ({
 			style={{
 				borderColor: isComplete ? "#6cfc8c" : "#fff",
 				borderWidth: '5px',
-				position: 'relative' // added for positioning child elements
+				position: 'relative'
 			}}
 			onMouseEnter={() => !disableOwnership && isComplete && setHovered(true)}
 			onMouseLeave={() => !disableOwnership && isComplete && setHovered(false)}
@@ -74,7 +88,7 @@ const MaterialBox: React.FC<MaterialBoxProps> = ({
 					left: 0,
 					right: 0,
 					bottom: 0,
-					backgroundColor: '#fff', // White base background
+					backgroundColor: '#fff',
 					zIndex: -2
 				}}
 			/>
@@ -116,7 +130,8 @@ const MaterialBox: React.FC<MaterialBoxProps> = ({
 					label="Count"
 					variant="outlined"
 					value={quantity}
-					onChange={handleQuantityChange}
+					onBlur={handleQuantityChange}
+					onChange={handleInputChange}
 					inputProps={{ min: 0 }}
 					sx={{ width: '100px' }}
 				/>
