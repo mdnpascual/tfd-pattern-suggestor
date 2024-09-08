@@ -1493,7 +1493,7 @@
 			{ "chance": 0.32, "name": "Python Blueprint" },
 			{ "chance": 0.32, "name": "Divine Punishment Synthetic Fiber Blueprint" }
 		],
-		"dropsFrom": "Fortress (Hard) - Defense Line: Vulgus Strategic Outpost",
+		"dropsFrom": "Fortress (Hard) - Defense Line: Vulgus Strategic Outpost (Successful Infiltration)",
 		"useIn": "Fortress (Hard) - Defense Line: Void Fusion Reactor"
 	},
 	"124": {
