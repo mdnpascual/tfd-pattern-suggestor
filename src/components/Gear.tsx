@@ -60,8 +60,13 @@ const GearComponent = () => {
 					/>
 				},
 				{
+					label: '---',
+					iconPath: '',
+					Component: <div style={{ padding: '10px', textAlign: 'center', color: '#999' }}>--- Materials ---</div>
+				},
+				{
 					label: 'Basic',
-					iconPath: 'https://nxsvc.inface.nexon.com/meta-binary/7721eedef87ad6fb392af98d2e927fcb',
+					iconPath: 'https://nxsvc.inface.nexon.com/meta-binary/28b5a1352177a3fd283a51ae014dccd6',
 					Component: <CategoryList
 						key='Enhancements'
 						data={BasicMaterialRawData}

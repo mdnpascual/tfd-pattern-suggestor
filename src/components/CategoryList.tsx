@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import MaterialPlanner from "./MaterialPlanner";
 import RectangularBox from "./RectangularBox";
-import { GearPart } from "../data/constants";
+import { defaultStartingQuantity, GearPart, MaterialUsageData } from "../data/constants";
 import InitializeCategoryData from "../utils/InitializeCategoryData";
 import MaterialBox from "./MaterialBox";
+import MaterialUsage from "./MaterialUsage";
 
 export interface CategoryData {
 	img: string;
@@ -24,7 +25,20 @@ interface CategoryListProps<T> {
 	onDataChange: () => void;
 }
 
-const defaultStartingQuantity = 5;
+const useDebounce = (callback: Function, delay: number) => {
+	const timerRef = useRef<number | null>(null);
+
+	const debounceFn = (...args: any[]) => {
+		if (timerRef.current) {
+			clearTimeout(timerRef.current);
+		}
+		timerRef.current = window.setTimeout(() => {
+		callback(...args);
+		}, delay);
+	};
+
+	return debounceFn;
+};
 
 const CategoryList = <T extends CategoryData>({
 	data,
@@ -39,8 +53,11 @@ const CategoryList = <T extends CategoryData>({
 	const [selected, setSelected] = useState<string>("");
 	const [categoryStatus, setCategoryStatus] = useState<Record<string, boolean>>({});
 	const [materialCount, setMaterialCount] = useState<Record<string, number>>({});
+	const [materialUsage, setMaterialUsage] = useState<Record<string, MaterialUsageData[]>>({});
 	const [categoryList, setCategoryList] = useState<string[]>([]);
 	const [categoryData, setCategoryData] = useState<Record<string, T>>({});
+
+	const debouncedOnDataChange = useDebounce(onDataChange, 1500);
 
 	useEffect(() => {
 		if(Object.keys(preloadedData).length > 0){
@@ -48,6 +65,7 @@ const CategoryList = <T extends CategoryData>({
 			setCategoryList(Object.keys(preloadedData.categoryStatus).sort())
 			setCategoryData(data)
 			setMaterialCount(preloadedData.materialCount)
+			if (useMaterialBox) setMaterialUsage(preloadedData.materialUsage)
 		}
 	}, [preloadedData]);
 
@@ -57,6 +75,7 @@ const CategoryList = <T extends CategoryData>({
 		setCategoryList(Object.keys(currentData.categoryStatus).sort())
 		setCategoryData(data)
 		setMaterialCount(currentData.materialCount)
+		if (useMaterialBox) setMaterialUsage(preloadedData.materialUsage)
 	}, []);
 
 	const handleSelected = (item: string) => {
@@ -88,7 +107,7 @@ const CategoryList = <T extends CategoryData>({
 			JSON.stringify(newMaterialCount)
 		);
 		setMaterialCount(newMaterialCount);
-		onDataChange();
+		debouncedOnDataChange();
 	};
 
 	const handleQuantityChange = (item: string, quantity: number) => {
@@ -108,7 +127,7 @@ const CategoryList = <T extends CategoryData>({
 									onClick={() => setSelected("")}>
 									X
 								</button>
-								<MaterialPlanner
+								{!useMaterialBox && (<MaterialPlanner
 									title={category}
 									parts={categoryData[category].parts}
 									stock={materialCount}
@@ -123,7 +142,13 @@ const CategoryList = <T extends CategoryData>({
 										: undefined
 									}
 									disableOwnership={disableOwnership}
-								/>
+								/>)}
+								{useMaterialBox && (<MaterialUsage
+									title={category}
+									material={materialUsage[category]}
+									quantity={materialCount[category]}
+									onQuantityChange={(quantity) => handleQuantityChange(category, quantity)}
+								/>)}
 							</div>
 						</div>
 					)}
@@ -146,8 +171,9 @@ const CategoryList = <T extends CategoryData>({
 						yOffset={categoryData[category].yOffset}
 						scale={categoryData[category].scale}
 						onSelect={handleSelected}
+						key={materialCount[category] || 0}
 						onQuantityChange={(quantity) => handleQuantityChange(category, quantity)}
-						disableOwnership={disableOwnership}
+						isComplete={materialUsage[category]?.reduce((sum, mat) => sum + mat.goal * mat.baseCount, 0) <= materialCount[category]}
 					/>)}
 				</div>
 			))}
@@ -156,3 +182,4 @@ const CategoryList = <T extends CategoryData>({
 }
 
 export default CategoryList;
+

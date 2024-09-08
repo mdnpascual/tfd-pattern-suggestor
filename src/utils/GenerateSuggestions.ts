@@ -43,6 +43,89 @@ const shouldSuggest = (
 	return true;
 }
 
+const processWithDesiredQuantity = (
+	categoryData: Record<string, CategoryData>,
+	status: Record<string, boolean>,
+	materialStatus: Record<string, number>,
+	suggestUntilQuantityReachedSetting: boolean,
+	itemLabels: string[],
+	items: Item[],
+	selectedItemsToBeSaved: string[],
+	itemPriorityToBeSaved: number[]
+) => {
+	Object.entries(categoryData).forEach(([key, data]) => {
+		if (!status[key]) {
+			const goal = materialStatus[key] ?? 5;
+			if (goal) {
+				let relatedItems: MaterialPair[] = [];
+				data.parts.forEach((part: GearPart) => {
+					const parentQuantity = materialStatus[part.name] ?? 0;
+					if (parentQuantity < goal) {
+						part.mats?.forEach((mat: Material) => {
+							if (itemLabels.includes(mat.name)) {
+								relatedItems.push({ parent: part, item: mat });
+							}
+						});
+					}
+				});
+
+				const unownedItems = relatedItems.filter(item => shouldSuggest(
+					item,
+					materialStatus,
+					suggestUntilQuantityReachedSetting,
+					goal
+				));
+				unownedItems.forEach((unowned) => {
+					const matchedItem = items.find(item => item.label === unowned.item.name);
+					if (matchedItem) {
+						selectedItemsToBeSaved.push(matchedItem.id);
+						itemPriorityToBeSaved.push(5 - unownedItems.length);
+					}
+				});
+			}
+		}
+	});
+};
+
+const processWithSingleQuantity = (
+	categoryData: Record<string, CategoryData>,
+	status: Record<string, boolean>,
+	materialStatus: Record<string, number>,
+	itemLabels: string[],
+	items: Item[],
+	selectedItemsToBeSaved: string[],
+	itemPriorityToBeSaved: number[]
+) => {
+	Object.entries(categoryData).forEach(([key, data]) => {
+		if(!status[key]){
+			let relatedItems: Material[] = [];
+			data.parts.forEach((part: GearPart) => {
+				const parentQuantity = materialStatus[part.name] ?? 0;
+				if (parentQuantity === 0) {
+					part.mats?.forEach((mat: Material) => {
+						if (itemLabels.includes(mat.name)){
+							relatedItems.push(mat)
+						}
+					});
+				}
+			});
+			const unownedItems = relatedItems.filter((item) => {
+				if (materialStatus[item.name]){
+					return materialStatus[item.name] <= 0
+				}
+				return true
+			})
+			unownedItems.forEach((unowned) => {
+				const matchedItem = items.find(item => item.label === unowned.name);
+				if (matchedItem) {
+					selectedItemsToBeSaved.push(matchedItem.id)
+					itemPriorityToBeSaved.push(5 - unownedItems.length)
+				}
+			})
+		}
+	});
+};
+
 const GenerateSuggestion = () => {
 	let selectedItemsToBeSaved: string[] = []
 	let itemPriorityToBeSaved: number[] = []
@@ -90,102 +173,39 @@ const GenerateSuggestion = () => {
 	}
 
 	const characterData = CharacterRawData as Record<string, CategoryData>
-	Object.entries(characterData).forEach(([key, data]) => {
-		if(!characterStatus[key]){	// Unowned
-			let relatedItems: Material[] = [];
-			data.parts.forEach((part: GearPart) => {
-				const parentQuantity = materialStatus[part.name] ?? 0;
-				if (parentQuantity === 0) {
-					part.mats?.forEach((mat: Material) => {
-						if (itemLabels.includes(mat.name)){
-							relatedItems.push(mat)
-						}
-					});
-				}
-			});
-			const unownedItems = relatedItems.filter((item) => {
-				if (materialStatus[item.name]){
-					return materialStatus[item.name] <= 0
-				}
-				return true
-			})
-			unownedItems.forEach((unowned) => {
-				const matchedItem = items.find(item => item.label === unowned.name);
-				if (matchedItem) {
-					selectedItemsToBeSaved.push(matchedItem.id)
-					itemPriorityToBeSaved.push(5 - unownedItems.length)
-				}
-			})
+	processWithSingleQuantity(
+		characterData,
+		characterStatus,
+		materialStatus,
+		itemLabels,
+		items,
+		selectedItemsToBeSaved,
+		itemPriorityToBeSaved
+	);
 
-		}
+	const weaponData = WeaponRawData as Record<string, CategoryData>;
+	processWithDesiredQuantity(
+		weaponData,
+		weaponStatus,
+		materialStatus,
+		suggestUntilQuantityReachedSetting,
+		itemLabels,
+		items,
+		selectedItemsToBeSaved,
+		itemPriorityToBeSaved
+	);
 
-	});
-
-	const weaponData = WeaponRawData as Record<string, CategoryData>
-	Object.entries(weaponData).forEach(([key, data]) => {
-		if(!weaponStatus[key]){	// Unowned
-			const goal = materialStatus[key] ?? 5;
-			if (goal) {
-				let relatedItems: MaterialPair[] = [];
-				data.parts.forEach((part: GearPart) => {
-					const parentQuantity = materialStatus[part.name] ?? 0;
-					if (parentQuantity < goal){
-						part.mats?.forEach((mat: Material) => {
-							if (itemLabels.includes(mat.name)){
-								relatedItems.push({parent: part, item: mat})
-							}
-						});
-					}
-				});
-
-				const unownedItems = relatedItems.filter(item => shouldSuggest(
-					item,
-					materialStatus,
-					suggestUntilQuantityReachedSetting,
-					goal))
-				unownedItems.forEach((unowned) => {
-					const matchedItem = items.find(item => item.label === unowned.item.name);
-					if (matchedItem) {
-						selectedItemsToBeSaved.push(matchedItem.id)
-						itemPriorityToBeSaved.push(5 - unownedItems.length)
-					}
-				})
-			}
-		}
-	});
-
-	const enhancementData = EnhancementRawData as Record<string, CategoryData>
-	Object.entries(enhancementData).forEach(([key, data]) => {
-		if(!enhancementStatus[key]){	// Unowned
-			const goal = materialStatus[key] ?? 5;
-			if (goal) {
-				let relatedItems: MaterialPair[] = [];
-				data.parts.forEach((part: GearPart) => {
-					const parentQuantity = materialStatus[part.name] ?? 0;
-					if (parentQuantity < goal) {
-						part.mats?.forEach((mat: Material) => {
-							if (itemLabels.includes(mat.name)){
-								relatedItems.push({parent: part, item: mat})
-							}
-						});
-					}
-				});
-
-				const unownedItems = relatedItems.filter(item => shouldSuggest(
-					item,
-					materialStatus,
-					suggestUntilQuantityReachedSetting,
-					goal))
-				unownedItems.forEach((unowned) => {
-					const matchedItem = items.find(item => item.label === unowned.item.name);
-					if (matchedItem) {
-						selectedItemsToBeSaved.push(matchedItem.id)
-						itemPriorityToBeSaved.push(5 - unownedItems.length)
-					}
-				})
-			}
-		}
-	});
+	const enhancementData = EnhancementRawData as Record<string, CategoryData>;
+	processWithDesiredQuantity(
+		enhancementData,
+		enhancementStatus,
+		materialStatus,
+		suggestUntilQuantityReachedSetting,
+		itemLabels,
+		items,
+		selectedItemsToBeSaved,
+		itemPriorityToBeSaved
+	);
 
 	localStorage.setItem('selectedItems', JSON.stringify(selectedItemsToBeSaved));
 	localStorage.setItem('itemPriority', JSON.stringify(itemPriorityToBeSaved));

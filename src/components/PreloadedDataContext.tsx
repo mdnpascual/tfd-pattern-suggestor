@@ -31,11 +31,18 @@ export const PreloadedDataProvider: React.FC<PreloadedDataProviderProps> = ({ ch
 	});
 
 	const fetchPreloadedData = useCallback(() => {
+		const character = InitializeCategoryData(CharacterRawData, 'characterStatus', 'materialCount')
+		const weapon = InitializeCategoryData(WeaponRawData, 'weaponStatus', 'materialCount')
+		const enhancement = InitializeCategoryData(EnhancementRawData, 'enhancementStatus', 'materialCount')
 		setPreloadedData({
-			character: InitializeCategoryData(CharacterRawData, 'characterStatus', 'materialCount'),
-			weapon: InitializeCategoryData(WeaponRawData, 'weaponStatus', 'materialCount'),
-			enhancement: InitializeCategoryData(EnhancementRawData, 'enhancementStatus', 'materialCount'),
-			basicMaterials: InitializeMaterialData(BasicMaterialRawData, 'blah', 'materialCount')
+			character: character,
+			weapon: weapon,
+			enhancement: enhancement,
+			basicMaterials: InitializeMaterialData(
+				BasicMaterialRawData,
+				[CharacterRawData, WeaponRawData, EnhancementRawData],
+				[character, weapon, enhancement],
+				'materialCount')
 		});
 	}, []);
 

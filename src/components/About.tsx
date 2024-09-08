@@ -41,8 +41,7 @@ const AboutComponent: React.FC = () => {
 					sx={{ mb: 2 }}
 				>
 					Join our Discord
-				</Button>a
-
+				</Button>
 				<Tabs value={tabValue} onChange={handleTabChange} sx={{ mb: 3 }}>
 					<Tab label="Settings" />
 					<Tab label="Saves" />

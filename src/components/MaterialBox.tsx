@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import '../App.css'; // Assume CSS is defined here
+import React, { useState } from 'react';
+import '../App.css';
 import { Box, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
@@ -12,7 +12,7 @@ interface MaterialBoxProps {
 	onSelect: (title: string) => void;
 	onQuantityChange: (quantity: number) => void;
 	scale?: number;
-	disableOwnership?: boolean;
+	isComplete?: boolean;
 }
 
 const CustomTextField = styled(TextField)({
@@ -43,10 +43,9 @@ const MaterialBox: React.FC<MaterialBoxProps> = ({
 	onSelect,
 	onQuantityChange,
 	scale,
-	disableOwnership
+	isComplete
 }) => {
 	const [hovered, setHovered] = useState(false);
-	const isComplete = Math.round(Math.random())
 	const [quantity, setQuantity] = useState<number>(incomingQuantity);
 	const [previousQuantity, setPreviousQuantity] = useState<number>(incomingQuantity);
 
@@ -72,13 +71,11 @@ const MaterialBox: React.FC<MaterialBoxProps> = ({
 			id={`${title.replaceAll(" ", "-")}-material-box`}
 			className="material-box"
 			style={{
-				borderColor: isComplete ? "#6cfc8c" : "#fff",
+				borderColor: isComplete ? "#6cfc8c" : "#F44336",
 				borderWidth: '5px',
 				position: 'relative'
 			}}
-			onMouseEnter={() => !disableOwnership && isComplete && setHovered(true)}
-			onMouseLeave={() => !disableOwnership && isComplete && setHovered(false)}
-			>
+			onClick={() => onSelect(title)}>
 
 			<div
 				style={{
