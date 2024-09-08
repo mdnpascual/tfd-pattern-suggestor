@@ -4,7 +4,7 @@
 			{ "name": "Smithereens Polymer Syncytium", "mats": [
 				{ "name": "Superfluid", "quantity": 143 },
 				{ "name": "Hardener", "quantity": 97 },
-				{ "name": "Insulated Mettalic Foil", "quantity": 8 },
+				{ "name": "Insulated Metalic Foil", "quantity": 8 },
 				{ "name": "Smithereens Polymer Syncytium Blueprint", "quantity": 1 }
 			]},
 			{ "name": "Smithereens Synthetic Fiber", "mats": [
@@ -31,7 +31,7 @@
 			{ "name": "Greg\u0027s Reversed Fate Polymer Syncytium", "mats": [
 				{ "name": "Carbon Crystal", "quantity": 139 },
 				{ "name": "Hellion", "quantity": 76 },
-				{ "name": "Compund Carbon Activator", "quantity": 7 },
+				{ "name": "Compound Carbon Activator", "quantity": 7 },
 				{ "name": "Greg\u0027s Reversed Fate Polymer Syncytium Blueprint", "quantity": 1 }
 			]},
 			{ "name": "Greg\u0027s Reversed Fate Synthetic Fiber", "mats": [
@@ -70,7 +70,7 @@
 			{ "name": "Blue Beetle Nano Tube", "mats": [
 				{ "name": "Metal Accelerant", "quantity": 130 },
 				{ "name": "Monomolecular Extractor", "quantity": 125 },
-				{ "name": "Compund Carbon Activator", "quantity": 7 },
+				{ "name": "Compound Carbon Activator", "quantity": 7 },
 				{ "name": "Blue Beetle Nano Tube Blueprint", "quantity": 1 }
 			]},
 			{ "name": "Blue Beetle Blueprint", "mats": [{ "name": "Blue Beetle Blueprint", "quantity": 1 }]}
@@ -145,7 +145,7 @@
 			{ "name": "The Final Masterpiece Synthetic Fiber", "mats": [
 				{ "name": "Semi-permanent Plasma", "quantity": 72 },
 				{ "name": "Silicon", "quantity": 108 },
-				{ "name": "Insulated Mettalic Foil", "quantity": 8 },
+				{ "name": "Insulated Metalic Foil", "quantity": 8 },
 				{ "name": "The Final Masterpiece Synthetic Fiber Blueprint", "quantity": 1 }
 			]},
 			{ "name": "The Final Masterpiece Nano Tube", "mats": [
@@ -259,7 +259,7 @@
 			{ "name": "Python Nano Tube", "mats": [
 				{ "name": "Monad Shard", "quantity": 62 },
 				{ "name": "Ceramic Composite", "quantity": 102 },
-				{ "name": "Conductive Mettalic Foil", "quantity": 8 },
+				{ "name": "Conductive Metalic Foil", "quantity": 8 },
 				{ "name": "Python Nano Tube Blueprint", "quantity": 1 }
 			]},
 			{ "name": "Python Blueprint", "mats": [{ "name": "Python Blueprint", "quantity": 1 }]}

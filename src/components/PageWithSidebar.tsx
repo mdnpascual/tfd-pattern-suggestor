@@ -13,9 +13,10 @@ interface SidebarItem {
 
 interface PageWithSidebarProps {
 	items: SidebarItem[];
+	onDataChanged: () => void;
 }
 
-const PageWithSidebarComponent: React.FC<PageWithSidebarProps> = ({ items }) => {
+const PageWithSidebarComponent: React.FC<PageWithSidebarProps> = ({ items, onDataChanged }) => {
 	const [sidebarOpen, setSidebarOpen] = useState(true);
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [confirmationOpen, setConfirmationOpen] = useState<boolean>(false);
@@ -36,14 +37,24 @@ const PageWithSidebarComponent: React.FC<PageWithSidebarProps> = ({ items }) => 
 			<div className={`sidebar ${sidebarOpen ? '' : 'collapsed'}`}>
 				{sidebarOpen && (
 				<ul>
-					{items.map((item, index) => (
-					<li id={`${item.label.replaceAll(" ", "-")}-list-name`} key={index} onClick={() => setActiveIndex(index)}>
-						<img src={item.iconPath} alt={item.label} style={{ width: 24, height: 24, marginRight: 10 }} />
-						{item.label}
-					</li>
-					))}
+					{items.map((item, index) => {
+						if (item.label === '---') {
+							return (
+								<div key={`divider-${index}`} style={{ padding: '0px', textAlign: 'center', color: '#999' }}>
+									{items[index].Component}
+								</div>
+							);
+						}
+
+						return (
+							<li id={`${item.label.replaceAll(" ", "-")}-list-name`} key={index} onClick={() => setActiveIndex(index)}>
+								<img src={item.iconPath} alt={item.label} style={{ width: 24, height: 24, marginRight: 10 }} />
+								{item.label}
+							</li>
+						);
+					})}
 					<li>
-						<Button id="diff-button" disabled={realTimeSuggestorSetting} onClick={() => {confirmGenerate()}} variant="contained" color="primary" style={{ marginBottom: '10px' }}>
+						<Button id="diff-button" disabled={realTimeSuggestorSetting} onClick={confirmGenerate} variant="contained" color="primary" style={{ marginBottom: '10px' }}>
 							Generate Suggestion
 						</Button>
 					</li>

@@ -159,6 +159,13 @@ export interface DropList {
 	name: string,
 }
 
+export interface MaterialUsageData {
+	parent: string,
+	part: string,
+	baseCount: number,
+	goal: number
+}
+
 export const specOpsKeywords = [
 	'defend albion resource',
 	'neutralize void experiment',
@@ -215,6 +222,8 @@ export const joyrideStyles = {
 		color: '#fff', // White close button
 	},
 };
+
+export const defaultStartingQuantity = 5;
 
 export const dataKeywordNormal = '(normal)';
 export const dataKeywordHard = '(hard)';

@@ -85,14 +85,14 @@
   /* background: #fff; */
 }
 
-.rectangular-box-grid {
+.rectangular-box-grid, .material-box-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 5px;
   padding: 5px;
 }
 
-.rectangular-box {
+.rectangular-box, .material-box {
   width: 200px;
   height: 130px;
   border: 2px solid black;
@@ -103,7 +103,7 @@
   transition: all 0.3s ease;
 }
 
-.rectangular-box .title {
+.rectangular-box .title, .material-box .title {
   padding: 10px;
   color: white;
   background-color: rgba(0, 0, 0, 0.5);
