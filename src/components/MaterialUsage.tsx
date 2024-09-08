@@ -8,6 +8,7 @@ import { Button, Table, TableBody, TableCell, TableHead, TableRow, useMediaQuery
 
 interface MaterialUsageProps {
 	title: string;
+	bestFarm: string;
 	material: MaterialUsageData[];
 	quantity: number;
 	onQuantityChange?: (quantity: number) => void;
@@ -15,6 +16,7 @@ interface MaterialUsageProps {
 
 const MaterialUsage: React.FC<MaterialUsageProps> = ({
 	title,
+	bestFarm,
 	material,
 	quantity,
 	onQuantityChange
@@ -41,7 +43,10 @@ const MaterialUsage: React.FC<MaterialUsageProps> = ({
 		<Box sx={{ p: 2, maxWidth: '700px', margin: '0 auto', maxHeight: '90vh' }} id={`${title.replaceAll(" ", "-")}-textfield-usage`}>
 			<Box sx={{ overflowY: 'auto' }}>
 				<Typography variant="h5" sx={{ fontWeight: 'bold' }}>
-					Parts Utilizing {title}
+					{title}
+				</Typography>
+				<Typography sx={{ mt: '20px', mb: '20px' }}>
+					Best Farm: {bestFarm}
 				</Typography>
 			</Box>
 			<Box sx={{ width: isMobile ? '90vw' : '100%', maxHeight: '60vh', overflow: 'auto' }}>
@@ -58,7 +63,7 @@ const MaterialUsage: React.FC<MaterialUsageProps> = ({
 								<Typography variant="h6">x</Typography>
 							</TableCell>
 							<TableCell align="center">
-								<Typography variant="h6">Base Count</Typography>
+								<Typography variant="h6">Base<br></br>Count</Typography>
 							</TableCell>
 							<TableCell align="center">
 								<Typography variant="h6">=</Typography>

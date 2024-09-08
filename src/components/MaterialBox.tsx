@@ -129,6 +129,7 @@ const MaterialBox: React.FC<MaterialBoxProps> = ({
 					value={quantity}
 					onBlur={handleQuantityChange}
 					onChange={handleInputChange}
+					onClick={(e) => e.stopPropagation()}
 					inputProps={{ min: 0 }}
 					sx={{ width: '100px' }}
 				/>

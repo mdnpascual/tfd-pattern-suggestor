@@ -4,321 +4,375 @@
 		"xOffset": -28,
 		"yOffset": 5,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "Echo Swamp Resource and Munition"
 	},
 	"Hellion": {
 		"img": "/img/basic-mats/Hellion.png",
 		"xOffset": -20,
 		"yOffset": 10,
 		"scale": 70,
-		"parts": []
+		"parts": [],
+		"farmIn": "Fortress Resource and Munition"
 	},
 	"Artificial Biometal": {
 		"img": "/img/basic-mats/Artificial Biometal.png",
 		"xOffset": -30,
 		"yOffset": 1,
 		"scale": 85,
-		"parts": []
+		"parts": [],
+		"farmIn": "Sterile Land (Hard) - Rockfall: Anticipated Ambush Point"
 	},
 	"Hardener": {
 		"img": "/img/basic-mats/Hardener.png",
 		"xOffset": -25,
 		"yOffset": 5,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "Vespers Resource and Munition"
 	},
 	"Ceramic Composite": {
 		"img": "/img/basic-mats/Ceramic Composite.png",
 		"xOffset": -20,
 		"yOffset": 5,
 		"scale": 75,
-		"parts": []
+		"parts": [],
+		"farmIn": "White-night Gulch Resource and Munition"
 	},
 	"Compound Coating Material": {
 		"img": "/img/basic-mats/Compound Coating Material.png",
 		"xOffset": -20,
 		"yOffset": 13,
 		"scale": 70,
-		"parts": []
+		"parts": [],
+		"farmIn": "Echo Swamp Resource and Munition"
 	},
 	"Shape Memory Alloy": {
 		"img": "/img/basic-mats/Shape Memory Alloy.png",
 		"xOffset": -30,
 		"yOffset": 5,
 		"scale": 75,
-		"parts": []
+		"parts": [],
+		"farmIn": "Hagios Resource and Munition"
 	},
 	"Positive Ion Particle": {
 		"img": "/img/basic-mats/Positive Ion Particle.png",
 		"xOffset": -15,
 		"yOffset": -5,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "Agna Desert (Hard) - Miragestone: Command Ground"
 	},
 	"Monomolecular Extractor": {
 		"img": "/img/basic-mats/Monomolecular Extractor.png",
 		"xOffset": -20,
 		"yOffset": 22,
 		"scale": 65,
-		"parts": []
+		"parts": [],
+		"farmIn": "Agna Desert Resource and Munition"
 	},
 	"Flectorite": {
 		"img": "/img/basic-mats/Flectorite.png",
 		"xOffset": -30,
 		"yOffset": 5,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "White-night Gulch Resource and Munition"
 	},
 	"Inorganic Biogel": {
 		"img": "/img/basic-mats/Inorganic Biogel.png",
 		"xOffset": -25,
 		"yOffset": 10,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "Vespers (Hard) - Any Vulgus Strategic Outpost"
 	},
 	"Nanopolymers": {
 		"img": "/img/basic-mats/Nanopolymers.png",
 		"xOffset": -24,
 		"yOffset": 7,
 		"scale": 75,
-		"parts": []
+		"parts": [],
+		"farmIn": "Agna Desert Resource and Munition"
 	},
 	"Advanced Neural Circuit": {
 		"img": "/img/basic-mats/Advanced Neural Circuit.png",
 		"xOffset": -23,
 		"yOffset": 5,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "White-night Gulch (Hard) - Shipment Base: Fortress Outskirts"
 	},
 	"Semi-permanent Plasma": {
 		"img": "/img/basic-mats/Semi-permanent Plasma.png",
 		"xOffset": -32,
 		"yOffset": 0,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "Vespers Resource and Munition"
 	},
 	"Deformed Biometal": {
 		"img": "/img/basic-mats/Deformed Biometal.png",
 		"xOffset": -30,
 		"yOffset": 5,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "Fortress (Hard) - Any Vulgus Strategic Outpost"
 	},
 	"Reverse Charging Coil": {
 		"img": "/img/basic-mats/Reverse Charging Coil.png",
 		"xOffset": -30,
 		"yOffset": 7,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "Fortress Resource and Munition"
 	},
 	"Organic Biogel": {
 		"img": "/img/basic-mats/Organic Biogel.png",
 		"xOffset": -25,
 		"yOffset": 10,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "Kingston (Hard) - Grand Square: Surveillance Radar"
 	},
 	"Specialized Biometal": {
 		"img": "/img/basic-mats/Specialized Biometal.png",
 		"xOffset": -30,
 		"yOffset": 1,
 		"scale": 85,
-		"parts": []
+		"parts": [],
+		"farmIn": "Hagios (Normal) - Any Vulgus Strategic Outpost"
 	},
 	"Monad Shard": {
 		"img": "/img/basic-mats/Monad Shard.png",
 		"xOffset": -25,
 		"yOffset": 10,
 		"scale": 70,
-		"parts": []
+		"parts": [],
+		"farmIn": "Kingston Resource and Munition"
 	},
 	"Cooling Metallic Foil": {
 		"img": "/img/basic-mats/Cooling Metallic Foil.png",
 		"xOffset": -25,
 		"yOffset": 10,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "White-night Gulch Encrypted Vaults (Enzo)"
 	},
 	"Metal Accelerant": {
 		"img": "/img/basic-mats/Metal Accelerant.png",
 		"xOffset": -23,
 		"yOffset": 10,
 		"scale": 75,
-		"parts": []
+		"parts": [],
+		"farmIn": "Sterile Land Resource and Munition"
 	},
 	"Complex Carbon Activator": {
 		"img": "/img/basic-mats/Complex Carbon Activator.png",
 		"xOffset": -20,
 		"yOffset": 13,
 		"scale": 70,
-		"parts": []
+		"parts": [],
+		"farmIn": "Echo Swamp (Hard) - Seed Vault (Abort after 4 Yellow Mobs)"
 	},
 	"Synthesized Artificial Biometal": {
 		"img": "/img/basic-mats/Synthesized Artificial Biometal.png",
 		"xOffset": -30,
 		"yOffset": 9,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "Agna Desert (Hard) - The Storage: Void Fusion Reactor"
 	},
 	"Polyatomic Ion Particle": {
 		"img": "/img/basic-mats/Polyatomic Ion Particle.png",
 		"xOffset": -15,
 		"yOffset": -5,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "Fortress (Hard) - Frozen Valley: Command Relay (Abort after 2 Yellow Mobs)"
 	},
 	"Negative Ion Particle": {
 		"img": "/img/basic-mats/Negative Ion Particle.png",
 		"xOffset": -20,
 		"yOffset": 0,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "Sterile Land Encrypted Vaults (Enzo)"
 	},
 	"Repton": {
 		"img": "/img/basic-mats/Repton.png",
 		"xOffset": -23,
 		"yOffset": 13,
 		"scale": 70,
-		"parts": []
+		"parts": [],
+		"farmIn": "Kingston Resource and Munition"
 	},
 	"Carbon Crystal": {
 		"img": "/img/basic-mats/Carbon Crystal.png",
 		"xOffset": -17,
 		"yOffset": 10,
 		"scale": 70,
-		"parts": []
+		"parts": [],
+		"farmIn": "Hagios Resource and Munition"
 	},
 	"Common Carbon Activator": {
 		"img": "/img/basic-mats/Common Carbon Activator.png",
 		"xOffset": -20,
 		"yOffset": 13,
 		"scale": 70,
-		"parts": []
+		"parts": [],
+		"farmIn": "Vespers (Normal) - The Sepulcher (Abort after 1 Yellow Mob)"
 	},
 	"Balanced Plasma Battery": {
 		"img": "/img/basic-mats/Balanced Plasma Battery.png",
 		"xOffset": -18,
 		"yOffset": 10,
 		"scale": 70,
-		"parts": []
+		"parts": [],
+		"farmIn": "Fortress (Normal) - Fallen Ark: Quarantine Zone (Abort after 1 Yellow Mob)"
 	},
 	"Thermal Metallic Foil": {
 		"img": "/img/basic-mats/Thermal Metallic Foil.png",
 		"xOffset": -25,
 		"yOffset": 10,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "Echo Swamp Encrypted Vaults (Enzo)"
 	},
 	"Highly-concentrated Energy Residue": {
 		"img": "/img/basic-mats/Highly-concentrated Energy Residue.png",
 		"xOffset": -17,
 		"yOffset": 18,
 		"scale": 65,
-		"parts": []
+		"parts": [],
+		"farmIn": "Hagios Encrypted Vaults (Enzo)"
 	},
 	"Superfluid": {
 		"img": "/img/basic-mats/Superfluid.png",
 		"xOffset": -20,
 		"yOffset": 0,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "Sterile Land Resource and Munition"
 	},
 	"Crystal Biogel": {
 		"img": "/img/basic-mats/Crystal Biogel.png",
 		"xOffset": -25,
 		"yOffset": 10,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "White-night Gulch (Hard) - The Mountaintops: Void Fusion Reactor"
 	},
 	"Pure Energy Residue": {
 		"img": "/img/basic-mats/Pure Energy Residue.png",
 		"xOffset": -17,
 		"yOffset": 18,
 		"scale": 65,
-		"parts": []
+		"parts": [],
+		"farmIn": "Fortress Encrypted Vaults (Enzo)"
 	},
 	"Anode Ion Particle": {
 		"img": "/img/basic-mats/Anode Ion Particle.png",
 		"xOffset": -15,
 		"yOffset": -5,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "Hagios (Hard) - Forward Base: Broadband Fleet Beacon"
 	},
 	"Fusion Plasma Battery": {
 		"img": "/img/basic-mats/Fusion Plasma Battery.png",
 		"xOffset": -18,
 		"yOffset": 10,
 		"scale": 70,
-		"parts": []
+		"parts": [],
+		"farmIn": "Sterile Land (Hard) - Any Vulgus Strategic Outpost"
 	},
 	"Encrypted Neural Circuit": {
 		"img": "/img/basic-mats/Encrypted Neural Circuit.png",
 		"xOffset": -23,
 		"yOffset": 5,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "Echo Swamp (Hard) - Abandoned Zone: Environment Contamination Zone"
 	},
 	"Divided Plasma Battery": {
 		"img": "/img/basic-mats/Divided Plasma Battery.png",
 		"xOffset": -18,
 		"yOffset": 10,
 		"scale": 70,
-		"parts": []
+		"parts": [],
+		"farmIn": "Agna Desert (Normal) - The Asylum (Abort after 1 Yellow Mob)"
 	},
 	"Data Processing Neural Circuit": {
 		"img": "/img/basic-mats/Data Processing Neural Circuit.png",
 		"xOffset": -23,
 		"yOffset": 5,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "Vespers (Hard) - Lumber Yard: Frontline Base"
 	},
 	"Heat Plasma Battery": {
 		"img": "/img/basic-mats/Heat Plasma Battery.png",
 		"xOffset": -18,
 		"yOffset": 10,
 		"scale": 70,
-		"parts": []
+		"parts": [],
+		"farmIn": "Hagios (Hard) - Old Mystery (Abort after 7 Yellow Mobs)"
 	},
 	"Macromolecule Biogel": {
 		"img": "/img/basic-mats/Macromolecule Biogel.png",
 		"xOffset": -25,
 		"yOffset": 10,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "Echo Swamp (Hard) - Any Vulgus Strategic Outpost"
 	},
 	"Murky Energy Residue": {
 		"img": "/img/basic-mats/Murky Energy Residue.png",
 		"xOffset": -17,
 		"yOffset": 18,
 		"scale": 65,
-		"parts": []
+		"parts": [],
+		"farmIn": "Sterile Land (Normal) - The Forgottense (Abort after 1 Yellow Mob)"
 	},
 	"Mixed Energy Residue": {
 		"img": "/img/basic-mats/Mixed Energy Residue.png",
 		"xOffset": -17,
 		"yOffset": 18,
 		"scale": 65,
-		"parts": []
+		"parts": [],
+		"farmIn": "Agna Desert Encrypted Vaults (Enzo)"
 	},
 	"Low-Carbon Activator": {
 		"img": "/img/basic-mats/Low-Carbon Activator.png",
 		"xOffset": -20,
 		"yOffset": 13,
 		"scale": 70,
-		"parts": []
+		"parts": [],
+		"farmIn": "Kingston (Hard) - Grand Square: Void Fusion Reactor"
 	},
 	"Compound Carbon Activator": {
 		"img": "/img/basic-mats/Compound Carbon Activator.png",
 		"xOffset": -20,
 		"yOffset": 13,
 		"scale": 70,
-		"parts": []
+		"parts": [],
+		"farmIn": ""
 	},
 	"Conductive Metallic Foil": {
 		"img": "/img/basic-mats/Conductive Metallic Foil.png",
 		"xOffset": -25,
 		"yOffset": 10,
 		"scale": 80,
-		"parts": []
+		"parts": [],
+		"farmIn": "White-night Gulch (Normal) - Bio-Lab"
+	},
+	"Insulated Metalic Foil": {
+		"img": "/img/basic-mats/Insulated Metalic Foil.png",
+		"xOffset": -25,
+		"yOffset": 10,
+		"scale": 80,
+		"parts": [],
+		"farmIn": "Kingston (Hard) - Magister Lab"
 	}
 }

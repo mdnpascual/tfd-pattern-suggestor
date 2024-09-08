@@ -58,7 +58,7 @@ const InitializeMaterialData = <T extends CategoryData>(
 		return acc;
 	}, {} as Record<string, MaterialUsageData[]>);
 
-	return { categoryStatus: startingMaterialList, materialCount: startingMaterialCount, materialUsage: materialUsage };
+	return { categoryStatus: startingMaterialList, materialCount: startingMaterialCount, materialUsage: materialUsage, bestFarm: data.farmIn  };
 };
 
 export default InitializeMaterialData;

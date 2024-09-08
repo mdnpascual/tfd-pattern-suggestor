@@ -12,6 +12,7 @@ export interface CategoryData {
 	yOffset: number;
 	parts: Array<GearPart>;
 	scale?: number;
+	farmIn?: string;
 }
 
 interface CategoryListProps<T> {
@@ -147,6 +148,7 @@ const CategoryList = <T extends CategoryData>({
 									title={category}
 									material={materialUsage[category]}
 									quantity={materialCount[category]}
+									bestFarm={categoryData[category].farmIn || ""}
 									onQuantityChange={(quantity) => handleQuantityChange(category, quantity)}
 								/>)}
 							</div>
