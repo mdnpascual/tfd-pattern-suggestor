@@ -229,5 +229,7 @@ export const dataKeywordNormal = '(normal)';
 export const dataKeywordHard = '(hard)';
 export const dataKeywordCollosus = 'void intercept battle';
 export const dataKeywordSharen = '(successful infiltration)';
+export const dataKeywordSharenModified = '(sharen)';
 export const dataKeywordVoidReactor = 'void fusion reactor';
 export const dataKeywordSpecOps = 'void fusion reactor';
+export const dataKeywordDropsFromOutpost = 'vulgus strategic outpost'

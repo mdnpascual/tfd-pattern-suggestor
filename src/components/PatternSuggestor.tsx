@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Button, Paper } from '@mui/material';
+import { Button, Paper, Tooltip } from '@mui/material';
 import MultiSelectList, { Item } from './MultiSelectList';
 import data from '../data/patterns.json';
 import voidFusionRawData from '../data/voidFusionReactorShards.json';
@@ -16,6 +16,8 @@ import {
 	VoidFusionLocations,
 	Pattern,
 	DropList,
+	dataKeywordSharenModified,
+	dataKeywordDropsFromOutpost,
 } from "../data/constants";
 import CheckboxFilter from './CheckboxFilter';
 import GenerateSuggestion from '../utils/GenerateSuggestions';
@@ -24,6 +26,11 @@ import { getBooleanSetting } from './Settings';
 const voidFusionData = voidFusionRawData as VoidFusionLocations;
 const voidFusionLocations = Object.keys(voidFusionData);
 const patternData: Record<string, Pattern> = data;
+const patternKeys = Object.keys(patternData).sort((a, b) => {
+    const numA = parseInt(a.split(' ')[0], 10);
+    const numB = parseInt(b.split(' ')[0], 10);
+    return numA - numB;
+});
 
 interface PatternCount {
 	name: string,
@@ -214,30 +221,91 @@ const PatternSuggestorComponent: React.FC = () => {
 		setResetCheckboxFiltersUpdate(resetCheckboxFiltersUpdate + 1)
 	}
 
-	const formatTooltipContent = (drops: DropList[], name: string, useIn: string) => {
-		const filteredDrops = drops.filter((drop) => selectedItems.includes(drop.name))
-		const location = useIn as keyof VoidFusionLocations;
+	const renderDrops = (dropsArray: DropList[], title: string, useIn: string) => (
+		<div>
+			{title} Matched Droplist:
+			{dropsArray.map((drop, idx) => (
+				<div key={idx}>{drop.name} - Chance: {drop.chance * 100}%</div>
+			))}
+			{voidFusionLocations.includes(useIn) && voidFusionData[useIn as keyof VoidFusionLocations] && (
+				<ShardRequirements location={useIn as keyof VoidFusionLocations} />
+			)}
+		</div>
+	);
+
+	const ShardRequirements = ({ location }: { location: keyof VoidFusionLocations }) => {
+		const shardData = voidFusionData[location];
+		if (!shardData) return null;
+
 		return (
 			<div>
-				{name} Matched Droplist:
-				{filteredDrops.map((drop, idx) => (
-					<div key={idx}>
-						{drop.name} - Chance: {drop.chance * 100}%
-					</div>
+				<br />
+				Shard Requirements:
+				{shardData.drops.map((drop, idx) => (
+					<div key={idx}>{drop.type}: {drop.count}</div>
 				))}
-
-				{voidFusionLocations.includes(useIn) && (
-					<div>
-						<br/>
-						Shard Requirements:
-						{voidFusionData[location].drops.map((drop, idx) => (
-							<div>
-								{drop.type}: {drop.count}
-							</div>
-						))}
-					</div>
-				)}
 			</div>
+		);
+	};
+
+	const formatTooltipContent = (
+		drops: DropList[],
+		name: string,
+		useIn: string,
+		dropsFrom: string,
+		children: JSX.Element
+	) => {
+		const currentItemIndex = patternKeys.indexOf(name);
+		const previousIndex = currentItemIndex > 0 ? currentItemIndex - 1 : null;
+		const nextIndex = currentItemIndex < patternKeys.length - 1 ? currentItemIndex + 1 : null;
+
+		const currentFilteredDrops = drops.filter((drop) => selectedItems.includes(drop.name));
+
+		const previousFilteredDrops = previousIndex !== null
+			? patternData[patternKeys[previousIndex]]?.drops.filter((drop) => selectedItems.includes(drop.name))
+			: undefined;
+
+		const nextFilteredDrops = nextIndex !== null
+			? patternData[patternKeys[nextIndex]]?.drops.filter((drop) => selectedItems.includes(drop.name))
+			: undefined;
+
+		const usePrevious = previousFilteredDrops && previousFilteredDrops?.length > 0 &&
+			dropsFrom.toLowerCase().includes(dataKeywordSharenModified) &&
+			dropsFrom.toLowerCase().includes(dataKeywordHard);
+
+		const useNext = nextFilteredDrops && nextFilteredDrops?.length > 0 &&
+			dropsFrom.toLowerCase().includes(dataKeywordDropsFromOutpost) &&
+			!dropsFrom.toLowerCase().includes(dataKeywordSharenModified) &&
+			dropsFrom.toLowerCase().includes(dataKeywordHard);
+
+		const currentToolTip = renderDrops(currentFilteredDrops, name, patternData[patternKeys[currentItemIndex]].useIn);
+
+		const previousToolTip = usePrevious && previousFilteredDrops && previousIndex
+			? renderDrops(previousFilteredDrops, patternKeys[previousIndex], patternData[patternKeys[previousIndex]].useIn)
+			: null;
+
+		const nextToolTip = useNext && nextFilteredDrops && nextIndex
+			? renderDrops(nextFilteredDrops, patternKeys[nextIndex], patternData[patternKeys[nextIndex]].useIn)
+			: null;
+
+		return (
+			<Tooltip
+				title={currentToolTip}
+				key="current"
+				placement={usePrevious ? 'bottom' : 'top'}
+			>
+				{useNext || usePrevious ? (
+					<Tooltip
+						title={usePrevious ? previousToolTip : nextToolTip}
+						key="next-previous"
+						placement={usePrevious ? 'top' : 'bottom'}
+					>
+						{children}
+					</Tooltip>
+				) : (
+					children
+				)}
+			</Tooltip>
 		);
 	};
 
@@ -293,6 +361,7 @@ const PatternSuggestorComponent: React.FC = () => {
 						key={resetCheckboxFiltersUpdate}
 						onMatCountChange={handleMatCountChange}
 						onApplyNormalAndHardFilters={handleApplyNormalAndHardFilters}
+						formatTooltipContent={formatTooltipContent}
 						data={farmList.map((item, index) => {
 							return {
 								id: item.name,
@@ -303,7 +372,6 @@ const PatternSuggestorComponent: React.FC = () => {
 								drops: item.drops,
 								dropsFrom: item.dropsFrom.replace("(Successful Infiltration)", "(Sharen)"),
 								useIn: item.useIn.replace("Void Intercept Battle", "Collosus").replace("Void Fusion Reactor", "Void Outpost"),
-								tooltip: formatTooltipContent(item.drops, item.name, item.useIn),
 								shardRequirements: formatShardRequirements(item.useIn)
 						}})} />
 				</Paper>

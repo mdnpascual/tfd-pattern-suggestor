@@ -18,7 +18,6 @@ export interface TableItem {
 	drops: DropList[];
 	dropsFrom: string;
 	useIn: string;
-	tooltip: JSX.Element;
 	shardRequirements: JSX.Element;
 }
 
@@ -76,11 +75,13 @@ const mapPartsList = (data: Record<string, CategoryData>): Record<string, string
 const SortableTable = ({
 	data,
 	onMatCountChange,
-	onApplyNormalAndHardFilters
+	onApplyNormalAndHardFilters,
+	formatTooltipContent
 }: {
 	data: TableItem[],
 	onMatCountChange: (itemName: string, newCount: number) => void,
 	onApplyNormalAndHardFilters: () => void;
+	formatTooltipContent: (drops: DropList[], name: string, useIn: string, dropsFrom: string, children: JSX.Element) => JSX.Element;
 }) => {
 	const [order, setOrder] = useState<Order>(undefined);
 	const [orderBy, setOrderBy] = useState<keyof TableItem>('priorityScore');
@@ -222,15 +223,14 @@ const SortableTable = ({
 						</TableHead>
 						<TableBody>
 							{sortedData.map((row) => (
-								<Tooltip title={row.tooltip} key={row.id} placement="top">
+								formatTooltipContent(row.drops, row.name, row.useIn, row.dropsFrom, (
 									<TableRow onClick={() => handleRowClick(row)}>
 										<TableCell style={tableCellStyle} align="center">{row.name}</TableCell>
 										<TableCell id={`p${row.name.replaceAll(" ", "-")}-priority-score-entry`} style={tableCellStyle} align="center">{row.priorityScore}({row.count})</TableCell>
 										<TableCell style={tableCellStyle} align="center">{row.score}</TableCell>
 										<TableCell style={tableCellStyle} align="left">{row.dropsFrom}</TableCell>
 										<TableCell style={tableCellStyle} align="left">{row.useIn}</TableCell>
-									</TableRow>
-								</Tooltip>
+									</TableRow>))
 							))}
 						</TableBody>
 					</Table>
