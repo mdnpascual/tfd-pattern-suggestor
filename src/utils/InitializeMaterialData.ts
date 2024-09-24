@@ -37,7 +37,11 @@ const InitializeMaterialData = <T extends CategoryData>(
 						break;
 					default:
 						// Weapons and Enhancements
-						parentGoal = preloadedData[rawIndex].categoryStatus[parent] ? 0 : preloadedData[rawIndex].materialCount[parent] || defaultStartingQuantity;
+						parentGoal = preloadedData[rawIndex].categoryStatus[parent]
+							? 0
+							: preloadedData[rawIndex].materialCount[parent] === undefined
+								? defaultStartingQuantity
+								: preloadedData[rawIndex].materialCount[parent];
 						break;
 				}
 				for (const part of parts) {

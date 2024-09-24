@@ -30,14 +30,14 @@ const InitializeCategoryData = <T extends CategoryData>(
 	const materialList = Array.from(materialSet).map((item) => JSON.parse(item).name).sort();
 
 	const startingMaterialCount = materialList.reduce((acc, material) => {
-		acc[material] = materialCount[material] ?? (
+		acc[material] = materialCount[material] === undefined ? (
 			categoryList.includes(material)
 				? (localStorageStatusKey === 'characterStatus'
 					? 1 // Default count for characters
 					: 5 // Default count for weapons
 				)
 				: 0
-		);
+		) : materialCount[material];
 		return acc;
 	}, {} as Record<string, number>);
 
