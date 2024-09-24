@@ -367,8 +367,8 @@
 		"parts": [],
 		"farmIn": "Vespers Encrypted Vaults (Enzo)"
 	},
-	"Insulated Metalic Foil": {
-		"img": "/img/basic-mats/Insulated Metalic Foil.png",
+	"Insulated Metallic Foil": {
+		"img": "/img/basic-mats/Insulated Metallic Foil.png",
 		"xOffset": -25,
 		"yOffset": 10,
 		"scale": 80,

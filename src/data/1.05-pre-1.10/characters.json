@@ -30,7 +30,7 @@
 			{ "name": "Jayber Enhanced Cells", "mats": [
 				{ "name": "Hellion", "quantity": 303 },
 				{ "name": "Reverse Charging Coil", "quantity": 455 },
-				{ "name": "Insulated Metalic Foil", "quantity": 34 },
+				{ "name": "Insulated Metallic Foil", "quantity": 34 },
 				{ "name": "Jayber Enhanced Cells Blueprint", "quantity": 1 }
 			]},
 			{ "name": "Jayber Stabilizer", "mats": [
@@ -212,7 +212,7 @@
 			{ "name": "Ultimate Viessa Enhanced Cells", "mats": [
 				{ "name": "Flectorite", "quantity": 656 },
 				{ "name": "Hellion", "quantity": 682 },
-				{ "name": "Insulated Metalic Foil", "quantity": 76 },
+				{ "name": "Insulated Metallic Foil", "quantity": 76 },
 				{ "name": "Ultimate Viessa Enhanced Cells Blueprint", "quantity": 1 }
 			]},
 			{ "name": "Ultimate Viessa Stabilizer", "mats": [
@@ -420,7 +420,7 @@
 			{ "name": "Ultimate Valby Enhanced Cells", "mats": [
 				{ "name": "Repton", "quantity": 949 },
 				{ "name": "Compound Coating Material", "quantity": 538 },
-				{ "name": "Conductive Metalic Foil", "quantity": 75 },
+				{ "name": "Conductive Metallic Foil", "quantity": 75 },
 				{ "name": "Ultimate Valby Enhanced Cells Blueprint", "quantity": 1 }
 			]},
 			{ "name": "Ultimate Valby Stabilizer", "mats": [

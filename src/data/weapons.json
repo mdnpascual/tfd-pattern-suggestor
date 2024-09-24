@@ -4,7 +4,7 @@
 			{ "name": "Smithereens Polymer Syncytium", "mats": [
 				{ "name": "Superfluid", "quantity": 143 },
 				{ "name": "Hardener", "quantity": 97 },
-				{ "name": "Insulated Metalic Foil", "quantity": 8 },
+				{ "name": "Insulated Metallic Foil", "quantity": 8 },
 				{ "name": "Smithereens Polymer Syncytium Blueprint", "quantity": 1 }
 			]},
 			{ "name": "Smithereens Synthetic Fiber", "mats": [
@@ -145,7 +145,7 @@
 			{ "name": "The Final Masterpiece Synthetic Fiber", "mats": [
 				{ "name": "Semi-permanent Plasma", "quantity": 72 },
 				{ "name": "Silicon", "quantity": 108 },
-				{ "name": "Insulated Metalic Foil", "quantity": 8 },
+				{ "name": "Insulated Metallic Foil", "quantity": 8 },
 				{ "name": "The Final Masterpiece Synthetic Fiber Blueprint", "quantity": 1 }
 			]},
 			{ "name": "The Final Masterpiece Nano Tube", "mats": [
@@ -259,7 +259,7 @@
 			{ "name": "Python Nano Tube", "mats": [
 				{ "name": "Monad Shard", "quantity": 62 },
 				{ "name": "Ceramic Composite", "quantity": 102 },
-				{ "name": "Conductive Metalic Foil", "quantity": 8 },
+				{ "name": "Conductive Metallic Foil", "quantity": 8 },
 				{ "name": "Python Nano Tube Blueprint", "quantity": 1 }
 			]},
 			{ "name": "Python Blueprint", "mats": [{ "name": "Python Blueprint", "quantity": 1 }]}
