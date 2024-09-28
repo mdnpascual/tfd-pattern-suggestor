@@ -1,10 +1,30 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControl, Grid, IconButton, InputLabel, MenuItem, Select, TextField, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material";
+import {
+	Accordion,
+	AccordionDetails,
+	AccordionSummary,
+	Box,
+	Button,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogContentText,
+	DialogTitle,
+	FormControl,
+	Grid,
+	InputLabel,
+	MenuItem,
+	Select,
+	TextField,
+	Typography,
+	useMediaQuery,
+	useTheme,
+} from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { AMMO_TYPES, ELEMENTS, ItemPreset, SKILL_TYPES } from "../data/constants";
 import { useEffect, useState } from "react";
 import PresetCard from "./PresetCard";
-
-
+import WeaponRawData from '../data/weapons.json';
+import { CategoryData } from "./CategoryList";
 
 interface ReactorPresetsProps {
 	presets: ItemPreset[];
@@ -18,11 +38,28 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 	const [userPreset, setUserPreset] = useState<ItemPreset | null>(null);
 	const [deleteKey, setDeleteKey] = useState<number | null>(null);
 	const [isOpen, setIsOpen] = useState(false);
+	const [weaponTypes, setWeaponTypes] = useState<Record<string, string[]>>({});
 
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
 	useEffect(() => {
+		const data = WeaponRawData as Record<string, CategoryData>
+		const result: Record<string, string[]> = {};
+
+		for (const weaponName in data) {
+			const weapon: CategoryData = data[weaponName];
+			const ammoType = weapon.ammoType!;
+
+			if (!result[ammoType]) {
+				result[ammoType] = [];
+			}
+
+			result[ammoType].push(weaponName);
+		}
+
+		setWeaponTypes(result)
+
 		const savedState = localStorage.getItem('reactorPresetsAccordion');
 		if (savedState !== null) {
 			setIsOpen(JSON.parse(savedState));
@@ -146,6 +183,7 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 							key={index + preset.title}
 							preset={preset}
 							index={index}
+							weapons={weaponTypes[preset.ammoType]}
 							openConfirmDeleteDialog={openConfirmDeleteDialog}/>
 					))}
 					</Grid>

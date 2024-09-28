@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Typography } from '@mui/material';
+import { LocationData } from './Rotation';
 
 interface RotationCardProps {
 	location: string;
@@ -10,9 +11,16 @@ interface RotationCardProps {
 		arche_type: string;
 	};
 	title: string[];
+	locationData: LocationData;
 }
 
-const RotationCard: React.FC<RotationCardProps> = ({ location, type, rewards, title }) => {
+const RotationCard: React.FC<RotationCardProps> = ({
+	location,
+	type,
+	rewards,
+	title,
+	locationData
+}) => {
 	const [hovered, setHovered] = useState(false);
 
 	return (
@@ -80,6 +88,10 @@ const RotationCard: React.FC<RotationCardProps> = ({ location, type, rewards, ti
 			</Typography>
 		</>
 		)}
+
+		<Typography>
+			Best Mission: {locationData.bestMission}
+		</Typography>
 	</Box>
 	);
 };

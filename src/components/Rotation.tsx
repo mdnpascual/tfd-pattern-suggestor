@@ -1,16 +1,26 @@
 import { Box, Grid } from "@mui/material";
-import { ItemPreset, SchedulePresetObject } from "../data/constants";
+import { SchedulePresetObject } from "../data/constants";
 import RotationCard from "./RotationCard";
+import LocationRawData from '../data/locations.json';
+import { useEffect, useState } from "react";
+
+export interface LocationData {
+	bestMission: string;
+	duration: number;
+	reactorPerMin: number;
+	missionNotes: string;
+}
 
 interface RotationComponentProps {
 	schedule: SchedulePresetObject[];
-	presets: ItemPreset[];
 }
 
-const RotationComponent: React.FC<RotationComponentProps> = ({
-	schedule,
-	presets
-}) => {
+const RotationComponent: React.FC<RotationComponentProps> = ({ schedule }) => {
+	const [location, setLocation] = useState<Record<string, LocationData>>({});
+	useEffect(() => {
+		setLocation(LocationRawData as Record<string, LocationData>)
+	}, []);
+
 	return (
 		<Box sx={{ mt: 2 }}>
 			<Grid container spacing={2}>
@@ -20,7 +30,8 @@ const RotationComponent: React.FC<RotationComponentProps> = ({
 						location={sched.location}
 						type={sched.type!}
 						rewards={sched.rewards}
-						title={sched.title}/>
+						title={sched.title}
+						locationData={location[sched.location]}/>
 				</Grid>
 				))}
 			</Grid>

@@ -21,6 +21,7 @@
 			]},
 			{ "name": "Smithereens Blueprint", "mats": [{ "name": "Smithereens Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "High-Power",
 		"img": "https://open.api.nexon.com/static/tfd/img/b77a6cf7276677e7a72b08a3c39ed860",
 		"xOffset": -35,
 		"yOffset": 40,
@@ -48,6 +49,7 @@
 			]},
 			{ "name": "Greg\u0027s Reversed Fate Blueprint", "mats": [{ "name": "Greg\u0027s Reversed Fate Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "Special",
 		"img": "https://open.api.nexon.com/static/tfd/img/628a4b24dc92c15e765a859935a42b4c",
 		"xOffset": -35,
 		"yOffset": 40,
@@ -75,6 +77,7 @@
 			]},
 			{ "name": "Blue Beetle Blueprint", "mats": [{ "name": "Blue Beetle Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "Impact",
 		"img": "https://open.api.nexon.com/static/tfd/img/bc212983d14ce78e73c0de0371768fac",
 		"xOffset": -35,
 		"yOffset": 40,
@@ -102,6 +105,7 @@
 			]},
 			{ "name": "Restored Relic Blueprint", "mats": [{ "name": "Restored Relic Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "High-Power",
 		"img": "https://open.api.nexon.com/static/tfd/img/6b0ac789fe68f8012f0e577e39a8297c",
 		"xOffset": -32,
 		"yOffset": 40,
@@ -129,6 +133,7 @@
 			]},
 			{ "name": "Divine Punishment Blueprint", "mats": [{ "name": "Divine Punishment Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "General",
 		"img": "https://open.api.nexon.com/static/tfd/img/3df0f8cae97e98ef7a0cccd0bf4613ba",
 		"xOffset": -40,
 		"yOffset": 40,
@@ -156,6 +161,7 @@
 			]},
 			{ "name": "The Final Masterpiece Blueprint", "mats": [{ "name": "The Final Masterpiece Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "General",
 		"img": "https://open.api.nexon.com/static/tfd/img/d17041713d4b151398a0860d816b6d66",
 		"xOffset": -70,
 		"yOffset": 32,
@@ -183,6 +189,7 @@
 			]},
 			{ "name": "Nazeistra\u0027s Devotion Blueprint", "mats": [{ "name": "Nazeistra\u0027s Devotion Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "Impact",
 		"img": "https://open.api.nexon.com/static/tfd/img/b315aea02228beee420b80f7bcd7097b",
 		"xOffset": -80,
 		"yOffset": 28,
@@ -210,6 +217,7 @@
 			]},
 			{ "name": "Perforator Blueprint", "mats": [{ "name": "Perforator Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "Impact",
 		"img": "https://open.api.nexon.com/static/tfd/img/313eb5005e4c6d70ac41b4a9f4d8c7f0",
 		"xOffset": -75,
 		"yOffset": 27,
@@ -237,6 +245,7 @@
 			]},
 			{ "name": "Executor Blueprint", "mats": [{ "name": "Executor Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "High-Power",
 		"img": "https://open.api.nexon.com/static/tfd/img/725adaf584254b433f2b4f00cb53d44a",
 		"xOffset": -20,
 		"yOffset": 50,
@@ -264,6 +273,7 @@
 			]},
 			{ "name": "Python Blueprint", "mats": [{ "name": "Python Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "General",
 		"img": "https://open.api.nexon.com/static/tfd/img/d88f60aa86c8dc57e21e6f88511b33ba",
 		"xOffset": -47,
 		"yOffset": 40,
@@ -291,6 +301,7 @@
 			]},
 			{ "name": "Enduring Legacy Blueprint", "mats": [{ "name": "Enduring Legacy Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "General",
 		"img": "https://open.api.nexon.com/static/tfd/img/13e0b9972056d43d525c1faabefd54b4",
 		"xOffset": -40,
 		"yOffset": 40,
@@ -318,6 +329,7 @@
 			]},
 			{ "name": "Albion Cavalry Gun Blueprint", "mats": [{ "name": "Albion Cavalry Gun Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "General",
 		"img": "https://open.api.nexon.com/static/tfd/img/a08287f1127679b3657b09c1489c8aa9",
 		"xOffset": -35,
 		"yOffset": 40,
@@ -345,6 +357,7 @@
 			]},
 			{ "name": "Secret Garden Blueprint", "mats": [{ "name": "Secret Garden Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "Special",
 		"img": "https://open.api.nexon.com/static/tfd/img/6189e473cbb4181c2a7da06d48cb886d",
 		"xOffset": -37,
 		"yOffset": 40,
@@ -372,6 +385,7 @@
 			]},
 			{ "name": "Wave of Light Blueprint", "mats": [{ "name": "Wave of Light Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "Impact",
 		"img": "https://open.api.nexon.com/static/tfd/img/8cb6e3effc73a7a6a77d80478c0f51ed",
 		"xOffset": -38,
 		"yOffset": 40,
@@ -399,6 +413,7 @@
 			]},
 			{ "name": "Afterglow Sword Blueprint", "mats": [{ "name": "Afterglow Sword Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "High-Power",
 		"img": "https://open.api.nexon.com/static/tfd/img/5f00ef5b8da91875ab988190e0bd74f6",
 		"xOffset": -20,
 		"yOffset": 45,
@@ -426,6 +441,7 @@
 			]},
 			{ "name": "Piercing Light Blueprint", "mats": [{ "name": "Piercing Light Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "High-Power",
 		"img": "https://open.api.nexon.com/static/tfd/img/bec18398d891552051338ffea609d79c",
 		"xOffset": -20,
 		"yOffset": 45,
@@ -453,6 +469,7 @@
 			]},
 			{ "name": "King\u0027s Guard Lance Blueprint", "mats": [{ "name": "King\u0027s Guard Lance Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "Special",
 		"img": "https://open.api.nexon.com/static/tfd/img/1b2c6549e87addec20642f852b0afcf4",
 		"xOffset": -35,
 		"yOffset": 45,
@@ -480,6 +497,7 @@
 			]},
 			{ "name": "Clairvoyance Blueprint", "mats": [{ "name": "Clairvoyance Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "Special",
 		"img": "https://open.api.nexon.com/static/tfd/img/a3a8c7bacaa70f994559ddf58bbf2d2d",
 		"xOffset": -48,
 		"yOffset": 40,
@@ -507,6 +525,7 @@
 			]},
 			{ "name": "Peace Maker Blueprint", "mats": [{ "name": "Peace Maker Blueprint", "quantity": 1 }]}
 		],
+		"ammoType": "Impact",
 		"img": "https://open.api.nexon.com/static/tfd/img/d78fa4d509434b6a21a95f6cc87638fe",
 		"xOffset": -80,
 		"yOffset": 27,
@@ -519,6 +538,7 @@
 			{ "name": "Thunder Cage Nano Tube", "mats": []},
 			{ "name": "Thunder Cage Blueprint", "mats": []}
 		],
+		"ammoType": "General",
 		"img": "https://open.api.nexon.com/static/tfd/img/ceafb2c5d45299b6e9c767098f454797",
 		"xOffset": -55,
 		"yOffset": 35,
@@ -531,6 +551,7 @@
 			{ "name": "The Last Dagger Nano Tube", "mats": []},
 			{ "name": "The Last Dagger Blueprint", "mats": []}
 		],
+		"ammoType": "General",
 		"img": "https://open.api.nexon.com/static/tfd/img/65d6b887291750d901b10e148f5f1119",
 		"xOffset": -75,
 		"yOffset": 30,
@@ -543,6 +564,7 @@
 			{ "name": "Fallen Hope Nano Tube", "mats": []},
 			{ "name": "Fallen Hope Blueprint", "mats": []}
 		],
+		"ammoType": "General",
 		"img": "https://open.api.nexon.com/static/tfd/img/03c388bc95f43507ff5f56c7ac85d85d",
 		"xOffset": -50,
 		"yOffset": 40,

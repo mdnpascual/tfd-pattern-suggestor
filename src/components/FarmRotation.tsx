@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Typography, Container } from '@mui/material';
-import { defaultReactorPresets, ItemPreset, LocationReward, rewardsFileName, rewardsSchedulePath, rotationRef, rotationStartDate, ScheduleObject, SchedulePresetObject } from '../data/constants';
+import {
+	defaultReactorPresets,
+	ItemPreset,
+	LocationReward,
+	rewardsFileName,
+	rewardsSchedulePath,
+	rotationRef,
+	rotationStartDate,
+	ScheduleObject,
+	SchedulePresetObject,
+} from "../data/constants";
 import ReactorPresets from './ReactorPresets';
 import RotationComponent from './Rotation';
 import useDebounce from '../utils/Debounce';
@@ -10,7 +20,6 @@ const filterScheduleFunc = (
 	newSchedule: ScheduleObject[],
 	setFilteredSchedule: React.Dispatch<React.SetStateAction<SchedulePresetObject[]>>
 ) => {
-	console.log(presets)
 	const newFilteredSchedule: SchedulePresetObject[] = newSchedule.reduce((acc, item) => {
 		const matchingPreset = presets.filter(preset =>
 			(item.rewards.reward_type === 'Reactor' &&
@@ -20,7 +29,6 @@ const filterScheduleFunc = (
 		);
 
 		if (matchingPreset.length > 0) {
-			console.log(matchingPreset)
 			acc.push({ ...item, title: matchingPreset.map(mp => mp.title), type: 'Reactor' });
 		} else if (item.rewards.reward_type !== 'Reactor') {
 			acc.push({ ...item, title: [item.rewards.reward_type], type: item.rewards.reward_type});
@@ -32,6 +40,19 @@ const filterScheduleFunc = (
 	newFilteredSchedule.sort((a, b) => {
 		const aIsReactor = a.type === 'Reactor';
 		const bIsReactor = b.type === 'Reactor';
+
+		// Sort reactor by matched preset first then location alphanumerically
+		if (a.type === 'Reactor' && b.type === 'Reactor') {
+			if (b.title.length === a.title.length) {
+				return a.location.localeCompare(b.location)
+			}
+			return b.title.length - a.title.length
+		}
+
+		// Sort components by location
+		if (a.type !== 'Reactor' && b.type !== 'Reactor') {
+			return a.location.localeCompare(b.location)
+		}
 		return aIsReactor === bIsReactor ? 0 : aIsReactor ? 1 : -1;
 	});
 
@@ -85,7 +106,7 @@ const FarmRotationComponent: React.FC = () => {
 						});
 
 						// Update the schedule with the new data
-						setSchedule(newSchedule);
+						setSchedule(newSchedule.sort((a,b) => a.location.localeCompare(b.location)));
 						filterScheduleFunc(incomingPresets, newSchedule, setFilteredSchedule)
 					})
 			})
@@ -104,10 +125,10 @@ const FarmRotationComponent: React.FC = () => {
 	}, [presets]);
 
 	return (
-		<Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+		<Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
 			<ReactorPresets presets={presets} setPresets={setPresets} />
 			<Typography variant="h6" sx={{ mt: 2 }}>Matched Presets</Typography>
-			<RotationComponent presets={presets} schedule={filteredSchedule}/>
+			<RotationComponent schedule={filteredSchedule}/>
 		</Container>
 	);
 };

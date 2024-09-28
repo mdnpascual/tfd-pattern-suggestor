@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Grid, IconButton, Typography } from '@mui/material';
+import { Box, Grid, IconButton, Tooltip, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 interface PresetCardProps {
@@ -10,11 +10,21 @@ interface PresetCardProps {
 		skillType: string;
 	};
 	index: number;
+	weapons: string[];
 	openConfirmDeleteDialog: (index: number) => void;
 }
 
-const PresetCard: React.FC<PresetCardProps> = ({ preset, index, openConfirmDeleteDialog }) => {
+const PresetCard: React.FC<PresetCardProps> = ({ preset, index, weapons, openConfirmDeleteDialog }) => {
 	const [hovered, setHovered] = useState(false);
+
+	const weaponTooltips = (
+		<div>
+			Weapons using {preset.ammoType} rounds:
+			{weapons.map((weapon) => (
+				<div>{weapon}</div>
+			))}
+		</div>
+	);
 
 	return (
 		<Grid item xs={12} sm={3} key={index}>
@@ -53,14 +63,20 @@ const PresetCard: React.FC<PresetCardProps> = ({ preset, index, openConfirmDelet
 					/>
 					{preset.element}
 				</Typography>
-				<Typography>
-					<img
-						src={`${process.env.PUBLIC_URL}/img/icons/${preset.ammoType}.png`}
-						alt={`${preset.ammoType} icon`}
-						style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
-					/>
-					{preset.ammoType}
-				</Typography>
+				<Tooltip
+						title={weaponTooltips}
+						key="next-previous"
+						placement={'bottom'}
+					>
+					<Typography>
+						<img
+							src={`${process.env.PUBLIC_URL}/img/icons/${preset.ammoType}.png`}
+							alt={`${preset.ammoType} icon`}
+							style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
+						/>
+						{preset.ammoType}
+					</Typography>
+				</Tooltip>
 				<Typography>
 					<img
 						src={`${process.env.PUBLIC_URL}/img/icons/${preset.skillType}.png`}

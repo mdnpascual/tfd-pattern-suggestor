@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import MaterialPlanner from "./MaterialPlanner";
 import RectangularBox from "./RectangularBox";
 import { defaultStartingQuantity, GearPart, MaterialUsageData } from "../data/constants";
@@ -12,6 +12,7 @@ export interface CategoryData {
 	xOffset: number;
 	yOffset: number;
 	parts: Array<GearPart>;
+	ammoType?: string;
 	scale?: number;
 	farmIn?: string;
 }
