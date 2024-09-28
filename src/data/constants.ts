@@ -270,7 +270,7 @@ export const defaultReactorPresets = [
 		"skillType": "Tech"
 	},
 	{
-		"title": "Gley/Valby/Enzo General Dimension",
+		"title": "Gley/Valby/Enzo General",
 		"element": "Non-Attribute",
 		"ammoType": "General",
 		"skillType": "Dimension"
