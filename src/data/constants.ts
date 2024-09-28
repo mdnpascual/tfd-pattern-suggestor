@@ -166,6 +166,37 @@ export interface MaterialUsageData {
 	goal: number
 }
 
+export interface ItemPreset {
+	title: string;
+	element: string;
+	ammoType: string;
+	skillType: string;
+}
+
+export interface Reward {
+	rotation: number;
+	reward_type: string;
+	reactor_element_type: string;
+	weapon_rounds_type: string;
+	arche_type: string;
+}
+
+export interface LocationReward {
+	[location: string]: {
+		rewards: Reward[];
+	};
+}
+
+export interface ScheduleObject {
+	location: string;
+	rewards: Reward;
+}
+
+export interface SchedulePresetObject extends ScheduleObject {
+	title: string[];
+	type: string | null
+}
+
 export const specOpsKeywords = [
 	'defend albion resource',
 	'neutralize void experiment',
@@ -186,7 +217,9 @@ const baseKeys = [
 	'customItemPriority',
 	'respectUserPriority',
 	'suggestUntilQuantityReached',
-	'realTimeSuggestor'
+	'realTimeSuggestor',
+	'reactorPresets',
+	'reactorPresetsAccordion'
 ] as const;
 
 export type SaveData = {
@@ -222,6 +255,48 @@ export const joyrideStyles = {
 		color: '#fff', // White close button
 	},
 };
+
+export const defaultReactorPresets = [
+	{
+		"title": "Bunny Blue Beetle",
+		"element": "Electric",
+		"ammoType": "Impact",
+		"skillType": "Singular"
+	},
+	{
+		"title": "Lepic Impact",
+		"element": "Fire",
+		"ammoType": "Impact",
+		"skillType": "Tech"
+	},
+	{
+		"title": "Gley/Valby/Enzo General",
+		"element": "Non-Attribute",
+		"ammoType": "General",
+		"skillType": "Dimension"
+	},
+	{
+		"title": "Hailey",
+		"element": "Chill",
+		"ammoType": "High-Power",
+		"skillType": "Singular"
+	},
+	{
+		"title": "Sharen Sniper",
+		"element": "Electric",
+		"ammoType": "High-Power",
+		"skillType": "Fusion"
+	}
+]
+
+export const ELEMENTS = ['Fire', 'Chill', 'Electric', 'Toxic', 'Non-Attribute'];
+export const AMMO_TYPES = ['General', 'Impact', 'Special', 'High-Power'];
+export const SKILL_TYPES = ['Singular', 'Dimension', 'Fusion', 'Tech'];
+
+export const rewardsSchedulePath = 'https://api.github.com/gists/ac9fc987e97221569781549081c326e3';
+export const rewardsFileName = 'reward_rotation.json'
+export const rotationRef = 9;
+export const rotationStartDate = new Date('2024-09-24T08:00:00Z').getTime();
 
 export const defaultStartingQuantity = 5;
 

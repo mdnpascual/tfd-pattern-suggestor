@@ -1,16 +1,18 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import MaterialPlanner from "./MaterialPlanner";
 import RectangularBox from "./RectangularBox";
 import { defaultStartingQuantity, GearPart, MaterialUsageData } from "../data/constants";
 import InitializeCategoryData from "../utils/InitializeCategoryData";
 import MaterialBox from "./MaterialBox";
 import MaterialUsage from "./MaterialUsage";
+import useDebounce from "../utils/Debounce";
 
 export interface CategoryData {
 	img: string;
 	xOffset: number;
 	yOffset: number;
 	parts: Array<GearPart>;
+	ammoType?: string;
 	scale?: number;
 	farmIn?: string;
 }
@@ -25,21 +27,6 @@ interface CategoryListProps<T> {
 	useMaterialBox?: boolean;
 	onDataChange: () => void;
 }
-
-const useDebounce = (callback: Function, delay: number) => {
-	const timerRef = useRef<number | null>(null);
-
-	const debounceFn = (...args: any[]) => {
-		if (timerRef.current) {
-			clearTimeout(timerRef.current);
-		}
-		timerRef.current = window.setTimeout(() => {
-		callback(...args);
-		}, delay);
-	};
-
-	return debounceFn;
-};
 
 const CategoryList = <T extends CategoryData>({
 	data,

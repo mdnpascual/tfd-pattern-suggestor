@@ -14,7 +14,7 @@ headers_gist = {
     "Accept": "application/vnd.github.v3+json"
 }
 
-rotation_ref = 15
+rotation_ref = 9
 schedule_ref = 1727176800
 weekly_unix_offset = 604800
 

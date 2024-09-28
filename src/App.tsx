@@ -9,21 +9,25 @@ import GearComponent from './components/Gear';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import ChecklistIcon from '@mui/icons-material/Checklist';
+import ExploreIcon from '@mui/icons-material/Explore';
 import { JoyrideWithNavigation, loadBackupDataToLocalStorage } from './components/Joyride';
 import { BackupData, localStorageKeys, SaveData } from './data/constants';
 import { compileData } from './components/Saves';
 import { PreloadedDataProvider } from './components/PreloadedDataContext';
+import FarmRotationComponent from './components/FarmRotation';
 
 
 const tabNameToIndex = {
 	0: "/patternSuggestor",
 	1: "/gear",
-	2: "/about",
+	2: "/farmRotation",
+	3: "/about",
 };
 const indexToTabName = {
 	"/patternSuggestor": 0,
 	"/gear": 1,
-	"/about": 2,
+	"/farmRotation": 2,
+	"/about": 3,
 };
 
 const App = () => {
@@ -91,6 +95,7 @@ const App = () => {
 								<GearComponent key={reloadKey}/>
 							</PreloadedDataProvider>
 						} />
+						<Route path="/farmRotation" element={<FarmRotationComponent />} />
 						<Route path="/about" element={<AboutComponent />} />
 						<Route path="/" element={<Navigate replace to={landingPage} />} />
 					</Routes>
@@ -121,6 +126,7 @@ const NavTabs = () => {
 			>
 				<Tab id="suggestor-tab" icon={isMobile ? <ChecklistIcon /> : undefined} label={!isMobile ? "Pattern Suggestor" : undefined} />
 				<Tab id="gear-inventory-tab" icon={isMobile ? <AddTaskIcon /> : undefined} label={!isMobile ? "Gear Inventory" : undefined} />
+				<Tab id="weekly-farm-rotation" icon={isMobile ? <ExploreIcon /> : undefined} label={!isMobile ? "Weekly Rotation" : undefined} />
 				<Tab icon={isMobile ? <HelpOutlineIcon /> : undefined} label={!isMobile ? "Help" : undefined} />
 			</Tabs>
 		</AppBar>
