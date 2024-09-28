@@ -5,6 +5,7 @@ import { defaultStartingQuantity, GearPart, MaterialUsageData } from "../data/co
 import InitializeCategoryData from "../utils/InitializeCategoryData";
 import MaterialBox from "./MaterialBox";
 import MaterialUsage from "./MaterialUsage";
+import useDebounce from "../utils/Debounce";
 
 export interface CategoryData {
 	img: string;
@@ -25,21 +26,6 @@ interface CategoryListProps<T> {
 	useMaterialBox?: boolean;
 	onDataChange: () => void;
 }
-
-const useDebounce = (callback: Function, delay: number) => {
-	const timerRef = useRef<number | null>(null);
-
-	const debounceFn = (...args: any[]) => {
-		if (timerRef.current) {
-			clearTimeout(timerRef.current);
-		}
-		timerRef.current = window.setTimeout(() => {
-		callback(...args);
-		}, delay);
-	};
-
-	return debounceFn;
-};
 
 const CategoryList = <T extends CategoryData>({
 	data,
