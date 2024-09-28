@@ -218,7 +218,8 @@ const baseKeys = [
 	'respectUserPriority',
 	'suggestUntilQuantityReached',
 	'realTimeSuggestor',
-	'reactorPresets'
+	'reactorPresets',
+	'reactorPresetsAccordion'
 ] as const;
 
 export type SaveData = {

@@ -41,7 +41,6 @@ const filterScheduleFunc = (
 const FarmRotationComponent: React.FC = () => {
 	const [presets, setPresets] = useState<ItemPreset[]>([]);
 
-	const [currentRotation, setCurrentRotation] = useState<number>(rotationRef);
 	const [schedule, setSchedule] = useState<ScheduleObject[]>([]);
 	const [filteredSchedule, setFilteredSchedule] = useState<SchedulePresetObject[]>([]);
 
@@ -63,8 +62,6 @@ const FarmRotationComponent: React.FC = () => {
 		const now = Date.now();
 		const weeksElapsed = Math.floor((now - rotationStartDate) / weekInMillis);
 		const currentRotation = rotationRef + weeksElapsed;
-
-		setCurrentRotation(currentRotation);
 
 		// Fetch reward rotation from the provided URL
 		fetch(rewardsSchedulePath)
@@ -107,9 +104,9 @@ const FarmRotationComponent: React.FC = () => {
 	}, [presets]);
 
 	return (
-		<Container maxWidth="lg" sx={{ mt: 0, mb: 4 }}>
+		<Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
 			<ReactorPresets presets={presets} setPresets={setPresets} />
-			<Typography variant="h6" sx={{ mt: 2 }}>Current Rotation: {currentRotation}</Typography>
+			<Typography variant="h6" sx={{ mt: 2 }}>Matched Presets</Typography>
 			<RotationComponent presets={presets} schedule={filteredSchedule}/>
 		</Container>
 	);

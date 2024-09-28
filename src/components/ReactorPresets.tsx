@@ -1,8 +1,8 @@
 import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControl, Grid, IconButton, InputLabel, MenuItem, Select, TextField, Tooltip, Typography, useMediaQuery, useTheme } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { AMMO_TYPES, ELEMENTS, ItemPreset, SKILL_TYPES } from "../data/constants";
-import { useState } from "react";
-import DeleteIcon from '@mui/icons-material/Delete';
+import { useEffect, useState } from "react";
+import PresetCard from "./PresetCard";
 
 
 
@@ -17,9 +17,25 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 }) => {
 	const [userPreset, setUserPreset] = useState<ItemPreset | null>(null);
 	const [deleteKey, setDeleteKey] = useState<number | null>(null);
+	const [isOpen, setIsOpen] = useState(false);
 
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+	useEffect(() => {
+		const savedState = localStorage.getItem('reactorPresetsAccordion');
+		if (savedState !== null) {
+			setIsOpen(JSON.parse(savedState));
+		} else {
+			setIsOpen(true);
+		}
+	}, []);
+
+	const handleToggle = () => {
+		const newState = !isOpen;
+		setIsOpen(newState);
+		localStorage.setItem('reactorPresetsAccordion', JSON.stringify(newState));
+	};
 
 	const addUserPreset = () => {
 		if (userPreset) {
@@ -39,7 +55,7 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 	};
 
 	return (
-		<Accordion>
+		<Accordion expanded={isOpen} onChange={handleToggle}>
 			<AccordionSummary expandIcon={<ExpandMoreIcon />}>
 				<Typography>Reactor Presets</Typography>
 			</AccordionSummary>
@@ -66,7 +82,14 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 									onChange={(e) => setUserPreset({ ...userPreset, element: e.target.value } as ItemPreset)}
 								>
 									{ELEMENTS.map((element, index) => (
-										<MenuItem key={index} value={element}>{element}</MenuItem>
+										<MenuItem key={index} value={element}>
+											<img
+												src={`${process.env.PUBLIC_URL}/img/icons/${element}.png`}
+												alt={element}
+												style={{ width: 24, height: 24, marginRight: 8 }}
+											/>
+											{element}
+										</MenuItem>
 									))}
 								</Select>
 							</FormControl>
@@ -79,7 +102,14 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 									onChange={(e) => setUserPreset({ ...userPreset, ammoType: e.target.value } as ItemPreset)}
 								>
 									{AMMO_TYPES.map((ammo, index) => (
-										<MenuItem key={index} value={ammo}>{ammo}</MenuItem>
+										<MenuItem key={index} value={ammo}>
+											<img
+												src={`${process.env.PUBLIC_URL}/img/icons/${ammo}.png`}
+												alt={ammo}
+												style={{ width: 24, height: 24, marginRight: 8 }}
+											/>
+											{ammo}
+										</MenuItem>
 									))}
 								</Select>
 							</FormControl>
@@ -92,7 +122,14 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 									onChange={(e) => setUserPreset({ ...userPreset, skillType: e.target.value } as ItemPreset)}
 								>
 									{SKILL_TYPES.map((skill, index) => (
-										<MenuItem key={index} value={skill}>{skill}</MenuItem>
+										<MenuItem key={index} value={skill}>
+											<img
+												src={`${process.env.PUBLIC_URL}/img/icons/${skill}.png`}
+												alt={skill}
+												style={{ width: 24, height: 24, marginRight: 8 }}
+											/>
+											{skill}
+										</MenuItem>
 									))}
 								</Select>
 							</FormControl>
@@ -105,54 +142,11 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 				<Box sx={{ mt: 2 }}>
 					<Grid container spacing={2}>
 					{presets.map((preset, index) => (
-						<Grid item xs={12} sm={4} key={index}>
-							<Box
-								sx={{
-									padding: 2,
-									border: '1px solid #444',
-									borderRadius: 2,
-									backgroundColor: '#1b1b1b',
-									color: '#ffffff',
-									position: 'relative'
-								}}
-							>
-								<IconButton
-									onClick={() => openConfirmDeleteDialog(index)}
-									sx={{
-										position: 'absolute',
-										top: 8,
-										right: 8,
-										color: 'white'
-									}}
-								>
-									<DeleteIcon />
-								</IconButton>
-								<Typography>
-									{preset.title}
-								</Typography>
-								<Typography>
-									<img
-										src={`${process.env.PUBLIC_URL}/img/icons/Fire.png`}
-										alt={`${preset.element} icon`}
-										style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
-									/>{preset.element}
-								</Typography>
-								<Typography>
-									<img
-										src={`${process.env.PUBLIC_URL}/img/icons/General.png`}
-										alt={`${preset.ammoType} icon`}
-										style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
-									/>{preset.ammoType}
-								</Typography>
-								<Typography>
-								<img
-										src={`${process.env.PUBLIC_URL}/img/icons/General.png`}
-										alt={`${preset.skillType} icon`}
-										style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
-									/>{preset.skillType}
-								</Typography>
-							</Box>
-						</Grid>
+						<PresetCard
+							key={index + preset.title}
+							preset={preset}
+							index={index}
+							openConfirmDeleteDialog={openConfirmDeleteDialog}/>
 					))}
 					</Grid>
 				</Box>

@@ -1,0 +1,87 @@
+import React, { useState } from 'react';
+import { Box, Typography } from '@mui/material';
+
+interface RotationCardProps {
+	location: string;
+	type: string;
+	rewards: {
+		reactor_element_type: string;
+		weapon_rounds_type: string;
+		arche_type: string;
+	};
+	title: string[];
+}
+
+const RotationCard: React.FC<RotationCardProps> = ({ location, type, rewards, title }) => {
+	const [hovered, setHovered] = useState(false);
+
+	return (
+	<Box
+		sx={{
+			padding: 2,
+			border: '1px solid #444',
+			borderRadius: 2,
+			backgroundColor: '#1b1b1b',
+			color: '#ffffff',
+			position: 'relative'
+		}}
+		onMouseEnter={() => setHovered(true)}
+		onMouseLeave={() => setHovered(false)}
+	>
+		{hovered && type === 'Reactor' && (
+			<Box
+				sx={{
+					position: 'absolute',
+					top: '100%',
+					left: 0,
+					backgroundColor: '#333',
+					border: '1px solid #444',
+					padding: '4px',
+					zIndex: 10,
+					whiteSpace: 'nowrap',
+					color: '#fff',
+				}}
+			>
+				Matched Presets:
+				{title.map((preset, index) => (
+					<div key={index}>{preset}</div>
+				))}
+			</Box>
+		)}
+		<Typography>
+			{location}: {type}
+		</Typography>
+
+		{type === 'Reactor' && (
+		<>
+			<Typography>
+			<img
+				src={`${process.env.PUBLIC_URL}/img/icons/${rewards.reactor_element_type}.png`}
+				alt={`${rewards.reactor_element_type} icon`}
+				style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
+			/>
+			{rewards.reactor_element_type}
+			</Typography>
+			<Typography>
+			<img
+				src={`${process.env.PUBLIC_URL}/img/icons/${rewards.weapon_rounds_type.replace(/ Rounds$/, '')}.png`}
+				alt={`${rewards.weapon_rounds_type} icon`}
+				style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
+			/>
+			{rewards.weapon_rounds_type}
+			</Typography>
+			<Typography>
+			<img
+				src={`${process.env.PUBLIC_URL}/img/icons/${rewards.arche_type}.png`}
+				alt={`${rewards.arche_type} icon`}
+				style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
+			/>
+			{rewards.arche_type}
+			</Typography>
+		</>
+		)}
+	</Box>
+	);
+};
+
+export default RotationCard;
