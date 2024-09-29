@@ -40,8 +40,8 @@ const RotationCard: React.FC<RotationCardProps> = ({
 			<Box
 				sx={{
 					position: 'absolute',
-					top: '100%',
-					left: 0,
+					bottom: '50%',
+					left: '20%',
 					backgroundColor: '#333',
 					border: '1px solid #444',
 					padding: '4px',

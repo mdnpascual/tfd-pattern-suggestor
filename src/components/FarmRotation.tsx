@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Container } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 import {
 	defaultReactorPresets,
 	ItemPreset,
@@ -61,7 +61,6 @@ const filterScheduleFunc = (
 
 const FarmRotationComponent: React.FC = () => {
 	const [presets, setPresets] = useState<ItemPreset[]>([]);
-
 	const [schedule, setSchedule] = useState<ScheduleObject[]>([]);
 	const [filteredSchedule, setFilteredSchedule] = useState<SchedulePresetObject[]>([]);
 
@@ -125,11 +124,17 @@ const FarmRotationComponent: React.FC = () => {
 	}, [presets]);
 
 	return (
-		<Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
+		<Box  sx={{
+			width: '100%',
+			maxWidth: { xs: '95%', sm: '600px', md: '960px', lg: '1280px', xl: '1920px' },
+			overflow: 'auto',
+			maxHeight: 'calc(100vh - 50px)',
+			margin: '0 auto'
+		}}>
 			<ReactorPresets presets={presets} setPresets={setPresets} />
 			<Typography variant="h6" sx={{ mt: 2 }}>Matched Presets</Typography>
 			<RotationComponent schedule={filteredSchedule}/>
-		</Container>
+		</Box>
 	);
 };
 
