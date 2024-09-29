@@ -92,7 +92,7 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 	};
 
 	return (
-		<Accordion expanded={isOpen} onChange={handleToggle}>
+		<Accordion expanded={isOpen} onChange={handleToggle} sx={{mt:'10px'}}>
 			<AccordionSummary expandIcon={<ExpandMoreIcon />}>
 				<Typography>Reactor Presets</Typography>
 			</AccordionSummary>
@@ -110,7 +110,7 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 							InputProps={{style: { color: '#fff' }}}
 						/>
 					</FormControl>
-					<Grid container spacing={2} sx={{ mt: 2 }}>
+					<Grid container spacing={2} sx={{ mt: 0 }}>
 						<Grid item xs={isMobile ? 12 : 4}>
 							<FormControl fullWidth>
 								<InputLabel>Element</InputLabel>
@@ -176,7 +176,7 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 						Add Preset
 					</Button>
 				</Box>
-				<Box sx={{ mt: 2 }}>
+				<Box sx={{ mt: 2 }} overflow={'auto'} maxHeight={isMobile ? '43vh' : undefined}>
 					<Grid container spacing={2}>
 					{presets.map((preset, index) => (
 						<PresetCard
