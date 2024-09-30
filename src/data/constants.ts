@@ -296,7 +296,8 @@ export const SKILL_TYPES = ['Singular', 'Dimension', 'Fusion', 'Tech'];
 export const rewardsSchedulePath = 'https://api.github.com/gists/ac9fc987e97221569781549081c326e3';
 export const rewardsFileName = 'reward_rotation.json'
 export const rotationRef = 9;
-export const rotationStartDate = new Date('2024-09-24T08:00:00Z').getTime();
+export const rotationStartDate = new Date('2024-09-24T07:00:00Z').getTime();
+export const weekly_unix_offset = 604799000;
 
 export const defaultStartingQuantity = 5;
 

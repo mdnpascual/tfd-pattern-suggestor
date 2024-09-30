@@ -15,7 +15,7 @@ headers_gist = {
 }
 
 rotation_ref = 9
-schedule_ref = 1727176800
+schedule_ref = 1727161200
 weekly_unix_offset = 604800
 
 try:

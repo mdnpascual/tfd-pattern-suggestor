@@ -46,9 +46,9 @@ const MaterialPlanner: React.FC<MaterialPlannerProps> = ({
 	}
 
 	return (
-		<Box sx={{ p: 2, maxWidth: '700px', margin: '0 auto' }} id={`${title.replaceAll(" ", "-")}-textfield-planner`}>
+		<Box sx={{ p: 2, maxWidth: '700px', margin: '0 auto', maxHeight: '90vh', overflow: 'auto' }} id={`${title.replaceAll(" ", "-")}-textfield-planner`}>
 			{parts.map(part => (
-				<Box key={part.name} sx={{ mb: 2, width: isMobile ? '90vw' : '100%', maxHeight: '20vh' }}>
+				<Box key={part.name} sx={{ mb: 0, width: isMobile ? '90vw' : '100%' }}>
 					<Grid container alignItems="center" sx={{ display: 'flex', width: '100%' }}>
 						<Box
 							sx={{

@@ -10,6 +10,7 @@ import {
 	rotationStartDate,
 	ScheduleObject,
 	SchedulePresetObject,
+	weekly_unix_offset,
 } from "../data/constants";
 import ReactorPresets from './ReactorPresets';
 import RotationComponent from './Rotation';
@@ -59,12 +60,23 @@ const filterScheduleFunc = (
 	setFilteredSchedule(newFilteredSchedule);
 }
 
+const dateOptions = {
+	year: 'numeric',
+	month: 'numeric',
+	day: 'numeric',
+	hour: '2-digit',
+	minute: '2-digit',
+	hour12: false
+} as Intl.DateTimeFormatOptions;
+
 const FarmRotationComponent: React.FC = () => {
 	const [presets, setPresets] = useState<ItemPreset[]>([]);
 	const [schedule, setSchedule] = useState<ScheduleObject[]>([]);
 	const [filteredSchedule, setFilteredSchedule] = useState<SchedulePresetObject[]>([]);
+	const [rotation, setRotation] = useState<number>(9);
 
 	const weekInMillis = 7 * 24 * 60 * 60 * 1000;
+	const userLocale = navigator.language || 'en-US';
 
 	useEffect(() => {
 		// Load Presets
@@ -82,6 +94,7 @@ const FarmRotationComponent: React.FC = () => {
 		const now = Date.now();
 		const weeksElapsed = Math.floor((now - rotationStartDate) / weekInMillis);
 		const currentRotation = rotationRef + weeksElapsed;
+		setRotation(currentRotation)
 
 		// Fetch reward rotation from the provided URL
 		fetch(rewardsSchedulePath)
@@ -132,7 +145,11 @@ const FarmRotationComponent: React.FC = () => {
 			margin: '0 auto'
 		}}>
 			<ReactorPresets presets={presets} setPresets={setPresets} />
-			<Typography variant="h6" sx={{ mt: 2 }}>Matched Presets</Typography>
+			<Typography variant="h6" sx={{ mt: 2 }}>
+				Rotation {rotation}:{' '}
+					{(new Date(rotationStartDate).toLocaleString(userLocale, dateOptions))} -
+					{(new Date(rotationStartDate + weekly_unix_offset).toLocaleString(userLocale, dateOptions))}
+			</Typography>
 			<RotationComponent schedule={filteredSchedule}/>
 		</Box>
 	);
