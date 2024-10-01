@@ -147,8 +147,8 @@ const FarmRotationComponent: React.FC = () => {
 			<ReactorPresets presets={presets} setPresets={setPresets} />
 			<Typography variant="h6" sx={{ mt: 2 }}>
 				Rotation {rotation}:{' '}
-					{(new Date(rotationStartDate).toLocaleString(userLocale, dateOptions))} -{' '}
-					{(new Date(rotationStartDate + weekly_unix_offset).toLocaleString(userLocale, dateOptions))}
+					{(new Date(rotationStartDate + ((rotation - rotationRef) * weekly_unix_offset)).toLocaleString(userLocale, dateOptions))} -{' '}
+					{(new Date(rotationStartDate + ((rotation - rotationRef) * weekly_unix_offset) + weekly_unix_offset - 1000).toLocaleString(userLocale, dateOptions))}
 			</Typography>
 			<RotationComponent schedule={filteredSchedule}/>
 		</Box>
