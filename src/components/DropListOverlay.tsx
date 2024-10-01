@@ -23,6 +23,8 @@ const DropListOverlay: React.FC<DropListOverlayProps> = ({
 }) => {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+	const characterStatus = JSON.parse(localStorage.getItem('characterStatus') || '{}')
+	const weaponStatus = JSON.parse(localStorage.getItem('weaponStatus') || '{}')
 
 	const [percentileValues] = useState<number[]>(
 		JSON.parse(localStorage.getItem('percentileValues') || '[0.5, 0.85, 0.95]')
@@ -55,8 +57,18 @@ const DropListOverlay: React.FC<DropListOverlayProps> = ({
 
 	const getGoal = useCallback((name: string) => {
 		if (materialCount[materialMapping[materialMapping[name]]] !== undefined) {
+			// Don't count if Character or Weapon is marked as completed
+			if (characterStatus[materialMapping[materialMapping[name]]] || weaponStatus[materialMapping[materialMapping[name]]]){
+				return 0;
+			}
+
 			return Math.max(0, Math.min((materialCount[materialMapping[materialMapping[name]]] - materialCount[materialMapping[name]] ?? 0), Number.MAX_SAFE_INTEGER));
 		} else {
+			// Don't count if Character or Weapon is marked as completed
+			if (characterStatus[materialMapping[name]] || weaponStatus[materialMapping[name]]){
+				return 0;
+			}
+
 			return (materialCount[materialMapping[name]] ?? 0);
 		}
 	}, [materialCount, materialMapping]);

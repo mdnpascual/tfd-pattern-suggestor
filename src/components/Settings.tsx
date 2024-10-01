@@ -1,7 +1,5 @@
 import { Box, Checkbox, FormControlLabel, IconButton, InputAdornment, TextField, Tooltip, Typography } from "@mui/material";
 import { useState } from "react";
-import { useTheme } from '@mui/material/styles';
-import { useMediaQuery } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
 
 export const getBooleanSetting = (localStorageKey: string, defaultState: boolean = true) => {
@@ -23,8 +21,6 @@ export const getBooleanSetting = (localStorageKey: string, defaultState: boolean
 }
 
 const SettingsComponent: React.FC = () => {
-	const theme = useTheme();
-	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
 	const [percentileValues, setPercentileValues] = useState<number[]>(
 		JSON.parse(localStorage.getItem('percentileValues') || '[0.5, 0.85, 0.95]')

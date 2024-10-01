@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableSortLabel, Tooltip, Box, Button, Typography } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableSortLabel, Box, Button, Typography } from '@mui/material';
 import DropListOverlay from './DropListOverlay';
 import { DropList } from '../data/constants';
 import CharacterRawData from '../data/characters.json';

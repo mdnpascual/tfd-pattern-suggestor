@@ -45,7 +45,6 @@ const MaterialBox: React.FC<MaterialBoxProps> = ({
 	scale,
 	isComplete
 }) => {
-	const [hovered, setHovered] = useState(false);
 	const [quantity, setQuantity] = useState<number>(incomingQuantity);
 	const [previousQuantity, setPreviousQuantity] = useState<number>(incomingQuantity);
 

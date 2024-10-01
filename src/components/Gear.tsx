@@ -7,8 +7,6 @@ import BasicMaterialRawData from '../data/basicMaterials.json';
 import CategoryList from './CategoryList';
 import { usePreloadedData } from './PreloadedDataContext';
 
-const ComponentTODO = () => <div>Shard List Content (WIP)</div>;
-
 const GearComponent = () => {
 	const { preloadedData, fetchPreloadedData } = usePreloadedData();
 

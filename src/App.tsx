@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation, Navigate, NavigateFunction } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { AppBar, Tabs, Tab, CssBaseline, useMediaQuery  } from '@mui/material';
 import { ThemeProvider, useTheme } from '@mui/material/styles';
 import darkTheme from './theme';

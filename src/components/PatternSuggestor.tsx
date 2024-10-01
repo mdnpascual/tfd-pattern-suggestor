@@ -8,7 +8,6 @@ import {
 	specOpsKeywords,
 	filterOptions,
 	collosusOptions,
-	dataKeywordCollosus,
 	dataKeywordHard,
 	dataKeywordNormal,
 	dataKeywordSharen,

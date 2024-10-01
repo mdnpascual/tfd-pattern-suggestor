@@ -14,9 +14,9 @@
 				{ "name": "Smithereens Synthetic Fiber Blueprint", "quantity": 1 }
 			]},
 			{ "name": "Smithereens Nano Tube", "mats": [
-				{ "name": "Monad Shard", "quantity": 105 },
-				{ "name": "Semi-permanent Plasma", "quantity": 130 },
-				{ "name": "Organic Biogel", "quantity": 12 },
+				{ "name": "Monad Shard", "quantity": 62 },
+				{ "name": "Semi-permanent Plasma", "quantity": 72 },
+				{ "name": "Organic Biogel", "quantity": 7 },
 				{ "name": "Smithereens Nano Tube Blueprint", "quantity": 1 }
 			]},
 			{ "name": "Smithereens Blueprint", "mats": [{ "name": "Smithereens Blueprint", "quantity": 1 }]}
