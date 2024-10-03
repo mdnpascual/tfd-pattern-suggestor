@@ -14,6 +14,12 @@ interface RotationCardProps {
 	locationData: LocationData;
 }
 
+const formatDuration = (durationInSeconds: number) => {
+    const minutes = Math.floor(durationInSeconds / 60);
+    const seconds = durationInSeconds % 60;
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+};
+
 const RotationCard: React.FC<RotationCardProps> = ({
 	location,
 	type,
@@ -90,7 +96,10 @@ const RotationCard: React.FC<RotationCardProps> = ({
 		)}
 
 		<Typography>
-			Best Mission: {locationData.bestMission}
+			Best Mission: {locationData.bestMission} ({locationData.duration !== 1000 ? formatDuration(locationData.duration)  : '?:??'})
+		</Typography>
+		<Typography>
+			Drop Rate: {locationData.reactorPerMin !== 0 ? locationData.reactorPerMin.toString() + ' / min' : '[Data Collection in Progress]'}
 		</Typography>
 	</Box>
 	);

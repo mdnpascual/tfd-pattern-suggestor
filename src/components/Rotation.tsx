@@ -21,10 +21,16 @@ const RotationComponent: React.FC<RotationComponentProps> = ({ schedule }) => {
 		setLocation(LocationRawData as Record<string, LocationData>)
 	}, []);
 
+	const sortedSchedule = schedule.sort((a, b) => {
+		const aReactorPerMin = location[a.location]?.reactorPerMin || 0;
+		const bReactorPerMin = location[b.location]?.reactorPerMin || 0;
+		return bReactorPerMin - aReactorPerMin;
+	});
+
 	return (
 		<Box sx={{ mt: 2 }}>
 			<Grid container spacing={2}>
-				{schedule.map((sched, index) => (
+				{sortedSchedule.map((sched, index) => (
 				<Grid item xs={12} sm={3} key={index}>
 					<RotationCard
 						location={sched.location}

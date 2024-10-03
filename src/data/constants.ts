@@ -297,7 +297,7 @@ export const rewardsSchedulePath = 'https://api.github.com/gists/ac9fc987e972215
 export const rewardsFileName = 'reward_rotation.json'
 export const rotationRef = 9;
 export const rotationStartDate = new Date('2024-09-24T07:00:00Z').getTime();
-export const weekly_unix_offset = 604799000;
+export const weekly_unix_offset = 604800000
 
 export const defaultStartingQuantity = 5;
 

@@ -1,223 +1,223 @@
 {
 	"Agna Desert - Miragestone": {
 		"bestMission": "Heavy Equipment Entry Path",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Agna Desert - Remnant": {
 		"bestMission": "Abandoned Reconstruction Site",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Agna Desert - The Mining Site": {
 		"bestMission": "Mining Beacon",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Agna Desert - The Storage": {
 		"bestMission": "Previous Construct Team Quarters",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Agna Desert - Vermilion Waste": {
 		"bestMission": "Rock Cave Base",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Echo Swamp - Abandoned Zone": {
 		"bestMission": "Environment contamination Zone",
-		"duration": 0,
-		"reactorPerMin": 0,
+		"duration": 35,
+		"reactorPerMin": 7.02,
 		"missionNotes": ""
 	},
 	"Echo Swamp - Derelict Covert": {
 		"bestMission": "Verdant Greenery",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Echo Swamp - Misty Woods": {
 		"bestMission": "Hazy Swamp",
-		"duration": 0,
-		"reactorPerMin": 0,
+		"duration": 46,
+		"reactorPerMin": 3.23,
 		"missionNotes": ""
 	},
 	"Echo Swamp - Muskeg Swamp": {
 		"bestMission": "The Tree of Truth",
-		"duration": 0,
-		"reactorPerMin": 0,
+		"duration": 148,
+		"reactorPerMin": 2.78,
 		"missionNotes": ""
 	},
 	"Fortress - Convertor Facility": {
 		"bestMission": "Central Control Unit",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Fortress - Defense Line": {
 		"bestMission": "Fortress Command Entrance",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Fortress - Fallen Ark": {
 		"bestMission": "Ship Charging Facility",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Fortress - Frozen Valley": {
 		"bestMission": "Command Relay",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Fortress - The Aurora Forest": {
 		"bestMission": "Snowy Heights",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Hagios - Dune Base": {
 		"bestMission": "Vulgus Blockade",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Hagios - Forward Base": {
-		"bestMission": "Antiaircraft Defensive Position",
-		"duration": 0,
-		"reactorPerMin": 0,
+		"bestMission": "Broadband Fleet Beacon",
+		"duration": 145,
+		"reactorPerMin": 2.56,
 		"missionNotes": ""
 	},
 	"Hagios - Fractured Monolith": {
 		"bestMission": "Ruins Modification Base",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Hagios - Starfall Road": {
 		"bestMission": "Ruins Guard Facility",
-		"duration": 0,
-		"reactorPerMin": 0,
-		"missionNotes": ""
+		"duration": 261,
+		"reactorPerMin": 2.16,
+		"missionNotes": "No Abandon, Insert last item at 8min left on timer"
 	},
 	"Hagios - The Corrupted Zone": {
 		"bestMission": "Deep Digger",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Kingston - Grand Square": {
 		"bestMission": "Kingston Surveillance Radar",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Kingston - The Destruction": {
 		"bestMission": "The Last Emergency Communicator",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Kingston - The Fallen Theater": {
 		"bestMission": "Vulgus Occupied Buildings",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Sterile Land - Classified Area": {
 		"bestMission": "Large Nuclear Reactor",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Sterile Land - Ironworks": {
 		"bestMission": "Weapon Processing Facility",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Sterile Land - Repository": {
 		"bestMission": "Kuiper Refinery",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Sterile Land - Restricted Zone": {
 		"bestMission": "The Barracks",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Sterile Land - Rockfall": {
 		"bestMission": "Anticipated Ambush Point",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"Vespers - Lost Supply Depot": {
 		"bestMission": "Mossy Colossus",
-		"duration": 0,
-		"reactorPerMin": 0,
-		"missionNotes": ""
+		"duration": 107,
+		"reactorPerMin": 2.19,
+		"missionNotes": "Spawns are not unlimited, so just kill as fast as possible"
 	},
 	"Vespers - Moonlight Lake": {
 		"bestMission": "Lakeside",
-		"duration": 0,
-		"reactorPerMin": 0,
+		"duration": 107,
+		"reactorPerMin": 2.68,
 		"missionNotes": ""
 	},
 	"Vespers - The Lumber Yard": {
 		"bestMission": "Frontline Base",
-		"duration": 0,
-		"reactorPerMin": 0,
+		"duration": 79,
+		"reactorPerMin": 2.89,
 		"missionNotes": ""
 	},
 	"Vespers - The Ruins": {
 		"bestMission": "Ruins Courtyard",
-		"duration": 0,
-		"reactorPerMin": 0,
+		"duration": 75,
+		"reactorPerMin": 2.69,
 		"missionNotes": ""
 	},
 	"Vespers - Timberfall": {
 		"bestMission": "Timberfall Power Facility",
-		"duration": 0,
-		"reactorPerMin": 0,
+		"duration": 99,
+		"reactorPerMin": 2.79,
 		"missionNotes": ""
 	},
 	"White-night Gulch - Hatchery": {
 		"bestMission": "Lower Hatchery",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"White-night Gulch - Moongrave Basin": {
 		"bestMission": "Water-cooling Recording Device",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"White-night Gulch - Observatory": {
 		"bestMission": "Order Supply Warehouse",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"White-night Gulch - Shipment Base": {
 		"bestMission": "Fortress Outskirts",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	},
 	"White-night Gulch - The Mountaintops": {
 		"bestMission": "Triumphal Arch",
-		"duration": 0,
+		"duration": 1000,
 		"reactorPerMin": 0,
 		"missionNotes": ""
 	}
