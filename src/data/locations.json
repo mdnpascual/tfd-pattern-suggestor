@@ -61,8 +61,8 @@
 	},
 	"Fortress - Defense Line": {
 		"bestMission": "Fortress Command Entrance",
-		"duration": 1000,
-		"reactorPerMin": 0,
+		"duration": 114,
+		"reactorPerMin": 3.59,
 		"missionNotes": ""
 	},
 	"Fortress - Fallen Ark": {
@@ -85,8 +85,8 @@
 	},
 	"Hagios - Dune Base": {
 		"bestMission": "Vulgus Blockade",
-		"duration": 1000,
-		"reactorPerMin": 0,
+		"duration": 158,
+		"reactorPerMin": 2.15,
 		"missionNotes": ""
 	},
 	"Hagios - Forward Base": {
@@ -97,8 +97,8 @@
 	},
 	"Hagios - Fractured Monolith": {
 		"bestMission": "Ruins Modification Base",
-		"duration": 1000,
-		"reactorPerMin": 0,
+		"duration": 136,
+		"reactorPerMin": 2.30,
 		"missionNotes": ""
 	},
 	"Hagios - Starfall Road": {
@@ -109,8 +109,8 @@
 	},
 	"Hagios - The Corrupted Zone": {
 		"bestMission": "Deep Digger",
-		"duration": 1000,
-		"reactorPerMin": 0,
+		"duration": 168,
+		"reactorPerMin": 2.32,
 		"missionNotes": ""
 	},
 	"Kingston - Grand Square": {
