@@ -96,11 +96,15 @@ const RotationCard: React.FC<RotationCardProps> = ({
 		)}
 
 		<Typography>
-			Best Mission: {locationData.bestMission} ({locationData.duration !== 1000 ? formatDuration(locationData.duration)  : '?:??'})
+			Best Mission: {locationData.bestMission} ({locationData.missionNotes !== "ESTIMATE" ? locationData.duration !== 1000 ? formatDuration(locationData.duration)  : '?:??' : "~" + formatDuration(locationData.duration)})
 		</Typography>
 		<Typography>
-			Drop Rate: {locationData.reactorPerMin !== 0 ? locationData.reactorPerMin.toString() + ' / min' : '[Data Collection in Progress]'}
+			Drop Rate: {locationData.missionNotes !== "ESTIMATE" ? locationData.reactorPerMin !== 0 ? locationData.reactorPerMin.toString() + ' / min' : '[Data Collection in Progress]' : "~" + locationData.reactorPerMin.toString()}
 		</Typography>
+		{(locationData.missionNotes !== "" && locationData.missionNotes !== "ESTIMATE") &&
+		<Typography>
+			Mission Notes: {locationData.missionNotes}
+		</Typography>}
 	</Box>
 	);
 };
