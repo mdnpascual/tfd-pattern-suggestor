@@ -66,10 +66,10 @@
 		"missionNotes": ""
 	},
 	"Fortress - Fallen Ark": {
-		"bestMission": "Ship Charging Facility",
-		"duration": 167,
-		"reactorPerMin": 1.92,
-		"missionNotes": "ESTIMATE"
+		"bestMission": "Frozen Shipyard",
+		"duration": 62,
+		"reactorPerMin": 2.94,
+		"missionNotes": "Abandon Before Hacking part"
 	},
 	"Fortress - Frozen Valley": {
 		"bestMission": "Command Relay",
