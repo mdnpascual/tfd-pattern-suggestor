@@ -55,9 +55,9 @@
 	},
 	"Fortress - Convertor Facility": {
 		"bestMission": "Central Control Unit",
-		"duration": 193,
-		"reactorPerMin": 2.72,
-		"missionNotes": "ESTIMATE"
+		"duration": 163,
+		"reactorPerMin": 3.82,
+		"missionNotes": ""
 	},
 	"Fortress - Defense Line": {
 		"bestMission": "Fortress Command Entrance",
