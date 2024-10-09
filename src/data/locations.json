@@ -73,9 +73,9 @@
 	},
 	"Fortress - Frozen Valley": {
 		"bestMission": "Command Relay",
-		"duration": 108,
-		"reactorPerMin": 2.56,
-		"missionNotes": "ESTIMATE"
+		"duration": 100,
+		"reactorPerMin": 3.17,
+		"missionNotes": ""
 	},
 	"Fortress - The Aurora Forest": {
 		"bestMission": "Snowy Heights",
@@ -157,9 +157,9 @@
 	},
 	"Sterile Land - Rockfall": {
 		"bestMission": "Anticipated Ambush Point",
-		"duration": 34,
-		"reactorPerMin": 3.89,
-		"missionNotes": "ESTIMATE"
+		"duration": 30,
+		"reactorPerMin": 4.20,
+		"missionNotes": ""
 	},
 	"Vespers - Lost Supply Depot": {
 		"bestMission": "Mossy Colossus",
