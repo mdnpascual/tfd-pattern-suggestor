@@ -193,8 +193,10 @@ export interface ScheduleObject {
 }
 
 export interface SchedulePresetObject extends ScheduleObject {
-	title: string[];
-	type: string | null
+	combined: string[];
+	rotation: string[];
+	static: string[];
+	type: string;
 }
 
 export const specOpsKeywords = [
@@ -219,7 +221,9 @@ const baseKeys = [
 	'suggestUntilQuantityReached',
 	'realTimeSuggestor',
 	'reactorPresets',
-	'reactorPresetsAccordion'
+	'reactorPresetsAccordion',
+	'reactorPresetsIgnoreStatic',
+	'reactorPresetsFilterDropRate'
 ] as const;
 
 export type SaveData = {
@@ -289,9 +293,13 @@ export const defaultReactorPresets = [
 	}
 ]
 
-export const ELEMENTS = ['Fire', 'Chill', 'Electric', 'Toxic', 'Non-Attribute'];
-export const AMMO_TYPES = ['General', 'Impact', 'Special', 'High-Power'];
-export const SKILL_TYPES = ['Singular', 'Dimension', 'Fusion', 'Tech'];
+export const ELEMENTS = ['Fire', 'Chill', 'Electric', 'Toxic', 'Non-Attribute'] as const;
+export const AMMO_TYPES = ['General', 'Impact', 'Special', 'High-Power'] as const;
+export const SKILL_TYPES = ['Singular', 'Dimension', 'Fusion', 'Tech'] as const;
+
+export type ElementType = typeof ELEMENTS[number];
+export type AmmoType = typeof AMMO_TYPES[number];
+export type SkillType = typeof SKILL_TYPES[number];
 
 export const rewardsSchedulePath = 'https://api.github.com/gists/ac9fc987e97221569781549081c326e3';
 export const rewardsFileName = 'reward_rotation.json'
@@ -311,3 +319,4 @@ export const dataKeywordSpecOps = 'void fusion reactor';
 export const dataKeywordDropsFromOutpost = 'vulgus strategic outpost'
 
 export const patternNameToRemove = / AA| AB/;
+export const estimateSecondaryRatio = 0.75;

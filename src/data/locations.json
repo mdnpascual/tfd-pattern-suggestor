@@ -3,222 +3,407 @@
 		"bestMission": "Heavy Equipment Entry Path",
 		"duration": 91,
 		"reactorPerMin": 3.11,
-		"missionNotes": "ESTIMATE"
+		"missionNotes": "ESTIMATE",
+		"secondaryElement": "Chill",
+		"secondarySkill": "Tech",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Agna Desert - Remnant": {
 		"bestMission": "Abandoned Reconstruction Site",
 		"duration": 112,
 		"reactorPerMin": 2.36,
-		"missionNotes": "ESTIMATE"
+		"missionNotes": "ESTIMATE",
+		"secondaryElement": "Electric",
+		"secondarySkill": "Fusion",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Agna Desert - The Mining Site": {
 		"bestMission": "Mining Beacon",
 		"duration": 45,
 		"reactorPerMin": 2.63,
-		"missionNotes": "ESTIMATE"
+		"missionNotes": "ESTIMATE",
+		"secondaryElement": "Electric",
+		"secondarySkill": "Singular",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Agna Desert - The Storage": {
 		"bestMission": "Previous Construct Team Quarters",
 		"duration": 64,
 		"reactorPerMin": 3.15,
-		"missionNotes": "ESTIMATE"
+		"missionNotes": "ESTIMATE",
+		"secondaryElement": "Toxic",
+		"secondarySkill": "Dimension",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Agna Desert - Vermilion Waste": {
 		"bestMission": "Rock Cave Base",
 		"duration": 72,
 		"reactorPerMin": 2.41,
-		"missionNotes": "ESTIMATE"
+		"missionNotes": "ESTIMATE",
+		"secondaryElement": "Non-Attribute",
+		"secondarySkill": "Singular",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Echo Swamp - Abandoned Zone": {
 		"bestMission": "Environment contamination Zone",
 		"duration": 35,
 		"reactorPerMin": 7.02,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "Non-Attribute",
+		"secondarySkill": "Tech",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Echo Swamp - Derelict Covert": {
 		"bestMission": "Emergency Landing Strip",
 		"duration": 91,
 		"reactorPerMin": 2.16,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "Fire",
+		"secondarySkill": "Singular",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Echo Swamp - Misty Woods": {
 		"bestMission": "Hazy Swamp",
 		"duration": 46,
 		"reactorPerMin": 3.23,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "Chill",
+		"secondarySkill": "Singular",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Echo Swamp - Muskeg Swamp": {
 		"bestMission": "The Tree of Truth",
 		"duration": 148,
 		"reactorPerMin": 2.78,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "Non-Attribute",
+		"secondarySkill": "Dimension",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Fortress - Convertor Facility": {
 		"bestMission": "Central Control Unit",
 		"duration": 163,
 		"reactorPerMin": 3.82,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "Chill",
+		"secondarySkill": "Singular",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Fortress - Defense Line": {
 		"bestMission": "Fortress Command Entrance",
 		"duration": 114,
 		"reactorPerMin": 3.59,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "Non-Attribute",
+		"secondarySkill": "Fusion",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Fortress - Fallen Ark": {
 		"bestMission": "Frozen Shipyard",
 		"duration": 62,
 		"reactorPerMin": 2.94,
-		"missionNotes": "Abandon Before Hacking part"
+		"missionNotes": "Abandon Before Hacking part",
+		"secondaryElement": "Fire",
+		"secondarySkill": "Dimension",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Fortress - Frozen Valley": {
 		"bestMission": "Command Relay",
 		"duration": 100,
 		"reactorPerMin": 3.17,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "Toxic",
+		"secondarySkill": "Tech",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Fortress - The Aurora Forest": {
 		"bestMission": "Snowy Heights",
 		"duration": 116,
 		"reactorPerMin": 1.21,
-		"missionNotes": "Last spawn at 3:10 at bridge or count 8 spawn intervals"
+		"missionNotes": "Last spawn at 3:10 at bridge or count 8 spawn intervals",
+		"secondaryElement": "Chill",
+		"secondarySkill": "Tech",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Hagios - Dune Base": {
 		"bestMission": "Vulgus Blockade",
 		"duration": 158,
 		"reactorPerMin": 2.15,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "Non-Attribute",
+		"secondarySkill": "Fusion",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Hagios - Forward Base": {
 		"bestMission": "Broadband Fleet Beacon",
 		"duration": 145,
 		"reactorPerMin": 2.56,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "Electric",
+		"secondarySkill": "Singular",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Hagios - Fractured Monolith": {
 		"bestMission": "Ruins Modification Base",
 		"duration": 136,
 		"reactorPerMin": 2.30,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "Fire",
+		"secondarySkill": "Fusion",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Hagios - Starfall Road": {
 		"bestMission": "Ruins Guard Facility",
 		"duration": 261,
 		"reactorPerMin": 2.16,
-		"missionNotes": "No Abandon, Insert last item at 8min left on timer"
+		"missionNotes": "No Abandon, Insert last item at 8min left on timer",
+		"secondaryElement": "Toxic",
+		"secondarySkill": "Dimension",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Hagios - The Corrupted Zone": {
 		"bestMission": "Deep Digger",
 		"duration": 168,
 		"reactorPerMin": 2.32,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "Fire",
+		"secondarySkill": "Tech",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Kingston - Grand Square": {
 		"bestMission": "Kingston Surveillance Radar",
 		"duration": 58,
 		"reactorPerMin": 2.96,
-		"missionNotes": "ESTIMATE"
+		"missionNotes": "ESTIMATE",
+		"secondaryElement": "Non-Attribute",
+		"secondarySkill": "Tech",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Kingston - The Destruction": {
 		"bestMission": "The Last Emergency Communicator",
 		"duration": 64,
 		"reactorPerMin": 3.39,
-		"missionNotes": "ESTIMATE"
+		"missionNotes": "ESTIMATE",
+		"secondaryElement": "Chill",
+		"secondarySkill": "Fusion",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Kingston - The Fallen Theater": {
 		"bestMission": "Vulgus Occupied Buildings",
 		"duration": 30,
 		"reactorPerMin": 4.94,
-		"missionNotes": "ESTIMATE"
+		"missionNotes": "ESTIMATE",
+		"secondaryElement": "Fire",
+		"secondarySkill": "Singular",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Sterile Land - Classified Area": {
 		"bestMission": "Large Nuclear Reactor",
 		"duration": 114,
 		"reactorPerMin": 2.56,
-		"missionNotes": "Get out of circle to kill all enemies before finishing"
+		"missionNotes": "Get out of circle to kill all enemies before finishing",
+		"secondaryElement": "Fire",
+		"secondarySkill": "Tech",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Sterile Land - Ironworks": {
 		"bestMission": "Weapon Processing Facility",
 		"duration": 52,
 		"reactorPerMin": 3.39,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "Chill",
+		"secondarySkill": "Dimension",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Sterile Land - Repository": {
 		"bestMission": "Kuiper Mine",
 		"duration": 325,
 		"reactorPerMin": 4.19,
-		"missionNotes": "Don't do objective after activating"
+		"missionNotes": "Don't do objective after activating",
+		"secondaryElement": "Electric",
+		"secondarySkill": "Fusion",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Sterile Land - Restricted Zone": {
 		"bestMission": "The Barracks",
 		"duration": 132,
 		"reactorPerMin": 1.63,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "Non-Attribute",
+		"secondarySkill": "Dimension",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Sterile Land - Rockfall": {
 		"bestMission": "Anticipated Ambush Point",
 		"duration": 30,
 		"reactorPerMin": 4.20,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "Electric",
+		"secondarySkill": "Singular",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Vespers - Lost Supply Depot": {
 		"bestMission": "Mossy Colossus",
 		"duration": 107,
 		"reactorPerMin": 2.19,
-		"missionNotes": "Spawns are not unlimited, so just kill as fast as possible"
+		"missionNotes": "Spawns are not unlimited, so just kill as fast as possible",
+		"secondaryElement": "Chill",
+		"secondarySkill": "Fusion",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Vespers - Moonlight Lake": {
 		"bestMission": "Lakeside",
 		"duration": 107,
 		"reactorPerMin": 2.68,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "Electric",
+		"secondarySkill": "Dimension",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Vespers - The Lumber Yard": {
 		"bestMission": "Frontline Base",
 		"duration": 75,
 		"reactorPerMin": 2.89,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "Fire",
+		"secondarySkill": "Fusion",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Vespers - The Ruins": {
 		"bestMission": "Ruins Courtyard",
 		"duration": 75,
 		"reactorPerMin": 2.69,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "Non-Attribute",
+		"secondarySkill": "Singular",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Vespers - Timberfall": {
 		"bestMission": "Timberfall Power Facility",
 		"duration": 99,
 		"reactorPerMin": 2.79,
-		"missionNotes": ""
+		"missionNotes": "",
+		"secondaryElement": "",
+		"secondarySkill": "",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"White-night Gulch - Hatchery": {
 		"bestMission": "Lower Hatchery",
 		"duration": 206,
 		"reactorPerMin": 1.6,
-		"missionNotes": "ESTIMATE"
+		"missionNotes": "ESTIMATE",
+		"secondaryElement": "Toxic",
+		"secondarySkill": "Tech",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"White-night Gulch - Moongrave Basin": {
 		"bestMission": "Water-cooling Recording Device",
 		"duration": 191,
 		"reactorPerMin": 2.25,
-		"missionNotes": "ESTIMATE"
+		"missionNotes": "ESTIMATE",
+		"secondaryElement": "",
+		"secondarySkill": "",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"White-night Gulch - Observatory": {
 		"bestMission": "Order Supply Warehouse",
 		"duration": 88,
 		"reactorPerMin": 2.14,
-		"missionNotes": "ESTIMATE"
+		"missionNotes": "ESTIMATE",
+		"secondaryElement": "Electric",
+		"secondarySkill": "Dimension",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"White-night Gulch - Shipment Base": {
 		"bestMission": "Fortress Outskirts",
 		"duration": 178,
 		"reactorPerMin": 4.80,
-		"missionNotes": "ESTIMATE"
+		"missionNotes": "ESTIMATE",
+		"secondaryElement": "Non-Attribute",
+		"secondarySkill": "Dimension",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"White-night Gulch - The Mountaintops": {
 		"bestMission": "Triumphal Arch",
 		"duration": 64,
 		"reactorPerMin": 2.14,
-		"missionNotes": "ESTIMATE"
+		"missionNotes": "ESTIMATE",
+		"secondaryElement": "Fire",
+		"secondarySkill": "Dimension",
+		"secondaryAmmo": "*",
+		"secondaryReactorPerMin": 0,
+		"secondaryMissionNotes": "ESTIMATE"
 	}
 }

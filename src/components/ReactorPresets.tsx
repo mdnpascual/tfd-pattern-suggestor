@@ -25,6 +25,7 @@ import { useEffect, useState } from "react";
 import PresetCard from "./PresetCard";
 import WeaponRawData from '../data/weapons.json';
 import { CategoryData } from "./CategoryList";
+import GetLocalStorageItem from "../utils/GetLocalStorageItem";
 
 interface ReactorPresetsProps {
 	presets: ItemPreset[];
@@ -60,12 +61,9 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 
 		setWeaponTypes(result)
 
-		const savedState = localStorage.getItem('reactorPresetsAccordion');
-		if (savedState !== null) {
-			setIsOpen(JSON.parse(savedState));
-		} else {
-			setIsOpen(true);
-		}
+		const savedState = GetLocalStorageItem<boolean>('reactorPresetsAccordion', true);
+		setIsOpen(savedState);
+
 	}, []);
 
 	const handleToggle = () => {

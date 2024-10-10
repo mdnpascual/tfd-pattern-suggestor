@@ -8,6 +8,7 @@ import EnhancementRawData from '../data/enhancements.json';
 import InitializeCategoryData from '../utils/InitializeCategoryData';
 import { CategoryData } from './CategoryList';
 import WarningIcon from '@mui/icons-material/Warning';
+import GetLocalStorageItem from '../utils/GetLocalStorageItem';
 
 export interface TableItem {
 	id: string;
@@ -133,10 +134,8 @@ const SortableTable = ({
 	}, []);
 
 	const handleMatCountChange = useCallback((item: string, newCount: number) => {
-		const savedMaterialCount = localStorage.getItem('materialCount');
-		let newMaterialCount: Record<string, number> = savedMaterialCount
-			? JSON.parse(savedMaterialCount)
-			: materialCount;
+		let newMaterialCount = GetLocalStorageItem<Record<string, number>>('materialCount', materialCount);
+
 		newMaterialCount[item] = newCount;
 		localStorage.setItem('materialCount', JSON.stringify(newMaterialCount));
 		// Update only the changed count

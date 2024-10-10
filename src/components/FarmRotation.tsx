@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Box } from '@mui/material';
+import { Typography, Box, FormControlLabel, TextField, Switch } from '@mui/material';
 import {
 	defaultReactorPresets,
 	ItemPreset,
@@ -15,49 +15,13 @@ import {
 import ReactorPresets from './ReactorPresets';
 import RotationComponent from './Rotation';
 import useDebounce from '../utils/Debounce';
+import SortSchedule from '../utils/SortSchedule';
+import GetLocalStorageItem from '../utils/GetLocalStorageItem';
 
-const filterScheduleFunc = (
-	presets: ItemPreset[],
-	newSchedule: ScheduleObject[],
-	setFilteredSchedule: React.Dispatch<React.SetStateAction<SchedulePresetObject[]>>
-) => {
-	const newFilteredSchedule: SchedulePresetObject[] = newSchedule.reduce((acc, item) => {
-		const matchingPreset = presets.filter(preset =>
-			(item.rewards.reward_type === 'Reactor' &&
-				item.rewards.reactor_element_type === preset.element &&
-				item.rewards.weapon_rounds_type === (preset.ammoType + ' Rounds') &&
-				item.rewards.arche_type === preset.skillType)
-		);
-
-		if (matchingPreset.length > 0) {
-			acc.push({ ...item, title: matchingPreset.map(mp => mp.title), type: 'Reactor' });
-		} else if (item.rewards.reward_type !== 'Reactor') {
-			acc.push({ ...item, title: [item.rewards.reward_type], type: item.rewards.reward_type});
-		}
-
-		return acc;
-	}, [] as SchedulePresetObject[]);
-
-	newFilteredSchedule.sort((a, b) => {
-		const aIsReactor = a.type === 'Reactor';
-		const bIsReactor = b.type === 'Reactor';
-
-		// Sort reactor by matched preset first then location alphanumerically
-		if (a.type === 'Reactor' && b.type === 'Reactor') {
-			if (b.title.length === a.title.length) {
-				return a.location.localeCompare(b.location)
-			}
-			return b.title.length - a.title.length
-		}
-
-		// Sort components by location
-		if (a.type !== 'Reactor' && b.type !== 'Reactor') {
-			return a.location.localeCompare(b.location)
-		}
-		return aIsReactor === bIsReactor ? 0 : aIsReactor ? 1 : -1;
-	});
-
-	setFilteredSchedule(newFilteredSchedule);
+const useLocalStorageDebounce = (key: string, delay: number) => {
+	return useDebounce((value: any) => {
+		localStorage.setItem(key, JSON.stringify(value));
+	}, delay);
 }
 
 const dateOptions = {
@@ -74,21 +38,23 @@ const FarmRotationComponent: React.FC = () => {
 	const [schedule, setSchedule] = useState<ScheduleObject[]>([]);
 	const [filteredSchedule, setFilteredSchedule] = useState<SchedulePresetObject[]>([]);
 	const [rotation, setRotation] = useState<number>(9);
+	const [ignoreStatic, setIgnoreStatic] = useState<boolean>(false);
+    const [filterDropRate, setFilterDropRate] = useState<string>('');
 
 	const weekInMillis = 7 * 24 * 60 * 60 * 1000;
 	const userLocale = navigator.language || 'en-US';
 
 	useEffect(() => {
-		// Load Presets
-		const storedPresets = localStorage.getItem('reactorPresets');
+
 		let incomingPresets: ItemPreset[] = []
-		if (storedPresets) {
-			incomingPresets = JSON.parse(storedPresets)
-			setPresets(incomingPresets);
-		} else {
-			incomingPresets = defaultReactorPresets
-			setPresets(defaultReactorPresets);
-		}
+		// Load Presets
+		const storedPresets = GetLocalStorageItem('reactorPresets', defaultReactorPresets);
+		setPresets(storedPresets);
+
+		const storedIgnoreStatic = GetLocalStorageItem<boolean>('reactorPresetsIgnoreStatic', false);
+		setIgnoreStatic(storedIgnoreStatic);
+		const storedFilterDropRate = GetLocalStorageItem<string>('reactorPresetsFilterDropRate', "0");
+		setFilterDropRate(storedFilterDropRate);
 
 		// Calculate the current rotation
 		const now = Date.now();
@@ -119,37 +85,87 @@ const FarmRotationComponent: React.FC = () => {
 
 						// Update the schedule with the new data
 						setSchedule(newSchedule.sort((a,b) => a.location.localeCompare(b.location)));
-						filterScheduleFunc(incomingPresets, newSchedule, setFilteredSchedule)
+						SortSchedule(storedPresets, newSchedule, storedIgnoreStatic, storedFilterDropRate, setFilteredSchedule)
 					})
 			})
 			.catch(error => {
-				console.error('Error fetching reward rotations:', error);
 			});
 	}, []);
 
-	const savePresetsToLocalStorage = useDebounce((newPresets: ItemPreset[]) => {
-		localStorage.setItem('reactorPresets', JSON.stringify(newPresets));
-	}, 500);
+	const savePresetsToLocalStorage = useLocalStorageDebounce('reactorPresets', 500);
+	const saveIgnoreStaticToLocalStorage = useLocalStorageDebounce('reactorPresetsIgnoreStatic', 500);
+	const saveFilterDropRateToLocalStorage = useLocalStorageDebounce('reactorPresetsFilterDropRate', 500);
 
 	useEffect(() => {
 		savePresetsToLocalStorage(presets);
-		filterScheduleFunc(presets, schedule, setFilteredSchedule)
+		SortSchedule(presets, schedule, ignoreStatic, filterDropRate, setFilteredSchedule);
 	}, [presets]);
+
+	useEffect(() => {
+		saveIgnoreStaticToLocalStorage(ignoreStatic);
+		SortSchedule(presets, schedule, ignoreStatic, filterDropRate, setFilteredSchedule);
+	}, [ignoreStatic]);
+
+	useEffect(() => {
+		saveFilterDropRateToLocalStorage(filterDropRate);
+		SortSchedule(presets, schedule, ignoreStatic, filterDropRate, setFilteredSchedule);
+	}, [filterDropRate]);
+
+	const handleFilterDropRateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const value = e.target.value;
+		// Only allow numbers and decimals greater than 0
+		if (/^\d*\.?\d*$/.test(value) || value === '') {
+			setFilterDropRate(value);
+		}
+	};
 
 	return (
 		<Box  sx={{
 			width: '100%',
-			maxWidth: { xs: '95%', sm: '600px', md: '960px', lg: '1280px', xl: '1920px' },
+			maxWidth: { xs: '95%', sm: '95%', md: '95%', lg: '95%', xl: '90%' },
 			overflow: 'auto',
 			maxHeight: 'calc(100vh - 50px)',
 			margin: '0 auto'
 		}}>
 			<ReactorPresets presets={presets} setPresets={setPresets} />
-			<Typography variant="h6" sx={{ mt: 2 }}>
-				Rotation {rotation}:{' '}
+			<Box
+				display="flex"
+				alignItems="center"
+				flexDirection={{ xs: 'column', sm: 'row' }}
+				sx={{ mt: 2 }}
+			>
+				<Typography variant="h6" sx={{ mb: { xs: 2, sm: 0 }, mr: { sm: 2 } }}>
+					Rotation {rotation}:{' '}
 					{(new Date(rotationStartDate + ((rotation - rotationRef) * weekly_unix_offset)).toLocaleString(userLocale, dateOptions))} -{' '}
 					{(new Date(rotationStartDate + ((rotation - rotationRef) * weekly_unix_offset) + weekly_unix_offset - 1000).toLocaleString(userLocale, dateOptions))}
-			</Typography>
+				</Typography>
+				<Box
+					display="flex"
+					flexDirection={{ xs: 'row', sm: 'row' }}
+					alignItems="center"
+					sx={{ mt: { xs: 2, sm: 0 } }}
+				>
+					<FormControlLabel
+						control={
+							<Switch
+								checked={ignoreStatic}
+								onChange={() => setIgnoreStatic(prev => !prev)}
+							/>
+						}
+						label="Ignore Static"
+						sx={{ mr: 2 }}
+					/>
+					<TextField
+						label="Ignore drop rate <"
+						variant="outlined"
+						value={filterDropRate}
+						onChange={handleFilterDropRateChange}
+						size="small"
+						type="number"
+						inputProps={{ min: 0 }}
+					/>
+				</Box>
+			</Box>
 			<RotationComponent schedule={filteredSchedule}/>
 		</Box>
 	);
