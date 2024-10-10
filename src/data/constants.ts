@@ -309,3 +309,5 @@ export const dataKeywordSharenModified = '(sharen)';
 export const dataKeywordVoidReactor = 'void fusion reactor';
 export const dataKeywordSpecOps = 'void fusion reactor';
 export const dataKeywordDropsFromOutpost = 'vulgus strategic outpost'
+
+export const patternNameToRemove = / AA| AB/;

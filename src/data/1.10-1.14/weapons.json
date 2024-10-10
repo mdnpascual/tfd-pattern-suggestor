@@ -531,34 +531,6 @@
 		"yOffset": 27,
 		"scale": 190
 	},
-	"Frost Watcher": {
-		"parts": [
-			{ "name": "Frost Watcher Polymer Syncytium", "mats": [
-				{ "name": "Silicon", "quantity": 108 },
-				{ "name": "Flectorite", "quantity": 73 },
-				{ "name": "Pure Energy Residue", "quantity": 10 },
-				{ "name": "Frost Watcher Polymer Syncytium Blueprint", "quantity": 1 }
-			]},
-			{ "name": "Frost Watcher Synthetic Fiber", "mats": [
-				{ "name": "Semi-permanent Plasma", "quantity": 72 },
-				{ "name": "Hellion", "quantity": 76 },
-				{ "name": "Specialized Biometal", "quantity": 11 },
-				{ "name": "Frost Watcher Synthetic Fiber Blueprint", "quantity": 1 }
-			]},
-			{ "name": "Frost Watcher Nano Tube", "mats": [
-				{ "name": "Monomolecular Extractor", "quantity": 125 },
-				{ "name": "Shape Memory Alloy", "quantity": 115 },
-				{ "name": "Common Carbon Activator", "quantity": 4 },
-				{ "name": "Frost Watcher Nano Tube Blueprint", "quantity": 1 }
-			]},
-			{ "name": "Frost Watcher Blueprint", "mats": [{ "name": "Frost Watcher Blueprint", "quantity": 1 }]}
-		],
-		"ammoType": "Impact",
-		"img": "https://open.api.nexon.com/static/tfd/img/95dd69d2bb516b9e12b03176d453aea0",
-		"xOffset": -65,
-		"yOffset": 35,
-		"scale": 165
-	},
 	"Thunder Cage": {
 		"parts": [
 			{ "name": "Thunder Cage Polymer Syncytium", "mats": []},

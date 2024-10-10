@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableSortLabel, Box, Button, Typography } from '@mui/material';
 import DropListOverlay from './DropListOverlay';
-import { DropList } from '../data/constants';
+import { DropList, patternNameToRemove } from '../data/constants';
 import CharacterRawData from '../data/characters.json';
 import WeaponRawData from '../data/weapons.json';
 import EnhancementRawData from '../data/enhancements.json';
@@ -110,8 +110,8 @@ const SortableTable = ({
 					bValue = b.count
 				}
 			} else if (sortKey === 'name') {
-				aValue = (aValue as string).replace(" AA", "");
-				bValue = (bValue as string).replace(" AA", "");
+				aValue = (aValue as string).replace(patternNameToRemove, "");
+				bValue = (bValue as string).replace(patternNameToRemove, "");
 			}
 
 			if (aValue < bValue) return order === 'asc' ? -1 : 1;

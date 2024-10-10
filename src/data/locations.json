@@ -133,15 +133,15 @@
 	},
 	"Sterile Land - Classified Area": {
 		"bestMission": "Large Nuclear Reactor",
-		"duration": 89,
-		"reactorPerMin": 2.61,
-		"missionNotes": "ESTIMATE"
+		"duration": 114,
+		"reactorPerMin": 2.56,
+		"missionNotes": "Get out of circle to kill all enemies before finishing"
 	},
 	"Sterile Land - Ironworks": {
 		"bestMission": "Weapon Processing Facility",
-		"duration": 63,
-		"reactorPerMin": 2.37,
-		"missionNotes": "ESTIMATE"
+		"duration": 52,
+		"reactorPerMin": 3.39,
+		"missionNotes": ""
 	},
 	"Sterile Land - Repository": {
 		"bestMission": "Kuiper Mine",

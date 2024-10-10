@@ -144,10 +144,10 @@
 		"dropsFrom": "Sterile Land (Normal) - Block Kuiper Mining",
 		"useIn": "Void Intercept Battle: Stunning Beauty"
 	},
-	"012 AB": {
+	"012": {
 		"drops": [
 			{ "chance": 0.03, "name": "Energy Activator Blueprint" },
-			{ "chance": 0.06, "name": "Ultimate Freyna Stabilizer Blueprint" },
+			{ "chance": 0.06, "name": "Enduring Legacy Synthetic Fiber Blueprint" },
 			{ "chance": 0.15, "name": "Lepic Enhanced Cells Blueprint" },
 			{ "chance": 0.38, "name": "Greg\u0027s Reversed Fate Blueprint" },
 			{ "chance": 0.38, "name": "Gley Enhanced Cells Blueprint" }
@@ -489,10 +489,10 @@
 		"dropsFrom": "White-night Gulch (Normal) - Block Kuiper mining",
 		"useIn": "Void Intercept Battle: Pyromaniac"
 	},
-	"039 AB": {
+	"039": {
 		"drops": [
 			{ "chance": 0.03, "name": "Energy Activator Blueprint" },
-			{ "chance": 0.06, "name": "Ultimate Freyna Stabilizer Blueprint" },
+			{ "chance": 0.06, "name": "Clairvoyance Synthetic Fiber Blueprint" },
 			{ "chance": 0.15, "name": "Python Nano Tube Blueprint" },
 			{ "chance": 0.38, "name": "Enzo Stabilizer Blueprint" },
 			{ "chance": 0.38, "name": "Wave of Light Nano Tube Blueprint" }
@@ -581,11 +581,11 @@
 		"dropsFrom": "Hagios (Normal) - Neutralize Void Experiment",
 		"useIn": "Void Intercept Battle: Swamp Walker"
 	},
-	"046 AB": {
+	"046": {
 		"drops": [
 			{ "chance": 0.03, "name": "Energy Activator Blueprint" },
 			{ "chance": 0.06, "name": "Executor Synthetic Fiber Blueprint" },
-			{ "chance": 0.15, "name": "Ultimate Freyna Code" },
+			{ "chance": 0.15, "name": "Divine Punishment Blueprint" },
 			{ "chance": 0.38, "name": "Restored Relic Nano Tube Blueprint" },
 			{ "chance": 0.38, "name": "Viessa Spiral Catalyst Blueprint" }
 		],
@@ -684,10 +684,10 @@
 		"dropsFrom": "Fortress (Normal) - Defend Albion resources",
 		"useIn": "Void Intercept Battle: Hanged Man"
 	},
-	"054 AB": {
+	"054": {
 		"drops": [
 			{ "chance": 0.06, "name": "Esiemo Code" },
-			{ "chance": 0.1, "name": "Ultimate Freyna Spiral Catalyst Blueprint" },
+			{ "chance": 0.1, "name": "Kyle Enhanced Cells Blueprint" },
 			{ "chance": 0.2, "name": "Crystallization Catalyst Blueprint" },
 			{ "chance": 0.32, "name": "Python Polymer Syncytium Blueprint" },
 			{ "chance": 0.32, "name": "Secret Garden Blueprint" }
@@ -786,10 +786,10 @@
 		"dropsFrom": "Sterile Land (Hard) - The Repository: Vulgus Strategic Outpost",
 		"useIn": "Sterile Land (Hard) - The Repository: Void Fusion Reactor"
 	},
-	"063 AB": {
+	"063": {
 		"drops": [
 			{ "chance": 0.06, "name": "Energy Activator Blueprint" },
-			{ "chance": 0.1, "name": "Ultimate Freyna Enhanced Cells Blueprint" },
+			{ "chance": 0.1, "name": "Valby Code" },
 			{ "chance": 0.2, "name": "Kyle Enhanced Cells Blueprint" },
 			{ "chance": 0.32, "name": "Wave of Light Synthetic Fiber Blueprint" },
 			{ "chance": 0.32, "name": "Python Blueprint" }
@@ -830,9 +830,9 @@
 		"dropsFrom": "Sterile Land (Hard) - The Forgottense",
 		"useIn": "Void Intercept Battle (Hard): Dead Bride"
 	},
-	"067 AB": {
+	"067": {
 		"drops": [
-			{ "chance": 0.06, "name": "Ultimate Freyna Code" },
+			{ "chance": 0.06, "name": "Energy Activator Blueprint" },
 			{ "chance": 0.1, "name": "Esiemo Stabilizer Blueprint" },
 			{ "chance": 0.2, "name": "Ajax Spiral Catalyst Blueprint" },
 			{ "chance": 0.32, "name": "Enduring Legacy Synthetic Fiber Blueprint" },
@@ -974,10 +974,10 @@
 		"dropsFrom": "Vespers (Hard) - The Shelter",
 		"useIn": "Void Intercept Battle (Hard): Devourer"
 	},
-	"079 AB": {
+	"079": {
 		"drops": [
 			{ "chance": 0.06, "name": "Energy Activator Blueprint" },
-			{ "chance": 0.1, "name": "Ultimate Freyna Spiral Catalyst Blueprint" },
+			{ "chance": 0.1, "name": "Yujin Stabilizer Blueprint" },
 			{ "chance": 0.2, "name": "Afterglow Sword Blueprint" },
 			{ "chance": 0.32, "name": "Lepic Spiral Catalyst Blueprint" },
 			{
@@ -1024,10 +1024,10 @@
 		"dropsFrom": "Echo Swamp (Hard) - Derelict Covert: Vulgus Strategic Outpost",
 		"useIn": "Echo Swamp (Hard) - Derelict Covert: Void Fusion Reactor"
 	},
-	"083 AB": {
+	"083": {
 		"drops": [
 			{ "chance": 0.06, "name": "Energy Activator Blueprint" },
-			{ "chance": 0.1, "name": "Ultimate Freyna Enhanced Cells Blueprint" },
+			{ "chance": 0.1, "name": "Viessa Code" },
 			{ "chance": 0.2, "name": "Enduring Legacy Polymer Syncytium Blueprint" },
 			{ "chance": 0.32, "name": "Gley Stabilizer Blueprint" },
 			{ "chance": 0.32, "name": "Albion Cavalry Gun Blueprint" }
@@ -1184,9 +1184,9 @@
 		"dropsFrom": "Agna Desert (Hard) - Caligo Ossuary",
 		"useIn": "Void Intercept Battle (Hard): Swamp Walker"
 	},
-	"097 AB": {
+	"097": {
 		"drops": [
-			{ "chance": 0.06, "name": "Ultimate Freyna Stabilizer Blueprint" },
+			{ "chance": 0.06, "name": "Energy Activator Blueprint" },
 			{ "chance": 0.1, "name": "Enduring Legacy Blueprint" },
 			{ "chance": 0.2, "name": "Enzo Enhanced Cells Blueprint" },
 			{ "chance": 0.32, "name": "King\u0027s Guard Lance Blueprint" },
@@ -1217,9 +1217,9 @@
 		"dropsFrom": "White-night Gulch (Hard) - The Mountaintops: Vulgus Strategic Outpost (Successful Infiltration)",
 		"useIn": "White-night Gulch (Hard) - The Mountaintops: Void Fusion Reactor"
 	},
-	"100 AB": {
+	"100": {
 		"drops": [
-			{ "chance": 0.06, "name": "Ultimate Freyna Code" },
+			{ "chance": 0.06, "name": "Yujin Code" },
 			{ "chance": 0.1, "name": "Jayber Code" },
 			{ "chance": 0.2, "name": "Crystallization Catalyst Blueprint" },
 			{ "chance": 0.32, "name": "Afterglow Sword Polymer Syncytium Blueprint" },
@@ -1441,10 +1441,10 @@
 		"dropsFrom": "Fortress (Hard) - Frozen Valley: Vulgus Strategic Outpost",
 		"useIn": "Fortress (Hard) - Frozen Valley: Void Fusion Reactor"
 	},
-	"119 AB": {
+	"119": {
 		"drops": [
 			{ "chance": 0.06, "name": "Energy Activator Blueprint" },
-			{ "chance": 0.1, "name": "Ultimate Freyna Enhanced Cells Blueprint" },
+			{ "chance": 0.1, "name": "Enduring Legacy Blueprint" },
 			{ "chance": 0.2, "name": "Jayber Enhanced Cells Blueprint" },
 			{ "chance": 0.32, "name": "Blue Beetle Nano Tube Blueprint" },
 			{ "chance": 0.32, "name": "Ajax Enhanced Cells Blueprint" }
@@ -1532,10 +1532,10 @@
 		"dropsFrom": "Fortress (Hard) - Heart of the Fortress",
 		"useIn": "Void Intercept Battle (Hard): Molten Fortress"
 	},
-	"127 AB": {
+	"127": {
 		"drops": [
 			{ "chance": 0.06, "name": "Energy Activator Blueprint" },
-			{ "chance": 0.1, "name": "Ultimate Freyna Spiral Catalyst Blueprint" },
+			{ "chance": 0.1, "name": "Esiemo Spiral Catalyst Blueprint" },
 			{ "chance": 0.2, "name": "Afterglow Sword Nano Tube Blueprint" },
 			{ "chance": 0.32, "name": "Kyle Stabilizer Blueprint" },
 			{ "chance": 0.32, "name": "Blue Beetle Blueprint" }
