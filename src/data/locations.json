@@ -144,16 +144,16 @@
 		"missionNotes": "ESTIMATE"
 	},
 	"Sterile Land - Repository": {
-		"bestMission": "Kuiper Refinery",
-		"duration": 109,
-		"reactorPerMin": 1.48,
-		"missionNotes": "ESTIMATE"
+		"bestMission": "Kuiper Mine",
+		"duration": 325,
+		"reactorPerMin": 4.19,
+		"missionNotes": "Don't do objective after activating"
 	},
 	"Sterile Land - Restricted Zone": {
 		"bestMission": "The Barracks",
-		"duration": 160,
-		"reactorPerMin": 1.10,
-		"missionNotes": "ESTIMATE"
+		"duration": 132,
+		"reactorPerMin": 1.63,
+		"missionNotes": ""
 	},
 	"Sterile Land - Rockfall": {
 		"bestMission": "Anticipated Ambush Point",
