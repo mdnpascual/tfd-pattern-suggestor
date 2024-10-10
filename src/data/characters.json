@@ -474,21 +474,21 @@
 				{ "name": "Compound Coating Material", "quantity": 538 },
 				{ "name": "Reverse Charging Coil", "quantity": 1023 },
 				{ "name": "Highly-concentrated Energy Residue", "quantity": 76 },
-				{ "name": "Ultimate Freyna Enhanced Cells Blueprint", "quantity": 36 }
+				{ "name": "Ultimate Freyna Enhanced Cells Blueprint", "quantity": 1 }
 			]},
 			{ "name": "Ultimate Freyna Stabilizer", "mats": [
 				{ "name": "Hardener", "quantity": 869 },
 				{ "name": "Nanopolymers", "quantity": 817 },
 				{ "name": "Polyatomic Ion Particle", "quantity": 216 },
-				{ "name": "Ultimate Freyna Stabilizer Blueprint", "quantity": 36 }
+				{ "name": "Ultimate Freyna Stabilizer Blueprint", "quantity": 1 }
 			]},
 			{ "name": "Ultimate Freyna Spiral Catalyst", "mats": [
 				{ "name": "Superfluid", "quantity": 1285 },
 				{ "name": "Carbon Crystal", "quantity": 1247 },
 				{ "name": "Compound Carbon Activator", "quantity": 67 },
-				{ "name": "Ultimate Freyna Spiral Catalyst Blueprint", "quantity": 36 }
+				{ "name": "Ultimate Freyna Spiral Catalyst Blueprint", "quantity": 1 }
 			]},
-			{ "name": "Ultimate Freyna Code", "mats": [{ "name": "Ultimate Freyna Code", "quantity": 36 }]}
+			{ "name": "Ultimate Freyna Code", "mats": [{ "name": "Ultimate Freyna Code", "quantity": 1 }]}
 		],
 		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimatefreyna.png",
 		"scale": 100,
