@@ -101,13 +101,13 @@
 	"Fortress - Convertor Facility": {
 		"bestMission": "Central Control Unit",
 		"duration": 163,
-		"reactorPerMin": 3.82,
+		"reactorPerMin": 3.42,
 		"missionNotes": "",
 		"secondaryElement": "Chill",
 		"secondarySkill": "Singular",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.83,
+		"secondaryMissionNotes": ""
 	},
 	"Fortress - Defense Line": {
 		"bestMission": "Fortress Command Entrance",
@@ -288,13 +288,13 @@
 	"Sterile Land - Rockfall": {
 		"bestMission": "Anticipated Ambush Point",
 		"duration": 30,
-		"reactorPerMin": 4.20,
+		"reactorPerMin": 5.31,
 		"missionNotes": "",
 		"secondaryElement": "Electric",
 		"secondarySkill": "Singular",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 3.46,
+		"secondaryMissionNotes": ""
 	},
 	"Vespers - Lost Supply Depot": {
 		"bestMission": "Mossy Colossus",
