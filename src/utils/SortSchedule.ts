@@ -77,13 +77,9 @@ const SortSchedule = (
 		const aSecondaryScore = (locationData[a.location].secondaryReactorPerMin === 0 ? locationData[a.location].reactorPerMin * estimateSecondaryRatio : locationData[a.location].secondaryReactorPerMin);
 		const bSecondaryScore = (locationData[b.location].secondaryReactorPerMin === 0 ? locationData[b.location].reactorPerMin * estimateSecondaryRatio : locationData[b.location].secondaryReactorPerMin);
 
-		if (aTotalLength !== bTotalLength) {
-			const aTotalScore = (a.combined.length * aCombinedScore) + (a.rotation.length * aRotationScore) + (a.static.length * aSecondaryScore)
-			const bTotalScore = (b.combined.length * bCombinedScore) + (b.rotation.length * bRotationScore) + (b.static.length * bSecondaryScore)
-			return bTotalScore - aTotalScore;
-		}
-
-		return bTotalLength - aTotalLength;
+		const aTotalScore = (a.combined.length * aCombinedScore) + (a.rotation.length * aRotationScore) + (a.static.length * aSecondaryScore)
+		const bTotalScore = (b.combined.length * bCombinedScore) + (b.rotation.length * bRotationScore) + (b.static.length * bSecondaryScore)
+		return bTotalScore - aTotalScore;
 	});
 
 	setFilteredSchedule(newFilteredSchedule);
