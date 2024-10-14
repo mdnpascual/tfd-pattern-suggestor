@@ -20,6 +20,7 @@ import SortSchedule from '../utils/SortSchedule';
 import GetLocalStorageItem from '../utils/GetLocalStorageItem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ReactorPresetsSummary from './ReactorPresetsSummary';
+import ValidateReactorPresets from '../utils/ValidateReactorPresets';
 
 const useLocalStorageDebounce = (key: string, delay: number) => {
 	return useDebounce((value: any) => {
@@ -53,7 +54,7 @@ const FarmRotationComponent: React.FC = () => {
 	useEffect(() => {
 		// Load Presets
 		const storedPresets = GetLocalStorageItem('reactorPresets', defaultReactorPresets);
-		setPresets(storedPresets);
+		setPresets(ValidateReactorPresets(storedPresets));
 
 		const savedState = GetLocalStorageItem<boolean>('reactorPresetsLocationAccordion', true);
 		setIsOpen(savedState);

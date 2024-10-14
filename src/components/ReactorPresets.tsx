@@ -2,6 +2,7 @@ import {
 	Accordion,
 	AccordionDetails,
 	AccordionSummary,
+	Alert,
 	Box,
 	Button,
 	Dialog,
@@ -14,6 +15,7 @@ import {
 	InputLabel,
 	MenuItem,
 	Select,
+	Snackbar,
 	TextField,
 	Typography,
 	useMediaQuery,
@@ -40,6 +42,8 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 	const [deleteKey, setDeleteKey] = useState<number | null>(null);
 	const [isOpen, setIsOpen] = useState(false);
 	const [weaponTypes, setWeaponTypes] = useState<Record<string, string[]>>({});
+	const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
+	const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'error' | 'info'>('info');
 
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -73,10 +77,27 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 	};
 
 	const addUserPreset = () => {
-		if (userPreset) {
+		console.log(userPreset)
+		if (userPreset?.title && userPreset?.element && userPreset?.ammoType && userPreset?.skillType) {
 			setPresets([...presets, { ...userPreset }]);
 			setUserPreset(null);
+		} else {
+			let error = []
+			if (!userPreset?.title) error.push("Title cannot be empty")
+			if (!userPreset?.element) error.push("Element cannot be empty")
+			if (!userPreset?.ammoType) error.push("Ammo Type cannot be empty")
+			if (!userPreset?.skillType) error.push("Skill Type cannot be empty")
+			showSnackbar(error.join("<br/>"), 'error');
 		}
+	};
+
+	const handleSnackbarClose = () => {
+		setSnackbarMessage(null);
+	};
+
+	const showSnackbar = (message: string, severity: 'success' | 'error' | 'info') => {
+		setSnackbarMessage(message);
+		setSnackbarSeverity(severity);
 	};
 
 	const handleDelete = (index: number) => {
@@ -177,16 +198,29 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 				<Box sx={{ mt: 2 }} overflow={'auto'} maxHeight={isMobile ? '43vh' : undefined}>
 					<Grid container spacing={2}>
 					{presets.map((preset, index) => (
-						<PresetCard
-							key={index + preset.title}
-							preset={preset}
-							index={index}
-							weapons={weaponTypes[preset.ammoType]}
-							openConfirmDeleteDialog={openConfirmDeleteDialog}/>
+						weaponTypes[preset.ammoType] && (
+							<PresetCard
+								key={index + preset.title}
+								preset={preset}
+								index={index}
+								weapons={weaponTypes[preset.ammoType]}
+								openConfirmDeleteDialog={openConfirmDeleteDialog}
+							/>
+						)
 					))}
 					</Grid>
 				</Box>
 			</AccordionDetails>
+			<Snackbar
+				open={!!snackbarMessage}
+				autoHideDuration={6000}
+				onClose={handleSnackbarClose}
+				anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+			>
+				<Alert onClose={handleSnackbarClose} severity={snackbarSeverity}>
+					<div dangerouslySetInnerHTML={{ __html: snackbarMessage ?? '' }} />
+				</Alert>
+			</Snackbar>
 			<Dialog
 				open={deleteKey !== null}
 				onClose={() => setDeleteKey(null)}

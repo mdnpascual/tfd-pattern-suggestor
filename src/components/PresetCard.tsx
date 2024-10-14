@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Box, Grid, IconButton, Tooltip, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -17,14 +17,14 @@ interface PresetCardProps {
 const PresetCard: React.FC<PresetCardProps> = ({ preset, index, weapons, openConfirmDeleteDialog }) => {
 	const [hovered, setHovered] = useState(false);
 
-	const weaponTooltips = (
+	const weaponTooltips = useMemo(() => (
 		<div>
 			Weapons using {preset.ammoType} rounds:
 			{weapons.map((weapon) => (
-				<div>{weapon}</div>
+				<div key={weapon}>{weapon}</div>
 			))}
 		</div>
-	);
+	), [preset.ammoType, weapons]);
 
 	return (
 		<Grid item xs={12} sm={3} key={index}>

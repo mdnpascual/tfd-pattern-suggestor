@@ -49,10 +49,10 @@ const Saves: React.FC = () => {
 		setSnackbarMessage(null);
 	};
 
-    const showSnackbar = (message: string, severity: 'success' | 'error' | 'info') => {
-        setSnackbarMessage(message);
-        setSnackbarSeverity(severity);
-    };
+	const showSnackbar = (message: string, severity: 'success' | 'error' | 'info') => {
+		setSnackbarMessage(message);
+		setSnackbarSeverity(severity);
+	};
 
 	const handleSave = (key: string, data?: any) => {
 		if (/^\d/.test(key)) { // Check if the key starts with a number
