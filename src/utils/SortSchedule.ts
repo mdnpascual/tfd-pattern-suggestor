@@ -1,15 +1,49 @@
 import { LocationData } from '../components/Rotation';
-import { ItemPreset, ScheduleObject, SchedulePresetObject, estimateSecondaryRatio } from '../data/constants';
+import { ItemPreset, ItemPresetBestLocation, ItemPresetCategory, ScheduleObject, SchedulePresetObject, createItemPresetCategory, estimateSecondaryRatio } from '../data/constants';
 import LocationRawData from '../data/locations.json';
 const locationData = LocationRawData as Record<string, LocationData>;
+
+const CheckBestLocation = (
+	list: ItemPresetBestLocation[],
+	schedule: ScheduleObject,
+	matchedPresets: ItemPresetCategory[]
+) => {
+	matchedPresets.forEach((preset) => {
+		const inListIndex = list.findIndex((item) => item.title === preset.title);
+		const dropRate = preset.isCombined
+			? locationData[schedule.location].reactorPerMin + (locationData[schedule.location].secondaryReactorPerMin === 0 ? locationData[schedule.location].reactorPerMin * estimateSecondaryRatio : locationData[schedule.location].secondaryReactorPerMin)
+			: preset.isRotation
+				? locationData[schedule.location].reactorPerMin
+				: preset.isStatic
+					? (locationData[schedule.location].secondaryReactorPerMin === 0 ? locationData[schedule.location].reactorPerMin * estimateSecondaryRatio : locationData[schedule.location].secondaryReactorPerMin)
+					: 0;
+
+		if (inListIndex === -1) {
+			list.push({
+				...preset,
+				location: schedule.location,
+				dropRate: dropRate
+			})
+		} else {
+			if (dropRate > list[inListIndex].dropRate) {
+				list[inListIndex].location = schedule.location
+				list[inListIndex].dropRate = dropRate
+			}
+		}
+	})
+	return list;
+}
 
 const SortSchedule = (
 	presets: ItemPreset[],
 	newSchedule: ScheduleObject[],
+	showAll: boolean,
 	ignoreStatic: boolean,
 	filterDropRate: string,
-	setFilteredSchedule: React.Dispatch<React.SetStateAction<SchedulePresetObject[]>>
+	setFilteredSchedule: React.Dispatch<React.SetStateAction<SchedulePresetObject[]>>,
+	setPresetBestLocation: React.Dispatch<React.SetStateAction<ItemPresetBestLocation[]>>
 ) => {
+	let presetBestLocation: ItemPresetBestLocation[] = [];
 	const newFilteredSchedule: SchedulePresetObject[] = newSchedule.reduce((acc, item) => {
 
 		const matchingLocation = locationData[item.location]
@@ -47,7 +81,21 @@ const SortSchedule = (
 				(isNaN(filteredDropRate) || (!isNaN(filteredDropRate) && ((matchingLocation.secondaryReactorPerMin === 0 ? (matchingLocation.reactorPerMin * estimateSecondaryRatio)  : matchingLocation.secondaryReactorPerMin ) >= filteredDropRate))))
 		);
 
-		if (matchedCombined.length + matchedRotation.length + matchedStatic.length > 0) {
+		presetBestLocation = CheckBestLocation(presetBestLocation, item, [
+			...matchedCombined.map((item) => ({ ...createItemPresetCategory(item), isCombined: true })),
+			...matchedRotation.map((item) => ({ ...createItemPresetCategory(item), isRotation: true })),
+			...matchedStatic.map((item) => ({ ...createItemPresetCategory(item), isStatic: true }))
+		])
+
+		if (showAll && item.rewards.reward_type === 'Reactor') {
+			if (Math.max(matchingLocation.reactorPerMin, (matchingLocation.secondaryReactorPerMin === 0 ? (matchingLocation.reactorPerMin * estimateSecondaryRatio) : matchingLocation.secondaryReactorPerMin)) >= filteredDropRate) {
+				acc.push({ ...item,
+					rotation: matchedRotation.map(mp => mp.title),
+					combined: matchedCombined.map(mp => mp.title),
+					static: matchedStatic.map(mp => mp.title),
+					type: 'Reactor' });
+			}
+		} else if (matchedCombined.length + matchedRotation.length + matchedStatic.length > 0) {
 			acc.push({ ...item,
 				rotation: matchedRotation.map(mp => mp.title),
 				combined: matchedCombined.map(mp => mp.title),
@@ -82,7 +130,12 @@ const SortSchedule = (
 		return bTotalScore - aTotalScore;
 	});
 
+	presetBestLocation.sort((a,b) => {
+		return b.dropRate - a.dropRate
+	})
+
 	setFilteredSchedule(newFilteredSchedule);
+	setPresetBestLocation(presetBestLocation);
 }
 
 export default SortSchedule;

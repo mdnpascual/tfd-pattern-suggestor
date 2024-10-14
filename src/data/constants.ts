@@ -173,6 +173,26 @@ export interface ItemPreset {
 	skillType: string;
 }
 
+export interface ItemPresetBestLocation extends ItemPreset {
+	location: string;
+	dropRate: number;
+}
+
+export interface ItemPresetCategory extends ItemPreset {
+	isCombined: boolean;
+	isRotation: boolean;
+	isStatic: boolean;
+}
+
+export const createItemPresetCategory = (preset: ItemPreset): ItemPresetCategory => {
+	return {
+		...preset,
+		isCombined: false,
+		isRotation: false,
+		isStatic: false,
+	};
+}
+
 export interface Reward {
 	rotation: number;
 	reward_type: string;
@@ -222,6 +242,9 @@ const baseKeys = [
 	'realTimeSuggestor',
 	'reactorPresets',
 	'reactorPresetsAccordion',
+	'reactorPresetsSummaryAccordion',
+	'reactorPresetsLocationAccordion',
+	'reactorPresetsShowAll',
 	'reactorPresetsIgnoreStatic',
 	'reactorPresetsFilterDropRate'
 ] as const;
@@ -293,6 +316,30 @@ export const defaultReactorPresets = [
 	}
 ]
 
+export const ELEMENTS_COLOR_MAP: Record<string, { backgroundColor: string; borderColor: string }> = {
+	Fire: {
+		backgroundColor: 'rgba(144, 30, 45, 0.4)',
+		borderColor: 'rgba(237, 36, 58, 1.0)'
+	},
+	Chill: {
+		backgroundColor: 'rgba(160, 240, 247, 0.4)',
+		borderColor: 'rgba(95, 231, 243, 1.0)'
+	},
+	Electric: {
+		backgroundColor: 'rgba(0, 51, 102, 0.4)',
+		borderColor: 'rgba(87, 147, 216, 1.0)'
+	},
+	Toxic: {
+		backgroundColor: 'rgba(73, 122, 22, 0.4)',
+		borderColor: 'rgba(4, 251, 4, 1.0)'
+	},
+	'Non-Attribute': {
+		backgroundColor: 'rgba(255, 255, 255, 0.4)',
+		borderColor: 'rgba(255, 255, 255, 1.0)'
+	},
+};
+
+
 export const ELEMENTS = ['Fire', 'Chill', 'Electric', 'Toxic', 'Non-Attribute'] as const;
 export const AMMO_TYPES = ['General', 'Impact', 'Special', 'High-Power'] as const;
 export const SKILL_TYPES = ['Singular', 'Dimension', 'Fusion', 'Tech'] as const;
@@ -319,4 +366,4 @@ export const dataKeywordSpecOps = 'void fusion reactor';
 export const dataKeywordDropsFromOutpost = 'vulgus strategic outpost'
 
 export const patternNameToRemove = / AA| AB/;
-export const estimateSecondaryRatio = 0.75;
+export const estimateSecondaryRatio = 0.70;

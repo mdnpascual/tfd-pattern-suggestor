@@ -61,7 +61,7 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 
 		setWeaponTypes(result)
 
-		const savedState = GetLocalStorageItem<boolean>('reactorPresetsAccordion', true);
+		const savedState = GetLocalStorageItem<boolean>('reactorPresetsAccordion', false);
 		setIsOpen(savedState);
 
 	}, []);
@@ -92,7 +92,7 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 	return (
 		<Accordion expanded={isOpen} onChange={handleToggle} sx={{mt:'10px'}}>
 			<AccordionSummary expandIcon={<ExpandMoreIcon />}>
-				<Typography>Reactor Presets</Typography>
+				<Typography>List of Reactor Presets</Typography>
 			</AccordionSummary>
 			<AccordionDetails>
 				<Box>

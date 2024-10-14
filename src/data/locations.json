@@ -56,36 +56,36 @@
 	},
 	"Echo Swamp - Abandoned Zone": {
 		"bestMission": "Environment contamination Zone",
-		"duration": 35,
-		"reactorPerMin": 7.02,
+		"duration": 34,
+		"reactorPerMin": 7.42,
 		"missionNotes": "",
 		"secondaryElement": "Non-Attribute",
 		"secondarySkill": "Tech",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 4.60,
+		"secondaryMissionNotes": ""
 	},
 	"Echo Swamp - Derelict Covert": {
-		"bestMission": "Emergency Landing Strip",
-		"duration": 91,
-		"reactorPerMin": 2.16,
+		"bestMission": "Verdant Greenery",
+		"duration": 60,
+		"reactorPerMin": 1.24,
 		"missionNotes": "",
 		"secondaryElement": "Fire",
 		"secondarySkill": "Singular",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.52,
+		"secondaryMissionNotes": ""
 	},
 	"Echo Swamp - Misty Woods": {
 		"bestMission": "Hazy Swamp",
-		"duration": 46,
-		"reactorPerMin": 3.23,
+		"duration": 43,
+		"reactorPerMin": 4.02,
 		"missionNotes": "",
 		"secondaryElement": "Chill",
 		"secondarySkill": "Singular",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 2.23,
+		"secondaryMissionNotes": ""
 	},
 	"Echo Swamp - Muskeg Swamp": {
 		"bestMission": "The Tree of Truth",
@@ -101,79 +101,79 @@
 	"Fortress - Convertor Facility": {
 		"bestMission": "Central Control Unit",
 		"duration": 163,
-		"reactorPerMin": 3.42,
+		"reactorPerMin": 3.22,
 		"missionNotes": "",
 		"secondaryElement": "Chill",
 		"secondarySkill": "Singular",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 1.83,
+		"secondaryReactorPerMin": 1.91,
 		"secondaryMissionNotes": ""
 	},
 	"Fortress - Defense Line": {
 		"bestMission": "Fortress Command Entrance",
 		"duration": 114,
-		"reactorPerMin": 3.59,
+		"reactorPerMin": 3.32,
 		"missionNotes": "",
 		"secondaryElement": "Non-Attribute",
 		"secondarySkill": "Fusion",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 2.4,
+		"secondaryMissionNotes": ""
 	},
 	"Fortress - Fallen Ark": {
 		"bestMission": "Frozen Shipyard",
 		"duration": 62,
-		"reactorPerMin": 2.94,
+		"reactorPerMin": 2.71,
 		"missionNotes": "Abandon Before Hacking part",
 		"secondaryElement": "Fire",
 		"secondarySkill": "Dimension",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 2.0,
+		"secondaryMissionNotes": ""
 	},
 	"Fortress - Frozen Valley": {
 		"bestMission": "Command Relay",
-		"duration": 100,
-		"reactorPerMin": 3.17,
+		"duration": 95,
+		"reactorPerMin": 3.41,
 		"missionNotes": "",
 		"secondaryElement": "Toxic",
 		"secondarySkill": "Tech",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.99,
+		"secondaryMissionNotes": ""
 	},
 	"Fortress - The Aurora Forest": {
 		"bestMission": "Snowy Heights",
 		"duration": 116,
-		"reactorPerMin": 1.21,
+		"reactorPerMin": 1.13,
 		"missionNotes": "Last spawn at 3:10 at bridge or count 8 spawn intervals",
 		"secondaryElement": "Chill",
 		"secondarySkill": "Tech",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 0.83,
+		"secondaryMissionNotes": ""
 	},
 	"Hagios - Dune Base": {
 		"bestMission": "Vulgus Blockade",
-		"duration": 158,
-		"reactorPerMin": 2.15,
+		"duration": 160,
+		"reactorPerMin": 2.05,
 		"missionNotes": "",
 		"secondaryElement": "Non-Attribute",
 		"secondarySkill": "Fusion",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.58,
+		"secondaryMissionNotes": ""
 	},
 	"Hagios - Forward Base": {
-		"bestMission": "Broadband Fleet Beacon",
-		"duration": 145,
-		"reactorPerMin": 2.56,
+		"bestMission": "Antiaircraft Defensive Position",
+		"duration": 206,
+		"reactorPerMin": 2.73,
 		"missionNotes": "",
 		"secondaryElement": "Electric",
 		"secondarySkill": "Singular",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.42,
+		"secondaryMissionNotes": ""
 	},
 	"Hagios - Fractured Monolith": {
 		"bestMission": "Ruins Modification Base",
@@ -254,25 +254,25 @@
 	},
 	"Sterile Land - Ironworks": {
 		"bestMission": "Weapon Processing Facility",
-		"duration": 52,
-		"reactorPerMin": 3.39,
+		"duration": 51,
+		"reactorPerMin": 2.96,
 		"missionNotes": "",
 		"secondaryElement": "Chill",
 		"secondarySkill": "Dimension",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 2.0,
+		"secondaryMissionNotes": ""
 	},
 	"Sterile Land - Repository": {
 		"bestMission": "Kuiper Mine",
 		"duration": 325,
-		"reactorPerMin": 4.19,
+		"reactorPerMin": 3.68,
 		"missionNotes": "Don't do objective after activating",
 		"secondaryElement": "Electric",
 		"secondarySkill": "Fusion",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 2.43,
+		"secondaryMissionNotes": ""
 	},
 	"Sterile Land - Restricted Zone": {
 		"bestMission": "The Barracks",
@@ -321,13 +321,13 @@
 	"Vespers - The Lumber Yard": {
 		"bestMission": "Frontline Base",
 		"duration": 75,
-		"reactorPerMin": 2.89,
+		"reactorPerMin": 1.99,
 		"missionNotes": "",
 		"secondaryElement": "Fire",
 		"secondarySkill": "Fusion",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.89,
+		"secondaryMissionNotes": ""
 	},
 	"Vespers - The Ruins": {
 		"bestMission": "Ruins Courtyard",
