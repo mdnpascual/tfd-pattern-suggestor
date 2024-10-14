@@ -345,8 +345,8 @@
 		"duration": 99,
 		"reactorPerMin": 2.79,
 		"missionNotes": "",
-		"secondaryElement": "",
-		"secondarySkill": "",
+		"secondaryElement": "Toxic",
+		"secondarySkill": "Tech",
 		"secondaryAmmo": "*",
 		"secondaryReactorPerMin": 0,
 		"secondaryMissionNotes": "ESTIMATE"
@@ -367,8 +367,8 @@
 		"duration": 191,
 		"reactorPerMin": 2.25,
 		"missionNotes": "ESTIMATE",
-		"secondaryElement": "",
-		"secondarySkill": "",
+		"secondaryElement": "Chill",
+		"secondarySkill": "Singular",
 		"secondaryAmmo": "*",
 		"secondaryReactorPerMin": 0,
 		"secondaryMissionNotes": "ESTIMATE"

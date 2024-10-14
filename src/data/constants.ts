@@ -313,6 +313,12 @@ export const defaultReactorPresets = [
 		"element": "Electric",
 		"ammoType": "High-Power",
 		"skillType": "Fusion"
+	},
+	{
+		"title": "Freyna Secret Garden",
+		"element": "Toxic",
+		"ammoType": "Special",
+		"skillType": "Tech"
 	}
 ]
 

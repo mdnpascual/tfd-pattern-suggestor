@@ -55,7 +55,7 @@ const FarmRotationComponent: React.FC = () => {
 		const storedPresets = GetLocalStorageItem('reactorPresets', defaultReactorPresets);
 		setPresets(storedPresets);
 
-		const savedState = GetLocalStorageItem<boolean>('reactorPresetsLocationAccordion', false);
+		const savedState = GetLocalStorageItem<boolean>('reactorPresetsLocationAccordion', true);
 		setIsOpen(savedState);
 
 		const storedShowAll = GetLocalStorageItem<boolean>('reactorPresetsShowAll', false);

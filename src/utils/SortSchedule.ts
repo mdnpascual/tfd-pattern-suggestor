@@ -127,6 +127,10 @@ const SortSchedule = (
 
 		const aTotalScore = (a.combined.length * aCombinedScore) + (a.rotation.length * aRotationScore) + (a.static.length * aSecondaryScore)
 		const bTotalScore = (b.combined.length * bCombinedScore) + (b.rotation.length * bRotationScore) + (b.static.length * bSecondaryScore)
+
+		if (aTotalScore + bTotalScore === 0) {
+			return a.location.localeCompare(b.location)
+		}
 		return bTotalScore - aTotalScore;
 	});
 

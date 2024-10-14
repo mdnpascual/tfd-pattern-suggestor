@@ -30,7 +30,7 @@ const ReactorPresetsSummary: React.FC<ReactorPresetsSummaryProps> = ({ presets }
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
 	useEffect(() => {
-		const savedState = GetLocalStorageItem<boolean>('reactorPresetsSummaryAccordion', false);
+		const savedState = GetLocalStorageItem<boolean>('reactorPresetsSummaryAccordion', true);
 		setIsOpen(savedState);
 	}, []);
 

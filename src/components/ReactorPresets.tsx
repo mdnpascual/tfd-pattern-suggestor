@@ -61,7 +61,7 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 
 		setWeaponTypes(result)
 
-		const savedState = GetLocalStorageItem<boolean>('reactorPresetsAccordion', false);
+		const savedState = GetLocalStorageItem<boolean>('reactorPresetsAccordion', true);
 		setIsOpen(savedState);
 
 	}, []);
