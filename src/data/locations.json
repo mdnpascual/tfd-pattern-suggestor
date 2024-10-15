@@ -309,14 +309,14 @@
 	},
 	"Vespers - Moonlight Lake": {
 		"bestMission": "Lakeside",
-		"duration": 107,
-		"reactorPerMin": 2.68,
+		"duration": 102,
+		"reactorPerMin": 2.97,
 		"missionNotes": "",
 		"secondaryElement": "Electric",
 		"secondarySkill": "Dimension",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.77,
+		"secondaryMissionNotes": ""
 	},
 	"Vespers - The Lumber Yard": {
 		"bestMission": "Frontline Base",
@@ -331,25 +331,25 @@
 	},
 	"Vespers - The Ruins": {
 		"bestMission": "Ruins Courtyard",
-		"duration": 75,
+		"duration": 69,
 		"reactorPerMin": 2.69,
 		"missionNotes": "",
 		"secondaryElement": "Non-Attribute",
 		"secondarySkill": "Singular",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.76,
+		"secondaryMissionNotes": ""
 	},
 	"Vespers - Timberfall": {
 		"bestMission": "Timberfall Power Facility",
-		"duration": 99,
-		"reactorPerMin": 2.79,
+		"duration": 95,
+		"reactorPerMin": 2.29,
 		"missionNotes": "",
 		"secondaryElement": "Toxic",
 		"secondarySkill": "Tech",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.58,
+		"secondaryMissionNotes": ""
 	},
 	"White-night Gulch - Hatchery": {
 		"bestMission": "Lower Hatchery",
