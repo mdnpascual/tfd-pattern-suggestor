@@ -177,25 +177,25 @@
 	},
 	"Hagios - Fractured Monolith": {
 		"bestMission": "Ruins Modification Base",
-		"duration": 136,
-		"reactorPerMin": 2.30,
+		"duration": 132,
+		"reactorPerMin": 2.32,
 		"missionNotes": "",
 		"secondaryElement": "Fire",
 		"secondarySkill": "Fusion",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.66,
+		"secondaryMissionNotes": ""
 	},
 	"Hagios - Starfall Road": {
 		"bestMission": "Ruins Guard Facility",
-		"duration": 261,
-		"reactorPerMin": 2.16,
+		"duration": 237,
+		"reactorPerMin": 2.39,
 		"missionNotes": "No Abandon, Insert last item at 8min left on timer",
 		"secondaryElement": "Toxic",
 		"secondarySkill": "Dimension",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.61,
+		"secondaryMissionNotes": ""
 	},
 	"Hagios - The Corrupted Zone": {
 		"bestMission": "Deep Digger",
@@ -242,15 +242,15 @@
 		"secondaryMissionNotes": "ESTIMATE"
 	},
 	"Sterile Land - Classified Area": {
-		"bestMission": "Large Nuclear Reactor",
-		"duration": 114,
-		"reactorPerMin": 2.56,
-		"missionNotes": "Get out of circle to kill all enemies before finishing",
+		"bestMission": "Biological Research Facility",
+		"duration": 75,
+		"reactorPerMin": 2.91,
+		"missionNotes": "",
 		"secondaryElement": "Fire",
 		"secondarySkill": "Tech",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.38,
+		"secondaryMissionNotes": ""
 	},
 	"Sterile Land - Ironworks": {
 		"bestMission": "Weapon Processing Facility",
