@@ -176,6 +176,7 @@ export interface ItemPreset {
 export interface ItemPresetBestLocation extends ItemPreset {
 	location: string;
 	dropRate: number;
+	bestMission: string;
 }
 
 export interface ItemPresetCategory extends ItemPreset {

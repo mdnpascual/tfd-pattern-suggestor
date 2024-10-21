@@ -1,14 +1,14 @@
 {
 	"Agna Desert - Miragestone": {
-		"bestMission": "Heavy Equipment Entry Path",
-		"duration": 91,
-		"reactorPerMin": 3.11,
-		"missionNotes": "ESTIMATE",
+		"bestMission": "Commanding Ground",
+		"duration": 48,
+		"reactorPerMin": 3.28,
+		"missionNotes": "",
 		"secondaryElement": "Chill",
 		"secondarySkill": "Tech",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.80,
+		"secondaryMissionNotes": ""
 	},
 	"Agna Desert - Remnant": {
 		"bestMission": "Abandoned Reconstruction Site",
@@ -366,7 +366,7 @@
 		"bestMission": "Water-cooling Recording Device",
 		"duration": 256,
 		"reactorPerMin": 3.35,
-		"missionNotes": "ESTIMATE",
+		"missionNotes": "Let some mobs stand in circle and Reduce Bunny range to avoid killing them",
 		"secondaryElement": "Chill",
 		"secondarySkill": "Singular",
 		"secondaryAmmo": "*",

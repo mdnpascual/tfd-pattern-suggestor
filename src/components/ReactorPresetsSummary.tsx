@@ -103,7 +103,7 @@ const ReactorPresetsSummary: React.FC<ReactorPresetsSummaryProps> = ({ presets }
 				callbacks: {
 					label: (tooltipItem: TooltipItem<'bar'>) => {
 						const index = tooltipItem.dataIndex;
-						return `${presets[index].location}: ${presets[index].dropRate.toFixed(2)} reactors / min`;
+						return `${presets[index].location} (${presets[index].bestMission}): ${presets[index].dropRate.toFixed(2)} reactors / min`;
 					}
 				}
 			}

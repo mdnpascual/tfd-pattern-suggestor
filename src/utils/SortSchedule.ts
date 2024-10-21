@@ -22,12 +22,14 @@ const CheckBestLocation = (
 			list.push({
 				...preset,
 				location: schedule.location,
-				dropRate: dropRate
+				dropRate: dropRate,
+				bestMission: locationData[schedule.location].bestMission
 			})
 		} else {
 			if (dropRate > list[inListIndex].dropRate) {
 				list[inListIndex].location = schedule.location
 				list[inListIndex].dropRate = dropRate
+				list[inListIndex].bestMission = locationData[schedule.location].bestMission
 			}
 		}
 	})
