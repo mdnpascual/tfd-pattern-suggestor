@@ -163,6 +163,12 @@
   border-radius: 5px;
 }
 
+.chartjs-tooltip {
+  max-width: 200px;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
 .highlight {
   background-color: green;
   color: white !important

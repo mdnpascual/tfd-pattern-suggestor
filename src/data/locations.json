@@ -23,14 +23,14 @@
 	},
 	"Agna Desert - The Mining Site": {
 		"bestMission": "Mining Beacon",
-		"duration": 45,
-		"reactorPerMin": 2.63,
-		"missionNotes": "ESTIMATE",
+		"duration": 46,
+		"reactorPerMin": 2.62,
+		"missionNotes": "",
 		"secondaryElement": "Electric",
 		"secondarySkill": "Singular",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.17,
+		"secondaryMissionNotes": ""
 	},
 	"Agna Desert - The Storage": {
 		"bestMission": "Previous Construct Team Quarters",
@@ -364,14 +364,14 @@
 	},
 	"White-night Gulch - Moongrave Basin": {
 		"bestMission": "Water-cooling Recording Device",
-		"duration": 256,
-		"reactorPerMin": 3.35,
+		"duration": 257,
+		"reactorPerMin": 4.00,
 		"missionNotes": "Let some mobs stand in circle and Reduce Bunny range to avoid killing them",
 		"secondaryElement": "Chill",
 		"secondarySkill": "Singular",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 2.43,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 2.49,
+		"secondaryMissionNotes": ""
 	},
 	"White-night Gulch - Observatory": {
 		"bestMission": "Order Supply Warehouse",

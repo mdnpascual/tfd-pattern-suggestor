@@ -12,11 +12,24 @@ import { ELEMENTS_COLOR_MAP, ItemPresetBestLocation } from "../data/constants";
 import { useEffect, useState } from "react";
 import GetLocalStorageItem from "../utils/GetLocalStorageItem";
 import { Bar } from 'react-chartjs-2';
-import { Chart, CategoryScale, LinearScale, BarElement, Tooltip, Title, TooltipItem, ChartOptions } from 'chart.js';
+import { Chart, CategoryScale, LinearScale, BarElement, Tooltip, Title, TooltipItem, ChartOptions, TooltipPositionerFunction, ChartType } from 'chart.js';
+
+declare module 'chart.js' {
+	interface TooltipPositionerMap {
+		followMouse: TooltipPositionerFunction<ChartType>;
+	}
+}
 
 const MAX_LABEL_LENGTH = 40;
 const MOBILE_MAX_LABEL_LENGTH = 15;
+
 // Register the components
+Tooltip.positioners.followMouse = function(_, eventPosition) {
+	return {
+		x: eventPosition.x,
+		y: eventPosition.y
+	};
+}
 Chart.register(CategoryScale, LinearScale, BarElement, Tooltip, Title);
 
 interface ReactorPresetsSummaryProps {
@@ -103,12 +116,18 @@ const ReactorPresetsSummary: React.FC<ReactorPresetsSummaryProps> = ({ presets }
 				callbacks: {
 					label: (tooltipItem: TooltipItem<'bar'>) => {
 						const index = tooltipItem.dataIndex;
-						return `${presets[index].location} (${presets[index].bestMission}): ${presets[index].dropRate.toFixed(2)} reactors / min`;
-					}
-				}
+						return [
+							`${presets[index].location}`,
+							`${presets[index].bestMission}: ${presets[index].dropRate.toFixed(2)} reactors / min`
+						];
+					},
+
+				},
+				displayColors: false,
+				position: 'followMouse'
 			}
 		},
-		backgroundColor: '#000000'
+		backgroundColor: '#000000',
 	};
 
 	return (
