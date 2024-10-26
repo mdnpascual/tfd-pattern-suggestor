@@ -34,25 +34,25 @@
 	},
 	"Agna Desert - The Storage": {
 		"bestMission": "Previous Construct Team Quarters",
-		"duration": 64,
-		"reactorPerMin": 3.15,
-		"missionNotes": "ESTIMATE",
+		"duration": 58,
+		"reactorPerMin": 3.25,
+		"missionNotes": "",
 		"secondaryElement": "Toxic",
 		"secondarySkill": "Dimension",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 2.50,
+		"secondaryMissionNotes": ""
 	},
 	"Agna Desert - Vermilion Waste": {
 		"bestMission": "Rock Cave Base",
-		"duration": 72,
-		"reactorPerMin": 2.41,
-		"missionNotes": "ESTIMATE",
+		"duration": 60,
+		"reactorPerMin": 3.42,
+		"missionNotes": "",
 		"secondaryElement": "Non-Attribute",
 		"secondarySkill": "Singular",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 2.09,
+		"secondaryMissionNotes": ""
 	},
 	"Echo Swamp - Abandoned Zone": {
 		"bestMission": "Environment contamination Zone",
@@ -222,13 +222,13 @@
 	"Kingston - The Destruction": {
 		"bestMission": "The Last Emergency Communicator",
 		"duration": 64,
-		"reactorPerMin": 3.39,
-		"missionNotes": "ESTIMATE",
+		"reactorPerMin": 2.89,
+		"missionNotes": "",
 		"secondaryElement": "Chill",
 		"secondarySkill": "Fusion",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.90,
+		"secondaryMissionNotes": ""
 	},
 	"Kingston - The Fallen Theater": {
 		"bestMission": "Vulgus Occupied Buildings",
