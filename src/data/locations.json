@@ -12,14 +12,14 @@
 	},
 	"Agna Desert - Remnant": {
 		"bestMission": "Abandoned Reconstruction Site",
-		"duration": 112,
-		"reactorPerMin": 2.36,
-		"missionNotes": "ESTIMATE",
+		"duration": 98,
+		"reactorPerMin": 2.79,
+		"missionNotes": "",
 		"secondaryElement": "Electric",
 		"secondarySkill": "Fusion",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.73,
+		"secondaryMissionNotes": ""
 	},
 	"Agna Desert - The Mining Site": {
 		"bestMission": "Mining Beacon",
@@ -124,7 +124,7 @@
 		"bestMission": "Frozen Shipyard",
 		"duration": 62,
 		"reactorPerMin": 2.71,
-		"missionNotes": "Abandon Before Hacking part",
+		"missionNotes": "Abort Before Hacking part",
 		"secondaryElement": "Fire",
 		"secondarySkill": "Dimension",
 		"secondaryAmmo": "*",
@@ -190,7 +190,7 @@
 		"bestMission": "Ruins Guard Facility",
 		"duration": 237,
 		"reactorPerMin": 2.39,
-		"missionNotes": "No Abandon, Insert last item at 8min left on timer",
+		"missionNotes": "No Abort, Insert last item at 8min left on timer",
 		"secondaryElement": "Toxic",
 		"secondarySkill": "Dimension",
 		"secondaryAmmo": "*",
@@ -300,7 +300,7 @@
 		"bestMission": "Mossy Colossus",
 		"duration": 106,
 		"reactorPerMin": 2.79,
-		"missionNotes": "Abandon when 3 objectives is at 100%",
+		"missionNotes": "Abort when 3 objectives is at 100%",
 		"secondaryElement": "Chill",
 		"secondarySkill": "Fusion",
 		"secondaryAmmo": "*",
@@ -353,14 +353,14 @@
 	},
 	"White-night Gulch - Hatchery": {
 		"bestMission": "Lower Hatchery",
-		"duration": 206,
-		"reactorPerMin": 1.6,
-		"missionNotes": "ESTIMATE",
-		"secondaryElement": "Toxic",
-		"secondarySkill": "Tech",
+		"duration": 77,
+		"reactorPerMin": 2.26,
+		"missionNotes": "Abort after 2 poison injectors",
+		"secondaryElement": "Chill",
+		"secondarySkill": "Dimension",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.20,
+		"secondaryMissionNotes": ""
 	},
 	"White-night Gulch - Moongrave Basin": {
 		"bestMission": "Water-cooling Recording Device",
@@ -375,14 +375,14 @@
 	},
 	"White-night Gulch - Observatory": {
 		"bestMission": "Order Supply Warehouse",
-		"duration": 88,
-		"reactorPerMin": 2.14,
-		"missionNotes": "ESTIMATE",
+		"duration": 80,
+		"reactorPerMin": 2.74,
+		"missionNotes": "",
 		"secondaryElement": "Electric",
 		"secondarySkill": "Dimension",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.83,
+		"secondaryMissionNotes": ""
 	},
 	"White-night Gulch - Shipment Base": {
 		"bestMission": "Fortress Outskirts",
@@ -397,13 +397,13 @@
 	},
 	"White-night Gulch - The Mountaintops": {
 		"bestMission": "Triumphal Arch",
-		"duration": 64,
-		"reactorPerMin": 2.14,
-		"missionNotes": "ESTIMATE",
+		"duration": 58,
+		"reactorPerMin": 2.11,
+		"missionNotes": "",
 		"secondaryElement": "Fire",
 		"secondarySkill": "Dimension",
 		"secondaryAmmo": "*",
-		"secondaryReactorPerMin": 0,
-		"secondaryMissionNotes": "ESTIMATE"
+		"secondaryReactorPerMin": 1.75,
+		"secondaryMissionNotes": ""
 	}
 }
