@@ -51,7 +51,7 @@ const SortSchedule = (
 		const matchingLocation = locationData[item.location]
 		const filteredDropRate = parseFloat(filterDropRate);
 
-		const matchedCombined = presets.filter(preset =>
+		const matchedCombined = ignoreStatic ? [] : presets.filter(preset =>
 			(item.rewards.reward_type === 'Reactor' &&
 				item.rewards.reactor_element_type === preset.element && matchingLocation.secondaryElement === preset.element &&
 				(item.rewards.weapon_rounds_type === (preset.ammoType + ' Rounds') || matchingLocation.secondaryAmmo === "*") && (matchingLocation.secondaryAmmo === (preset.ammoType + ' Rounds') || matchingLocation.secondaryAmmo === "*") &&
