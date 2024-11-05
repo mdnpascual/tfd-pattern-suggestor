@@ -245,6 +245,7 @@ const baseKeys = [
 	'reactorPresetsAccordion',
 	'reactorPresetsSummaryAccordion',
 	'reactorPresetsLocationAccordion',
+	'reactorPresetsWeaponAccordion',
 	'reactorPresetsShowAll',
 	'reactorPresetsIgnoreStatic',
 	'reactorPresetsFilterDropRate'
@@ -346,6 +347,24 @@ export const ELEMENTS_COLOR_MAP: Record<string, { backgroundColor: string; borde
 	},
 };
 
+export const WEAPONS_COLOR_MAP: Record<string, { backgroundColor: string; borderColor: string }> = {
+	General: {
+		backgroundColor: 'rgba(255, 255, 255, 0.4)',
+		borderColor: 'rgba(255, 255, 255, 1.0)'
+	},
+	Impact: {
+		backgroundColor: 'rgba(73, 122, 22, 0.4)',
+		borderColor: 'rgba(4, 251, 4, 1.0)'
+	},
+	Special: {
+		backgroundColor: 'rgba(255, 165, 0, 0.4)',
+		borderColor: 'rgba(255, 140, 0, 1.0)'
+	},
+	'High-Power': {
+		backgroundColor: 'rgba(128, 0, 128, 0.4)',
+		borderColor: 'rgba(75, 0, 130, 1.0)'
+	},
+};
 
 export const ELEMENTS = ['Fire', 'Chill', 'Electric', 'Toxic', 'Non-Attribute'] as const;
 export const AMMO_TYPES = ['General', 'Impact', 'Special', 'High-Power'] as const;

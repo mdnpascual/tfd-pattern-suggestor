@@ -21,6 +21,7 @@ import GetLocalStorageItem from '../utils/GetLocalStorageItem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ReactorPresetsSummary from './ReactorPresetsSummary';
 import ValidateReactorPresets from '../utils/ValidateReactorPresets';
+import WeaponSummary from './WeaponSummary';
 
 const useLocalStorageDebounce = (key: string, delay: number) => {
 	return useDebounce((value: any) => {
@@ -46,7 +47,7 @@ const FarmRotationComponent: React.FC = () => {
 	const [showAll, setShowAll] = useState<boolean>(false);
     const [filterDropRate, setFilterDropRate] = useState<string>('');
 	const [presetBestLocation, setPresetBestLocation] = useState<ItemPresetBestLocation[]>([]);
-	const [isOpen, setIsOpen] = useState(false);
+	const [isLocationOpen, setLocationOpen] = useState(false);
 
 	const weekInMillis = 7 * 24 * 60 * 60 * 1000;
 	const userLocale = navigator.language || 'en-US';
@@ -56,8 +57,8 @@ const FarmRotationComponent: React.FC = () => {
 		const storedPresets = GetLocalStorageItem('reactorPresets', defaultReactorPresets);
 		setPresets(ValidateReactorPresets(storedPresets));
 
-		const savedState = GetLocalStorageItem<boolean>('reactorPresetsLocationAccordion', true);
-		setIsOpen(savedState);
+		const savedLocationAccordionState = GetLocalStorageItem<boolean>('reactorPresetsLocationAccordion', true);
+		setLocationOpen(savedLocationAccordionState);
 
 		const storedShowAll = GetLocalStorageItem<boolean>('reactorPresetsShowAll', false);
 		setShowAll(storedShowAll);
@@ -135,9 +136,9 @@ const FarmRotationComponent: React.FC = () => {
 		}
 	};
 
-	const handleToggle = () => {
-		const newState = !isOpen;
-		setIsOpen(newState);
+	const handleLocationToggle = () => {
+		const newState = !isLocationOpen;
+		setLocationOpen(newState);
 		localStorage.setItem('reactorPresetsLocationAccordion', JSON.stringify(newState));
 	};
 
@@ -151,7 +152,7 @@ const FarmRotationComponent: React.FC = () => {
 		}}>
 			<ReactorPresets presets={presets} setPresets={setPresets} />
 			<ReactorPresetsSummary presets={presetBestLocation}></ReactorPresetsSummary>
-			<Accordion expanded={isOpen} onChange={handleToggle} sx={{mt:'10px'}}>
+			<Accordion expanded={isLocationOpen} onChange={handleLocationToggle} sx={{mt:'10px'}}>
 				<AccordionSummary expandIcon={<ExpandMoreIcon />}>
 					<Typography>Location View</Typography>
 				</AccordionSummary>
@@ -207,6 +208,7 @@ const FarmRotationComponent: React.FC = () => {
 				</AccordionDetails>
 				<RotationComponent schedule={filteredSchedule}/>
 			</Accordion>
+			<WeaponSummary locations={schedule}></WeaponSummary>
 		</Box>
 	);
 };
