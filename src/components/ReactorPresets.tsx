@@ -134,6 +134,7 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 							<FormControl fullWidth>
 								<InputLabel>Element</InputLabel>
 								<Select
+									label="Element"
 									value={userPreset?.element || ''}
 									onChange={(e) => setUserPreset({ ...userPreset, element: e.target.value } as ItemPreset)}
 								>
@@ -154,6 +155,7 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 							<FormControl fullWidth>
 								<InputLabel>Ammo Type</InputLabel>
 								<Select
+									label="Ammo Type"
 									value={userPreset?.ammoType || ''}
 									onChange={(e) => setUserPreset({ ...userPreset, ammoType: e.target.value } as ItemPreset)}
 								>
@@ -174,6 +176,7 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 							<FormControl fullWidth>
 								<InputLabel>Skill Type</InputLabel>
 								<Select
+									label="Skill Type"
 									value={userPreset?.skillType || ''}
 									onChange={(e) => setUserPreset({ ...userPreset, skillType: e.target.value } as ItemPreset)}
 								>
