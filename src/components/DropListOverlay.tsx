@@ -1,10 +1,12 @@
 import React, { useState, useMemo, useCallback } from 'react';
-import { Box, Typography, TextField, Grid, Tooltip } from '@mui/material';
+import { Box, Typography, TextField, Grid, Tooltip, IconButton } from '@mui/material';
 import { TableItem } from './SortableTable';
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
 import ColorByGoal from '../utils/ColorByGoal';
 import calculateRolls from '../utils/CalculateRolls';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 interface DropListOverlayProps {
 	dropTable?: TableItem;
@@ -62,7 +64,7 @@ const DropListOverlay: React.FC<DropListOverlayProps> = ({
 				return 0;
 			}
 
-			return Math.max(0, Math.min((materialCount[materialMapping[materialMapping[name]]] - materialCount[materialMapping[name]] ?? 0), Number.MAX_SAFE_INTEGER));
+			return Math.max(0, Math.min((materialCount[materialMapping[materialMapping[name]]] - (materialCount[materialMapping[name]] ?? 0)), Number.MAX_SAFE_INTEGER));
 		} else {
 			// Don't count if Character or Weapon is marked as completed
 			if (characterStatus[materialMapping[name]] || weaponStatus[materialMapping[name]]){
@@ -128,29 +130,89 @@ const DropListOverlay: React.FC<DropListOverlayProps> = ({
 								padding: 1,
 								paddingBottom: 0,
 								paddingTop: 1,
-								mb: 1,
-							}}
-						>
-							<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-								<Typography variant="body2" sx={{ fontWeight: 'bold' }}>
-									{(drop.chance * 100).toFixed(0)}%
-								</Typography>
-							</Box>
-							<Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-								<Typography variant="body1" sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', mb: 1 }}>
-									{drop.name}
-								</Typography>
-								<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mr: 1 }}>
-									<TextField
-										type="number"
-										variant="outlined"
-										size="small"
-										value={materialCount[drop.name] ?? 0}
-										onChange={(e) => handleMatCountChange(drop.name, parseInt(e.target.value))}
-										sx={{ width: '60px', mb: 1, mr: '15px' }}
-										inputProps={{ min: 0, style: { textAlign: 'right' } }}
-									/>
-									<Typography fontSize={16} variant="caption" sx={{ flexShrink: 0, whiteSpace: 'nowrap', mt: '-5px' }}>
+								mb: 1}}>
+							<Box sx={{ display: 'flex', width: '100%' }}>
+								<Box sx={{ flex: 3, display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '70%' }}>
+									<Typography variant="body2" sx={{ fontWeight: 'bold' }}>
+										{(drop.chance * 100).toFixed(0)}%
+									</Typography>
+									<Typography
+										variant="body1"
+										sx={{
+											whiteSpace: 'nowrap',
+											overflow: 'hidden',
+											textOverflow: 'ellipsis',
+											flexShrink: 1,
+											width: '95%',
+											pt: '10px',
+											pb: '15px'
+										}}>
+										{drop.name}
+									</Typography>
+								</Box>
+
+								<Box sx={{ flex: 1, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', mr: 1, width: '25%' }}>
+									<Box sx={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: 'center' }}>
+										<IconButton
+											onClick={() => {isMobile
+												? handleMatCountChange(drop.name, (materialCount[drop.name] ?? 0) + 1)
+												: handleMatCountChange(drop.name, (materialCount[drop.name] ?? 0) - 1);
+											}}
+												size="small"
+												sx={{
+													borderRadius: '4px',
+													padding: '8px 12px',
+													mt: isMobile ? -1 : undefined,
+													mb: isMobile ? 0 : 1
+												}}>
+											{isMobile ? (
+												<ArrowUpwardIcon fontSize="small" />
+											) : (
+												<span>-</span>
+											)}
+										</IconButton>
+
+										<TextField
+											type="number"
+											variant="outlined"
+											size="small"
+											value={materialCount[drop.name] ?? 0}
+											onChange={(e) => handleMatCountChange(drop.name, parseInt(e.target.value))}
+											sx={{
+												width: '60px',
+												mb: 1,
+												'& input': {
+													textAlign: 'center',
+													MozAppearance: 'textfield',
+													'&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
+														display: 'none',
+													},
+												},
+											}}
+											inputProps={{ min: 0 }}
+										/>
+
+										<IconButton
+											onClick={() => {isMobile
+												? handleMatCountChange(drop.name, (materialCount[drop.name] ?? 0) - 1)
+												: handleMatCountChange(drop.name, (materialCount[drop.name] ?? 0) + 1);
+											}}
+												size="small"
+												sx={{
+													borderRadius: '4px',
+													padding: '8px 12px',
+													mt: isMobile ? -1 : undefined,
+													mb: isMobile ? 0 : 1
+												}}>
+											{isMobile ? (
+												<ArrowDownwardIcon fontSize="small" />
+											) : (
+												<span>+</span>
+											)}
+										</IconButton>
+									</Box>
+
+									<Typography fontSize={16} variant="caption" sx={{ flexShrink: 0, whiteSpace: 'nowrap', mt: '-5px', ml: 2 }}>
 										/ {getGoal(drop.name)}
 									</Typography>
 								</Box>

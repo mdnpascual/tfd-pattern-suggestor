@@ -106,7 +106,7 @@ ${matchingLocation.bestMission}: ${matchingLocation.reactorPerMin.toFixed(2)} re
 			y: {
 				title: {
 					display: true,
-					text: 'Presets',
+					text: 'Ammo Type',
 					color: '#ffffff',
 				},
 				grid: {

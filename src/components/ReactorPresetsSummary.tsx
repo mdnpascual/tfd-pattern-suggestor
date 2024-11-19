@@ -136,7 +136,7 @@ const ReactorPresetsSummary: React.FC<ReactorPresetsSummaryProps> = ({ presets }
 			<Typography>Preset View</Typography>
 		</AccordionSummary>
 		<AccordionDetails>
-			<Box sx={{ width: '100%', height: isMobile ? '60vh' : undefined, maxHeight: '60vh', overflow: 'hidden' }}>
+			<Box sx={{ width: '100%', height: isMobile ? '45vh' : undefined, maxHeight: { xs: '50vh', sm: '50vh', md: '50vh', lg: '60vh', xl: '65vh' }, overflow: 'hidden' }}>
 				{presets.length > 0 ? (
 					<Bar data={data} options={options} style={{ height: '100%', width: '100%' }} />
 				) : (
