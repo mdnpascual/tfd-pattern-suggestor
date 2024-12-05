@@ -495,60 +495,6 @@
 		"xOffset": 0,
 		"yOffset": -25
 	},
-	"Keelan": {
-		"parts": [
-			{ "name": "Keelan Enhanced Cells", "mats": [
-				{ "name": "Semi-permanent Plasma", "quantity": 290 },
-				{ "name": "Carbon Crystal", "quantity": 554 },
-				{ "name": "Refined Void Essence", "quantity": 45 },
-				{ "name": "Keelan Enhanced Cells Blueprint", "quantity": 1 }
-			]},
-			{ "name": "Keelan Stabilizer", "mats": [
-				{ "name": "Repton", "quantity": 422 },
-				{ "name": "Silicon", "quantity": 430 },
-				{ "name": "Refined Void Essence", "quantity": 45 },
-				{ "name": "Keelan Stabilizer Blueprint", "quantity": 1 }
-			]},
-			{ "name": "Keelan Spiral Catalyst", "mats": [
-				{ "name": "Monomolecular Extractor", "quantity": 490 },
-				{ "name": "Reverse Charging Coil", "quantity": 455 },
-				{ "name": "Refined Void Essence", "quantity": 45 },
-				{ "name": "Keelan Spiral Catalyst Blueprint", "quantity": 1 }
-			]},
-			{ "name": "Keelan Code", "mats": [{ "name": "Keelan Code", "quantity": 1 }]}
-		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/keelan.png",
-		"scale": 100,
-		"xOffset": 0,
-		"yOffset": -25
-	},
-	"Ultimate Sharen": {
-		"parts": [
-			{ "name": "Ultimate Sharen Enhanced Cells", "mats": [
-				{ "name": "Monad Shard", "quantity": 554 },
-				{ "name": "Silicon", "quantity": 969 },
-				{ "name": "Heavy Ion Collector", "quantity": 63 },
-				{ "name": "Ultimate Sharen Enhanced Cells Blueprint", "quantity": 1 }
-			]},
-			{ "name": "Ultimate Sharen Stabilizer", "mats": [
-				{ "name": "Monomolecular Extractor", "quantity": 1123 },
-				{ "name": "Hellion", "quantity": 682 },
-				{ "name": "Heavy Ion Collector", "quantity": 63 },
-				{ "name": "Ultimate Sharen Stabilizer Blueprint", "quantity": 1 }
-			]},
-			{ "name": "Ultimate Sharen Spiral Catalyst", "mats": [
-				{ "name": "Metal Accelerant", "quantity": 1168 },
-				{ "name": "Hardener", "quantity": 869 },
-				{ "name": "Heavy Ion Collector", "quantity": 63 },
-				{ "name": "Ultimate Sharen Spiral Catalyst Blueprint", "quantity": 1 }
-			]},
-			{ "name": "Ultimate Sharen Code", "mats": [{ "name": "Ultimate Sharen Code", "quantity": 1 }]}
-		],
-		"img": "https://tfdvod.dn.nexoncdn.co.kr/img/cbt/character_v2/ultimatesharen.png",
-		"scale": 100,
-		"xOffset": 0,
-		"yOffset": -25
-	},
 	"Bunny": { "parts": [
 		{ "name": "Bunny Enhanced Cells", "mats": []},
 		{ "name": "Bunny Stabilizer", "mats": []},

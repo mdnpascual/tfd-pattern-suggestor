@@ -374,21 +374,5 @@
 		"scale": 80,
 		"parts": [],
 		"farmIn": "Kingston (Hard) - Magister Lab"
-	},
-	"Heavy Ion Collector": {
-		"img": "/img/basic-mats/Heavy Ion Collector.png",
-		"xOffset": -15,
-		"yOffset": 15,
-		"scale": 60,
-		"parts": [],
-		"farmIn": "Void Vessel"
-	},
-	"Refined Void Essence": {
-		"img": "/img/basic-mats/Refined Void Essence.png",
-		"xOffset": -10,
-		"yOffset": 20,
-		"scale": 55,
-		"parts": [],
-		"farmIn": "Void Vessel"
 	}
 }

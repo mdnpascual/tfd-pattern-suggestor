@@ -559,34 +559,6 @@
 		"yOffset": 35,
 		"scale": 165
 	},
-	"Hammer and Anvil": {
-		"parts": [
-			{ "name": "Hammer and Anvil Polymer Syncytium", "mats": [
-				{ "name": "Compound Coating Material", "quantity": 60 },
-				{ "name": "Reverse Charging Coil", "quantity": 114 },
-				{ "name": "Heavy Ion Collector", "quantity": 7 },
-				{ "name": "Hammer and Anvil Polymer Syncytium Blueprint", "quantity": 1 }
-			]},
-			{ "name": "Hammer and Anvil Synthetic Fiber", "mats": [
-				{ "name": "Nanopolymers", "quantity": 91 },
-				{ "name": "Shape Memory Alloy", "quantity": 115 },
-				{ "name": "Heavy Ion Collector", "quantity": 7 },
-				{ "name": "Hammer and Anvil Synthetic Fiber Blueprint", "quantity": 1 }
-			]},
-			{ "name": "Hammer and Anvil Nano Tube", "mats": [
-				{ "name": "Repton", "quantity": 105 },
-				{ "name": "Superfluid", "quantity": 143 },
-				{ "name": "Heavy Ion Collector", "quantity": 7 },
-				{ "name": "Hammer and Anvil Nano Tube Blueprint", "quantity": 1 }
-			]},
-			{ "name": "Hammer and Anvil Blueprint", "mats": [{ "name": "Hammer and Anvil Blueprint", "quantity": 1 }]}
-		],
-		"ammoType": "High-Power",
-		"img": "https://open.api.nexon.com/static/tfd/img/26bf13d021eb7f409a855d4366892e13",
-		"xOffset": -30,
-		"yOffset": 40,
-		"scale": 140
-	},
 	"Thunder Cage": {
 		"parts": [
 			{ "name": "Thunder Cage Polymer Syncytium", "mats": []},

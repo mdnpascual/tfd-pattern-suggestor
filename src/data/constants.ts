@@ -391,5 +391,5 @@ export const dataKeywordVoidReactor = 'void fusion reactor';
 export const dataKeywordSpecOps = 'void fusion reactor';
 export const dataKeywordDropsFromOutpost = 'vulgus strategic outpost'
 
-export const patternNameToRemove = / AA| AB/;
+export const patternNameToRemove = / AA| AB| AC/;
 export const estimateSecondaryRatio = 0.70;
