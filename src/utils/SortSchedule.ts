@@ -54,7 +54,6 @@ const SortSchedule = (
 		const matchedCombined = ignoreStatic ? [] : presets.filter(preset =>
 			(item.rewards.reward_type === 'Reactor' &&
 				item.rewards.reactor_element_type === preset.element && matchingLocation.secondaryElement === preset.element &&
-				(item.rewards.weapon_rounds_type === (preset.ammoType + ' Rounds') || matchingLocation.secondaryAmmo === "*") && (matchingLocation.secondaryAmmo === (preset.ammoType + ' Rounds') || matchingLocation.secondaryAmmo === "*") &&
 				item.rewards.arche_type === preset.skillType && matchingLocation.secondarySkill === preset.skillType &&
 				(isNaN(filteredDropRate) || (!isNaN(filteredDropRate) && matchingLocation.reactorPerMin + (matchingLocation.secondaryReactorPerMin === 0 ? (matchingLocation.reactorPerMin * estimateSecondaryRatio) : matchingLocation.secondaryReactorPerMin) >= filteredDropRate)))
 		);
@@ -66,7 +65,6 @@ const SortSchedule = (
 		const matchedRotation = remainingPresets.filter(preset =>
 			(item.rewards.reward_type === 'Reactor' &&
 				item.rewards.reactor_element_type === preset.element &&
-				item.rewards.weapon_rounds_type === (preset.ammoType + ' Rounds') &&
 				item.rewards.arche_type === preset.skillType &&
 				(isNaN(filteredDropRate) || (!isNaN(filteredDropRate) && matchingLocation.reactorPerMin >= filteredDropRate)))
 		);
@@ -78,7 +76,6 @@ const SortSchedule = (
 		const matchedStatic = ignoreStatic ? [] : remainingPresets.filter(preset =>
 			(item.rewards.reward_type === 'Reactor' &&
 				matchingLocation.secondaryElement === preset.element &&
-				(matchingLocation.secondaryAmmo === (preset.ammoType + ' Rounds') || matchingLocation.secondaryAmmo === "*") &&
 				matchingLocation.secondarySkill === preset.skillType &&
 				(isNaN(filteredDropRate) || (!isNaN(filteredDropRate) && ((matchingLocation.secondaryReactorPerMin === 0 ? (matchingLocation.reactorPerMin * estimateSecondaryRatio)  : matchingLocation.secondaryReactorPerMin ) >= filteredDropRate))))
 		);

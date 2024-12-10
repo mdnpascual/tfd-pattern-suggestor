@@ -8,7 +8,6 @@ const ValidateReactorPresets = (
 	const validPresets = presets.filter(item =>
 		item.title !== undefined &&
 		item.element !== undefined &&
-		item.ammoType !== undefined &&
 		item.skillType !== undefined
 	);
 

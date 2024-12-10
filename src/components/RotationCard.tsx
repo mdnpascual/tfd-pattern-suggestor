@@ -14,31 +14,6 @@ const formatDuration = (durationInSeconds: number) => {
 	return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 };
 
-const allAmmo = () => (
-	<div>
-		<img
-			src={`${process.env.PUBLIC_URL}/img/icons/General.png`}
-			alt={`General icon`}
-			style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
-		/>
-		<img
-			src={`${process.env.PUBLIC_URL}/img/icons/Impact.png`}
-			alt={`Impact icon`}
-			style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
-		/>
-		<img
-			src={`${process.env.PUBLIC_URL}/img/icons/Special.png`}
-			alt={`Special icon`}
-			style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
-		/>
-		<img
-			src={`${process.env.PUBLIC_URL}/img/icons/High-Power.png`}
-			alt={`High-Power icon`}
-			style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
-		/>
-	</div>
-)
-
 const RotationCard: React.FC<RotationCardProps> = ({
 	schedule,
 	locationData
@@ -125,71 +100,50 @@ const RotationCard: React.FC<RotationCardProps> = ({
 				</tr>
 				</thead>
 				<tbody>
-				<tr>
-					<td>
-						{isReactor && (<Typography>
-							<img
-							src={`${process.env.PUBLIC_URL}/img/icons/${rewards.reactor_element_type}.png`}
-							alt={`${rewards.reactor_element_type} icon`}
-							style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
-							/>
-							{rewards.reactor_element_type}
-						</Typography>)}
-					</td>
-					<td>
-						<Typography>
-							<img
-							src={`${process.env.PUBLIC_URL}/img/icons/${locationData.secondaryElement}.png`}
-							alt={`${locationData.secondaryElement} icon`}
-							style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
-							/>
-							{locationData.secondaryElement}
-						</Typography>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<Typography>
-							<img
-							src={`${process.env.PUBLIC_URL}/img/icons/${isReactor ? rewards.arche_type : type.split(" ")[0]}.png`}
-							alt={`${isReactor ? rewards.arche_type : type.split(" ")[0]} icon`}
-							style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
-							/>
-							{isReactor ? rewards.arche_type : type.split(" ")[0]}
-						</Typography>
-					</td>
-					<td>
-						<Typography>
-							<img
-							src={`${process.env.PUBLIC_URL}/img/icons/${locationData.secondarySkill}.png`}
-							alt={`${locationData.secondarySkill} icon`}
-							style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
-							/>
-							{locationData.secondarySkill}
-						</Typography>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						{isReactor && (<Typography>
-							<img
-							src={`${process.env.PUBLIC_URL}/img/icons/${rewards.weapon_rounds_type.replace(/ Rounds$/, '')}.png`}
-							alt={`${rewards.weapon_rounds_type} icon`}
-							style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
-							/>
-							{rewards.weapon_rounds_type}
-						</Typography>)}
-					</td>
-					<td>
-						<Typography>
-							{locationData.secondaryAmmo !== "*" ? <img
-							src={`${process.env.PUBLIC_URL}/img/icons/${locationData.secondaryAmmo}.png`}
-							alt={`${locationData.secondaryAmmo} icon`}
-							style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
-							/> : allAmmo()}
-						</Typography>
-					</td>
-				</tr>
+					<tr>
+						<td>
+							{isReactor && (<Typography>
+								<img
+								src={`${process.env.PUBLIC_URL}/img/icons/${rewards.reactor_element_type}.png`}
+								alt={`${rewards.reactor_element_type} icon`}
+								style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
+								/>
+								{rewards.reactor_element_type}
+							</Typography>)}
+						</td>
+						<td>
+							<Typography>
+								<img
+								src={`${process.env.PUBLIC_URL}/img/icons/${locationData.secondaryElement}.png`}
+								alt={`${locationData.secondaryElement} icon`}
+								style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
+								/>
+								{locationData.secondaryElement}
+							</Typography>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<Typography>
+								<img
+								src={`${process.env.PUBLIC_URL}/img/icons/${isReactor ? rewards.arche_type : type.split(" ")[0]}.png`}
+								alt={`${isReactor ? rewards.arche_type : type.split(" ")[0]} icon`}
+								style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
+								/>
+								{isReactor ? rewards.arche_type : type.split(" ")[0]}
+							</Typography>
+						</td>
+						<td>
+							<Typography>
+								<img
+								src={`${process.env.PUBLIC_URL}/img/icons/${locationData.secondarySkill}.png`}
+								alt={`${locationData.secondarySkill} icon`}
+								style={{ width: '20px', height: '20px', marginRight: '5px', verticalAlign: 'middle' }}
+								/>
+								{locationData.secondarySkill}
+							</Typography>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 

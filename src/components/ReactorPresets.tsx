@@ -22,11 +22,9 @@ import {
 	useTheme,
 } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { AMMO_TYPES, ELEMENTS, ItemPreset, SKILL_TYPES } from "../data/constants";
+import { ELEMENTS, ItemPreset, SKILL_TYPES } from "../data/constants";
 import { useEffect, useState } from "react";
 import PresetCard from "./PresetCard";
-import WeaponRawData from '../data/weapons.json';
-import { CategoryData } from "./CategoryList";
 import GetLocalStorageItem from "../utils/GetLocalStorageItem";
 
 interface ReactorPresetsProps {
@@ -41,7 +39,6 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 	const [userPreset, setUserPreset] = useState<ItemPreset | null>(null);
 	const [deleteKey, setDeleteKey] = useState<number | null>(null);
 	const [isOpen, setIsOpen] = useState(false);
-	const [weaponTypes, setWeaponTypes] = useState<Record<string, string[]>>({});
 	const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
 	const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'error' | 'info'>('info');
 
@@ -49,22 +46,6 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
 	useEffect(() => {
-		const data = WeaponRawData as Record<string, CategoryData>
-		const result: Record<string, string[]> = {};
-
-		for (const weaponName in data) {
-			const weapon: CategoryData = data[weaponName];
-			const ammoType = weapon.ammoType!;
-
-			if (!result[ammoType]) {
-				result[ammoType] = [];
-			}
-
-			result[ammoType].push(weaponName);
-		}
-
-		setWeaponTypes(result)
-
 		const savedState = GetLocalStorageItem<boolean>('reactorPresetsAccordion', true);
 		setIsOpen(savedState);
 
@@ -78,14 +59,13 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 
 	const addUserPreset = () => {
 		console.log(userPreset)
-		if (userPreset?.title && userPreset?.element && userPreset?.ammoType && userPreset?.skillType) {
+		if (userPreset?.title && userPreset?.element && userPreset?.skillType) {
 			setPresets([...presets, { ...userPreset }]);
 			setUserPreset(null);
 		} else {
 			let error = []
 			if (!userPreset?.title) error.push("Title cannot be empty")
 			if (!userPreset?.element) error.push("Element cannot be empty")
-			if (!userPreset?.ammoType) error.push("Ammo Type cannot be empty")
 			if (!userPreset?.skillType) error.push("Skill Type cannot be empty")
 			showSnackbar(error.join("<br/>"), 'error');
 		}
@@ -130,7 +110,7 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 						/>
 					</FormControl>
 					<Grid container spacing={2} sx={{ mt: 0 }}>
-						<Grid item xs={isMobile ? 12 : 4}>
+						<Grid item xs={isMobile ? 12 : 6}>
 							<FormControl fullWidth>
 								<InputLabel>Element</InputLabel>
 								<Select
@@ -151,28 +131,7 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 								</Select>
 							</FormControl>
 						</Grid>
-						<Grid item xs={isMobile ? 12 : 4}>
-							<FormControl fullWidth>
-								<InputLabel>Ammo Type</InputLabel>
-								<Select
-									label="Ammo Type"
-									value={userPreset?.ammoType || ''}
-									onChange={(e) => setUserPreset({ ...userPreset, ammoType: e.target.value } as ItemPreset)}
-								>
-									{AMMO_TYPES.map((ammo, index) => (
-										<MenuItem key={index} value={ammo}>
-											<img
-												src={`${process.env.PUBLIC_URL}/img/icons/${ammo}.png`}
-												alt={ammo}
-												style={{ width: 24, height: 24, marginRight: 8 }}
-											/>
-											{ammo}
-										</MenuItem>
-									))}
-								</Select>
-							</FormControl>
-						</Grid>
-						<Grid item xs={isMobile ? 12 : 4}>
+						<Grid item xs={isMobile ? 12 : 6}>
 							<FormControl fullWidth>
 								<InputLabel>Skill Type</InputLabel>
 								<Select
@@ -201,15 +160,12 @@ const ReactorPresets: React.FC<ReactorPresetsProps> = ({
 				<Box sx={{ mt: 2 }} overflow={'auto'} maxHeight={isMobile ? '43vh' : undefined}>
 					<Grid container spacing={2}>
 					{presets.map((preset, index) => (
-						weaponTypes[preset.ammoType] && (
-							<PresetCard
-								key={index + preset.title}
-								preset={preset}
-								index={index}
-								weapons={weaponTypes[preset.ammoType]}
-								openConfirmDeleteDialog={openConfirmDeleteDialog}
-							/>
-						)
+						<PresetCard
+							key={index + preset.title}
+							preset={preset}
+							index={index}
+							openConfirmDeleteDialog={openConfirmDeleteDialog}
+						/>
 					))}
 					</Grid>
 				</Box>

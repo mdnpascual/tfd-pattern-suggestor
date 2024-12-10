@@ -21,7 +21,6 @@ import GetLocalStorageItem from '../utils/GetLocalStorageItem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ReactorPresetsSummary from './ReactorPresetsSummary';
 import ValidateReactorPresets from '../utils/ValidateReactorPresets';
-import WeaponSummary from './WeaponSummary';
 
 const useLocalStorageDebounce = (key: string, delay: number) => {
 	return useDebounce((value: any) => {
@@ -99,8 +98,7 @@ const FarmRotationComponent: React.FC = () => {
 						SortSchedule(storedPresets, newSchedule, showAll, storedIgnoreStatic, storedFilterDropRate, setFilteredSchedule, setPresetBestLocation)
 					})
 			})
-			.catch(error => {
-			});
+			.catch(error => {});
 	}, []);
 
 	const savePresetsToLocalStorage = useLocalStorageDebounce('reactorPresets', 500);
@@ -208,7 +206,6 @@ const FarmRotationComponent: React.FC = () => {
 				</AccordionDetails>
 				<RotationComponent schedule={filteredSchedule}/>
 			</Accordion>
-			<WeaponSummary locations={schedule}></WeaponSummary>
 		</Box>
 	);
 };

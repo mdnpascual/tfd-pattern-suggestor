@@ -169,7 +169,7 @@ export interface MaterialUsageData {
 export interface ItemPreset {
 	title: string;
 	element: string;
-	ammoType: string;
+	ammoType?: string;
 	skillType: string;
 }
 
@@ -287,39 +287,33 @@ export const joyrideStyles = {
 
 export const defaultReactorPresets = [
 	{
-		"title": "Bunny Blue Beetle",
+		"title": "Bunny",
 		"element": "Electric",
-		"ammoType": "Impact",
 		"skillType": "Singular"
 	},
 	{
-		"title": "Lepic Impact",
+		"title": "Lepic",
 		"element": "Fire",
-		"ammoType": "Impact",
 		"skillType": "Tech"
 	},
 	{
-		"title": "Gley/Valby/Enzo General",
+		"title": "Gley/Valby/Enzo",
 		"element": "Non-Attribute",
-		"ammoType": "General",
 		"skillType": "Dimension"
 	},
 	{
 		"title": "Hailey",
 		"element": "Chill",
-		"ammoType": "High-Power",
 		"skillType": "Singular"
 	},
 	{
-		"title": "Sharen Sniper",
+		"title": "Sharen",
 		"element": "Electric",
-		"ammoType": "High-Power",
 		"skillType": "Fusion"
 	},
 	{
-		"title": "Freyna Secret Garden",
+		"title": "Freyna",
 		"element": "Toxic",
-		"ammoType": "Special",
 		"skillType": "Tech"
 	}
 ]

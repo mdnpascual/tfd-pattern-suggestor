@@ -11,7 +11,7 @@ export interface LocationData {
 	missionNotes: string;
 	secondaryElement: ElementType;
     secondarySkill: SkillType;
-    secondaryAmmo: AmmoType | "*";
+    secondaryAmmo?: AmmoType | "*";
 	secondaryReactorPerMin: number;
 	secondaryMissionNotes: string;
 }
