@@ -493,7 +493,7 @@
 		"drops": [
 			{ "chance": 0.03, "name": "Energy Activator Blueprint" },
 			{ "chance": 0.06, "name": "Ultimate Freyna Stabilizer Blueprint" },
-			{ "chance": 0.15, "name": "Python Nano Tube Blueprint" },
+			{ "chance": 0.15, "name": "Clairvoyance Synthetic Fiber Blueprint" },
 			{ "chance": 0.38, "name": "Enzo Stabilizer Blueprint" },
 			{ "chance": 0.38, "name": "Wave of Light Nano Tube Blueprint" }
 		],
