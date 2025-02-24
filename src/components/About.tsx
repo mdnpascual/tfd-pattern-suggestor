@@ -67,7 +67,7 @@ const AboutComponent: React.FC = () => {
 						right: 16,
 						color: 'text.secondary',
 					}}>
-					Version 1.3.93a
+					Version 1.3.94
 				</Typography>
 
 				<Typography
@@ -79,7 +79,7 @@ const AboutComponent: React.FC = () => {
 						color: 'text.secondary',
 						textAlign: 'right',
 					}}>
-					This app uses the Open API provided by Nexon. All images and data are sourced from Nexon’s API.
+					This app is not maintained anymore since December 11, 2024
 				</Typography>
 			</Box>
 		</Container>

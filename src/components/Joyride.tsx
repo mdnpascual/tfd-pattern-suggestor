@@ -35,8 +35,8 @@ export const JoyrideWithNavigation = ({
 			content: (
 				<div>
 					<h3>Welcome to tfd-pattern-suggestor!</h3>
-					<p>This guided tour will teach you how to use this tool effectively.</p>
-					<p>If you're already familiar with the tool, press <b>Skip</b>.</p>
+					<p>Due to the Developer's lack of interest in the game</p>
+					<p>This tool has been retired (last updated December 11)</p>
 				</div>
 			),
 			disableBeacon: true,
